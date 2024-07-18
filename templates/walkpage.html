@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산책하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='walkpage/style.css') }}">
+    <script src="{{ url_for('static', path='js/walkpage.js') }}" defer></script>
+</head>
+<body>
+    <!-- title -->
+    <section class="titleSection">
+        <div class="titleWalk">산책하기</div>
+        <div>선</div>
+    </section>
+
+    <!-- quest box -->
+    <section>
+        <img src="" alt="" class="tapeIcon">
+
+        <article class="questBox">
+            <div class="questTitle">
+                <div class="questText">퀘스트 달성</div>
+                <div>선</div>
+            </div>
+
+            <div>
+                <div class="questNum">1</div>
+                <div class="questDistance">반경 1km</div>
+                <img src="" alt="" class="coinIcon">
+                <div class="price">300</div>
+            </div>
+            <div>
+                <div class="questNum">2</div>
+                <div class="questDistance">반경 3km</div>
+                <img src="" alt="" class="coinIcon">
+                <div class="price">500</div>
+            </div>
+            <div>
+                <div class="questNum">3</div>
+                <div class="questDistance">반경 5km</div>
+                <img src="" alt="" class="coinIcon">
+                <div class="coinIcon"></div>
+                <div class="price">700</div>
+            </div>
+            
+        </article>
+
+        <article>
+            <div class="questTitle">
+                <div class="questText">추천 퀘스트</div>
+                <div>선</div>
+            </div>
+            <div class="questCheck">
+                <input class="questCommet" type="checkbox" />편의점 다녀오기
+                <input class="questCommet" type="checkbox" />공원에서 한 바퀴 돌기
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <div class="map">지도 공간</div>
+    </section>
+</body>
+</html>
