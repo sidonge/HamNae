@@ -6,6 +6,8 @@
     <title>산책하기</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/walkpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js">
+    
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/walkpage.css') }}"> -->
     <!-- <script src="{{ url_for('static', path='js/walkpage.js') }}" defer></script> -->
@@ -19,11 +21,13 @@
     </section>
 
     <!-- quest box -->
-    <section>
-        <img src="" alt="" class="tapeIcon">
-
+    <section class="questSection">
+        <div class="imgBox">
+            <img src="/static/img/tape.png" alt="tape" class="tapeIcon">
+        </div>
+        
         <article class="questBox">
-
+            
             <div class="questTitle">
                 <div class="questText">퀘스트 달성</div>
                 <hr class="line" />
@@ -34,24 +38,30 @@
                     <div class="questNum">1</div>
                     <div class="distanceBox">
                         <div class="questDistance">반경 1km</div>
-                        <img src="../static/img/coinIcon.png" class="coinIcon">
-                        <div class="price">300</div>
+                        <div class="coin">
+                            <img src="../static/img/icon-coin.png" class="coinIcon">
+                            <div class="price">300</div>
+                        </div>
                     </div>
                 </div>
                 <div class="questList">
                     <div class="questNum">2</div>
                     <div class="distanceBox">
                         <div class="questDistance">반경 3km</div>
-                        <img src="../static/img/coinIcon.png" class="coinIcon">
-                        <div class="price">500</div>
+                        <div class="coin">
+                            <img src="../static/img/icon-coin.png" class="coinIcon">
+                            <div class="price">500</div>
+                        </div>
                     </div>
                 </div>
                 <div class="questList">
                     <div class="questNum">3</div>
                     <div class="distanceBox">
                         <div class="questDistance">반경 5km</div>
-                        <img src="../static/img/coinIcon.png" class="coinIcon">
-                        <div class="price">700</div>
+                        <div class="coin">
+                            <img src="../static/img/icon-coin.png" class="coinIcon">
+                            <div class="price">700</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,14 +71,24 @@
                 <hr class="line" />
             </div>
             <div class="questCheck">
-                <input class="questCommet" type="checkbox" />편의점 다녀오기
-                <input class="questCommet" type="checkbox" />공원에서 한 바퀴 돌기
+                <div class="checkboxBox">
+                    <input class="checkBox" type="checkbox" />
+                    <div class="questCommet">편의점 다녀오기</div>
+                </div>
+                <div class="checkboxBox">
+                    <input class="checkBox" type="checkbox" />
+                    <div class="questCommet">공원에서 한 바퀴 돌기</div>
+                </div>
             </div>
         </article>
     </section>
 
     <section>
-        <div class="map">지도 공간</div>
+        <div class="mapBox">
+            <div class="distance"><i class="far fa-dot-circle"></i> 반경 1km</div>
+            <div class="map"></div>
+            <img src="/static/img/icon-map.png" class="mapIcon">
+        </div>
     </section>
 </body>
 </html>

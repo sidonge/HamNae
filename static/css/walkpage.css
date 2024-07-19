@@ -14,8 +14,8 @@ body {
     font-family: "Pretendard-Bold";
     color: #71594E;
 
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
 
     margin-bottom: 1%;
 }
@@ -23,8 +23,8 @@ body {
 .titleLine {
     background: #71594E;
 
-    width: 8rem;
-    height: 0.16rem;
+    width: 12rem;
+    height: 0.2rem;
 
     border: none;
     border-radius: 1rem;
@@ -34,14 +34,24 @@ body {
 
 
 /* quest box */
+.tapeIcon {
+    width: 5rem;
+    margin-bottom: 7%;
+}
+
+.imgBox {
+    text-align: center;
+    width: 13.5rem;
+}
+
 .questBox {
     border: 0.2rem solid #D2BEA1;
     border-radius: 0.5rem;
 
     background-color: #F5EED1;
 
-    width: 10rem;
-    padding: 1.2%;
+    width: 11rem;
+    padding: 1% 0.8%;
 }
 
 
@@ -54,17 +64,13 @@ body {
     text-align: center;
 }
 
-.questText {
-    margin-bottom: 1%;
-}
-
 .line {
     font-family: "Pretendard-Bold";
 
     background: #71594E;
 
     width: 5rem;
-    height: 0.1rem;
+    height: 0.12rem;
 
     border: none;
     border-radius: 1rem;
@@ -72,41 +78,105 @@ body {
 
 .questListBox {
     text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 .questList {
     font-family: "Pretendard-Regular";
     font-size: 0.85rem;
 
-    text-align: center;
     display: flex;
-
-    margin: 0.75rem auto;
+    justify-content: center;
+    margin: 0.75rem 0;
 }
 
 .questNum {
     background-color: #AB936B;
     color: white;
 
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.8rem;
+    height: 1.8rem;
     border-radius: 0.3rem;
 
-    text-align: center;
-    margin: 0 auto;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .distanceBox {
     display: flex;
 
-    text-align: center;
-    margin: 0 auto;
-
     background-color: white;
     color: #71594E;
 
     width: 7rem;
-    height: 1.6rem;
+    height: 1.8rem;
     border-radius: 0.3rem;
+
+    margin-left: 5%;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+}
+
+.questDistance {
+    letter-spacing: 0.015rem;
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.coinIcon {
+    width: 1rem;
+    height: 1rem;
+
+    position: relative;
+    right: 0.3rem;
+}
+
+.checkboxBox {
+    display: flex;
+    position: relative;
+    margin: 0.75rem 0;
+}
+
+.checkBox {
+    width: 1.35rem;
+    height: 1.35rem;
+
+    border-radius: 0.3rem;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    accent-color: white;
+}
+
+.questCommet {
+    font-family: "Pretendard-Regular";
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    letter-spacing: 0.015rem;
+
+    background-color: white;
+    color: #71594E;
+
+    width: 8.4rem;
+    height: 1.8rem;
+    
+    margin-left: 16.5%;
+    padding-left: 7%;
+
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin: 0;
+    border: 0;
 }
