@@ -1,0 +1,112 @@
+body {
+    background-image: linear-gradient(#F5EED1, white);
+    padding: 2%;
+}
+
+/* title */
+.titleSection {
+    text-align: center;
+
+    margin-bottom: 3%
+}
+
+.titleWalk {
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+
+    margin-bottom: 1%;
+}
+
+.titleLine {
+    background: #71594E;
+
+    width: 8rem;
+    height: 0.16rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    font-family: "Pretendard-Bold";
+}
+
+
+/* quest box */
+.questBox {
+    border: 0.2rem solid #D2BEA1;
+    border-radius: 0.5rem;
+
+    background-color: #F5EED1;
+
+    width: 10rem;
+    padding: 1.2%;
+}
+
+
+.questText {
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+
+    font-size: 0.9rem;
+
+    text-align: center;
+}
+
+.questText {
+    margin-bottom: 1%;
+}
+
+.line {
+    font-family: "Pretendard-Bold";
+
+    background: #71594E;
+
+    width: 5rem;
+    height: 0.1rem;
+
+    border: none;
+    border-radius: 1rem;
+}
+
+.questListBox {
+    text-align: center;
+}
+
+.questList {
+    font-family: "Pretendard-Regular";
+    font-size: 0.85rem;
+
+    text-align: center;
+    display: flex;
+
+    margin: 0.75rem auto;
+}
+
+.questNum {
+    background-color: #AB936B;
+    color: white;
+
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.3rem;
+
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.distanceBox {
+    display: flex;
+
+    text-align: center;
+    margin: 0 auto;
+
+    background-color: white;
+    color: #71594E;
+
+    width: 7rem;
+    height: 1.6rem;
+    border-radius: 0.3rem;
+}
