@@ -14,7 +14,7 @@ body {
     font-family: "Pretendard-Bold";
     color: #71594E;
 
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     letter-spacing: 0.2rem;
 
     margin-bottom: 1%;
@@ -50,7 +50,7 @@ body {
 
     background-color: #F5EED1;
 
-    width: 11rem;
+    width: 12rem;
     padding: 1% 0.8%;
 }
 
@@ -179,4 +179,12 @@ body {
 input {
     margin: 0;
     border: 0;
+}
+
+/* map */
+.distance {
+    background-color: white;
+
+    width: 8rem;
+    height: 3rem;
 }
