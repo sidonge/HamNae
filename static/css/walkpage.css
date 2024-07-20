@@ -176,15 +176,14 @@ body {
     height: 1.4rem;
 
     border-radius: 0.3rem;
+    box-shadow: inset 3px 3px 4.5px #BBBBBB;
+    accent-color: white;
 
     position: absolute;
     top: 50%;
     left: 0.25rem;
     transform: translate(0, -50%);
 
-    accent-color: white;
-
-    box-shadow: inset 3.5px 3.5px 5.5px #BBBBBB;
 }
 
 .questCommet {
@@ -213,6 +212,33 @@ body {
 input {
     margin: 0;
 }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: 0;
+  }
+  input[type="checkbox"]::after {
+    border: solid #FFB4B4;
+    border-width: 0 4px 4px 0;
+    content: '';
+    display: none;
+    height: 50%;
+    left: 30%;
+    position: relative;
+    top: 10%;
+    transform: rotate(45deg);
+    width: 20%;
+  }
+
+  input[type="checkbox"]:checked::after {
+    display: block;
+  }
+
 
 /* map */
 .distance {
