@@ -11,7 +11,6 @@
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/walkpage.css') }}"> -->
     <!-- <script src="{{ url_for('static', path='js/walkpage.js') }}" defer></script> -->
-
 </head>
 <body>
     <!-- title -->
@@ -85,8 +84,13 @@
 
     <section>
         <div class="mapBox">
-            <div class="distance"><i class="far fa-dot-circle"></i> 반경 1km</div>
-            <div class="map"></div>
+            <div class="distance">
+                <img src="/static/img/icon-distance.png" class="distanceIcon">
+                <div class="distanceNum">반경 1km</div>
+            </div>
+            <div>
+                <hr class="mapTop"/> <hr class="mapBottom"/>
+            </div>
             <img src="/static/img/icon-map.png" class="mapIcon">
         </div>
     </section>

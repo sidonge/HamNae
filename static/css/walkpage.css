@@ -1,6 +1,6 @@
 body {
     background-image: linear-gradient(#F5EED1, white);
-    padding: 2%;
+    padding: 0 3%;
 }
 
 /* title */
@@ -35,31 +35,36 @@ body {
 
 /* quest box */
 .tapeIcon {
-    width: 5rem;
-    margin-bottom: 7%;
+    width: 5.5rem;
+    margin-bottom: 4%;
 }
 
 .imgBox {
-    text-align: center;
     width: 13.5rem;
 }
 
 .questBox {
-    border: 0.2rem solid #D2BEA1;
+    border: 0.3rem solid #D2BEA1;
     border-radius: 0.5rem;
 
     background-color: #F5EED1;
 
     width: 12rem;
-    padding: 1% 0.8%;
+    padding: 1% 1.25%;
+
+    box-shadow: 1px 1px 5px #BBBBBB;
 }
 
+.questSection {
+    margin-top: 10rem;
+
+    position: relative;
+    bottom: 4.5rem;
+}
 
 .questText {
     font-family: "Pretendard-SemiBold";
     color: #71594E;
-
-    font-size: 0.9rem;
 
     text-align: center;
 }
@@ -74,6 +79,8 @@ body {
 
     border: none;
     border-radius: 1rem;
+    
+    margin-bottom: 1.5rem;
 }
 
 .questListBox {
@@ -83,7 +90,6 @@ body {
 
 .questList {
     font-family: "Pretendard-Regular";
-    font-size: 0.85rem;
 
     display: flex;
     justify-content: center;
@@ -94,23 +100,27 @@ body {
     background-color: #AB936B;
     color: white;
 
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.9rem;
+    height: 1.9rem;
     border-radius: 0.3rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-size: 1.1rem;
 }
 
 .distanceBox {
+    font-size: 0.9rem;
+    
     display: flex;
 
     background-color: white;
     color: #71594E;
 
-    width: 7rem;
-    height: 1.8rem;
+    width: 7.8rem;
+    height: 2rem;
     border-radius: 0.3rem;
 
     margin-left: 5%;
@@ -145,46 +155,119 @@ body {
 }
 
 .checkBox {
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 1.4rem;
+    height: 1.4rem;
 
     border-radius: 0.3rem;
 
     position: absolute;
     top: 50%;
+    left: 0.25rem;
     transform: translate(0, -50%);
 
     accent-color: white;
+
+    box-shadow: inset 3.5px 3.5px 5.5px #BBBBBB;
 }
 
 .questCommet {
     font-family: "Pretendard-Regular";
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+
     border-radius: 0.3rem;
     letter-spacing: 0.015rem;
 
     background-color: white;
     color: #71594E;
 
-    width: 8.4rem;
-    height: 1.8rem;
-    
-    margin-left: 16.5%;
+    width: 9rem;
+    height: 2rem;
+
     padding-left: 7%;
 
     display: flex;
     align-items: center;
+
+    position: relative;
+
+    margin-left: auto;
 }
 
 input {
     margin: 0;
-    border: 0;
 }
 
 /* map */
 .distance {
+    display: flex;
+    justify-content: center;
+
     background-color: white;
 
     width: 8rem;
     height: 3rem;
+
+    border: 0.1px solid #BBBBBB;
+    border-radius: 0.5rem;
+    box-shadow: 0.1px 1px 4px #BBBBBB;
+
+    position: relative;
+    bottom: 37rem;
+    right: 6rem;
+
+    margin-left: auto;
+}
+
+.distanceIcon {
+    width: 2rem;
+    height: 2rem;
+
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0, -50%);
+}
+
+.distanceNum {
+    color: #AB936B;
+
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translate(0, -50%);
+}
+
+.mapTop {
+    border: 0.25rem solid #CEB17F;
+    border-radius: 10rem;
+    box-shadow: 3px 3px 2px #BBBBBB;
+    
+    position: relative;
+    left: 6.6rem;
+    bottom: 36rem;
+    
+    width: 70rem;
+}
+
+.mapBottom {
+    border: 0.25rem solid #CEB17F;
+    border-radius: 10rem;
+    box-shadow: 3px 3px 2px #BBBBBB;
+    
+    position: relative;
+    left: 6.6rem;
+    bottom: 8rem;
+    
+    width: 70rem;
+}
+
+.mapIcon {
+    width: 2.75rem;
+
+    position: relative;
+    bottom: 12.5rem;
+    left: 86.5rem;
 }
