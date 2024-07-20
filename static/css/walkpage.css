@@ -1,7 +1,21 @@
 body {
     background-image: linear-gradient(#F5EED1, white);
     padding: 0 3%;
+    overflow-y: scroll;
 }
+/* nav */
+/* nav {
+    margin-bottom: 2rem;
+}
+
+.menuIcon {
+    color: #71594E;
+
+    font-size: 2.3rem;
+    
+    position: relative;
+    left: 87.75rem;
+} */
 
 /* title */
 .titleSection {
@@ -36,11 +50,13 @@ body {
 /* quest box */
 .tapeIcon {
     width: 5.5rem;
+
     margin-bottom: 4%;
 }
 
 .imgBox {
-    width: 13.5rem;
+    width: 14rem;
+    text-align: center;
 }
 
 .questBox {
@@ -60,6 +76,7 @@ body {
 
     position: relative;
     bottom: 4.5rem;
+    top: 1rem;
 }
 
 .questText {
@@ -259,7 +276,6 @@ input {
     
     position: relative;
     left: 6.6rem;
-    bottom: 8rem;
     
     width: 70rem;
 }
@@ -268,6 +284,6 @@ input {
     width: 2.75rem;
 
     position: relative;
-    bottom: 12.5rem;
-    left: 86.5rem;
+    bottom: 5rem;
+    left: 86rem;
 }
