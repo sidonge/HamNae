@@ -4,18 +4,17 @@ body {
     overflow-y: scroll;
 }
 /* nav */
-/* nav {
-    margin-bottom: 2rem;
+nav {
+    margin-bottom: 4rem;
 }
 
 .menuIcon {
-    color: #71594E;
-
-    font-size: 2.3rem;
-    
     position: relative;
-    left: 87.75rem;
-} */
+    top: 1.3rem;
+    left: 88.5rem;
+
+    width: 2rem;
+}
 
 /* title */
 .titleSection {
