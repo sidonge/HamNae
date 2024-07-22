@@ -52,7 +52,7 @@ model-viewer#rabbitModel {
     background-color: transparent;
 }
 .rabbit-controls {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     left: 20px;
     display: flex;
@@ -73,12 +73,12 @@ model-viewer#rabbitModel {
 /* 물 마시기 */
 .water {
     width: 2rem;
-    height: 2rem;
+    height: 4rem;
 
     /* border: 1px solid black; */
 
     position: fixed;
-    top: 25rem;
+    top: 23.5rem;
     right: 32.4rem;
 
     z-index: 2;
@@ -126,12 +126,12 @@ model-viewer#rabbitModel {
 /* 청소하기 */
 .clean {
     width: 6rem;
-    height: 28rem;
+    height: 32rem;
 
     /* border: 1px solid black; */
 
     position: fixed;
-    top: 14rem;
+    top: 10rem;
     left: 6rem;
 }
 
@@ -172,7 +172,7 @@ model-viewer#rabbitModel {
 /* 요리하기 */
 .cooking {
     width: 11rem;
-    height: 10rem;
+    height: 15rem;
 
     /* border: 1px solid black; */
 
@@ -219,7 +219,7 @@ model-viewer#rabbitModel {
 /* 씻기 */
 .wash {
     width: 6rem;
-    height: 27rem;
+    height: 32rem;
 
     /* border: 1px solid black; */
 
@@ -262,16 +262,16 @@ model-viewer#rabbitModel {
     display: block;
 }
 
-/* 약 먹기 */
+/* 채팅하기 */
 .table {
-    width: 22rem;
-    height: 1rem;
+    width: 10rem;
+    height: 10rem;
 
     /* border: 1px solid black; */
 
     position: fixed;
-    bottom: 15rem;
-    right: 17rem;
+    bottom: 10rem;
+    right: 22rem;
 }
 
 .tableTalk {
@@ -280,8 +280,8 @@ model-viewer#rabbitModel {
     width: 10rem;
 
     position: relative;
-    bottom: 4.8rem;
-    left: 10rem;
+    bottom: 0.5rem;
+    left: 5rem;
 }
 
 .tableText {
@@ -311,22 +311,20 @@ model-viewer#rabbitModel {
 /* 명상하기 */
 .bed {
     width: 19rem;
-    height: 12rem;
+    height: 18rem;
 
     /* border: 1px solid black; */
 
     position: fixed;
-    top: 25rem;
+    top: 20rem;
     left: 14rem;
 }
 
 .bedTalk {
     display: none;
-
     width: 10rem;
 
     position: relative;
-    bottom: 4.5rem;
     left: 10rem;
 }
 
@@ -353,3 +351,20 @@ model-viewer#rabbitModel {
 .bed:hover .bedText{
     display: block;
 }
+
+.talkIcon {
+    width: 10rem;
+    position: fixed;
+    z-index: 2;
+}
+
+#rabbitTalk1 {
+    bottom: 13rem;
+    left: 39rem;
+}
+
+#rabbitTalk2 {
+    bottom: 13rem;
+    left: 49rem;
+}
+
