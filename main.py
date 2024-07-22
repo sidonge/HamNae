@@ -10,3 +10,10 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
+@app.get("/signup")
+def signup_form(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
+@app.get("/login")
+def login_form(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
