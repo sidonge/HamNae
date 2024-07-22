@@ -1,0 +1,355 @@
+body { 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: #f0f0f0; 
+    overflow: hidden; 
+    position: relative; 
+}
+.model-container {
+    position: fixed;
+    width: 100%;
+    height: 130%;
+    top: -30%;
+    z-index: 0;
+}
+model-viewer#windowModel, model-viewer#rabbitModel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: cameraOrbit 0.3s ease;
+}
+model-viewer#rabbitModel {
+    width: 12rem;
+    height: 12rem;
+    left: calc(50% - 5rem);
+    bottom: 2%;
+}
+.controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+}
+.controls div {
+    display: flex;
+    align-items: center;
+}
+.triangle {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+}
+.transparent-box {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+}
+.rabbit-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+}
+.rabbit-controls div {
+    display: flex;
+    align-items: center;
+}
+#rabbitUp, #rabbitDown {
+    display: none;
+}
+
+/* 미션 */
+
+/* 물 마시기 */
+.water {
+    width: 2rem;
+    height: 2rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    top: 25rem;
+    right: 32.4rem;
+
+    z-index: 2;
+}
+
+.waterTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    bottom: 19rem;
+    right: 25rem;
+
+    z-index: 2;
+}
+
+.waterText {
+    display: none;
+
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    width: 8rem;
+
+    position: fixed;
+    bottom: 20.5rem;
+    right: 26rem;
+
+    z-index: 10;
+
+}
+
+.water:hover .waterTalk {
+    display: block;
+}
+
+.water:hover .waterText {
+    display: block;
+}
+
+
+
+/* 청소하기 */
+.clean {
+    width: 6rem;
+    height: 28rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    top: 14rem;
+    left: 6rem;
+}
+
+.cleanTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    bottom: 30.2rem;
+    left: 6rem;
+}
+
+.cleanText {
+    display: none;
+
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    width: 8rem;
+
+    position: fixed;
+    top: 10.5rem;
+    left: 7rem;
+
+    z-index: 11;
+}
+
+.clean:hover .cleanTalk{
+    display: block;
+}
+
+.clean:hover .cleanText{
+    display: block;
+}
+
+/* 요리하기 */
+.cooking {
+    width: 11rem;
+    height: 10rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    bottom: 20rem;
+    left: 62rem;
+}
+
+.cookingTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    bottom: 30.75rem;
+    right: 24rem;
+}
+
+.cookingText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    bottom: 32.3rem;
+    right: 23rem;
+
+    z-index: 11;
+}
+
+.cooking:hover .cookingTalk{
+    display: block;
+}
+
+.cooking:hover .cookingText {
+    display: block;
+}
+    
+
+/* 씻기 */
+.wash {
+    width: 6rem;
+    height: 27rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    bottom: 11rem;
+    right: 6.3rem;
+}
+
+.washTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    top: 1rem;
+    right: 2.5rem;
+}
+
+.washText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    right: 1.6rem;
+    bottom: 40.5rem;
+
+    z-index: 11;
+}
+
+.wash:hover .washTalk{
+    display: block;
+}
+
+.wash:hover .washText{
+    display: block;
+}
+
+/* 약 먹기 */
+.table {
+    width: 22rem;
+    height: 1rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    bottom: 15rem;
+    right: 17rem;
+}
+
+.tableTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: relative;
+    bottom: 4.8rem;
+    left: 10rem;
+}
+
+.tableText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    right: 18rem;
+    bottom: 18.9rem;
+
+    z-index: 11;
+}
+
+.table:hover .tableTalk{
+    display: block;
+}
+
+.table:hover .tableText {
+    display: block;
+}
+
+/* 명상하기 */
+.bed {
+    width: 19rem;
+    height: 12rem;
+
+    /* border: 1px solid black; */
+
+    position: fixed;
+    top: 25rem;
+    left: 14rem;
+}
+
+.bedTalk {
+    display: none;
+
+    width: 10rem;
+
+    position: relative;
+    bottom: 4.5rem;
+    left: 10rem;
+}
+
+.bedText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+
+    display: none;
+
+    width: 10rem;
+
+    position: fixed;
+    left: 25.2rem;
+    bottom: 21rem;
+
+    z-index: 11;
+}
+
+.bed:hover .bedTalk{
+    display: block;
+}
+
+.bed:hover .bedText{
+    display: block;
+}
