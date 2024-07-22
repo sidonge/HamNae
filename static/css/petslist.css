@@ -1,0 +1,217 @@
+/* body
+{
+background: linear-gradient(white, #F5EED1);
+/* background-image: url("/static/image/해커톤-펫목록.png"); */
+/* }
+
+.box1 {
+    width: 39rem;
+    height: 13.7rem;/
+    background-color: #D2BEA1;
+    opacity: 53%;
+    border-radius: 10px;
+    margin-left: 3rem;
+    margin-top: 16.8rem;
+}
+#hamster {
+    margin-left: 1.4rem;
+    margin-top: 1rem;
+}
+
+.box1-1 {
+    width: 13rem;
+    height: 12rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-left: 1rem;
+}
+
+.box1Name {
+
+} */
+/*.nav1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    font-weight: bold;
+    padding-left: 10%;
+}
+
+.box1, .box3, .box5{
+    width: 40%;
+    height: 10rem;
+    background-color: #D2BEA1;
+    opacity: 100%;
+    position: relative;
+    border-radius: 3%;
+}
+
+.box1-1, .box3-1, .box5-1{
+    width: 50%;
+    height: 10%;
+    background-color: #AB946B;
+    opacity: 50%;
+    position: absolute;
+    left: 45%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    text-align:left;
+    border-radius: 3%;
+    font-weight: bold;
+}
+
+.box1-2, .box3-2, .box5-2{
+    width: 50%;
+    height: 2rem;
+    background-color: #AB946B;
+    opacity: 50%;
+    position: absolute;
+    left: 45%;
+    top: 55%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    border-radius: 3%;
+    font-weight: bold;
+}
+
+.box2, .box4, .box6{
+    width: 40%;
+    height: 10rem;
+    background-color: #D2BEA1;
+    opacity: 100%;
+    position: relative;
+    border-radius: 3%;
+}
+
+.box2-1, .box4-1, .box6-1{
+    width: 50%;
+    height: 10%;
+    background-color: #AB946B;
+    opacity: 50%;
+    position: absolute;
+    left: 45%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    text-align:left;
+    border-radius: 3%;
+    font-weight: bold;
+    
+}
+
+.box2-2, .box4-2, .box6-2{
+    width: 50%;
+    height: 2rem;
+    background-color: #AB946B;
+    opacity: 50%;
+    position: absolute;
+    left: 45%;
+    top: 55%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    border-radius: 3%;
+    font-weight: bold;
+}
+
+.boxdisplay, .boxdisplay2, .boxdisplay3{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+
+}
+*/ 
+
+.minBox {
+    width: 39rem;
+    height: 14rem;
+    background-color: #D2BEA1;
+    /* opacity: 53%; */
+    border-radius: 10px;
+    display: flex;
+    margin: 0 1rem;
+    z-index: 0;
+    background-color: rgba(210, 190, 161, 0.53);
+}
+
+.charBox {
+    width: 13.5rem;
+    height: 11.3rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-right: auto;
+    margin: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.TextBox {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    
+}
+
+
+.nameBox {
+    width: 20rem;
+    height: 4rem;
+    background-color: rgba(171, 147, 107, 0.48); 
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.nameBoxName {
+    margin: auto 0;
+    margin-left: 1rem;
+}
+
+.heartIcon {
+    margin: auto 0;
+    position: relative;
+    left: 42%;
+}
+
+.descriptionBox {
+    width: 20rem;
+    height: 6rem;
+    background-color: rgba(171, 147, 107, 0.48); 
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.descriptionBoxText {
+    margin: auto 0;
+    margin-left: 1rem;
+}
+
+.box1, .box2, .box3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+body
+{
+background: linear-gradient(white, #F5EED1);
+}
+
+
+.nameText{
+    
+}
