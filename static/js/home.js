@@ -81,3 +81,9 @@ document.getElementById('rabbitRight').addEventListener('click', handleRabbitRig
 windowModel.addEventListener('load', () => {
     updateRotation();
 });
+
+
+
+
+
+// 이미지 업로드
