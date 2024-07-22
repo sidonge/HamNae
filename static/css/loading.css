@@ -155,12 +155,18 @@ body {
 }
 
 #logoback {
-    width: 10rem;
-    height: 10rem;
-
+    width: 20rem;
+    height: 15rem;
 }
 
-#logo {
+#logopng {
     width: 10rem;
     height: 5rem;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
