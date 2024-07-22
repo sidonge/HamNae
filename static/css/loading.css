@@ -1,0 +1,166 @@
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+* {
+box-sizing: content-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
+}
+
+html {
+overflow: hidden;
+overflow-y: hidden;
+}
+
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+.Wrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16rem;
+}
+
+#tree {
+    float: right;
+    margin-top: -2rem;
+    z-index: 1; /* 예를 들어 z-index 값을 낮게 설정 */
+    position: relative; /* position 속성 추가 */
+    width: 30rem;
+    left: 3rem;
+}
+
+#browntree {
+    float: right;
+    z-index: 1; /* 이 요소를 #tree 보다 앞에 표시하려면 z-index 값을 높게 설정 */
+    position: relative; /* position 속성 추가 */
+    bottom: 11.9rem;
+    right: 9.7rem;
+}
+
+#sideTree {
+    width: 9rem;
+    z-index: 0; /* 가장 뒤에 표시될 요소의 z-index */
+    float: right;
+    position: relative; /* position 속성 추가 */
+    left: 40rem;
+    top: 12rem;
+}
+
+#lefttree {
+    position: relative;
+    z-index: 0;
+}
+#browntree2 {
+    position: relative;
+    z-index: 0;
+    bottom: 10.6rem;
+    left: 6.5rem;
+}
+
+
+body {
+    background-image: url(/static/image/노을.png);
+    background-size: 150%;
+}
+
+#cloud1 {
+    position: relative;
+    right: 27rem;
+    width: 13rem;
+    bottom: 10rem;
+}
+
+#cloud2 {
+    width: 14rem;
+    position: relative;
+    bottom: 18rem;
+    left: 20rem;
+}
+
+#cloud3{
+    width: 12rem;
+    position: relative;
+    bottom: 23rem;
+    left: 28rem;
+}
+
+
+.mainLoad {
+    width: 9rem;
+    height: 30rem;
+    background-color: #D2BEA1;
+    margin-left: 13rem;
+    rotate: -15deg;
+    margin-top: 3rem;
+}
+
+#logoback {
+    width: 10rem;
+    height: 10rem;
+
+}
+
+#logo {
+    width: 10rem;
+    height: 5rem;
+}
