@@ -8,25 +8,47 @@
   </head>
   <body>
     <div class="login-container">
-      <div class="logo-container"> <img src="{{ request.url_for('static', path='images/logo.png') }}" alt="로고"> 
+      <div class="logo-container">
+        <img
+          src="{{ request.url_for('static', path='images/logo.png') }}"
+          alt="로고"
+        />
         <div class="signup-link">
-          <span class="signup-text">아직 회원이 아니신가요?</span> <a href="/signup">회원가입 하기</a>
+          <span class="signup-text">아직 회원이 아니신가요?</span>
+          <a href="/signup">회원가입 하기</a>
+        </div>
       </div>
-
-      <form method="POST" action="/login" style="width: 100%;"> 
+      <form method="POST" action="/login" style="width: 100%">
         <div class="input-group">
-        <input type="text" id="userid" name="userid" placeholder="아이디" required />
+          <input
+            type="text"
+            id="userid"
+            name="userid"
+            placeholder="아이디"
+            required
+          />
         </div>
-        <div class="input-group">
-        <input type="password" id="password" name="password" placeholder="비밀번호" required />
+        <div class="password-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호"
+            required
+          />
+          <div class="resetPassword">비밀번호 찾기</div>
         </div>
-        <div class="resetPassword">비밀번호 찾기</div>
+        <button type="submit">로그인 하기</button>
       </form>
-      <button type="submit">로그인 하기</button>
     </div>
 
+    <div class="loginBox">
+      <hr class="loginLine" />
+      <div class="social-label">간편 로그인</div>
+      <hr class="loginLine" />
+    </div>
     <div class="login-social">
-       <img
+      <img
         src="{{ request.url_for('static', path='images/naver.png') }}"
         alt="naver"
       />
@@ -39,6 +61,5 @@
         alt="kakao"
       />
     </div>
-
   </body>
 </html>
