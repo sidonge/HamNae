@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Viewer Example</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <style>
+        .room-viewer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .bear-viewer {
+            width: 10%;    /* 너비 설정 */
+            height: 10%;   /* 높이 설정 */
+            position: absolute;
+            left: 50%;     /* 화면 가운데 정렬 */
+            top: 90%;      /* 바닥에 가까운 위치 */
+            transform: translate(-50%, -90%); /* 바닥 중심으로 정렬 */
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <model-viewer class="room-viewer" src="window.glb" alt="A 3D model of a room" camera-controls environment-image="neutral" ar></model-viewer>
+    <model-viewer class="bear-viewer" src="FBXtoGLB-bear-ALL.glb" alt="A 3D model of a bear" camera-controls environment-image="neutral" ar></model-viewer>
+    <script>
+        const houseBounds = {
+            minX: -200,  // 왼쪽 벽
+            maxX: 200,   // 오른쪽 벽
+            minY: 0,     // 바닥
+            maxY: 100,   // 천장
+            minZ: -150,  // 뒷벽
+            maxZ: 150    // 앞벽
+
+            function updateBearPosition(deltaX, deltaY, deltaZ) {
+                let newPos = {
+                    x: parseFloat(bearViewer.getAttribute('x')) + deltaX,
+                    y: parseFloat(bearViewer.getAttribute('y')) + deltaY,
+                    z: parseFloat(bearViewer.getAttribute('z')) + deltaZ
+                };
+            
+                // 경계 확인
+                if (newPos.x < houseBounds.minX || newPos.x > houseBounds.maxX ||
+                    newPos.y < houseBounds.minY || newPos.y > houseBounds.maxY ||
+                    newPos.z < houseBounds.minZ || newPos.z > houseBounds.maxZ) {
+                    console.log("Movement outside house bounds!");
+                    return; // 경계를 벗어나면 이동하지 않음
+                }
+            
+                // 모델 위치 업데이트 (가상)
+                bearViewer.setAttribute('x', newPos.x);
+                bearViewer.setAttribute('y', newPos.y);
+                bearViewer.setAttribute('z', newPos.z);
+            }
+            
+        };
+        
+    </script>
+</body>
+</html>
