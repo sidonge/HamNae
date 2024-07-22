@@ -5,13 +5,19 @@ body {
 }
 /* nav */
 nav {
-    margin-bottom: 4rem;
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+
+    position: relative;
+    right: 1rem;
 }
 
 .menuIcon {
     position: relative;
-    top: 1.3rem;
-    left: 88.5rem;
+    left: 84rem;
 
     width: 2rem;
 }

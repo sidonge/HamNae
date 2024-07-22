@@ -15,9 +15,14 @@ img {
     bottom: 43.6rem;
 }
 
+
 /* nav */
+nav {
+    margin: 2rem;
+}
+
 .logo {
-    color: white;
+    width: 4rem;
 
     position: relative;
     bottom: 87rem;
@@ -25,8 +30,8 @@ img {
 
 .exitIcon {
     position: relative;
-    left: 92rem;
-    bottom: 86rem;
+    left: 85.5rem;
+    bottom: 87rem;
 
     width: 1.5rem;
 }
