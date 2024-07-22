@@ -129,6 +129,12 @@ background: linear-gradient(white, #F5EED1);
 }
 */ 
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+* { font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+
 .minBox {
     width: 39rem;
     height: 14rem;
@@ -159,7 +165,6 @@ background: linear-gradient(white, #F5EED1);
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
-    
 }
 
 
@@ -181,7 +186,7 @@ background: linear-gradient(white, #F5EED1);
 .heartIcon {
     margin: auto 0;
     position: relative;
-    left: 42%;
+    left: 35%;
 }
 
 .descriptionBox {
@@ -206,12 +211,67 @@ background: linear-gradient(white, #F5EED1);
     margin-top: 2rem;
 }
 
+#minBox4, #minBox5, #minBox6 {
+    filter: blur(4px);
+}
+
+
 body
 {
 background: linear-gradient(white, #F5EED1);
 }
 
 
+.lock{
+    position: absolute;
+    top: 4rem; /* charBox와 동일한 위치 조정 */
+    left: 7rem; /* charBox와 동일한 위치 조정 */
+    width: 13.5rem; /* charBox와 동일한 크기 조정 */
+    height: 11.3rem; /* charBox와 동일한 크기 조정 */
+    object-fit: cover; /* 이미지 비율 맞추기 */
+    z-index: 1; /* 블러 처리된 이미지 위에 위치 */
+}
+
+
+/* fontweight
+    black :  900 
+    extra bold : 800
+    bold : 700
+    semi bold : 600
+    medium : 500
+    regular : 400
+*/
+
+.nameBoxName, .descriptionBoxText{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
 .nameText{
+    font-weight: 700;
+    font-size: 1.5rem;
     
+}
+
+.name{
+    font-weight: 900;
+    font-size: 1.68rem;
+    color: #71594E;
+}
+
+.topText{
+    display: flex;
+    gap:0.5rem;
+    align-items: baseline;
+    position: relative;
+    left: 4.4rem;
+}
+
+.topLine{
+    color: #cbcbcb;
+    width:95%;
+}
+
+.container{
+    position: relative;
 }
