@@ -31,99 +31,99 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
-// 기존 코드 유지
-const windowModel = document.getElementById('windowModel');
-const rabbitModel = document.getElementById('rabbitModel');
+    // 기존 코드 유지
+    const windowModel = document.getElementById('windowModel');
+    const rabbitModel = document.getElementById('rabbitModel');
 
-let rotateX = 90; // 초기 X축 회전 각도
-let rotateY = -270; // 초기 Y축 회전 각도
-let zoomLevel = 2; // 초기 확대 비율
+    let rotateX = 90; // 초기 X축 회전 각도
+    let rotateY = -270; // 초기 Y축 회전 각도
+    let zoomLevel = 2; // 초기 확대 비율
 
-const minRotateY = -300; // Y축 최소 회전 각도
-const maxRotateY = -240; // Y축 최대 회전 각도
+    const minRotateY = -300; // Y축 최소 회전 각도
+    const maxRotateY = -240; // Y축 최대 회전 각도
 
-function updateRotation() {
-    const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
-    windowModel.cameraOrbit = cameraOrbit;
-    rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}m`;
-}
+    function updateRotation() {
+        const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
+        windowModel.cameraOrbit = cameraOrbit;
+        rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}m`;
+    }
 
-function handleUpClick() {
-    rotateX -= 10;
-    zoomLevel = 2; // 확대 비율을 원래대로 복원
-    updateRotation();
-}
-
-function handleDownClick() {
-    if (rotateX < 90) {
-        rotateX += 10;
-        zoomLevel *= 0.9; // 확대 비율을 10% 감소
+    function handleUpClick() {
+        rotateX -= 10;
+        zoomLevel = 2; // 확대 비율을 원래대로 복원
         updateRotation();
     }
-}
 
-function handleLeftClick() {
-    if (rotateY > minRotateY) {
-        rotateY -= 10;
-        updateRotation();
+    function handleDownClick() {
+        if (rotateX < 90) {
+            rotateX += 10;
+            zoomLevel *= 0.9; // 확대 비율을 10% 감소
+            updateRotation();
+        }
     }
-}
 
-function handleRightClick() {
-    if (rotateY < maxRotateY) {
-        rotateY += 10;
-        updateRotation();
+    function handleLeftClick() {
+        if (rotateY > minRotateY) {
+            rotateY -= 10;
+            updateRotation();
+        }
     }
-}
 
-function handleRabbitUpClick() {
-    rotateX -= 10; // Rotate rabbit model up
-    updateRabbitRotation();
-}
+    function handleRightClick() {
+        if (rotateY < maxRotateY) {
+            rotateY += 10;
+            updateRotation();
+        }
+    }
 
-function handleRabbitDownClick() {
-    rotateX += 10; // Rotate rabbit model down
-    updateRabbitRotation();
-}
+    function handleRabbitUpClick() {
+        rotateX -= 10; // Rotate rabbit model up
+        updateRabbitRotation();
+    }
 
-function handleRabbitLeftClick() {
-    rotateY -= 90; // Rotate rabbit model left
-    updateRabbitRotation();
-}
+    function handleRabbitDownClick() {
+        rotateX += 10; // Rotate rabbit model down
+        updateRabbitRotation();
+    }
 
-function handleRabbitRightClick() {
-    rotateY += 90; // Rotate rabbit model right
-    updateRabbitRotation();
-}
+    function handleRabbitLeftClick() {
+        rotateY -= 90; // Rotate rabbit model left
+        updateRabbitRotation();
+    }
 
-function updateRabbitRotation() {
-    rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}m`;
-}
+    function handleRabbitRightClick() {
+        rotateY += 90; // Rotate rabbit model right
+        updateRabbitRotation();
+    }
 
-document.getElementById('up').addEventListener('click', handleUpClick);
-document.getElementById('down').addEventListener('click', handleDownClick);
-document.getElementById('left').addEventListener('click', handleLeftClick);
-document.getElementById('right').addEventListener('click', handleRightClick);
+    function updateRabbitRotation() {
+        rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}m`;
+    }
 
-// 토끼 모델 제어 버튼 클릭 이벤트 추가
-document.getElementById('rabbitUp').addEventListener('click', handleRabbitUpClick);
-document.getElementById('rabbitDown').addEventListener('click', handleRabbitDownClick);
-document.getElementById('rabbitLeft').addEventListener('click', handleRabbitLeftClick);
-document.getElementById('rabbitRight').addEventListener('click', handleRabbitRightClick);
+    document.getElementById('up').addEventListener('click', handleUpClick);
+    document.getElementById('down').addEventListener('click', handleDownClick);
+    document.getElementById('left').addEventListener('click', handleLeftClick);
+    document.getElementById('right').addEventListener('click', handleRightClick);
 
-// 토끼 모델 클릭 시 회전 및 말풍선 이미지 표시
-rabbitModel.addEventListener('click', () => {
-    rotateY += 180;
-    updateRabbitRotation();
+    // 토끼 모델 제어 버튼 클릭 이벤트 추가
+    document.getElementById('rabbitUp').addEventListener('click', handleRabbitUpClick);
+    document.getElementById('rabbitDown').addEventListener('click', handleRabbitDownClick);
+    document.getElementById('rabbitLeft').addEventListener('click', handleRabbitLeftClick);
+    document.getElementById('rabbitRight').addEventListener('click', handleRabbitRightClick);
 
-    const rabbitTalk1 = document.getElementById('rabbitTalk1');
-    const rabbitTalk2 = document.getElementById('rabbitTalk2');
-    rabbitTalk1.style.display = rabbitTalk1.style.display === 'none' ? 'block' : 'none';
-    rabbitTalk2.style.display = rabbitTalk2.style.display === 'none' ? 'block' : 'none';
-});
+    // 토끼 모델 클릭 시 회전 및 말풍선 이미지 표시
+    rabbitModel.addEventListener('click', () => {
+        rotateY += 180;
+        updateRabbitRotation();
 
-windowModel.addEventListener('load', () => {
-    updateRotation();
+        const rabbitTalk1 = document.getElementById('rabbitTalk1');
+        const rabbitTalk2 = document.getElementById('rabbitTalk2');
+        rabbitTalk1.style.display = rabbitTalk1.style.display === 'none' ? 'block' : 'none';
+        rabbitTalk2.style.display = rabbitTalk2.style.display === 'none' ? 'block' : 'none';
+    });
+
+    windowModel.addEventListener('load', () => {
+        updateRotation();
+    });
 });
