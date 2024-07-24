@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="{{ request.url_for('static', path='css/signup_style.css') }}"
-    />
+    /> -->
+    <link rel="stylesheet" href="/static/css/signup_style.css" />
     <title>회원 정보 입력</title>
   </head>
   <body>
     <div class="back">
-      <a href="/login">
+      <!-- <a href="/login">
         <img
-          src="{{ request.url_for('static', path='images/back.png') }}"
+          src="{{ request.url_for('static', path='image/back.png') }}"/
           alt="뒤로가기"
+      /></a> -->
+      <a href="/templates/login.html"
+        ><img src="/static/image/back.png" alt="뒤로가기"
       /></a>
     </div>
     <div class="signup-container">
