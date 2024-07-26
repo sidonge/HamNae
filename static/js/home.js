@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 말풍선 이미지 클릭 시 파일 업로드
     const talkImages = document.querySelectorAll('.talk-image');
     talkImages.forEach((img) => {
         const uploadInput = img.nextElementSibling;
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 기존 코드 유지
+    // 모델 회전 및 확대 제어
     const windowModel = document.getElementById('windowModel');
     const rabbitModel = document.getElementById('rabbitModel');
 
@@ -112,15 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('rabbitLeft').addEventListener('click', handleRabbitLeftClick);
     document.getElementById('rabbitRight').addEventListener('click', handleRabbitRightClick);
 
-    // 토끼 모델 클릭 시 회전 및 말풍선 이미지 표시
+    // 토끼 모델 클릭 시 말풍선 이미지 토글
+    const rabbitTalk1 = document.getElementById('rabbitTalk1');
+    const rabbitTalk2 = document.getElementById('rabbitTalk2');
+    const blinkText = document.querySelector('.blink');
+    let isTalkVisible = false;
+
     rabbitModel.addEventListener('click', () => {
         rotateY += 180;
         updateRabbitRotation();
 
-        const rabbitTalk1 = document.getElementById('rabbitTalk1');
-        const rabbitTalk2 = document.getElementById('rabbitTalk2');
-        rabbitTalk1.style.display = rabbitTalk1.style.display === 'none' ? 'block' : 'none';
-        rabbitTalk2.style.display = rabbitTalk2.style.display === 'none' ? 'block' : 'none';
+        isTalkVisible = !isTalkVisible;
+        if (isTalkVisible) {
+            rabbitTalk1.style.opacity = '1';
+            rabbitTalk2.style.opacity = '1';
+            blinkText.style.display = 'none';
+        } else {
+            rabbitTalk1.style.opacity = '0';
+            rabbitTalk2.style.opacity = '0';
+        }
     });
 
     windowModel.addEventListener('load', () => {

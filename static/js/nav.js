@@ -1,3 +1,7 @@
-document.getElementById('exitIcon').addEventListener('click', function() {
-    window.location.href = 'walkpage.html';
+document.addEventListener("DOMContentLoaded", function() {
+    const exitIcon = document.getElementById("exitIcon");
+
+    exitIcon.addEventListener("click", function() {
+        window.history.back();
+    });
 });
