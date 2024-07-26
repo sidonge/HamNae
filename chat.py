@@ -40,7 +40,7 @@ model_id = 'meta-llama/Meta-Llama-3-8B-Instruct'
 device = 'cpu'
 
 # Hugging Face API 토큰을 사용하여 모델 로드
-hf_auth = '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'
+hf_auth = ''
 model_config = transformers.AutoConfig.from_pretrained(
     model_id,
     use_auth_token=hf_auth
