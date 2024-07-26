@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>chatpage</title>
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- 각자 맡은 페이지의 css 파일 연결 -->
     <!-- <script src="{{ url_for('static', path='js/script.js') }}" defer></script> -->
     <link rel="stylesheet" href="/static/css/chat.css">
-    <script src="/static/js/chat.js"></script>
+    
 </head>
 <body>
     <!-- <nav>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="nameHeart">
                     <div class="name">햄깅이</div>
-                    <div class="heart"><img src="/static/image/heart.png"></div>
+                    <div class="heart"><img src="/static/image/heart (1).png"></div>
                 </div>
                 <div class="greenCircle">
                     <button id="greenCircleText" class="greenCircleText">오늘의 질문</button>
@@ -45,17 +45,33 @@
                 <div id="completeText">
                     <!-- 미션완료 눌렀을 때 나오는 문구 -->
                 </div>
-                
 
                 <div class="sendWrap">
-                    <input type="text" id="userInput" placeholder="마음 속의 말을 전해보세요.">
-                    <!-- id : userInput이 사용자가 입력한 말풍선 -->
-                    <button id="sendbtn" onclick="sendMessage()"><img id="sendbtnImg" src="/static/image/sendBtn.png" ></button>
+                    <div class="inputWrap">
+                        <input type="text" id="userInput" placeholder="마음 속의 말을 전해보세요." maxlength="300">
+                        <!-- 글자 수를 표시할 요소 추가 -->
+                        <div id="charCount"></div> 
+                        
+                        
+                        <label className="inputFileCustom" for="inputFile" />
+
+                        <!-- input 타입이 file인 요소를 확인하세요 -->
+                        <input type="file" id="inputFile" style="display:none" onchange="handleFileSelect(event)" accept="image/*"/>
+                        <img id="cameraIcon" src="/static/image/camera.png" alt="" onclick="document.getElementById('inputFile').click();">
+
+
+                        
+                        
+                    </div>
+                    
+                    <button id="sendbtn" onclick="sendMessage()"><img id="sendbtnImg" src="/static/image/sendBtn.png"></button>
                 </div>
+                
             </div>
             <div class="bottomBox"></div>
             
         </div>
     </div>
+    <script src="/static/js/chat.js"></script>
 </body>
 </html>

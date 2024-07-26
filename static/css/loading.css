@@ -86,24 +86,22 @@ margin: 0;
     z-index: 1; /* 예를 들어 z-index 값을 낮게 설정 */
     position: relative; /* position 속성 추가 */
     width: 30rem;
-    left: 3rem;
+    right: 73%;
 }
 
 #browntree {
-    float: right;
     z-index: 1; /* 이 요소를 #tree 보다 앞에 표시하려면 z-index 값을 높게 설정 */
     position: relative; /* position 속성 추가 */
-    bottom: 11.9rem;
-    right: 9.7rem;
+    right: 32.3%;
+    bottom: 16.5%;
 }
 
 #sideTree {
     width: 9rem;
     z-index: 0; /* 가장 뒤에 표시될 요소의 z-index */
-    float: right;
     position: relative; /* position 속성 추가 */
-    left: 40rem;
-    top: 12rem;
+    right: 10%;
+    bottom: 20%;
 }
 
 #lefttree {
@@ -125,23 +123,21 @@ body {
 
 #cloud1 {
     position: relative;
-    right: 27rem;
-    width: 13rem;
-    bottom: 10rem;
+    right: 400%;
+    bottom: 16%;
 }
 
 #cloud2 {
     width: 14rem;
     position: relative;
-    bottom: 18rem;
-    left: 20rem;
+    bottom: 20%;
 }
 
 #cloud3{
     width: 12rem;
     position: relative;
-    bottom: 23rem;
-    left: 28rem;
+    bottom: 35%;
+    left: 40%;
 }
 
 
@@ -151,22 +147,7 @@ body {
     background-color: #D2BEA1;
     margin-left: 13rem;
     rotate: -15deg;
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
-#logoback {
-    width: 20rem;
-    height: 15rem;
-}
 
-#logopng {
-    width: 10rem;
-    height: 5rem;
-}
-
-.logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
