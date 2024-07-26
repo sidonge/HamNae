@@ -138,3 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateRotation();
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pageContent = document.documentElement.outerHTML;
+    localStorage.setItem('pageContent', pageContent);
+});
+
+document.getElementById('menuIcon').addEventListener('click', function() {
+    window.location.href = 'nav.html';
+});

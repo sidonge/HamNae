@@ -1,47 +1,31 @@
-/* 예시 사진 */
-img {
-    width: 100%;
-    height: 100%;
+body {
+    background-color: rgba(0, 0, 0, 0.7);
 }
-
-/* 팝업 */
-.opacity {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    opacity: 76%;
-
-    position: relative;
-    bottom: 43.6rem;
-}
-
 
 /* nav */
 nav {
-    margin: 2rem;
+    margin: 2rem 0;
 }
 
 .logo {
     width: 4rem;
-
-    position: relative;
-    bottom: 87rem;
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
 }
 
 .exitIcon {
-    position: relative;
-    left: 85.5rem;
-    bottom: 87rem;
-
-    width: 1.5rem;
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    width: 2rem;
 }
 
 /* menu */
 .menuSection {
     text-align: center;
-
     position: relative;
-    bottom: 85rem;
+    top: 3rem; /* 위치 조정 */
 }
 
 .menu {
@@ -52,9 +36,7 @@ nav {
 .talk, .mission, .walk, .character, .mypage {
     font-family: "Pretendard-SemiBold";
     font-size: 1.3rem;
-
     margin: 2.75% 0;
-
     color: white;
 }
 
