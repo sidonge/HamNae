@@ -135,7 +135,7 @@ section
 
 .stamp_card
 {
-    /* background-color: #c5b28d63; */
+    background-color: #c5b28d63;
     border: 1px solid #C5B18D;
     border-radius: 2.5rem;
     margin: 0rem 0.2rem 3.8rem 1rem;
@@ -218,16 +218,13 @@ section
 
 }
 
-.cleared_stamp
+#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditaion_cleared_stamp
 {
-    position: absolute;
-    border: 1px solid red;
-    top: 25%;
-    left: 25%;
-}
+    position: relative;
 
-.cleared_stamp img
-{
-    width: 100%;
-    height: 100%;
+    bottom: 14.5rem;
+    right: 2rem;
+
+    width: 130%;
+    height: 120%;
 }
