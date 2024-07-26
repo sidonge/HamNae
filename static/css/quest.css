@@ -26,9 +26,27 @@ body
     regular : 400
 */
 
+/* nav.css */
+
+.logo {
+    width: 4rem;
+
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+}
+
+.menuIcon {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+
+    width: 2rem;
+}
+
 nav 
 {
-    margin: 2.7rem 3.5rem 0rem 2.9rem;
+    margin: 5rem 3.5rem 0rem 2.9rem;
     display: flex;
     justify-content: space-between;
 }
