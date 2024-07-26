@@ -144,6 +144,3 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('pageContent', pageContent);
 });
 
-document.getElementById('menuIcon').addEventListener('click', function() {
-    window.location.href = 'nav.html';
-});

@@ -163,6 +163,10 @@ section
     letter-spacing: -0.05rem;
 }
 
+#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditaion_cleared_stamp {
+    display: none;
+}
+
 #point_card
 {
     margin-top: 0.5rem;
