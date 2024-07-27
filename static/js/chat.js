@@ -1,28 +1,64 @@
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.query === "fetchData") {
+        fetch('https://api.example.com/data')
+            .then(response => response.json())
+            .then(data => {
+                sendResponse({data: data});
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                sendResponse({error: error.message});
+            });
+        return true; // 이렇게 반환하면 비동기 응답을 처리할 수 있습니다.
+    }
+});
+
+
 async function sendMessage() {
     var input = document.getElementById("userInput");
     if (input.value.trim() !== "") {
         const userMessage = input.value;
         input.value = ""; // 입력 필드 초기화
 
-        console.log(userMessage);
-        const response = await fetch('/chat', {
+        addMessage(userMessage, 'user'); // 사용자 메시지 추가
+        const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ data: userMessage })
+            body: JSON.stringify({ message: userMessage })
         });
-        if (response.ok) {
-            const data = await response.json();
-            addMessage(data.response, 'bot');
-        } else {
-            console.error("Failed to fetch:", response.status);
+        
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                addMessage(data.response, 'bot');
+            } else {
+                let errorData;
+                try {
+                    errorData = await response.json();
+                } catch (e) {
+                    console.error("Failed to parse JSON response:", e);
+                    addMessage("Sorry, something went wrong and the error response could not be parsed.", 'bot');
+                    return;
+                }
+                console.error("Failed to fetch:", response.status, errorData.detail);
+                addMessage("Sorry, something went wrong: " + errorData.detail, 'bot');
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
             addMessage("Sorry, something went wrong.", 'bot');
         }
     }
 }
-
-
 
 function addMessage(text, type) {
     var chatBox = document.getElementById("chatBox");
@@ -72,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     greenBtn.addEventListener("click", toggleButtonStyle);
 });
-
 
 // closeIcon 누르면 창 닫힘 기능
 function closeEvent() {
