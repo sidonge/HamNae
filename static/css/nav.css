@@ -1,5 +1,19 @@
-body {
+/* nav popup */
+.nav-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+.nav-popup.show {
+    display: block;
+    opacity: 1;
 }
 
 /* nav */
@@ -19,6 +33,8 @@ nav {
     right: 2rem;
     top: 2rem;
     width: 2rem;
+
+    cursor: pointer;
 }
 
 /* menu */
@@ -38,6 +54,8 @@ nav {
     font-size: 1.3rem;
     margin: 2.75% 0;
     color: white;
+
+    cursor: pointer;
 }
 
 hr {
@@ -45,4 +63,13 @@ hr {
     border: 0;
     height: 1px;
     background: #868381;
+}
+
+/* menu icon */
+.menuIcon {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    cursor: pointer;
 }

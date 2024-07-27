@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>산책하기</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="stylesheet" href="../static/css/walkpage.css">
+    <script src="../static/js/nav.js" defer></script>
     <script src="/static/js/walkpage.js" defer></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
@@ -15,11 +17,32 @@
 <body>
     <!-- nav -->
     <nav>
-        <img src="/static/image/logo.png" class="logo"></img>
+        <img src="/static/image/logo.png" class="logo" id="logo">
         <img src="/static/image/menu.png" class="menuIcon" id="menuIcon">
     </nav>
 
-    
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="/static/image/exit.png" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr />
+                <div class="talk" id="talk">대화하기</div>
+                <hr />
+                <div class="walk" id="walk">산책하기</div>
+                <hr />
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr />
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr />
+            </div>
+        </section>
+    </div>
+
     <!-- title -->
     <section class="titleSection">
         <div class="titleWalk">산책하기</div>
