@@ -1,0 +1,293 @@
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+* {
+box-sizing: content-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
+}
+
+html {
+overflow: hidden;
+overflow-y: hidden;
+}
+
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+
+/* chat page */
+
+/* nav */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+
+    position: relative;
+    right: 1rem;
+}
+
+.menuIcon {
+    position: relative;
+    left: 84rem;
+
+    width: 2rem;
+}
+
+.Wrap {
+    /* background-image: url(/static/image/대화\(대화창\).png); */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.chatPage {
+    width: 52rem;
+    height: 40rem;
+    background-color: #F5EED1;
+    border-radius: 1.3rem;
+    overflow: hidden;
+}
+
+.topBox {
+    height: 4.8rem;
+    background-color: #AB936B;
+    margin-top: -1rem;
+    border-top-left-radius: 1.3rem;
+    border-top-right-radius: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.topBoxText {
+    font-family: "Pretendard-Bold";
+    position: absolute;
+    margin-left: 1.5rem;
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-top: 1.9rem;
+    padding-left: 0.5rem;
+}
+
+.closeIcon {
+    position: relative;
+    left: 93%;
+    top: 15%;
+    cursor: pointer;
+}
+
+.circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 10rem;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 1.2rem;
+    margin-left: 2rem;
+}
+
+#hamster {
+    width: 3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.nameHeart {
+    margin-left: 7.3rem;
+    margin-top: -3.2rem;
+}
+
+.name {
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.greenCircle {
+    float: right;
+    margin-top: -2.7rem;
+    margin-right: 3rem;
+    width: 6.7rem;
+    height: 2.1rem;
+    border-radius: 3rem;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 3px 1px #8DBD81;
+    border: solid #8DBD81 0.1rem;
+}
+
+.greenCircleText {
+    font-family: "Pretendard-Medium";
+    color: #588B47;
+    border: none;
+    background-color: #ffffff;
+}
+
+.line {
+    width: 48rem;
+    height: 0.00001rem;
+    margin: 0 auto;
+    box-shadow: 0px 0px 4px 0.5px #cbcbcb;
+    margin-top: 1.3rem;
+}
+
+
+
+
+
+
+#chatBox {
+    overflow-y: auto; 
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 15.5rem;
+} 
+
+
+.message { /* 실제 보내는 메세지 말풍선 */
+    float: right;
+    display: flex;
+    width: auto;
+    margin: 5px;
+    padding: 10px;
+    background-color: #D2BEA1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0.5px #cbcbcb;
+    border-radius: 1.5rem;
+    margin-right: 5rem;
+}
+.message.user {
+    color: #71594E;
+    font-family: "Pretendard-Regular";
+    padding: 0.8rem;
+}
+
+
+.user { text-align: right; }
+.bot { text-align: left; }
+
+
+#sendbtn {
+    border: none;
+    background-color: #F5EED1;
+}
+
+#sendbtnImg {
+    width: 3.5rem;
+}
+
+#userInput {
+    width: 35rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    opacity: 65%;
+    border: solid 0.07rem #cbcbcb;
+    padding-left: 1.5rem;
+}
+
+input::placeholder {
+    padding-left: 0.4rem;
+}
+
+.sendWrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 9rem;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 7rem;
+}
+
+.greenCircleText.active {
+    background-color: #0A8A00; /* 활성화 색상 */
+    color: #ffffff; /* 텍스트 색상 */
+}
+
+.bottomBox {
+    width: 52rem;
+    height: 4rem;
+    background-color: #AB936B;
+    border-bottom-left-radius: 1.3rem;
+    border-bottom-right-radius: 1.3rem;
+    margin-top: 8.2rem;
+    position: fixed;
+}
+
+input:focus{
+	outline:none
+}
+button:focus{
+	outline:none
+}

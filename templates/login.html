@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>로그인</title>
+    <!-- <link
+      rel="stylesheet"
+      href="{{ request.url_for('static', path='css/login_style.css') }}"
+    />  -->
+    <link rel="stylesheet" href="/static/css/login_style.css">
+    
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo-container"> <img src="{{ request.url_for('static', path='images/logo.png') }}" alt="로고"> 
+        <div class="signup-link">
+          <span class="signup-text">아직 회원이 아니신가요?</span> <a href="/signup">회원가입 하기</a>
+      </div>
+
+      <form method="POST" action="/login" style="width: 100%;"> 
+        <div class="input-group">
+        <input type="text" id="userid" name="userid" placeholder="아이디" required />
+        </div>
+        <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="비밀번호" required />
+        </div>
+        <div class="resetPassword">비밀번호 찾기</div>
+      </form>
+      <button type="submit">로그인 하기</button>
+    </div>
+
+    <div class="login-social">
+       <img
+        src="{{ request.url_for('static', path='images/naver.png') }}"
+        alt="naver"
+      />
+      <img
+        src="{{ request.url_for('static', path='images/google.png') }}"
+        alt="google"
+      />
+      <img
+        src="{{ request.url_for('static', path='images/kakao.png') }}"
+        alt="kakao"
+      />
+    </div>
+
+  </body>
+</html>
