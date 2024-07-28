@@ -20,6 +20,303 @@ body {
 }
 
 model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#backgroundModel {
     width: 170%;
     height: 170%;
+    z-index: -1;
+}
+
+#hamModel {
+    width: 40%;
+    height: 40%;
+    bottom: 10%;
+}
+
+/* nav.css */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+}
+
+.menuIcon {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+
+    width: 2rem;
+}
+
+/* title */
+.titleSection {
+    text-align: center;
+
+    position: fixed;
+    top: 15%;
+}
+
+.titleWalk {
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+
+    margin-bottom: 1rem;
+}
+
+.titleLine {
+    background: #71594E;
+
+    width: 12rem;
+    height: 0.2rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    font-family: "Pretendard-Bold";
+}
+
+/* character.css */
+.character-description {
+    position: fixed;
+    left: 10%;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: left;
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+}
+
+.character-description .name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.character-description .introduce {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.intimacyBox {
+    display: flex;
+}
+
+.character-navigation {
+    position: fixed;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 27%;
+}
+
+.left, .right {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.character-select {
+    position: fixed;
+    right: 5%;
+    top: 30%;
+    transform: translateY(-50%);
+    width: 15%;
+    text-align: center;
+}
+
+.character-select .coins {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.character-select .coin {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.character-select .character-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.hamImg {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+}
+
+.sectionName {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.character-select .select {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.character-select .character-option.selected {
+    background-color: #F5EED1;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.character-select .character-option.selected .checkImg {
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.character-select .character-option.locked {
+    background-color: #D2BEA1;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+}
+
+.character-select .character-option.locked .select {
+    color: #AAA;
+}
+
+/* 캐릭터 설명 박스 */
+.character-description-box {
+    font-family: "Pretendard-Bold";
+
+    position: fixed;
+    left: 5%;
+    top: 50%;
+    padding: 1.5rem;
+    transform: translateY(-50%);
+    
+    width: 12%;
+    height: 35%;
+
+    border: 2px solid #D2BEA1;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FCF7E5;
+}
+
+.name {
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Pretendard-Bold";
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.introduce {
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 135%;
+}
+
+.intimacyBox {
+    display: flex;
+    align-items: center;
+}
+
+.intimacy {
+    font-family: "Pretendard-Medium";
+    font-size: 1.15rem;
+    margin-right: 0.5rem;
+}
+
+.heartImg {
+    margin-left: auto;
+    width: 50%;
+    height: 50%;
+}
+
+.character-description-box {
+    margin-right: 0.25rem;
+}
+
+/* 캐릭터 선택 박스 */
+.character-select-box {
+    position: fixed;
+    top: 25%;
+    right: 5%;
+    text-align: center;
+
+    width: 12%;
+    height: 55%;
+    padding: 1.5rem;
+
+    border: 3.5px solid #D2BEA1; /* 테두리 색상 설정 */
+    border-radius: 2rem;
+    background-color: #FCF7E5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coins {
+    position: relative;
+    bottom: 13.5%;
+}
+
+.coin {
+    width: 75%;
+}
+
+.character-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    cursor: pointer;
+
+    position: relative;
+    bottom: 11%;
+}
+
+.hamImg {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+}
+
+.sectionName {
+    font-family: "Pretendard-Medium";
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: #71594E;
+}
+
+.select {
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.character-select .character-option.selected .select {
+    color: #F00;
+}
+
+.character-select .character-option.locked .select {
+    color: #AAA;
+}
+
+.character-select .character-option.locked .price {
+    font-size: 0.875rem;
+    color: #AAA;
 }

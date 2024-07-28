@@ -4,19 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="stylesheet" href="/static/css/character.css">
+    <script src="../static/js/nav.js" defer></script>
+    <script src="/static/js/character.js" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
 </head>
 <body>
     <div class="model-container">
-        <model-viewer id="backgroundModel" 
-                      src="../static/models/glb-garden-last.glb" 
-                      alt="A 3D model of a window" 
-                      environment-image="neutral" 
-                      ar
-                      camera-orbit="230deg 70deg 30m"> <!-- 위치 조정, js도 맞게 수정해 줘야 함 -->
-        </model-viewer>
+        <model-viewer id="backgroundModel" src="../static/models/glb-garden-home-x.glb" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="hamModel" src="../static/models/ham.glb" environment-image="neutral" ar></model-viewer>
     </div>
-    <script src="/static/js/home.js"></script>
+
+    <!-- nav -->
+    <nav>
+        <img src="/static/image/logo.png" class="logo" id="logo">
+        <img src="/static/image/menu.png" class="menuIcon" id="menuIcon">
+    </nav>
+
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="/static/image/exit.png" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr />
+                <div class="talk" id="talk">대화하기</div>
+                <hr />
+                <div class="walk" id="walk">산책하기</div>
+                <hr />
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr />
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr />
+            </div>
+        </section>
+    </div>
+
+    <!-- title -->
+    <section class="titleSection">
+        <div class="titleWalk">캐릭터 선택</div>
+        <hr class="titleLine" />
+    </section>
+
+    <!-- 캐릭터 설명 박스 -->
+    <section class="character-description-box">
+        <div class="name" id="characterName">햄깅이</div>
+        <div class="introduce" id="characterDescription">햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.</div>
+        <div class="intimacyBox">
+            <div class="intimacy">친밀도</div>
+            <img src="../static/image/heart (1).png" class="heartImg" alt="Heart">
+        </div>
+    </section>
+
+    <!-- 캐릭터 넘기기 -->
+    <section class="character-navigation">
+        <img src="../static/image/c_left.png" class="left" id="leftArrow" alt="Left Arrow">
+        <img src="../static/image/c_right.png" class="right" id="rightArrow" alt="Right Arrow">
+    </section>
+
+    <!-- 캐릭터 선택 박스 -->
+    <section class="character-select-box">
+        <div class="coins">
+            <img src="../static/image/coins-icon.png" class="coin" alt="Coin">
+        </div>
+
+        <div class="character-option" id="hamgingOption">
+            <img src="../static/image/ham1.png" class="hamImg" alt="Hamging">
+            <div>
+                <div class="sectionName">햄깅이</div>
+                <div class="select">선택됨</div>
+            </div>
+        </div>
+
+        <div class="character-option" id="dongsikOption">
+            <img src="../static/image/ham2.png" class="hamImg" alt="Dongsik">
+            <div>
+                <div class="sectionName">곰식이</div>
+                <div class="select">선택하기</div>
+            </div>
+        </div>
+
+        <div class="character-option locked" id="professorOption">
+            <img src="../static/image/ham3.png" class="hamImg" alt="Professor">
+            <div>
+                <div class="sectionName">교수님</div>
+                <div class="select">구매하기</div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const stampMap = {
+        'water': 'water_cleared_stamp',
+        'clean': 'broomstick_cleared_stamp',
+        'cooking': 'pot_cleared_stamp',
+        'wash': 'bath_cleared_stamp',
+        'table': 'talk_cleared_stamp',
+        'bed': 'meditation_cleared_stamp'
+    };
     function updateStampImage(mission) {
-        const stampMap = {
-            'water': 'water_cleared_stamp',
-            'clean': 'broomstick_cleared_stamp',
-            'cooking': 'pot_cleared_stamp',
-            'wash': 'bath_cleared_stamp',
-            'table': 'talk_cleared_stamp',
-            'bed': 'meditation_cleared_stamp'
-        };
     
         const stampId = stampMap[mission];
         console.log('Updating stamp for mission:', mission, 'with stampId:', stampId); // Debugging line
