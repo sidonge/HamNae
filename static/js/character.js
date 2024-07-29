@@ -34,20 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
         hamModel.setAttribute('src', character.model);
-
-        hamgingOption.querySelector('.select').textContent = '선택하기';
-        dongsikOption.querySelector('.select').textContent = '선택하기';
-        professorOption.querySelector('.select').textContent = '구매하기';
-
+        
+        // 모든 선택 옵션의 초기화
+        hamgingOption.querySelector('.select').innerHTML = '선택하기';
+        dongsikOption.querySelector('.select').innerHTML = '선택하기';
+        professorOption.querySelector('.select').innerHTML = '구매하기';
+        
+        hamgingOption.classList.remove('selected');
+        dongsikOption.classList.remove('selected');
+        professorOption.classList.remove('selected');
+        
+        // 현재 선택된 캐릭터에 대한 선택 상태 적용
         if (currentIndex === 0) {
-            hamgingOption.querySelector('.select').textContent = '선택됨';
+            hamgingOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
+            hamgingOption.classList.add('selected');
         } else if (currentIndex === 1) {
-            dongsikOption.querySelector('.select').textContent = '선택됨';
+            dongsikOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
+            dongsikOption.classList.add('selected');
         } else if (currentIndex === 2) {
-            professorOption.querySelector('.select').textContent = '선택됨';
+            professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
+            professorOption.classList.add('selected');
         }
     }
-
+    
+    
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;
         updateCharacter();
@@ -80,13 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateRotation() {
         backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
-        backgroundModel.jumpToGoal();
     }
 
     // 시점 조정
     backgroundModel.style.transform = 'translateY(1rem)';
 
-    // 초기 카메라 설정 업데이트
     updateRotation();
     updateCharacter();
 });

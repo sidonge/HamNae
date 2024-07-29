@@ -28,7 +28,17 @@ model-viewer {
 #backgroundModel {
     width: 170%;
     height: 170%;
-    z-index: -1;
+    z-index: -9999999;
+}
+
+#backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: -10000;
 }
 
 #hamModel {
@@ -36,6 +46,20 @@ model-viewer {
     height: 40%;
     bottom: 10%;
 }
+
+#hamModel::after {
+    content: '';
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20rem;
+    height: 7rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: -10;
+}
+
 
 /* nav.css */
 nav {
@@ -115,12 +139,12 @@ nav {
 
 .character-navigation {
     position: fixed;
-    bottom: 25%;
+    bottom: 27.5%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    width: 27%;
+    width: 30%;
 }
 
 .left, .right {
@@ -181,21 +205,10 @@ nav {
     position: relative;
 }
 
-.character-select .character-option.selected .checkImg {
-    position: absolute;
-    right: 1rem;
-    width: 1rem;
-    height: 1rem;
-}
-
 .character-select .character-option.locked {
     background-color: #D2BEA1;
     border-radius: 1.5rem;
     padding: 0.5rem;
-}
-
-.character-select .character-option.locked .select {
-    color: #AAA;
 }
 
 /* 캐릭터 설명 박스 */
@@ -272,7 +285,7 @@ nav {
 
 .coins {
     position: relative;
-    bottom: 13.5%;
+    bottom: 14.5%;
 }
 
 .coin {
@@ -297,26 +310,38 @@ nav {
 
 .sectionName {
     font-family: "Pretendard-Medium";
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
     color: #71594E;
 }
 
-.select {
+.character-option .select {
     font-family: "Pretendard-Regular";
-    font-size: 0.9rem;
-    color: #888;
+    font-size: 0.8rem;
+    color: #070000;
+
+    background-color: #F5EED1;
+    border-radius: 10rem;
+    width: 5rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.character-select .character-option.selected .select {
-    color: #F00;
+.character-option.selected .select {
+    font-family: "Pretendard-Regular";
+    font-size: 0.8rem;
+    color: #070000;
+
+    background-color: #D2BEA1;
+    border-radius: 10rem;
+    width: 5rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.character-select .character-option.locked .select {
-    color: #AAA;
-}
-
-.character-select .character-option.locked .price {
-    font-size: 0.875rem;
-    color: #AAA;
-}
