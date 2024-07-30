@@ -15,17 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const characters = [
         {
             name: '햄깅이',
-            description: '햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.',
+            description: '햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 진심이랍니다.',
             model: '../static/models/ham.glb'
         },
         {
             name: '곰식이',
-            description: '동식이는 항상 활기차고 친구들을 잘 챙기는 곰이에요.',
+            description: '동식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
             model: '../static/models/bear.glb'
         },
         {
             name: '교수님',
-            description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요.',
+            description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
             model: '../static/models/rabbit.glb'
         }
     ];
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 모든 선택 옵션의 초기화
         hamgingOption.querySelector('.select').textContent = '선택하기';
         dongsikOption.querySelector('.select').textContent = '선택하기';
-        professorOption.querySelector('.select').textContent = '구매하기';
+        professorOption.querySelector('.select').textContent = purchasedCharacterIndex === 2 ? '선택하기' : '구매하기';
         
         hamgingOption.classList.remove('selected');
         dongsikOption.classList.remove('selected');
@@ -57,9 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dongsikOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
             dongsikOption.classList.add('selected');
         } else if (currentIndex === 2) {
-            document.querySelector('#professorOption .hamImg').src = '../static/image/ham1.png';
-            professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
-            professorOption.classList.add('selected');
+            professorOption.querySelector('.select').innerHTML = purchasedCharacterIndex === 2 ? '선택됨&nbsp;<i class="fas fa-check"></i>' : '구매하기';
+            professorOption.classList.add(purchasedCharacterIndex === 2 ? 'selected' : '');
         }
     }
     
@@ -85,8 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     professorOption.addEventListener('click', () => {
-        currentIndex = 2;
-        showPurchasePopup(currentIndex); // 구매 대기 중인 캐릭터의 인덱스 저장 및 팝업 표시
+        if (purchasedCharacterIndex === 2) {
+            // 이미 구매한 캐릭터인 경우, 선택 상태로 변경
+            currentIndex = 2;
+            updateCharacter();
+        } else {
+            // 구매 대기 중인 캐릭터인 경우, 팝업 표시
+            currentIndex = 2;
+            showPurchasePopup(currentIndex); // 구매 대기 중인 캐릭터의 인덱스 저장 및 팝업 표시
+        }
     });
 
     leftArrow.addEventListener('click', () => {

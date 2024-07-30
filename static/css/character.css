@@ -137,10 +137,11 @@ nav {
 .intimacyBox {
     display: flex;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .intimacy {
-    font-family: "Pretendard-Medium";
+    font-family: "Pretendard-SemiBold";
     font-size: 1.15rem;
     margin-right: 0.5rem;
 }
@@ -215,7 +216,7 @@ nav {
 }
 
 .character-option.locked .select {
-    background-color: #A88756; /* 구매하기 색상 */
+    background-color: #A88756;
     color: white;
 }
 
@@ -274,14 +275,15 @@ nav {
 .popup-content {
     font-family: "Pretendard-SemiBold";
     background: white;
-    width: 30rem;
-    height: 20rem;
+    width: 20rem;
+    height: 10rem;
     border-radius: 8px;
     text-align: center;
 }
 
 .popup-content p {
-    margin-bottom: 20px;
+    margin-top: 12.5%;
+    margin-bottom: 9%;
     font-size: 1.2rem;
 }
 

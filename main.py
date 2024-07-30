@@ -119,6 +119,10 @@ async def get_model(model_name: str):
         return FileResponse(file_path)
     return JSONResponse(content={"success": False, "error": "File not found"}, status_code=404)
 
+@app.get("/character", response_class=HTMLResponse)
+async def read_character(request: Request):
+    return templates.TemplateResponse("character.html", {"request": request})
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
