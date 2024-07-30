@@ -1,0 +1,307 @@
+/* 기본 스타일 */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(rgb(163, 217, 237), rgb(217, 224, 213));
+}
+
+.model-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#backgroundModel {
+    width: 170%;
+    height: 170%;
+    z-index: -9999999;
+}
+
+#backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -10000;
+}
+
+#hamModel {
+    width: 40%;
+    height: 40%;
+    bottom: 10%;
+}
+
+#hamModel::after {
+    content: '';
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20rem;
+    height: 7rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: -10;
+}
+
+/* 내비게이션 */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+}
+
+.menuIcon {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    width: 2rem;
+}
+
+/* 제목 */
+.titleSection {
+    text-align: center;
+    position: fixed;
+    top: 15%;
+}
+
+.titleWalk {
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.titleLine {
+    background: #71594E;
+    width: 12rem;
+    height: 0.2rem;
+    border: none;
+    border-radius: 1rem;
+    font-family: "Pretendard-Bold";
+}
+
+/* 캐릭터 설명 박스 */
+.character-description-box {
+    font-family: "Pretendard-Bold";
+    position: fixed;
+    left: 5%;
+    top: 50%;
+    padding: 1.5rem;
+    transform: translateY(-50%);
+    width: 12%;
+    height: 35%;
+    border: 2px solid #D2BEA1;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FCF7E5;
+}
+
+.character-description-box .name {
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Pretendard-Bold";
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.character-description-box .introduce {
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 135%;
+}
+
+.intimacyBox {
+    display: flex;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.intimacy {
+    font-family: "Pretendard-SemiBold";
+    font-size: 1.15rem;
+    margin-right: 0.5rem;
+}
+
+.heartImg {
+    margin-left: auto;
+    width: 50%;
+    height: 50%;
+}
+
+/* 캐릭터 선택 박스 */
+.character-select-box {
+    position: fixed;
+    top: 25%;
+    right: 5%;
+    text-align: center;
+    width: 12%;
+    height: 55%;
+    padding: 1.5rem;
+    border: 3.5px solid #D2BEA1;
+    border-radius: 2rem;
+    background-color: #FCF7E5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coins {
+    position: relative;
+    bottom: 14.5%;
+}
+
+.coin {
+    width: 75%;
+}
+
+.character-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    cursor: pointer;
+    position: relative;
+    bottom: 11%;
+}
+
+.hamImg {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+}
+
+.sectionName {
+    font-family: "Pretendard-Medium";
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #71594E;
+}
+
+.character-option .select {
+    font-family: "Pretendard-Regular";
+    font-size: 0.8rem;
+    color: #070000;
+    background-color: #F5EED1;
+    border-radius: 10rem;
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-option.selected .select {
+    background-color: #D2BEA1;
+}
+
+.character-option.locked .select {
+    background-color: #A88756;
+    color: white;
+}
+
+/* 캐릭터 설명 */
+.character-description {
+    position: fixed;
+    left: 10%;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: left;
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+}
+
+.character-description .name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.character-description .introduce {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* 캐릭터 네비게이션 */
+.character-navigation {
+    position: fixed;
+    bottom: 27.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.left, .right {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+/* 구매 팝업 */
+#purchasePopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    font-family: "Pretendard-SemiBold";
+    background: white;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.popup-content p {
+    margin-top: 12.5%;
+    margin-bottom: 9%;
+    font-size: 1.2rem;
+}
+
+.popup-content button {
+    font-family: "Pretendard-Regular";
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#confirmPurchase {
+    background-color: #A88756; /* 구매 버튼 색상 */
+    color: white;
+}
+
+#cancelPurchase {
+    background-color: #ccc; /* 취소 버튼 색상 */
+}

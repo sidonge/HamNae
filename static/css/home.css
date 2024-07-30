@@ -1,0 +1,386 @@
+body { 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: #f0f0f0; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+/* nav */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+}
+
+.menuIcon {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+
+    width: 2rem;
+}
+
+/* title */
+.titleSection {
+    text-align: center;
+
+    margin-bottom: 3%
+}
+
+.titleWalk {
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+
+    margin-bottom: 1%;
+}
+
+.titleLine {
+    background: #71594E;
+
+    width: 12rem;
+    height: 0.2rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    font-family: "Pretendard-Bold";
+}
+
+
+.model-container {
+    position: fixed;
+    width: 100%;
+    height: 130%;
+    top: -30%;
+    z-index: 0;
+}
+model-viewer#windowModel, model-viewer#rabbitModel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: cameraOrbit 0.3s ease;
+}
+model-viewer#rabbitModel {
+    width: 12rem;
+    height: 12rem;
+    left: calc(50% - 5rem);
+    bottom: 2%;
+}
+.controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+}
+.controls div {
+    display: flex;
+    align-items: center;
+}
+.triangle {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+}
+.transparent-box {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+}
+.rabbit-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+}
+.rabbit-controls div {
+    display: flex;
+    align-items: center;
+}
+#rabbitUp, #rabbitDown {
+    display: none;
+}
+
+/* 미션 */
+
+/* 물 마시기 */
+.water {
+    width: 2rem;
+    height: 4rem;
+    position: fixed;
+    top: 23.5rem;
+    right: 32.4rem;
+    z-index: 2;
+}
+.waterTalk {
+    display: none;
+    width: 10rem;
+    position: fixed;
+    bottom: 19rem;
+    right: 25rem;
+    z-index: 2;
+    transition: opacity 0.5s;
+}
+.waterText {
+    display: none;
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    width: 8rem;
+    position: fixed;
+    bottom: 20.5rem;
+    right: 26rem;
+    z-index: 10;
+}
+.water:hover .waterTalk {
+    display: block;
+    opacity: 1;
+}
+.water:hover .waterText {
+    display: block;
+    opacity: 1;
+}
+
+/* 청소하기 */
+.clean {
+    width: 6rem;
+    height: 32rem;
+    position: fixed;
+    top: 10rem;
+    left: 6rem;
+}
+.cleanTalk {
+    display: none;
+    width: 10rem;
+    position: fixed;
+    bottom: 30.2rem;
+    left: 6rem;
+    transition: opacity 0.5s;
+}
+.cleanText {
+    display: none;
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    width: 8rem;
+    position: fixed;
+    top: 10.5rem;
+    left: 7rem;
+    z-index: 11;
+}
+.clean:hover .cleanTalk{
+    display: block;
+    opacity: 1;
+}
+.clean:hover .cleanText{
+    display: block;
+    opacity: 1;
+}
+
+/* 요리하기 */
+.cooking {
+    width: 11rem;
+    height: 15rem;
+    position: fixed;
+    bottom: 20rem;
+    left: 62rem;
+}
+.cookingTalk {
+    display: none;
+    width: 10rem;
+    position: fixed;
+    bottom: 30.75rem;
+    right: 24rem;
+    transition: opacity 0.5s;
+}
+.cookingText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    display: none;
+    width: 10rem;
+    position: fixed;
+    bottom: 32.3rem;
+    right: 23rem;
+    z-index: 11;
+}
+.cooking:hover .cookingTalk{
+    display: block;
+    opacity: 1;
+}
+.cooking:hover .cookingText {
+    display: block;
+    opacity: 1;
+}
+    
+/* 씻기 */
+.wash {
+    width: 6rem;
+    height: 32rem;
+    position: fixed;
+    bottom: 11rem;
+    right: 6.3rem;
+}
+.washTalk {
+    display: none;
+    width: 10rem;
+    position: fixed;
+    top: 1rem;
+    right: 2.5rem;
+    transition: opacity 0.5s;
+}
+.washText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    display: none;
+    width: 10rem;
+    position: fixed;
+    right: 1.6rem;
+    bottom: 40.5rem;
+    z-index: 11;
+}
+.wash:hover .washTalk{
+    display: block;
+    opacity: 1;
+}
+.wash:hover .washText{
+    display: block;
+    opacity: 1;
+}
+
+/* 채팅하기 */
+.table {
+    width: 10rem;
+    height: 10rem;
+    position: fixed;
+    bottom: 10rem;
+    right: 22rem;
+}
+.tableTalk {
+    display: none;
+    width: 10rem;
+    position: relative;
+    bottom: 0.5rem;
+    left: 5rem;
+    transition: opacity 0.5s;
+}
+.tableText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    display: none;
+    width: 10rem;
+    position: fixed;
+    right: 18rem;
+    bottom: 18.9rem;
+    z-index: 11;
+}
+.table:hover .tableTalk{
+    display: block;
+    opacity: 1;
+}
+.table:hover .tableText {
+    display: block;
+    opacity: 1;
+}
+
+/* 명상하기 */
+.bed {
+    width: 19rem;
+    height: 18rem;
+    position: fixed;
+    top: 20rem;
+    left: 14rem;
+}
+.bedTalk {
+    display: none;
+    width: 10rem;
+    position: relative;
+    left: 10rem;
+    transition: opacity 0.5s;
+}
+.bedText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    display: none;
+    width: 10rem;
+    position: fixed;
+    left: 25.2rem;
+    bottom: 21rem;
+    z-index: 11;
+}
+.bed:hover .bedTalk{
+    display: block;
+    opacity: 1;
+}
+.bed:hover .bedText{
+    display: block;
+    opacity: 1;
+}
+
+.blink {
+    position: fixed;
+    bottom: 14rem;
+    left: calc(50% - 5rem);
+    font-family: "Pretendard-Boid";
+    font-size: 0.8rem;
+    color: #71594E;
+    z-index: 3;
+    animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.talkIcon {
+    width: 10rem;
+    position: fixed;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+#rabbitTalk1 {
+    bottom: 13rem;
+    left: 39rem;
+}
+#rabbitTalk2 {
+    bottom: 13rem;
+    left: 49rem;
+}
+.quest-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.quest-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.upload-input {
+    margin-top: 10px;
+}
