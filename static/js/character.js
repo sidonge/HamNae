@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentIndex === 2) {
             professorOption.querySelector('.select').innerHTML = purchasedCharacterIndex === 2 ? '선택됨&nbsp;<i class="fas fa-check"></i>' : '구매하기';
             professorOption.classList.add(purchasedCharacterIndex === 2 ? 'selected' : '');
+            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
         }
     }
     

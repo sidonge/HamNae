@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 import json
-from typing import Optional
 
 app = FastAPI()
 
@@ -32,21 +31,26 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 # 클리어 상태를 저장할 파일
 STATUS_FILE = "status.json"
 
+# 미션과 파일 이름 매핑
+STAMP_MAP = {
+    'water': 'water_cleared_stamp.png',
+    'clean': 'broomstick_cleared_stamp.png',
+    'cooking': 'pot_cleared_stamp.png',
+    'wash': 'bath_cleared_stamp.png',
+    'bed': 'meditation_cleared_stamp.png'
+}
+
 def save_status(mission: str):
     try:
-        # 파일이 없으면 새로 생성
         if not os.path.exists(STATUS_FILE):
             with open(STATUS_FILE, "w") as f:
                 f.write("{}")
         
-        # 상태 파일 읽기
         with open(STATUS_FILE, "r") as f:
             status = json.load(f)
         
-        # 상태 업데이트
         status[mission] = "true"
         
-        # 상태 파일에 저장
         with open(STATUS_FILE, "w") as f:
             json.dump(status, f)
     except Exception as e:
@@ -87,14 +91,12 @@ async def quest_status():
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     try:
-        file_location = os.path.join(UPLOAD_DIR, file.filename)
+        mission = file.filename.split('_')[0].lower()
+        new_filename = STAMP_MAP.get(mission, file.filename)
+        file_location = os.path.join(UPLOAD_DIR, new_filename)
         with open(file_location, "wb") as f:
             shutil.copyfileobj(file.file, f)
-        
-        # 미션을 추출하여 상태를 저장
-        mission = file.filename.split('_')[0].lower()  # 예: "waterUpload"에서 "water" 추출
         save_status(mission)
-
         return JSONResponse(content={"success": True, "file_path": file_location}, status_code=200)
     except Exception as e:
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
