@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchasePopup = document.getElementById('purchasePopup');
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
+    const purchaseButton = document.getElementById('purchaseButton');
 
     const characters = [
         {

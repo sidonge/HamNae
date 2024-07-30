@@ -1,26 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 미션 이름 : 스탬프 이름
-    const stampMap = {
-        'water': 'water_cleared_stamp',
-        'clean': 'broomstick_cleared_stamp',
-        'cooking': 'pot_cleared_stamp',
-        'wash': 'bath_cleared_stamp',
-        'bed': 'meditation_cleared_stamp'
-    };
-
-    // 스탬프 업데이트 함수
-    function updateStampImage(mission) {
-        // 각 미션에 해당하는 스탬프 이름 ID 찾아서 stampId에 저장
-        const stampId = stampMap[mission];
+    const talkImages = document.querySelectorAll('.talk-image');
+    talkImages.forEach((img) => {
+        const uploadInput = img.nextElementSibling;
         
-        // stampId가 있으면
-        if (stampId) {
-            // 해당 ID에 맞는 요소 저장 (스탬프이므로 img 저장)
-            const stampElement = document.getElementById(stampId);
+        // img 누르면 파일 삽입
+        img.addEventListener('click', () => {
+            if (uploadInput) {
+                uploadInput.click();
+            }
+        });
+        
+        // uploadInput이 있을 시
+        if (uploadInput) {
+            // 선택한 파일을 file에 저장
+            uploadInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
 
-            // img가 존재하면
+                // FormData 객체 생성하여 파일 추가
+                if (file) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    // /upload에 POST 요청 (main.py)
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    // 위 응답을 json으로 파싱
+                    .then(response => response.json())
+                    
+                    .then(data => {
+                        // 서버가 성공 응답을 반환하면
+                        if (data.success) {
+                            // 성공 메시지 표시
+                            alert('미션 성공! 퀘스트 달성도를 확인해 보세요.');
+                            // 스탬프 이미지 업데이트
+                            updateStampImage(uploadInput.id.replace('Upload', ''));
+                        } else {
+                            // 업로드 실패 시 실패 메시지 표시
+                            alert('올바르지 않은 사진이에요. 다시 시도해 주세요.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('업로드 중 오류가 생겼어요:', error);
+                        alert('업로드 중 오류가 생겼어요. 다시 시도해 주세요.');
+                    });
+                }
+            });
+        }
+    });
+
+    // 스탬프 이미지 업데이트 함수
+    function updateStampImage(mission) {
+        const stampMap = {
+            'water': 'water_cleared_stamp',
+            'clean': 'clean_cleared_stamp',
+            'cooking': 'cooking_cleared_stamp',
+            'wash': 'wash_cleared_stamp',
+            'bed': 'bed_cleared_stamp'
+        };
+
+        // 미션에 해당하는 ID 가져와서 해당 ID 가진 요소 찾음
+        const stampId = stampMap[mission];
+        if (stampId) {
+            const stampElement = document.getElementById(stampId);
             if (stampElement) {
-                // 보이게 하기 (기존 상태: none)
+                // 스탬프 표시
                 stampElement.style.display = 'block';
             } else {
                 console.error('Stamp element not found:', stampId);
@@ -28,36 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Invalid mission:', mission);
         }
-    }    
+    }
 
-    // 엔드 포인트에서 데이터 가져옴 (main.py)
+    // 퀘스트 페이지 로드 시 완료된 미션 스탬프 표시
     fetch('/quest_status')
-        .then(response => {
-            // 예외 발생시킴
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-            // 응답 데이터를 json으로 변환
-            return response.json();
-        })
-        // data: 서버에서 반환된 json 객체
+        .then(response => response.json())
         .then(data => {
-            // data 객체 안에 status가 존재하는지 확인
             if (data.status) {
-                // [미션, 미션 완료 여부]
-                for (const [mission, cleared] of Object.entries(data.status)) {
-                    // 미션이 완료되면
-                    if (cleared === "true") {
-                        // 스탬프 찍힘
+                for (const mission in data.status) {
+                    if (data.status[mission] === "true") {
                         updateStampImage(mission);
                     }
                 }
-            } else {
-                console.error('No status in data:', data);
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error fetching quest status:', error);
         });
 });
-

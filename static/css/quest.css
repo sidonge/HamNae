@@ -137,7 +137,7 @@ section {
     letter-spacing: -0.05rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditation_cleared_stamp {
+#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     display: none;
 }
 
@@ -184,7 +184,7 @@ section {
     word-spacing: 0.04rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditation_cleared_stamp {
+#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     position: relative;
     bottom: 14.5rem;
     right: 2rem;

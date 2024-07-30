@@ -343,9 +343,10 @@ model-viewer#rabbitModel {
 }
 
 .blink {
-    position: fixed;
-    bottom: 14rem;
-    left: calc(50% - 5rem);
+    position: relative;
+    left: 1%;
+    top: 15%;
+    margin: auto;
     font-family: "Pretendard-Boid";
     font-size: 0.8rem;
     color: #71594E;
