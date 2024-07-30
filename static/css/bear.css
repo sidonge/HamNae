@@ -1,8 +1,0 @@
-model-viewer {
-    width: 2rem;   /* 너비 설정 */
-    height: 2rem;  /* 높이 설정 */
-    position: absolute;
-    left: 50%;     /* 화면 가운데 정렬 */
-    top: 50%;
-    transform: translate(-50%, -50%); /* 중심으로 정렬 */
-}
