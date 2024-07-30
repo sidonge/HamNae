@@ -1,3 +1,4 @@
+// 챗봇 페이지 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.query === "fetchData") {
         fetch('https://api.example.com/data')
@@ -9,13 +10,21 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 console.error('Error fetching data:', error);
                 sendResponse({error: error.message});
             });
-        return true; // 이렇게 반환하면 비동기 응답을 처리할 수 있습니다.
+        return true;
     }
 });
 
-
 async function sendMessage() {
     var input = document.getElementById("userInput");
+    
+    //enter키 눌렀을 때 send기능 되도록
+    userInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter' && !event.shiftKey) { // shift 키가 눌리지 않은 상태에서 Enter만 눌렸을 경우
+            event.preventDefault(); // 기본 이벤트 방지
+            sendMessage(); // 메시지 전송 함수 호출
+        }
+    });
+
     if (input.value.trim() !== "") {
         const userMessage = input.value;
         input.value = ""; // 입력 필드 초기화
@@ -26,6 +35,7 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json'
             },
+            // 내가 보내는 입력을 JSON 형식으로 변환해줘야 모델이 알아들음
             body: JSON.stringify({ message: userMessage })
         });
         
@@ -60,6 +70,7 @@ async function sendMessage() {
     }
 }
 
+// 모델의 답변을 포함한 말풍선 추가하는 함수
 function addMessage(text, type) {
     var chatBox = document.getElementById("chatBox");
     var messageDiv = document.createElement("div");
@@ -78,30 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleButtonStyle() {
         if (!isMissionComplete) {
             // '미션완료' 상태로 변경
-            greenBtn.textContent = "미션완료"; // 버튼 텍스트 변경
-            greenBtn.style.color = "#ffffff";
+            greenBtn.textContent = "미션완료";
             greenBtn.style.backgroundColor = "#8CD179";
-            greenBtn.style.opacity = "62%";
-            greenBtn.style.width = "6.7rem";
-            greenBtn.style.height = "2.1rem";
-            greenBtn.style.boxShadow = "0px 0px 3px 1px #F5EED1";
-            greenBtn.style.borderRadius = "3rem";
+            var message = "내일의 나에게 하고 싶은 말 적어보기";
 
             if (!questText.hasChildNodes()) { // 문장이 아직 추가되지 않았다면 추가
                 var questTextDiv = document.createElement("div");
-                questTextDiv.textContent = "내일의 나에게 하고싶은 말 적어보기";
-                questTextDiv.style.color = "red";
+                questTextDiv.textContent = message;
                 questText.appendChild(questTextDiv);
             }
+            sendMessageToGemini(message); // 서버에 메시지 전송
         } else {
             // '오늘의 질문' 상태로 복귀
-            greenBtn.textContent = "오늘의 질문"; // 버튼 텍스트 변경
-            greenBtn.style.color = "#588B47";
+            greenBtn.textContent = "오늘의 질문";
             greenBtn.style.backgroundColor = "#ffffff";
-            greenBtn.style.width = "6.7rem";
-            greenBtn.style.height = "2.1rem";
-            greenBtn.style.boxShadow = "0px 0px 3px 1px #8DBD81";
-            greenBtn.style.borderRadius = "3rem";
+            questText.innerHTML = ""; // 문장을 제거
         }
         isMissionComplete = !isMissionComplete;
     }
@@ -109,11 +111,26 @@ document.addEventListener('DOMContentLoaded', function() {
     greenBtn.addEventListener("click", toggleButtonStyle);
 });
 
+function sendMessageToGemini(message) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: message})
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // 또는 응답을 화면에 표시
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
 // closeIcon 누르면 창 닫힘 기능
 function closeEvent() {
     document.getElementsByClassName("chatPage")[0].style.display = "none";
 }
 
+// 실시간 글자 수 세주는 기능*입력창에
 document.addEventListener('DOMContentLoaded', function() {
     var userInput = document.getElementById('userInput');
     var charCount = document.getElementById('charCount');
@@ -125,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 // 이미지 추가 기능
 function handleFileSelect(event) {
     var files = event.target.files; // 파일 리스트 가져오기
@@ -133,7 +151,6 @@ function handleFileSelect(event) {
     }
 
     var file = files[0]; // 첫 번째 파일
-    // 이미지 파일인지 확인 (png, jpg, jpeg 등을 허용)
     if (file.type.startsWith('image/')) { // 이미지 파일 MIME 타입 시작을 체크
         var reader = new FileReader();
         reader.onload = function(e) {

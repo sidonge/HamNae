@@ -77,23 +77,6 @@ margin: 0;
 
 /* chat page */
 
-/* nav */
-nav {
-    margin: 2rem 0;
-}
-
-.logo {
-    width: 4rem;
-
-    position: relative;
-    right: 1rem;
-}
-
-.menuIcon {
-    position: relative;
-    left: 84rem;
-    width: 2rem;
-}
 
 .Wrap {
     /* background-image: url(/static/image/대화\(대화창\).png); */
@@ -157,7 +140,7 @@ nav {
 
 .nameHeart {
     margin-left: 7.3rem;
-    margin-top: -3.2rem;
+    margin-top: -3.3rem;
 }
 
 .name {
@@ -166,6 +149,7 @@ nav {
     margin-bottom: 0.5rem;
 }
 
+/* 오늘의 질문 */
 .greenCircle {
     float: right;
     margin-top: -2.7rem;
@@ -199,7 +183,7 @@ nav {
 
 
 
-
+/* 대화 부분 */
 
 #chatBox {
     overflow-y: auto; 
@@ -213,7 +197,7 @@ nav {
 
 
 .message { /* 실제 보내는 메세지 말풍선 */
-    /* float: right; */
+    float: right;
     display: flex;
     width: auto;
     padding: 10px;
@@ -222,19 +206,22 @@ nav {
     box-shadow: 0px 0px 4px 0.5px #cbcbcb;
     border-radius: 1.5rem;
     margin-right: 5rem;
+    margin-left: 4rem;
 }
+
+/* 사용자 말풍선 */
 .message.user {
     color: #71594E;
     font-family: "Pretendard-Regular";
-    padding: 0.8rem;
+    padding: 1rem;
 }
 /* 모델이 답하는 말풍선 */
 .message.bot {
     background-color: #ffffff;
     color: #000000;
     font-family: "Pretendard-Regular";
-    padding: 0.8rem;
-    margin-left: 2rem;
+    padding: 1rem;
+    margin-right: 25rem;
 }
 .user { text-align: right; }
 .bot { text-align: left; }
@@ -271,7 +258,7 @@ input::placeholder {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 5rem;
+    bottom: 7.5rem;
 }
 
 .greenCircleText.active {
@@ -304,11 +291,12 @@ button:focus{
     align-items: center;
 }
 
+/* 실시간 글자수 표시 */
 #charCount {
     position:absolute;
     left: 90%;
     top: 60%;
-    color:#cbcbcb; /* 글자 수 표시 색상 */
+    color:#cbcbcb;
     font-family: "Pretendard-Light";
     font-size: 0.8rem;
 }
@@ -318,9 +306,10 @@ button:focus{
     bottom: 53%;
 }
 
+/* 이미지 첨부했을 때 말풍선에 담기는 이미지 크기 */
 .message img {
     /* width: auto; */
-    max-width: 90%;  /*채팅 박스 너비의 90%를 넘지 않도록 설정 */
-    height: auto; /* 이미지의 높이를 자동으로 조절 */
-    margin: 10px; /* 주변과의 간격 */
+    max-width: 90%; 
+    height: auto; 
+    margin: 10px; 
 }

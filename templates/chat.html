@@ -37,7 +37,6 @@
             <div id="chatContainer">
                 <div id="chatBox"> 
                     <!-- 챗봇이 말하는 말풍선 -->
-                    <!-- 여기에 채팅 말풍선이 추가됩니다 -->
                 </div>
                 <div id="questText">
                     <!-- 오늘의 질문 눌렀을 때 나오는 문구 -->
@@ -55,7 +54,6 @@
                         
                         <label className="inputFileCustom" for="inputFile" />
 
-                        <!-- input 타입이 file인 요소를 확인하세요 -->
                         <input type="file" id="inputFile" style="display:none" onchange="handleFileSelect(event)" accept="image/*"/>
                         <img id="cameraIcon" src="/static/image/camera.png" alt="" onclick="document.getElementById('inputFile').click();">
 
@@ -72,6 +70,6 @@
             
         </div>
     </div>
-    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/chat.js" defer></script>
 </body>
 </html>
