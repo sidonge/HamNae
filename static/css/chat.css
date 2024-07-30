@@ -197,7 +197,7 @@ margin: 0;
 
 
 .message { /* 실제 보내는 메세지 말풍선 */
-    float: right;
+    /* float: right; */
     display: flex;
     width: auto;
     padding: 10px;
@@ -205,12 +205,14 @@ margin: 0;
     border-radius: 10px;
     box-shadow: 0px 0px 4px 0.5px #cbcbcb;
     border-radius: 1.5rem;
-    margin-right: 5rem;
-    margin-left: 4rem;
+    margin: 0 4rem;
+    /* margin-right: 5rem;
+    margin-left: 4rem; */
 }
 
 /* 사용자 말풍선 */
 .message.user {
+    float: right;
     color: #71594E;
     font-family: "Pretendard-Regular";
     padding: 1rem;
@@ -221,7 +223,7 @@ margin: 0;
     color: #000000;
     font-family: "Pretendard-Regular";
     padding: 1rem;
-    margin-right: 25rem;
+    margin-right: auto;
 }
 .user { text-align: right; }
 .bot { text-align: left; }
