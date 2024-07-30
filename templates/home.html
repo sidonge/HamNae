@@ -4,66 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>집</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/home.css">
-    <script src="/static/js/home.js" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
+    <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
 </head>
 <body>
     <div class="model-container">
         <!-- 윈도우 모델 -->
-        <model-viewer id="windowModel" src="/window.glb" alt="A 3D model of a window" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="windowModel" src="{{ url_for('static', path='models/window.glb') }}" alt="A 3D model of a window" environment-image="neutral" ar></model-viewer>
         <!-- 토끼 모델 -->
-        <model-viewer id="rabbitModel" src="/ImageToStl.com_fbx-rabbit.glb" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/rabbit.glb') }}" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
     </div>
+
+    <!-- nav -->
+    <nav>
+        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" alt="Logo">
+        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon" alt="Menu Icon">
+    </nav>
     
     <!-- 윈도우 모델 제어 버튼 -->
     <div class="controls">
-        <img src="/static/img/up.png" id="up" class="triangle" alt="Up">
+        <img src="{{ url_for('static', path='image/up.png') }}" id="up" class="triangle" alt="Up">
         <div>
-            <img src="/static/img/left.png" id="left" class="triangle" alt="Left">
+            <img src="{{ url_for('static', path='image/left.png') }}" id="left" class="triangle" alt="Left">
             <div class="transparent-box"></div>
-            <img src="/static/img/right.png" id="right" class="triangle" alt="Right">
+            <img src="{{ url_for('static', path='image/right.png') }}" id="right" class="triangle" alt="Right">
         </div>
-        <img src="/static/img/down.png" id="down" class="triangle" alt="Down">
+        <img src="{{ url_for('static', path='image/down.png') }}" id="down" class="triangle" alt="Down">
     </div>
 
     <!-- 토끼 모델 제어 버튼 추가 -->
     <div class="rabbit-controls">
-        <img src="/static/img/up.png" id="rabbitUp" class="triangle" alt="Up">
+        <img src="{{ url_for('static', path='image/up.png') }}" id="rabbitUp" class="triangle" alt="Rabbit Up">
         <div>
-            <img src="/static/img/left.png" id="rabbitLeft" class="triangle" alt="Left">
+            <img src="{{ url_for('static', path='image/left.png') }}" id="rabbitLeft" class="triangle" alt="Rabbit Left">
             <div class="transparent-box"></div>
-            <img src="/static/img/right.png" id="rabbitRight" class="triangle" alt="Right">
+            <img src="{{ url_for('static', path='image/right.png') }}" id="rabbitRight" class="triangle" alt="Rabbit Right">
         </div>
-        <img src="/static/img/down.png" id="rabbitDown" class="triangle" alt="Down">
+        <img src="{{ url_for('static', path='image/down.png') }}" id="rabbitDown" class="triangle" alt="Rabbit Down">
     </div>
 
+    <!-- 토끼 모델 클릭 시 말풍선 이미지 -->
+    <div class="rabbitTalkBox">
+        <label for="rabbitTalkUpload1">
+            <img src="{{ url_for('static', path='image/petListIcon.png') }}" class="talkIcon" id="rabbitTalk1" onclick="location.href='{{ url_for('petslist') }}'">
+        </label>
+        
+        <label for="rabbitTalkUpload2">
+            <img src="{{ url_for('static', path='image/questList.png') }}" class="talkIcon" id="rabbitTalk2" onclick="location.href='{{ url_for('quest') }}'">
+        </label>
+    </div>
 
     <!-- 미션 -->
     <div class="water">
-        <div class="waterText">같이 물 마실래?</div>
-        <img class="waterTalk" src="/static/img/talkIcon.png">
+        <img id="water_cleared_stamp" class="waterTalk talk-image" src="{{ url_for('static', path='image/waterTalk.png') }}">
+        <input type="file" id="waterUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="clean">
-        <div class="cleanText">같이 청소할래?</div>
-        <img class="cleanTalk" src="/static/img/talkIcon.png">
+        <img id="broomstick_cleared_stamp" class="cleanTalk talk-image" src="{{ url_for('static', path='image/cleanTalk.png') }}">
+        <input type="file" id="cleanUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="cooking">
-        <div class="cookingText">같이 요리할래?</div>
-        <img class="cookingTalk" src="/static/img/talkIcon.png">
+        <img id="pot_cleared_stamp" class="cookingTalk talk-image" src="{{ url_for('static', path='image/cookTalk.png') }}">
+        <input type="file" id="cookingUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="wash">
-        <div class="washText">씻으러 갈 시간!</div>
-        <img class="washTalk" src="/static/img/talkIcon.png">
+        <img id="bath_cleared_stamp" class="washTalk talk-image" src="{{ url_for('static', path='image/washTalk.png') }}">
+        <input type="file" id="washUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="table">
-        <div class="tableText">약 먹을 시간!</div>
-        <img class="tableTalk" src="/static/img/talkIcon.png">
+        <img id="table_cleared_stamp" class="tableTalk" src="{{ url_for('static', path='image/talkTalk.png') }}">
     </div>
     <div class="bed">
-        <div class="bedText">명상할 시간!</div>
-        <img class="bedTalk" src="/static/img/talkIcon.png">
+        <img id="meditation_cleared_stamp" class="bedTalk talk-image" src="{{ url_for('static', path='image/bedIcon.png') }}">
+        <input type="file" id="bedUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
+
+    <div class="blink">토끼를 눌러 보세요.</div>
 </body>
 </html>
