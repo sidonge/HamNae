@@ -130,14 +130,14 @@ body {
     margin-bottom: 40px;
 }
 
-.name, .userid, .email, .phone, .password, .password2 {
+.name, .userid, .email, .tel, .password, .password2 {
     display: block;
     margin-bottom: 10px;
     font-family: "Pretendard-Medium";
     font-size: 0.9rem;
 }
 
-.email::placeholder, .password::placeholder, .password2::placeholder {
+.email::placeholder, .tel::placeholder, .password::placeholder, .password2::placeholder {
     font-family: "Pretendard-Light";
     font-size: 0.8rem;
   }
