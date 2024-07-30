@@ -1,0 +1,320 @@
+body {
+    background-image: linear-gradient(#F5EED1, white);
+    padding: 0 3%;
+    overflow-y: scroll;
+}
+/* nav */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 4rem;
+
+    position: relative;
+    right: 1rem;
+}
+
+.menuIcon {
+    position: relative;
+    left: 84rem;
+
+    width: 2rem;
+}
+
+/* title */
+.titleSection {
+    text-align: center;
+
+    margin-bottom: 3%
+}
+
+.titleWalk {
+    font-family: "Pretendard-Bold";
+    color: #71594E;
+
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+
+    margin-bottom: 1%;
+}
+
+.titleLine {
+    background: #71594E;
+
+    width: 12rem;
+    height: 0.2rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    font-family: "Pretendard-Bold";
+}
+
+
+/* quest box */
+.tapeIcon {
+    width: 5.5rem;
+
+    margin-bottom: 4%;
+}
+
+.imgBox {
+    width: 14rem;
+    text-align: center;
+}
+
+.questBox {
+    border: 0.3rem solid #D2BEA1;
+    border-radius: 0.5rem;
+
+    background-color: #F5EED1;
+
+    width: 12rem;
+    padding: 1% 1.25%;
+
+    box-shadow: 1px 1px 5px #BBBBBB;
+}
+
+.questSection {
+    margin-top: 10rem;
+
+    position: relative;
+    bottom: 4.5rem;
+    top: 1rem;
+}
+
+.questText {
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+
+    text-align: center;
+}
+
+.line {
+    font-family: "Pretendard-Bold";
+
+    background: #71594E;
+
+    width: 5rem;
+    height: 0.12rem;
+
+    border: none;
+    border-radius: 1rem;
+    
+    margin-bottom: 1.5rem;
+}
+
+.questListBox {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.questList {
+    font-family: "Pretendard-Regular";
+
+    display: flex;
+    justify-content: center;
+    margin: 0.75rem 0;
+}
+
+.questNum {
+    background-color: #AB936B;
+    color: white;
+
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.1rem;
+}
+
+.distanceBox {
+    font-size: 0.9rem;
+    
+    display: flex;
+
+    background-color: white;
+    color: #71594E;
+
+    width: 7.8rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+
+    margin-left: 5%;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+}
+
+.questDistance {
+    letter-spacing: 0.015rem;
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.coinIcon {
+    width: 1rem;
+    height: 1rem;
+
+    position: relative;
+    right: 0.3rem;
+}
+
+.checkboxBox {
+    display: flex;
+    position: relative;
+    margin: 0.75rem 0;
+}
+
+.checkBox {
+    width: 1.4rem;
+    height: 1.4rem;
+
+    border-radius: 0.3rem;
+    box-shadow: inset 3px 3px 4.5px #BBBBBB;
+    accent-color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 0.25rem;
+    transform: translate(0, -50%);
+
+}
+
+.questCommet {
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+
+    border-radius: 0.3rem;
+    letter-spacing: 0.015rem;
+
+    background-color: white;
+    color: #71594E;
+
+    width: 9rem;
+    height: 2rem;
+
+    padding-left: 7%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    margin-left: auto;
+}
+
+input {
+    margin: 0;
+}
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: 0;
+  }
+  input[type="checkbox"]::after {
+    border: solid #FFB4B4;
+    border-width: 0 4px 4px 0;
+    content: '';
+    display: none;
+    height: 50%;
+    left: 30%;
+    position: relative;
+    top: 10%;
+    transform: rotate(45deg);
+    width: 20%;
+  }
+
+  input[type="checkbox"]:checked::after {
+    display: block;
+  }
+
+
+/* map */
+.distance {
+    display: flex;
+    justify-content: center;
+
+    background-color: white;
+
+    width: 8rem;
+    height: 3rem;
+
+    border: 0.1px solid #BBBBBB;
+    border-radius: 0.5rem;
+    box-shadow: 0.1px 1px 4px #BBBBBB;
+
+    position: relative;
+    bottom: 37rem;
+    right: 6rem;
+
+    margin-left: auto;
+}
+
+.distanceIcon {
+    width: 2rem;
+    height: 2rem;
+
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0, -50%);
+}
+
+.distanceNum {
+    color: #AB936B;
+
+    font-family: "Pretendard-Regular";
+    font-size: 0.9rem;
+
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translate(0, -50%);
+}
+
+.mapTop {
+    border: 0.25rem solid #CEB17F;
+    border-radius: 10rem;
+    box-shadow: 3px 3px 2px #BBBBBB;
+    
+    position: relative;
+    left: 6.6rem;
+    bottom: 36rem;
+    
+    width: 70rem;
+}
+
+.mapBottom {
+    border: 0.25rem solid #CEB17F;
+    border-radius: 10rem;
+    box-shadow: 3px 3px 2px #BBBBBB;
+    
+    position: relative;
+    left: 6.6rem;
+    
+    width: 70rem;
+}
+
+.mapIcon {
+    width: 2.75rem;
+
+    position: relative;
+    bottom: 5rem;
+    left: 86rem;
+}
