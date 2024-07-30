@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamgingOption = document.getElementById('hamgingOption');
     const dongsikOption = document.getElementById('dongsikOption');
     const professorOption = document.getElementById('professorOption');
+    const purchasePopup = document.getElementById('purchasePopup');
+    const confirmPurchase = document.getElementById('confirmPurchase');
+    const cancelPurchase = document.getElementById('cancelPurchase');
 
     const characters = [
         {
@@ -28,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentIndex = 0;
+    let purchasedCharacterIndex = null; // 구매된 캐릭터의 인덱스
+    let pendingPurchaseIndex = null; // 현재 구매 대기 중인 캐릭터의 인덱스
 
     function updateCharacter() {
         const character = characters[currentIndex];
@@ -36,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         hamModel.setAttribute('src', character.model);
         
         // 모든 선택 옵션의 초기화
-        hamgingOption.querySelector('.select').innerHTML = '선택하기';
-        dongsikOption.querySelector('.select').innerHTML = '선택하기';
-        professorOption.querySelector('.select').innerHTML = '구매하기';
+        hamgingOption.querySelector('.select').textContent = '선택하기';
+        dongsikOption.querySelector('.select').textContent = '선택하기';
+        professorOption.querySelector('.select').textContent = '구매하기';
         
         hamgingOption.classList.remove('selected');
         dongsikOption.classList.remove('selected');
@@ -52,12 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
             dongsikOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
             dongsikOption.classList.add('selected');
         } else if (currentIndex === 2) {
+            document.querySelector('#professorOption .hamImg').src = '../static/image/ham1.png';
             professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
             professorOption.classList.add('selected');
         }
     }
     
-    
+    function showPurchasePopup(index) {
+        pendingPurchaseIndex = index;
+        purchasePopup.style.display = 'flex'; // 팝업 표시
+    }
+
+    function handlePurchase() {
+        purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스를 저장
+        updateCharacter(); // 캐릭터 상태 업데이트
+        purchasePopup.style.display = 'none'; // 팝업 숨기기
+    }
+
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;
         updateCharacter();
@@ -70,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     professorOption.addEventListener('click', () => {
         currentIndex = 2;
-        updateCharacter();
+        showPurchasePopup(currentIndex); // 구매 대기 중인 캐릭터의 인덱스 저장 및 팝업 표시
     });
 
     leftArrow.addEventListener('click', () => {
@@ -82,6 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = (currentIndex === characters.length - 1) ? 0 : currentIndex + 1;
         updateCharacter();
     });
+
+    // 팝업 취소 버튼 클릭 시 팝업 숨기기
+    cancelPurchase.addEventListener('click', () => {
+        purchasePopup.style.display = 'none';
+    });
+
+    // 팝업 구매 버튼 클릭 시 처리 로직 추가
+    confirmPurchase.addEventListener('click', handlePurchase);
 
     // 초기 카메라 설정
     let rotateX = 65; // 세로 각도
