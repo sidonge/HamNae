@@ -4,7 +4,7 @@ body {
     justify-content: center; 
     align-items: center; 
     height: 100vh; 
-    background-color: #f0f0f0; 
+    background-color: #a7c4ff; 
     overflow: hidden; 
     position: relative; 
 }
@@ -72,6 +72,9 @@ model-viewer#windowModel, model-viewer#rabbitModel {
     width: 100%;
     height: 100%;
     transition: cameraOrbit 0.3s ease;
+}
+model-viewer#windowModel {
+    transform: scale(1.9)
 }
 model-viewer#rabbitModel {
     width: 12rem;
