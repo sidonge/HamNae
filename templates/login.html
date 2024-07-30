@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 구글 클라이언트 ID 설정 -->
+  <meta name="google-signin-client_id" content="955565213278-nrg3mnvuf2da7d4dtu1todajldjm7fj7.apps.googleusercontent.com">
+  
+  <title>로그인</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/login_style.css)}}">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  
+  <!-- 카카오 로그인 JavaScript SDK 로드 -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
+  <!-- 네이버 로그인 JavaScript SDK 로드 -->
+  <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  
+  <!-- jQuery 라이브러리 로드 -->
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  
+  <!-- 구글 로그인 플랫폼 라이브러리 로드 -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+  
+<body>
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="/static/image/logo.png" alt="로고"> 
+      <div class="signup-link">
+        <span class="signup-text">아직 회원이 아니신가요?</span> 
+        <a href="/signup">회원가입 하기</a>
+      </div>
+    </div>
+
+    <form method="POST" action="/auth/login" style="width: 100%;"> 
+      <div class="input-group">
+        <input type="text" id="userid" name="id" placeholder="아이디" required />
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="비밀번호" required />
+      </div>
+      <div class="resetPassword">비밀번호 찾기</div>
+      <button type="submit">로그인 하기</button> <!-- submit 버튼을 폼 내부로 이동 -->
+    </form>
+    </div>
+
+    <div class="login-social">
+      <img id="naverBtn" src="/static/image/naver.png" alt="naver"/>
+      <img id="googleBtn" src="/static/image/google.png" alt="google"/>
+      <img id="kakaoBtn" src="/static/image/kakao.png" alt="kakao"/>
+    </div>
+    <!-- 기존 네이버 로그인 버튼 (숨겨진 상태) -->
+    <div id="naver_id_login" style="display: none;"></div>
+    <!-- 기존 구글 로그인 버튼 (숨겨진 상태) -->
+    <div class="g-signin2" data-onsuccess="onSignIn" style="display: none;"></div>
+  </div>
+<script src="{{ url_for('static', path='js/sns_login.js)}}"></script>
+</body>
+</html>

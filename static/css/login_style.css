@@ -1,0 +1,123 @@
+/* fontweight
+    black :  900 
+    extra bold : 800
+    bold : 700
+    semi bold : 600
+    medium : 500
+    regular : 400
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+
+body {
+    background: linear-gradient(white, #F5EED1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 1.25rem;
+    width: 100%; 
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1.25rem;
+}
+
+.signup-link a {
+    text-decoration: none; 
+    color: #AB936B;
+}
+
+.signup-link {
+    margin-bottom: 0.6rem; 
+    padding-bottom: 0.6rem; 
+    color: #71594E;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.login-container {
+    padding: 1.8rem;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 21.8rem;
+    margin-bottom: 0.6rem;
+}
+
+.input-group {
+    margin-top: 1.25rem;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.9rem;
+    border:  1px solid #E5E5E5;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+
+
+button {
+    background-color:#AB936B;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #71594E;
+}
+
+.login-social {
+    display: flex;
+    justify-content: center; 
+    gap: 1.25rem; 
+}
+
+.login-social img {
+    width: 3.125rem; 
+    height: 3.125rem;
+    cursor: pointer; 
+}
+
+.resetPassword{
+    display: inline;
+    color: #8D8C8E;
+    border-bottom: solid 1px #8D8C8E;
+    margin-left: 16.3rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.resetPassword:hover{
+    cursor: pointer;
+}
