@@ -43,4 +43,14 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'mypage.html';
 
     });
+
+    menuIcon.addEventListener('click', () => {
+        navPopup.style.display = 'block';
+        menuIcon.style.display = 'none';
+    });
+
+    exitIcon.addEventListener('click', () => {
+        navPopup.style.display = 'none';
+        menuIcon.style.display = 'block';
+    });
 });

@@ -4,32 +4,11 @@ body {
     overflow-y: scroll;
 }
 
-/* nav.css */
-nav {
-    margin: 2rem 0;
-}
-
-.logo {
-    width: 4rem;
-
-    position: fixed;
-    left: 2rem;
-    top: 2rem;
-}
-
-.menuIcon {
-    position: fixed;
-    right: 2rem;
-    top: 2rem;
-
-    width: 2rem;
-}
-
 /* title */
 .titleSection {
     text-align: center;
 
-    margin-bottom: 3%
+    margin: 5% 0 3% 0;
 }
 
 .titleWalk {
@@ -324,4 +303,35 @@ input {
     position: relative;
     bottom: 5rem;
     left: 86rem;
+}
+
+/* map - 지도 */
+.custom-map-control-button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer;
+}
+
+.filter-controls {
+    margin: 10px;
+}
+
+.gm-fullscreen-control {
+    background: none !important;
+    box-shadow: none !important;
+    background-image: url('/static/image/icon-map.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+.gm-fullscreen-control> img {
+    display: none !important;
 }
