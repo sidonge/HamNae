@@ -14,7 +14,7 @@
         <!-- 윈도우 모델 -->
         <model-viewer id="windowModel" src="{{ url_for('static', path='models/window.glb') }}" alt="A 3D model of a window" environment-image="neutral" ar></model-viewer>
         <!-- 토끼 모델 -->
-        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/ImageToStl.com_fbx-rabbit.glb') }}" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/rabbit.glb') }}" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
     </div>
 
     <!-- nav -->
@@ -58,28 +58,27 @@
 
     <!-- 미션 -->
     <div class="water">
-        <img id="water_cleared_stamp" class="waterTalk talk-image" src="{{ url_for('static', path='image/waterTalk.png') }}" alt="Water Quest">
-        <input type="file" id="water_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="water_cleared_stamp" class="waterTalk talk-image" src="{{ url_for('static', path='image/waterTalk.png') }}">
+        <input type="file" id="waterUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="clean">
-        <img id="clean_cleared_stamp" class="cleanTalk talk-image" src="{{ url_for('static', path='image/cleanTalk.png') }}" alt="Clean Quest">
-        <input type="file" id="clean_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="broomstick_cleared_stamp" class="cleanTalk talk-image" src="{{ url_for('static', path='image/cleanTalk.png') }}">
+        <input type="file" id="cleanUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="cooking">
-        <img id="cooking_cleared_stamp" class="cookingTalk talk-image" src="{{ url_for('static', path='image/cookTalk.png') }}" alt="Cooking Quest">
-        <input type="file" id="cooking_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="pot_cleared_stamp" class="cookingTalk talk-image" src="{{ url_for('static', path='image/cookTalk.png') }}">
+        <input type="file" id="cookingUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="wash">
-        <img id="wash_cleared_stamp" class="washTalk talk-image" src="{{ url_for('static', path='image/washTalk.png') }}" alt="Wash Quest">
-        <input type="file" id="wash_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="bath_cleared_stamp" class="washTalk talk-image" src="{{ url_for('static', path='image/washTalk.png') }}">
+        <input type="file" id="washUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
     <div class="table">
-        <img id="table_cleared_stamp" class="tableTalk talk-image" src="{{ url_for('static', path='image/talkTalk.png') }}" alt="Table Quest">
-        <input type="file" id="table_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="table_cleared_stamp" class="tableTalk" src="{{ url_for('static', path='image/talkTalk.png') }}">
     </div>
     <div class="bed">
-        <img id="bed_cleared_stamp" class="bedTalk talk-image" src="{{ url_for('static', path='image/bedIcon.png') }}" alt="Bed Quest">
-        <input type="file" id="bed_Upload" class="upload-input" accept="image/*" style="display:none;">
+        <img id="meditation_cleared_stamp" class="bedTalk talk-image" src="{{ url_for('static', path='image/bedIcon.png') }}">
+        <input type="file" id="bedUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
 
     <div class="blink">토끼를 눌러 보세요.</div>

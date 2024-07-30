@@ -21,6 +21,7 @@
                 <h3><span>길동</span></h3>
                 <h3>님의 퀘스트 달성도</h3>
             </div>
+            <!-- <button id="resetButton">리셋</button> -->
             <img src="{{ url_for('static', path='image/quest_line.png') }}" alt="Quest Line">
         </div>
 
@@ -30,22 +31,22 @@
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/water.png') }}" alt="Water Mission">
                     <h3>물 마시기</h3>
-                    <img id="water_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Water Cleared Stamp">
+                    <img id="water_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/sprout.png') }}" alt="Sprout Mission">
+                    <img src="{{ url_for('static', path='image/sprout.png') }}">
                     <h3>산책하기</h3>
-                    <img id="sprout_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Sprout Cleared Stamp">
+                    <img id="sprout_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/broomstick.png') }}" alt="Broomstick Mission">
+                    <img src="{{ url_for('static', path='image/broomstick.png') }}">
                     <h3>방청소</h3>
-                    <img id="broomstick_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Broomstick Cleared Stamp">
+                    <img id="broomstick_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/pot.png') }}" alt="Pot Mission">
+                    <img src="{{ url_for('static', path='image/pot.png') }}">
                     <h3>요리하기</h3>
-                    <img id="pot_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Pot Cleared Stamp">
+                    <img id="pot_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/pills.png') }}" alt="Pills Mission">
@@ -77,6 +78,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     <script src="{{ url_for('static', path='js/quest.js') }}"></script>
 </body>

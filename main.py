@@ -63,6 +63,27 @@ def get_status():
         print(f"Error reading status: {e}")
         return {}
 
+@app.get("/", response_class=HTMLResponse)
+async def main(request: Request):
+    return templates.TemplateResponse("main.html", {"request": request})
+
+@app.get("/home", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/petslist")
+async def petslist(request: Request):
+    return templates.TemplateResponse("petslist.html", {"request": request})
+
+@app.get("/quest", response_class=HTMLResponse)
+async def quest(request: Request):
+    return templates.TemplateResponse("quest.html", {"request": request})
+
+@app.get("/quest_status")
+async def quest_status():
+    status = get_status()
+    return JSONResponse(content={"status": status}, status_code=200)
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     try:
@@ -90,27 +111,6 @@ async def update_quest_stamps(request: Request):
             return JSONResponse(content={"success": False, "error": "Mission not provided"}, status_code=400)
     except Exception as e:
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
-
-@app.get("/", response_class=HTMLResponse)
-async def main(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
-
-@app.get("/home", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
-
-@app.get("/petslist")
-async def petslist(request: Request):
-    return templates.TemplateResponse("petslist.html", {"request": request})
-
-@app.get("/quest", response_class=HTMLResponse)
-async def quest(request: Request):
-    return templates.TemplateResponse("quest.html", {"request": request})
-
-@app.get("/quest_status")
-async def quest_status():
-    status = get_status()
-    return JSONResponse(content={"status": status}, status_code=200)
 
 @app.get("/models/{model_name}")
 async def get_model(model_name: str):
