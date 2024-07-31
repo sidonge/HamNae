@@ -47,6 +47,19 @@ html, body {
     background: linear-gradient(to bottom, rgba(255, 238, 208, 0.3) 0%, rgba(255, 238, 208, 1) 100%);
 }
 
+/* loading page */
+
+nav {
+    margin: 2rem 0 0 3rem;
+    position: absolute;
+}
+
+.logo {
+    width: 4rem;
+    position: absolute;
+    left: -1rem;
+}
+
 .mainText {
     font-family: "Pretendard-Medium";
     color: #71594E;
@@ -59,6 +72,7 @@ html, body {
     margin: 0;
     position: absolute;
     width: 100%; /* 전체 너비 */
+    text-shadow: 0 0 1.5px #71594E;
 }
 
 
@@ -81,6 +95,11 @@ html, body {
 #down {
     width: 100%; /* 버튼 크기에 맞게 조정 */
     height: 100%; /* 버튼 크기에 맞게 조정 */
+    transition: transform 0.3s ease;
+}
+
+.down:hover {
+    transform: translate(0, 10px);
 }
 
 .gradient-background {
@@ -103,3 +122,4 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
