@@ -125,6 +125,10 @@ async def get_model(model_name: str):
 async def read_character(request: Request):
     return templates.TemplateResponse("character.html", {"request": request})
 
+@app.get("/chat", response_class=HTMLResponse)
+async def get_chat(request: Request):
+    return templates.TemplateResponse("chat.html", {"request": request})
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
