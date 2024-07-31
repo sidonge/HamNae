@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="model-container">
-        <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/glb-garden-home-x.glb') }}" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/3.0007-home-x.glb') }}" environment-image="neutral" ar></model-viewer>
         <div id="backgroundOverlay"></div>
         <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>
@@ -34,15 +34,13 @@
         <section class="menuSection">
             <div class="menu">
                 <div class="mission" id="mission">집으로</div>
-                <hr />
-                <div class="talk" id="talk">대화하기</div>
-                <hr />
+                <hr class="hr" />
                 <div class="walk" id="walk">산책하기</div>
-                <hr />
+                <hr class="hr" />
                 <div class="character" id="character">캐릭터 변경</div>
-                <hr />
+                <hr class="hr" />
                 <div class="mypage" id="mypage">마이페이지</div>
-                <hr />
+                <hr class="hr" />
             </div>
         </section>
     </div>

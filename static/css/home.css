@@ -9,9 +9,52 @@ body {
     position: relative; 
 }
 
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
 /* nav */
 nav {
-    margin: 2rem 0;
+    height: 5rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
 }
 
 .logo {
@@ -19,15 +62,23 @@ nav {
 
     position: fixed;
     left: 2rem;
-    top: 2rem;
+    top: 1.25rem;
 }
 
 .menuIcon {
     position: fixed;
     right: 2rem;
-    top: 2rem;
+    top: 1.6rem;
 
     width: 2rem;
+}
+
+.exitIcon {
+    position: fixed;
+    width: 1.5rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
 }
 
 /* title */
@@ -272,7 +323,7 @@ model-viewer#rabbitModel {
 }
 
 /* 채팅하기 */
-.table {
+.talk {
     width: 10rem;
     height: 10rem;
     position: fixed;
@@ -298,11 +349,11 @@ model-viewer#rabbitModel {
     bottom: 18.9rem;
     z-index: 11;
 }
-.table:hover .tableTalk{
+.talk:hover .tableTalk{
     display: block;
     opacity: 1;
 }
-.table:hover .tableText {
+.talk:hover .tableText {
     display: block;
     opacity: 1;
 }

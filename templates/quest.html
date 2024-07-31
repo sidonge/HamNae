@@ -4,17 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', path='css/quest.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/quest.js') }}" defer></script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <title>퀘스트 달성도</title>
 </head>
 <body>
     <!-- nav -->
     <nav>
-        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" alt="Logo">
-        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon" alt="Menu Icon">
+        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
+        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
     </nav>
 
-    <section>
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr class="hr" />
+                <div class="walk" id="walk">산책하기</div>
+                <hr class="hr" />
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr class="hr" />
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr class="hr" />
+            </div>
+        </section>
+    </div>
+
+    <section class="questSection">
         <div class="quest_title">
             <p>마이페이지 > 퀘스트 달성도</p>
             <div>
@@ -41,12 +64,12 @@
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/broomstick.png') }}">
                     <h3>방청소</h3>
-                    <img id="broomstick_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
+                    <img id="clean_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/pot.png') }}">
                     <h3>요리하기</h3>
-                    <img id="pot_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
+                    <img id="cooking_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/pills.png') }}" alt="Pills Mission">
@@ -56,7 +79,7 @@
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/bath.png') }}" alt="Bath Mission">
                     <h3>씻기</h3>
-                    <img id="bath_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Bath Cleared Stamp">
+                    <img id="wash_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Bath Cleared Stamp">
                 </div>
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/talk.png') }}" alt="Talk Mission">
@@ -66,7 +89,7 @@
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/meditaion.png') }}" alt="Meditation Mission">
                     <h3>명상하기</h3>
-                    <img id="meditation_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Meditation Cleared Stamp">
+                    <img id="bed_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Meditation Cleared Stamp">
                 </div>
             </div>
             <div id="point_card">

@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 미션 이름 : 스탬프 이름
     const stampMap = {
         'water': 'water_cleared_stamp',
-        'clean': 'broomstick_cleared_stamp',
-        'cooking': 'pot_cleared_stamp',
-        'wash': 'bath_cleared_stamp',
-        'bed': 'meditation_cleared_stamp'
+        'clean': 'clean_cleared_stamp',
+        'cooking': 'cooking_cleared_stamp',
+        'wash': 'wash_cleared_stamp',
+        'bed': 'bed_cleared_stamp'
     };
 
     // 스탬프 업데이트 함수
