@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 import json
+from map import router as map_router
 
 app = FastAPI()
 
@@ -167,6 +168,13 @@ async def read_character(request: Request):
 @app.get("/chat", response_class=HTMLResponse)
 async def get_chat(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
+
+app.include_router(map_router)
+
+@app.get("/walk", response_class=HTMLResponse)
+def read_root(request: Request):
+    # 'walkpage.html'을 응답으로 반환
+    return templates.TemplateResponse("walkpage.html", {"request": request})
 
 if __name__ == "__main__":
     import uvicorn
