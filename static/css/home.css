@@ -6,12 +6,55 @@ body {
     height: 100vh; 
     background-color: #a7c4ff; 
     overflow: hidden; 
-    position: relative; 
+    position: relative;
+}
+
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
 }
 
 /* nav */
 nav {
-    margin: 2rem 0;
+    height: 5rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
 }
 
 .logo {
@@ -19,15 +62,23 @@ nav {
 
     position: fixed;
     left: 2rem;
-    top: 2rem;
+    top: 1.25rem;
 }
 
 .menuIcon {
     position: fixed;
     right: 2rem;
-    top: 2rem;
+    top: 1.6rem;
 
     width: 2rem;
+}
+
+.exitIcon {
+    position: fixed;
+    width: 1.5rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
 }
 
 /* title */
@@ -59,29 +110,30 @@ nav {
     font-family: "Pretendard-Bold";
 }
 
-
+/* 모델 뷰어 */
 .model-container {
     position: fixed;
-    width: 100%;
-    height: 130%;
-    top: -30%;
+    width: 285%;
+    height: 285%;
     z-index: 0;
+    top: 43%;
+    transform: translate(0, -50%);
 }
+
 model-viewer#windowModel, model-viewer#rabbitModel {
     position: absolute;
     width: 100%;
     height: 100%;
     transition: cameraOrbit 0.3s ease;
 }
-model-viewer#windowModel {
-    transform: scale(1.9)
-}
+
 model-viewer#rabbitModel {
     width: 12rem;
     height: 12rem;
     left: calc(50% - 5rem);
-    bottom: 2%;
+    top: calc(50% - -13rem);
 }
+
 .controls {
     position: absolute;
     bottom: 20px;
@@ -89,12 +141,14 @@ model-viewer#rabbitModel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+    z-index: 1;
 }
+
 .controls div {
     display: flex;
     align-items: center;
 }
+
 .triangle {
     width: 40px;
     height: 40px;
@@ -113,7 +167,7 @@ model-viewer#rabbitModel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Controls가 다른 요소 위에 있도록 */
+    z-index: 1;
 }
 .rabbit-controls div {
     display: flex;
@@ -130,15 +184,15 @@ model-viewer#rabbitModel {
     width: 2rem;
     height: 4rem;
     position: fixed;
-    top: 23.5rem;
-    right: 32.4rem;
+    top: 27rem;
+    right: 31.5rem;
     z-index: 2;
 }
 .waterTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 19rem;
+    bottom: 16rem;
     right: 25rem;
     z-index: 2;
     transition: opacity 0.5s;
@@ -166,17 +220,17 @@ model-viewer#rabbitModel {
 /* 청소하기 */
 .clean {
     width: 6rem;
-    height: 32rem;
+    height: 30rem;
     position: fixed;
-    top: 10rem;
-    left: 6rem;
+    top: 13rem;
+    left: 9rem;
 }
 .cleanTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 30.2rem;
-    left: 6rem;
+    bottom: 28rem;
+    left: 8.5rem;
     transition: opacity 0.5s;
 }
 .cleanText {
@@ -201,18 +255,18 @@ model-viewer#rabbitModel {
 
 /* 요리하기 */
 .cooking {
-    width: 11rem;
-    height: 15rem;
+    width: 12rem;
+    height: 14rem;
     position: fixed;
-    bottom: 20rem;
-    left: 62rem;
+    bottom: 16rem;
+    left: 65rem;
 }
 .cookingTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 30.75rem;
-    right: 24rem;
+    bottom: 28rem;
+    right: 21rem;
     transition: opacity 0.5s;
 }
 .cookingText {
@@ -237,18 +291,18 @@ model-viewer#rabbitModel {
     
 /* 씻기 */
 .wash {
-    width: 6rem;
-    height: 32rem;
+    width: 4rem;
+    height: 35rem;
     position: fixed;
-    bottom: 11rem;
-    right: 6.3rem;
+    bottom: 1rem;
+    right: 8.5rem;
 }
 .washTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    top: 1rem;
-    right: 2.5rem;
+    top: 5.5rem;
+    right: 7.5rem;
     transition: opacity 0.5s;
 }
 .washText {
@@ -272,18 +326,18 @@ model-viewer#rabbitModel {
 }
 
 /* 채팅하기 */
-.table {
+.talk {
     width: 10rem;
     height: 10rem;
     position: fixed;
-    bottom: 10rem;
-    right: 22rem;
+    bottom: 3rem;
+    right: 20rem;
 }
 .tableTalk {
     display: none;
     width: 10rem;
     position: relative;
-    bottom: 0.5rem;
+    bottom: 2rem;
     left: 5rem;
     transition: opacity 0.5s;
 }
@@ -298,11 +352,11 @@ model-viewer#rabbitModel {
     bottom: 18.9rem;
     z-index: 11;
 }
-.table:hover .tableTalk{
+.talk:hover .tableTalk{
     display: block;
     opacity: 1;
 }
-.table:hover .tableText {
+.talk:hover .tableText {
     display: block;
     opacity: 1;
 }
@@ -310,16 +364,17 @@ model-viewer#rabbitModel {
 /* 명상하기 */
 .bed {
     width: 19rem;
-    height: 18rem;
+    height: 8rem;
     position: fixed;
-    top: 20rem;
+    top: 33rem;
     left: 14rem;
 }
 .bedTalk {
     display: none;
     width: 10rem;
-    position: relative;
-    left: 10rem;
+    position: fixed;
+    top: 30rem;
+    left: 25rem;
     transition: opacity 0.5s;
 }
 .bedText {
@@ -342,10 +397,46 @@ model-viewer#rabbitModel {
     opacity: 1;
 }
 
+/* 약 먹기 */
+.pills {
+    width: 3rem;
+    height: 4rem;
+    position: fixed;
+    top: 26rem;
+    left: 20rem;
+}
+.pillsTalk {
+    display: none;
+    width: 10rem;
+    position: fixed;
+    top: 23.5rem;
+    left: 19.5rem;
+    transition: opacity 0.5s;
+}
+.pillsText {
+    font-family: "Pretendard-Boid";
+    font-size: 0.9rem;
+    color: #71594E;
+    display: none;
+    width: 10rem;
+    position: fixed;
+    left: 25.2rem;
+    bottom: 21rem;
+    z-index: 11;
+}
+.pills:hover .pillsTalk{
+    display: block;
+    opacity: 1;
+}
+.pills:hover .pillsText{
+    display: block;
+    opacity: 1;
+}
+
 .blink {
     position: fixed;
     bottom: 14rem;
-    left: calc(50% - 5rem);
+    left: calc(52.25% - 5rem);
     font-family: "Pretendard-Boid";
     font-size: 0.8rem;
     color: #71594E;

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchasePopup = document.getElementById('purchasePopup');
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
+    const purchaseButton = document.getElementById('purchaseButton');
 
     const characters = [
         {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: '곰식이',
             description: '동식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
-            model: '../static/models/bear.glb'
+            model: '../static/models/bearbear.glb'
         },
         {
             name: '교수님',
@@ -38,17 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
-        hamModel.setAttribute('src', character.model);
-        
+    
+        // 모델 뷰어 소스 업데이트
+        if (currentIndex === 2 && purchasedCharacterIndex === 2) {
+            // 교수님 캐릭터가 선택된 상태이고, 이미 구매한 경우
+            hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb');
+            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
+        } else {
+            // 현재 선택된 캐릭터에 맞는 모델을 설정
+            hamModel.setAttribute('src', character.model);
+        }
+    
         // 모든 선택 옵션의 초기화
         hamgingOption.querySelector('.select').textContent = '선택하기';
         dongsikOption.querySelector('.select').textContent = '선택하기';
         professorOption.querySelector('.select').textContent = purchasedCharacterIndex === 2 ? '선택하기' : '구매하기';
-        
+    
+        // 초기 상태 설정
         hamgingOption.classList.remove('selected');
         dongsikOption.classList.remove('selected');
         professorOption.classList.remove('selected');
         
+        // 구매 상태와 선택 상태에 따른 배경색 설정
+        if (purchasedCharacterIndex === 2) {
+            professorOption.querySelector('.select').style.backgroundColor = '#F5EED1'; // '선택하기' 색상
+        } else {
+            professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
+        }
+        professorOption.querySelector('.select').style.color = '#070000'; // 텍스트 색상 설정
+    
         // 현재 선택된 캐릭터에 대한 선택 상태 적용
         if (currentIndex === 0) {
             hamgingOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
@@ -57,12 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
             dongsikOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
             dongsikOption.classList.add('selected');
         } else if (currentIndex === 2) {
-            professorOption.querySelector('.select').innerHTML = purchasedCharacterIndex === 2 ? '선택됨&nbsp;<i class="fas fa-check"></i>' : '구매하기';
-            professorOption.classList.add(purchasedCharacterIndex === 2 ? 'selected' : '');
-            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
+            if (purchasedCharacterIndex === 2) {
+                professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
+                professorOption.classList.add('selected');
+                professorOption.querySelector('.select').style.backgroundColor = '#D2BEA1'; // '선택됨' 색상
+            } else {
+                professorOption.querySelector('.select').innerHTML = '구매하기';
+                professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
+            }
         }
     }
     
+
     function showPurchasePopup(index) {
         pendingPurchaseIndex = index;
         purchasePopup.style.display = 'flex'; // 팝업 표시
@@ -70,9 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handlePurchase() {
         purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스를 저장
-        updateCharacter(); // 캐릭터 상태 업데이트
         purchasePopup.style.display = 'none'; // 팝업 숨기기
+    
+        // 교수님 캐릭터 구매 후 모델 뷰어 설정
+        if (purchasedCharacterIndex === 2) {
+            hamModel.setAttribute('src', '../static/models/rabbitblack.glb'); // rabbitblack으로 변경
+        }
+    
+        updateCharacter(); // 캐릭터 상태 업데이트
     }
+    
 
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;
@@ -111,11 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
         purchasePopup.style.display = 'none';
     });
 
-    // 팝업 구매 버튼 클릭 시 처리 로직 추가
+    // 팝업 확인 버튼 클릭 시 구매 처리
     confirmPurchase.addEventListener('click', handlePurchase);
 
+    // 모델 뷰어 조정
     // 초기 카메라 설정
-    let rotateX = 65; // 세로 각도
+    let rotateX = 55; // 세로 각도
     let rotateY = 230; // 가로 각도
     let zoomLevel = 50; // 확대 비율
 
@@ -124,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 시점 조정
-    backgroundModel.style.transform = 'translateY(1rem)';
+    backgroundModel.style.transform = 'translateY(4rem)';
 
     updateRotation();
     updateCharacter();
