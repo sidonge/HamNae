@@ -18,30 +18,24 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     logo.addEventListener("click", function() {
-        window.location.href = 'main.html';
-
-    });
-
-    talk.addEventListener("click", function() {
-        window.location.href = 'chat.html';
-
+        window.location.href = '/main';
     });
 
     mission.addEventListener("click", function() {
-        window.location.href = 'home.html';
-
+        window.location.href = '/home';
     });
+
     walk.addEventListener("click", function() {
-        window.location.href = 'walkpage.html';
-
+        localStorage.setItem('walkCompleted', 'true');
+        window.location.href = '/walkpage';
     });
+
     character.addEventListener("click", function() {
-        window.location.href = 'character.html';
-
+        window.location.href = '/character';
     });
-    mypage.addEventListener("click", function() {
-        window.location.href = 'mypage.html';
 
+    mypage.addEventListener("click", function() {
+        window.location.href = '/mypage';
     });
 
     menuIcon.addEventListener('click', () => {

@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'clean': 'clean_cleared_stamp',
                         'cooking': 'cooking_cleared_stamp',
                         'wash': 'wash_cleared_stamp',
-                        'bed': 'bed_cleared_stamp'
+                        'bed': 'bed_cleared_stamp',
+                        'pills':'pills_cleared_stamp'
                     };
                     const newFileName = stampMap[mission] + '.' + file.name.split('.').pop(); // 새로운 파일 이름 설정
 
@@ -63,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'clean': 'clean_cleared_stamp',
             'cooking': 'cooking_cleared_stamp',
             'wash': 'wash_cleared_stamp',
-            'bed': 'bed_cleared_stamp'
+            'bed': 'bed_cleared_stamp',
+            'pills':'pills_cleared_stamp'
         };
 
         const stampId = stampMap[mission];
@@ -90,14 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // 초기 화면 설정
         let rotateX = 90;
         let rotateY = -270;
+        let zoomLevel = 5;
     
         const minRotateY = -300;
         const maxRotateY = -240;
     
         function updateRotation() {
-            const cameraOrbit = `${rotateY}deg ${rotateX}deg`;
+            const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}rem`;
             windowModel.cameraOrbit = cameraOrbit;
-            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg`;
+            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}rem`;
         }
     
         function handleUpClick() {

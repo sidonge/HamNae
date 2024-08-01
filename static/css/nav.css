@@ -67,6 +67,10 @@ src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretenda
     justify-content: center;
 }
 
+.menuIcon {
+    cursor: pointer;
+}
+
 .talk, .mission, .walk, .character, .mypage {
     font-family: "Pretendard-SemiBold";
     font-size: 1.3rem;

@@ -41,6 +41,43 @@ src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretenda
     format("woff");
 }
 
+/* nav */
+nav {
+    height: 5rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+
+.logo {
+    width: 4rem;
+
+    position: absolute;
+    left: 2rem;
+    top: 1.25rem;
+}
+
+.menuIcon {
+    position: absolute;
+    right: 2rem;
+    top: 1.6rem;
+
+    width: 2rem;
+
+    cursor: pointer;
+}
+
+.exitIcon {
+    position: absolute;
+    width: 1.5rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+}
+
 /* title */
 .titleSection {
     text-align: center;

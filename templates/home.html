@@ -13,9 +13,9 @@
   <body>
     <div class="model-container">
         <!-- 윈도우 모델 -->
-        <model-viewer id="windowModel" src="{{ url_for('static', path='models/window.glb') }}" alt="A 3D model of a window" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="windowModel" src="{{ url_for('static', path='models/room.glb') }}" environment-image="neutral" ar></model-viewer>
         <!-- 토끼 모델 -->
-        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/rabbit.glb') }}" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>
 
    <!-- nav -->
@@ -101,7 +101,11 @@
         <img id="bed_cleared_stamp" class="bedTalk talk-image" src="{{ url_for('static', path='image/bedIcon.png') }}">
         <input type="file" id="bedUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
+    <div class="pills">
+        <img id="pills_cleared_stamp" class="pillsTalk talk-image" src="{{ url_for('static', path='image/pillsTalk.png') }}">
+        <input type="file" id="pillsUpload" class="upload-input" accept="image/*" style="display:none;">
+    </div>
 
-    <div class="blink">토끼를 눌러 보세요.</div>
+    <div class="blink">동물을 눌러 보세요.</div>
 </body>
 </html>

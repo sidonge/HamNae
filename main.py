@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, Request
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi import FastAPI, Request, HTTPException, Cookie, Depends
+from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, HTMLResponse
 from datetime import date
@@ -28,15 +29,14 @@ app.add_middleware(
 # Static Files 설정
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+templates = Jinja2Templates(directory="templates")
+
 # 템플릿 설정
 # Import and include routers for authentication
 from auth import login, register
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
-@app.get("/", response_class=JSONResponse)
-def read_root():
-    return {"message": "Welcome to FastAPI"}
 
 @app.get("/mypage", response_class=HTMLResponse)
 async def get_user(request: Request, session_id: Optional[str] = Cookie(None), db: Session = Depends(get_db)):
@@ -73,10 +73,11 @@ STATUS_FILE = "status.json"
 # 미션과 파일 이름 매핑
 STAMP_MAP = {
     'water': 'water_cleared_stamp.png',
-    'clean': 'broomstick_cleared_stamp.png',
-    'cooking': 'pot_cleared_stamp.png',
-    'wash': 'bath_cleared_stamp.png',
-    'bed': 'meditation_cleared_stamp.png'
+    'clean': 'clean_cleared_stamp.png',
+    'cooking': 'cooking_cleared_stamp.png',
+    'wash': 'wash_cleared_stamp.png',
+    'bed': 'bed_cleared_stamp.png',
+    'pills':'pills_cleared_stamp'
 }
 
 def save_status(mission: str):
@@ -113,6 +114,10 @@ async def main(request: Request):
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/walkpage", response_class=HTMLResponse)
+async def quest(request: Request):
+    return templates.TemplateResponse("walkpage.html", {"request": request})
 
 @app.get("/petslist")
 async def petslist(request: Request):
