@@ -340,3 +340,16 @@ nav {
     animation: bobbing 3s ease-in-out infinite; 
 }
 
+
+@keyframes maintext {
+    0%, 100% {
+        transform: translateY(10px); 
+    }
+    50% {
+        transform: translateY(0); 
+    }
+}ƒ
+
+.mainText {
+    animation: maintext 3s ease-in-out infinite; 
+}
