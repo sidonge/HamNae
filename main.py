@@ -108,8 +108,8 @@ def get_status():
         return {}
 
 @app.get("/", response_class=HTMLResponse)
-async def main(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
+async def get_loading(request: Request):
+    return templates.TemplateResponse("loading.html", {"request": request})
 
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
@@ -158,9 +158,8 @@ async def update_quest_stamps(request: Request):
     except Exception as e:
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
 
-@app.get("/loading", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def get_loading(request: Request):
-    # 'walkpage.html'을 응답으로 반환
     return templates.TemplateResponse("loading.html", {"request": request})
 
 # @app.get("/", response_class=HTMLResponse)
