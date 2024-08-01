@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: '교수님',
             description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
-            model: '../static/models/rabbitBlack.glb'
+            model: '../static/models/rabbit.glb'
         }
     ];
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 모델 뷰어 소스 업데이트
         if (currentIndex === 2 && purchasedCharacterIndex === 2) {
             // 교수님 캐릭터가 선택된 상태이고, 이미 구매한 경우
-            hamModel.setAttribute('src', '../static/models/rabbit.glb');
+            hamModel.setAttribute('src', '../static/models/rabbitblack.glb');
         } else {
             // 현재 선택된 캐릭터에 맞는 모델을 설정
             hamModel.setAttribute('src', character.model);
@@ -96,14 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function handlePurchase() {
         purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스를 저장
         purchasePopup.style.display = 'none'; // 팝업 숨기기
-        updateCharacter(); // 캐릭터 상태 업데이트
-
+    
         // 교수님 캐릭터 구매 후 모델 뷰어 설정
         if (purchasedCharacterIndex === 2) {
-            hamModel.setAttribute('src', '../static/models/rabbit.glb');
+            hamModel.setAttribute('src', '../static/models/rabbitblack.glb'); // rabbitblack으로 변경
         }
-
+    
+        updateCharacter(); // 캐릭터 상태 업데이트
     }
+    
 
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;

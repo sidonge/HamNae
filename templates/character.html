@@ -70,9 +70,11 @@
     <!-- 캐릭터 선택 박스 -->
     <section class="character-select-box">
         <div class="coins">
-            <img src="{{ url_for('static', path='image/coins-icon.png') }}" class="coinBackground">
-            <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
-            <div class="coinText">300</div>
+            <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
+            <div class="coinFlex">
+                <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
+                <div class="coinText">&nbsp;300</div>
+            </div>
         </div>
 
         <div class="character-option" id="hamgingOption">

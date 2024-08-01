@@ -35,39 +35,44 @@ src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretenda
     format("woff");
 }
 
-/* nav */
-nav {
-    height: 5rem;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 900;
+* {
+box-sizing: content-box;
 }
 
-.logo {
-    width: 4rem;
-
-    position: fixed;
-    left: 2rem;
-    top: 1.25rem;
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
 }
 
-.menuIcon {
-    position: fixed;
-    right: 2rem;
-    top: 1.6rem;
-
-    width: 2rem;
+html {
+overflow: hidden;
+overflow-y: hidden;
 }
 
-.exitIcon {
-    position: fixed;
-    width: 1.5rem;
-    right: 2rem;
-    top: 2rem;
-    cursor: pointer;
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
 }
 
 body {
@@ -78,7 +83,7 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(rgb(162, 230, 255), rgb(187, 210, 168));
+    background: linear-gradient(rgb(163, 217, 237), rgb(217, 224, 213));
 }
 
 .model-container {
@@ -108,6 +113,7 @@ model-viewer {
     left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.001);
     z-index: -10000;
 }
 
@@ -115,6 +121,7 @@ model-viewer {
     width: 40%;
     height: 40%;
     bottom: 10%;
+    
 }
 
 #hamModel::after {
@@ -149,7 +156,7 @@ nav {
     width: 2rem;
 }
 
-/* title */
+/* 제목 */
 .titleSection {
     text-align: center;
     position: fixed;
@@ -240,10 +247,31 @@ nav {
 .coins {
     position: relative;
     bottom: 14.5%;
+    align-items: center;
 }
 
 .coinBackground {
-    width: 75%;
+    width: 80%;
+}
+
+.coin {
+    width: 13%;
+}
+
+.coinText {
+    font-family: "Pretendard-Regular";
+    font-size: 1.1rem;
+    color: #AB936B;
+}
+
+.coinFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    right: 0.25rem;
+    bottom: 3.2rem;
 }
 
 .character-option {
@@ -252,7 +280,7 @@ nav {
     margin-bottom: 1.75rem;
     cursor: pointer;
     position: relative;
-    bottom: 11%;
+    bottom: 18%;
 }
 
 .hamImg {
@@ -285,9 +313,12 @@ nav {
     background-color: #D2BEA1;
 }
 
-.character-option.locked .select {
+#professorOption .select {
     background-color: #A88756;
-    color: white;
+}
+
+#professorOption.selected .select {
+    background-color: #D2BEA1;
 }
 
 /* 캐릭터 설명 */
@@ -311,6 +342,7 @@ nav {
     margin-bottom: 1rem;
 }
 
+/* 캐릭터 네비게이션 */
 .character-navigation {
     position: fixed;
     bottom: 27.5%;
