@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: '곰식이',
             description: '동식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
-            model: '../static/models/bear.glb'
+            model: '../static/models/bearbear.glb'
         },
         {
             name: '교수님',
@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 모델 뷰어 소스 업데이트
         if (currentIndex === 2 && purchasedCharacterIndex === 2) {
             // 교수님 캐릭터가 선택된 상태이고, 이미 구매한 경우
-            hamModel.setAttribute('src', '../static/models/rabbitblack.glb');
+            hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb');
+            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
         } else {
             // 현재 선택된 캐릭터에 맞는 모델을 설정
             hamModel.setAttribute('src', character.model);
@@ -83,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 professorOption.querySelector('.select').innerHTML = '구매하기';
                 professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
             }
-            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
         }
     }
     
