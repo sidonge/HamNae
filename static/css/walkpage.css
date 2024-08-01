@@ -409,3 +409,9 @@ input {
 .gm-fullscreen-control> img {
     display: none !important;
 }
+
+#map
+{
+    width: 100rem;
+    height: 100rem;
+}

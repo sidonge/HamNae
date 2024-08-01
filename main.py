@@ -8,6 +8,7 @@ import shutil
 import os
 import json
 from typing import Optional
+from map import router as map_router
 
 app = FastAPI()
 
@@ -192,6 +193,21 @@ async def get_model(model_name: str):
     if os.path.exists(file_path):
         return FileResponse(file_path)
     return JSONResponse(content={"success": False, "error": "File not found"}, status_code=404)
+
+@app.get("/character", response_class=HTMLResponse)
+async def read_character(request: Request):
+    return templates.TemplateResponse("character.html", {"request": request})
+
+@app.get("/chat", response_class=HTMLResponse)
+async def get_chat(request: Request):
+    return templates.TemplateResponse("chat.html", {"request": request})
+
+app.include_router(map_router)
+
+@app.get("/walk", response_class=HTMLResponse)
+def read_root(request: Request):
+    # 'walkpage.html'을 응답으로 반환
+    return templates.TemplateResponse("walkpage.html", {"request": request})
 
 if __name__ == "__main__":
     import uvicorn
