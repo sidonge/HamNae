@@ -159,8 +159,13 @@ async def update_quest_stamps(request: Request):
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
 
 @app.get("/", response_class=HTMLResponse)
-async def main(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
+def get_loading(request: Request):
+    # 'walkpage.html'을 응답으로 반환
+    return templates.TemplateResponse("loading.html", {"request": request})
+
+# @app.get("/", response_class=HTMLResponse)
+# async def main(request: Request):
+#     return templates.TemplateResponse("main.html", {"request": request})
 
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
@@ -208,6 +213,8 @@ app.include_router(map_router)
 def read_root(request: Request):
     # 'walkpage.html'을 응답으로 반환
     return templates.TemplateResponse("walkpage.html", {"request": request})
+
+
 
 if __name__ == "__main__":
     import uvicorn
