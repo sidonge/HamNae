@@ -242,7 +242,7 @@ nav {
     bottom: 14.5%;
 }
 
-.coin {
+.coinBackground {
     width: 75%;
 }
 
@@ -285,14 +285,9 @@ nav {
     background-color: #D2BEA1;
 }
 
-#professorModel {
-    opacity: 0.1; /* 기본 상태에서 거의 보이지 않도록 설정 */
-    transition: opacity 0.3s; /* 부드러운 투명도 변경을 위한 트랜지션 */
-}
-
-/* 교수님 모델이 보이는 상태 */
-#professorModel.visible {
-    opacity: 1; /* 완전히 보이도록 설정 */
+.character-option.locked .select {
+    background-color: #A88756;
+    color: white;
 }
 
 /* 캐릭터 설명 */

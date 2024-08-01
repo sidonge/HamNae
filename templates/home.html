@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>집</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+=======
+>>>>>>> 5aae51d79f4389ceaf6add2ef9b5db446b387512
     <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
     <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
@@ -15,6 +19,7 @@
         <!-- 윈도우 모델 -->
         <model-viewer id="windowModel" src="{{ url_for('static', path='models/room.glb') }}" environment-image="neutral" ar></model-viewer>
         <!-- 토끼 모델 -->
+<<<<<<< HEAD
         <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>
 
@@ -43,6 +48,37 @@
             </div>
         </section>
     </div>
+=======
+        <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/ham_anni.glb') }}" alt="A 3D model of a rabbit" environment-image="neutral" ar></model-viewer>
+    </div>
+
+    <!-- nav -->
+        <!-- nav -->
+        <nav>
+            <img src="/static/image/logo.png" class="logo" id="logo">
+            <img src="/static/image/menu.png" class="menuIcon" id="menuIcon">
+        </nav>
+    
+        <!-- nav popup -->
+        <div id="navPopup" class="nav-popup">
+            <nav>
+                <img src="/static/image/exit.png" class="exitIcon" id="exitIcon">
+            </nav>
+    
+            <section class="menuSection">
+                <div class="menu">
+                    <div class="mission" id="mission">집으로</div>
+                    <hr class="hr" />
+                    <div class="walk" id="walk">산책하기</div>
+                    <hr class="hr" />
+                    <div class="character" id="character">캐릭터 변경</div>
+                    <hr class="hr" />
+                    <div class="mypage" id="mypage">마이페이지</div>
+                    <hr class="hr" />
+                </div>
+            </section>
+        </div>
+>>>>>>> 5aae51d79f4389ceaf6add2ef9b5db446b387512
     
     <!-- 윈도우 모델 제어 버튼 -->
     <div class="controls">
@@ -106,6 +142,10 @@
         <input type="file" id="pillsUpload" class="upload-input" accept="image/*" style="display:none;">
     </div>
 
+<<<<<<< HEAD
     <div class="blink">동물을 눌러 보세요.</div>
+=======
+    <div class="blink">햄스터를 눌러 보세요.</div>
+>>>>>>> 5aae51d79f4389ceaf6add2ef9b5db446b387512
 </body>
 </html>
