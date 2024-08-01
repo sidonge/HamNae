@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 이미지 추가 기능
     document.getElementById("imageInput").addEventListener('change', handleFileSelect);
+
+    // 작업 완료 시퀀스: 이 부분을 적절한 이벤트나 조건에 따라 호출하세요
+    onChatComplete();
 });
 
 // 이미지 선택 처리
@@ -122,6 +125,11 @@ function sendMessageToGemini(message) {
         console.log(data);
     })
     .catch(error => console.error('Error:', error));
+}
+
+// 채팅 시 quest.html에 stamp 찍히게
+function onChatComplete() {
+    localStorage.setItem('talkCompleted', 'true');
 }
 
 // 창 닫기 기능

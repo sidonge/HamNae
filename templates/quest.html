@@ -4,32 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', path='css/quest.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/quest.js') }}" defer></script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <title>퀘스트 달성도</title>
 </head>
 <body>
     <!-- nav -->
     <nav>
-        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" alt="Logo">
-        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon" alt="Menu Icon">
+        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
+        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
     </nav>
 
-    <section>
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr class="hr" />
+                <div class="walk" id="walk">산책하기</div>
+                <hr class="hr" />
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr class="hr" />
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr class="hr" />
+            </div>
+        </section>
+    </div>
+
+    <section class="questSection">
         <div class="quest_title">
             <p>마이페이지 > 퀘스트 달성도</p>
             <div>
                 <h3><span>길동</span></h3>
                 <h3>님의 퀘스트 달성도</h3>
             </div>
-            <!-- <button id="resetButton">리셋</button> -->
-            <img src="{{ url_for('static', path='image/quest_line.png') }}" alt="Quest Line">
+            <img src="{{ url_for('static', path='image/quest_line.png') }}">
         </div>
 
         <!-- 미션 수행 -->
         <div>
             <div id="quest_stamps">
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/water.png') }}" alt="Water Mission">
+                    <img src="{{ url_for('static', path='image/water.png') }}">
                     <h3>물 마시기</h3>
                     <img id="water_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
@@ -41,37 +63,37 @@
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/broomstick.png') }}">
                     <h3>방청소</h3>
-                    <img id="broomstick_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
+                    <img id="clean_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
                     <img src="{{ url_for('static', path='image/pot.png') }}">
                     <h3>요리하기</h3>
-                    <img id="pot_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
+                    <img id="cooking_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/pills.png') }}" alt="Pills Mission">
+                    <img src="{{ url_for('static', path='image/pills.png') }}">
                     <h3>약 먹기</h3>
-                    <img id="pills_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Pills Cleared Stamp">
+                    <img id="pills_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/bath.png') }}" alt="Bath Mission">
+                    <img src="{{ url_for('static', path='image/bath.png') }}">
                     <h3>씻기</h3>
-                    <img id="bath_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Bath Cleared Stamp">
+                    <img id="wash_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/talk.png') }}" alt="Talk Mission">
+                    <img src="{{ url_for('static', path='image/talk.png') }}">
                     <h3>대화하기</h3>
-                    <img id="talk_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Talk Cleared Stamp">
+                    <img id="talk_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
                 <div class="stamp_card">
-                    <img src="{{ url_for('static', path='image/meditaion.png') }}" alt="Meditation Mission">
+                    <img src="{{ url_for('static', path='image/meditaion.png') }}">
                     <h3>명상하기</h3>
-                    <img id="meditation_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" alt="Meditation Cleared Stamp">
+                    <img id="bed_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}">
                 </div>
             </div>
             <div id="point_card">
                 <div>
-                    <img src="{{ url_for('static', path='image/coin.png') }}" alt="Coin">
+                    <img src="{{ url_for('static', path='image/coin.png') }}">
                     <h2>포인트 <span>1500XP</span></h2>
                     <button type="button">수령</button>
                     <p>수령까지 6개의 도장이 남았어요.</p>

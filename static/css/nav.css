@@ -1,3 +1,41 @@
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+/* nav-popup */
 .nav-popup {
     display: none;
     position: fixed;
@@ -15,25 +53,6 @@
     opacity: 1;
 }
 
-/* nav */
-nav {
-    margin: 2rem 0;
-    position: absolute;
-}
-
-.logo {
-    width: 4rem;
-    position: absolute;
-    left: -1rem;
-}
-
-.exitIcon {
-    position: absolute;
-    width: 1.5rem;
-    left: 92.5rem;
-    cursor: pointer;
-}
-
 /* menu */
 .menuSection {
     text-align: center;
@@ -46,6 +65,10 @@ nav {
 .menu {
     align-items: center;
     justify-content: center;
+}
+
+.menuIcon {
+    cursor: pointer;
 }
 
 .talk, .mission, .walk, .character, .mypage {
@@ -62,11 +85,5 @@ nav {
     border: none;
     height: 1px;
     background: #868381;
-}
-
-.menuIcon {
-    position: absolute;
-    width: 2rem;
-    left: 89rem;
-    cursor: pointer;
+    margin: auto;
 }

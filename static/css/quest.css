@@ -15,35 +15,45 @@ body {
     background: linear-gradient(white, #F5EED1);
 }
 
-/* fontweight
-    black :  900 
-    extra bold : 800
-    bold : 700
-    semi bold : 600
-    medium : 500
-    regular : 400
-*/
-
-/* nav.css */
+/* nav */
+nav {
+    height: 5rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
 
 .logo {
     width: 4rem;
-    position: fixed;
+
+    position: absolute;
     left: 2rem;
-    top: 2rem;
+    top: 1.25rem;
 }
 
 .menuIcon {
-    position: fixed;
+    position: absolute;
     right: 2rem;
-    top: 2rem;
+    top: 1.6rem;
+
     width: 2rem;
+
+    cursor: pointer;
 }
 
-nav {
-    margin: 5rem 3.5rem 0rem 2.9rem;
-    display: flex;
-    justify-content: space-between;
+.exitIcon {
+    position: absolute;
+    width: 1.5rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+}
+
+.questSection {
+    margin: 7rem 0;
 }
 
 h3, h2 {
@@ -137,7 +147,7 @@ section {
     letter-spacing: -0.05rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditation_cleared_stamp {
+#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     display: none;
 }
 
@@ -184,7 +194,7 @@ section {
     word-spacing: 0.04rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #broomstick_cleared_stamp, #pot_cleared_stamp, #pills_cleared_stamp, #bath_cleared_stamp, #talk_cleared_stamp, #meditation_cleared_stamp {
+#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     position: relative;
     bottom: 14.5rem;
     right: 2rem;
