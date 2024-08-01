@@ -3,16 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     talkImages.forEach((img) => {
         const uploadInput = img.nextElementSibling;
         
-        // img 누르면 파일 삽입
         img.addEventListener('click', () => {
             if (uploadInput) {
                 uploadInput.click();
             }
         });
         
-        // uploadInput이 있을 시
         if (uploadInput) {
-            // 선택한 파일을 file에 저장
             uploadInput.addEventListener('change', (event) => {
                 const file = event.target.files[0];
                 
@@ -30,10 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     const newFileName = stampMap[mission] + '.' + file.name.split('.').pop(); // 새로운 파일 이름 설정
 
-                    // Blob을 사용하여 새로운 파일 이름으로 FormData에 추가
                     formData.append('file', new File([file], newFileName, { type: file.type }));
 
-                    // /upload에 POST 요청 (main.py)
                     fetch('/upload', {
                         method: 'POST',
                         body: formData
@@ -94,15 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // 초기 화면 설정
         let rotateX = 90;
         let rotateY = -270;
-        let zoomLevel = 5;
+        let zoomLevel = 3.5;
     
         const minRotateY = -300;
         const maxRotateY = -240;
     
         function updateRotation() {
-            const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}rem`;
+            const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
             windowModel.cameraOrbit = cameraOrbit;
-            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg ${zoomLevel}rem`;
+            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg`;
         }
     
         function handleUpClick() {
@@ -199,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // 채팅으로 이동
         document.querySelector('.tableTalk').addEventListener('click', () => {
-            window.location.href = 'chat.html';
+            window.location.href = '/chat';
         });
     
         windowModel.addEventListener('load', () => {
