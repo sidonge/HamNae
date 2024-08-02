@@ -5,7 +5,7 @@ from datetime import date
 
 
 # 데이터베이스 엔진 생성 (SQLite 사용)
-engine = create_engine('sqlite:///users.db', echo=True)
+engine = create_engine('sqlite:///hamnae.db', echo=True)
 
 # Base 클래스 생성
 Base = declarative_base()
