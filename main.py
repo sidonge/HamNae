@@ -47,6 +47,7 @@ from pydantic import BaseModel
 import logging
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -57,15 +58,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # API 키를 읽는 함수
+import os
 
-
-def read_api_key(filepath):
-    try:
-        with open(filepath, 'r') as file:
-            return file.read()  # 공백 문자 제거
-    except Exception as e:
-        logging.error(f"Failed to read the API key: {e}")
-        raise e
+def get_api_key():
+    api_key = os.getenv('API_KEY')
+    if not api_key:
+        logging.error("API key is not available in the environment variables.")
+        raise ValueError("API key is not available in the environment variables.")
+    return api_key
 
 
 safety_settings = [
@@ -81,7 +81,14 @@ safety_settings = [
 
 
 # API 키 설정
-api_key = read_api_key('apikey.txt')
+try:
+    api_key = get_api_key()
+    genai.configure(api_key=api_key)
+    logging.info("Google Generative AI configured successfully with the provided API key.")
+except Exception as e:
+    logging.error(f"Failed to configure Google Generative AI: {e}")
+    raise
+
 genai.configure(api_key=api_key)
 
 # gemini-1.5-flash 모델 사용
@@ -133,11 +140,6 @@ async def api_chat(message: Message):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
-
-
-
-
-
 
 
 
