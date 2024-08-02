@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chatpage</title>
+    <title>chat</title>
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- 각자 맡은 페이지의 css 파일 연결 -->
-    <!-- <script src="{{ url_for('static', path='js/script.js') }}" defer></script> -->
+    <link rel="stylesheet" href="{{ url_for('static' , path='/css/chat.css') }}">
+    
 </head>
 <body>
-    <!-- <nav>
-        <img src="/static/img/logo.png" class="logo"></img>
-        <img src="/static/img/menu.png" class="menuIcon" id="menuIcon">
-    </nav> -->
+    
+    <!-- chat -->
     <div class="Wrap">
         <div class="chatPage">
             <div class="topBox">
                 <p class="topBoxText">채팅하기</p>
-                <p class="closeIcon" onclick="closeEvent()"><img src="/static/image/close.png"></p>
+                <p class="closeIcon" onclick="closeEvent()"><img src="/image/close.png"></p>
             </div>
             <div class="info">
                 <div class="circle">
-                    <img id="hamster" src="/static/image/햄스터.png">
+                    <img id="hamster" src="{{ url_for('static', path='image/햄스터.png') }}">
                 </div>
                 <div class="nameHeart">
                     <div class="name">햄깅이</div>
-                    <div class="heart"><img src="/static/image/heart (1).png"></div>
+                    <div><img id="heart" src="/static/image/heart.png"></div>
                 </div>
                 <div class="greenCircle">
                     <button id="greenCircleText" class="greenCircleText">오늘의 질문</button>
@@ -42,36 +41,26 @@
                 <div id="completeText">
                     <!-- 미션완료 눌렀을 때 나오는 문구 -->
                 </div>
-
                 <div class="sendWrap">
                     <div class="inputWrap">
                         <input type="text" id="userInput" placeholder="마음 속의 말을 전해보세요." maxlength="300">
-                        <!-- 글자 수를 표시할 요소 추가 -->
                         <div id="charCount"></div> 
-                        
-                        
-                        <label className="inputFileCustom" for="inputFile" />
-
+                        <label class="inputFileCustom" for="inputFile"></label>
                         <input type="file" id="inputFile" style="display:none" onchange="handleFileSelect(event)" accept="image/*"/>
-                        <img id="cameraIcon" src="/static/image/camera.png" alt="" onclick="document.getElementById('inputFile').click();">
-
-
-                        
-                        
+                        <img id="cameraIcon" src="{{ url_for('static', path='image/camera.png') }}" alt="" onclick="document.getElementById('inputFile').click();">
                     </div>
-                    
-                    <button id="sendbtn" onclick="sendMessage()"><img id="sendbtnImg" src="/static/image/sendBtn.png"></button>
+                    <button id="sendbtn" onclick="sendMessage()">
+                        <img id="sendbtnImg" src="{{ url_for('static', path='image/sendBtn.png') }}">
+                    </button>
                 </div>
-                
             </div>
             <div class="bottomBox"></div>
-            
         </div>
     </div>
 
     <audio id="messageSound" src="/static/sound/MP_맑은 미션 성공(jingle).mp3"></audio>
     <audio id="closeSound" src="/static/sound/MP_통화 종료음.mp3"></audio>
 
-    <script src="/static/js/chat.js" defer></script>
+    <script src="{{ url_for('static', path='/js/chat.js') }}" defer></script>
 </body>
 </html>

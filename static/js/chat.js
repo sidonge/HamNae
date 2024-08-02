@@ -27,8 +27,6 @@ async function sendMessage() {
         } catch (error) {
             console.error("Fetch error:", error);
             addMessage("Sorry, something went wrong.", 'bot');
-        } finally {
-            messageSound.play();
         }
     }
 }
@@ -57,21 +55,87 @@ document.addEventListener('DOMContentLoaded', function() {
     var greenBtn = document.getElementById("greenCircleText");
     var questText = document.getElementById("questText");
     var isMissionComplete = false;
+    var messageSound = document.getElementById("messageSound");
+    var closeSound = document.getElementById("closeSound");
+
+    questText.style.textAlign = "center";
 
     greenBtn.addEventListener("click", function() {
+        
+        var message = "내일의 나에게 하고 싶은 말 적어보기";
         if (!isMissionComplete) {
+            messageSound.play();
             greenBtn.textContent = "미션완료";
             greenBtn.style.backgroundColor = "#8CD179";
-            var message = "내일의 나에게 하고 싶은 말 적어보기";
-            questText.textContent = message;
-            sendMessageToGemini(message);
+            greenBtn.style.width = "6.7rem";
+            greenBtn.style.height = "2rem";
+            greenBtn.style.borderRadius = "3rem";
+            greenBtn.style.boxShadow = "0px 0px 3px 1px #8DBD81"
+            greenBtn.style.color = "#ffffff";
+            addCenteredMessage(message);
+            addMessage(message, 'bot');
         } else {
+            closeSound.play();
             greenBtn.textContent = "오늘의 질문";
-            greenBtn.style.backgroundColor = "#ffffff";
+            greenBtn.style.backgroundColor = "#ffffff";  // 배경색 변경
+            greenBtn.style.color = "#588B47";  // 텍스트 색상 원래대로
+            greenBtn.style.boxShadow = "0px 0px 3px 1px #8DBD81";
             questText.textContent = "";
         }
         isMissionComplete = !isMissionComplete;
     });
+
+
+
+    function addCenteredMessage(text) {
+        var chatBox = document.getElementById("chatBox");
+        var messageContainer = document.createElement("div");
+        messageContainer.classList.add("centered-message-container");
+    
+        var lineLeft = document.createElement("div");
+        lineLeft.classList.add("message-line");
+    
+        var diamondLeft = document.createElement("div");
+        diamondLeft.classList.add("message-diamond");
+    
+        var circle = document.createElement("div");
+        circle.classList.add("message-circle");
+    
+        var messageText = document.createElement("div");
+        messageText.classList.add("centered-message");
+        messageText.textContent = text;
+    
+        var diamondRight = document.createElement("div");
+        diamondRight.classList.add("message-diamond");
+    
+        var lineRight = document.createElement("div");
+        lineRight.classList.add("message-line");
+    
+        messageContainer.appendChild(lineLeft);
+        messageContainer.appendChild(diamondLeft);
+        messageContainer.appendChild(circle);
+        messageContainer.appendChild(messageText);
+        messageContainer.appendChild(circle.cloneNode());
+        messageContainer.appendChild(diamondRight);
+        messageContainer.appendChild(lineRight);
+    
+        chatBox.appendChild(messageContainer);
+        chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function sendMessageToGemini(message) {
+    addMessage(message, 'user'); // 사용자의 메시지를 채팅에 추가
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        addMessage(data.response, 'bot'); // 모델의 응답을 채팅에 추가
+    })
+    .catch(error => console.error('Error:', error));
+}
 
     // 글자 수 세기 기능
     var charCount = document.getElementById('charCount');
@@ -84,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 이미지 추가 기능
     document.getElementById("imageInput").addEventListener('change', handleFileSelect);
 
-    // 작업 완료 시퀀스: 이 부분을 적절한 이벤트나 조건에 따라 호출하세요
     onChatComplete();
 });
 
@@ -138,5 +201,4 @@ function onChatComplete() {
 // 창 닫기 기능
 function closeEvent() {
     document.getElementsByClassName("chatPage")[0].style.display = "none";
-    document.getElementById("closeSound").play();
 }

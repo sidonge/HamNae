@@ -1,5 +1,9 @@
 // 화살표 버튼 눌렀을 때 화면 부드럽게 전환
 document.getElementById('scrollButton').addEventListener('click', function() {
+    
+    const backgroundSound = document.getElementById("backgroundSound")
+    backgroundSound.play();
+    
     window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
@@ -7,7 +11,7 @@ document.getElementById('scrollButton').addEventListener('click', function() {
     this.style.display = 'none'; // 클릭해서 화면 내려가면 버튼 숨기기
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", () => {
     // 스크롤 위치를 맨 위로 설정
     window.scrollTo(0, 0);
 
@@ -24,6 +28,3 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.display = 'none'; // 클릭해서 화면 내려가면 버튼 숨기기
     });
 });
-
-
-

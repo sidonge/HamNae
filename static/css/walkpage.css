@@ -1,8 +1,13 @@
 body {
     background-image: linear-gradient(#F5EED1, white);
     padding: 0 3%;
-    overflow-y: scroll;
+
+    height: 110vh;
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }
 
 @font-face {
     font-weight: 300;
@@ -354,10 +359,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
     bottom: 36rem;
     
-    width: 70rem;
+    width: 67em;
+    z-index: 500;
 }
 
 .mapBottom {
@@ -366,9 +372,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
+    bottom: 37rem;
     
-    width: 70rem;
+    width: 67rem;
+    z-index: 500;
 }
 
 .mapIcon {
@@ -412,6 +420,15 @@ input {
 
 #map
 {
-    width: 100rem;
-    height: 100rem;
+    width: 70vw;
+    height: 80vh;
+
+    position: relative;
+    bottom: 36.5rem;
+    right: 2.75rem;
+    margin-left: auto;
+}
+
+.mapBox {
+    height: 7vh;
 }

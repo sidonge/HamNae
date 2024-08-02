@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/loading.css">
+    <title>loading</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/loading.css') }}">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <script src="{{ url_for('static', path='/js/loading.js') }}" defer></script>
 </head>
 <body>
     <nav>
         <img src="/static/image/logo.png" class="logo">
+        <i id="soundIcon" class="fas fa-volume-up fa-2x"></i>
     </nav>
 
     <button id="scrollButton">
         <img id="down" class="down" src="/static/image/scrollDown.png" alt="">
     </button>
     <div class="mainText">귀여운 친구들과 함께 마음의 숲을 탐험해볼까요?</div>
+    <audio id="backgroundSound" src="/static/sound/videoplayback.m4a"></audio>
+
     <div class="gradient-background"></div>
     <div class="Wrap">
         <div class="leftTree">
@@ -42,14 +50,14 @@
             <div class="logoText">마음도 관리가 필요하니까, 햄내와 함께 햄내!</div>
             <img id="logoback" src="/static/image/logoback.png">
             <img id="reallogo" src="/static/image/logo.png">
-            <img id="load" src="/static/image/길.png ">
+            <img id="load" src = " {{ url_for('static' , path='/image/길.png') }}">
+
         </div>
 
         <button class="startButton">
             <div class="btnText">시작하기</div>
-            <a href="naver.com"></a>
+            
         </button>
     </div>
-    <script src="/static/js/loading.js" defer></script>
 </body>
 </html>

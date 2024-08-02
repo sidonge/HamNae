@@ -52,12 +52,21 @@ html, body {
 nav {
     margin: 2rem 0 0 3rem;
     position: absolute;
+    display: flex;
+    flex-direction: row;
 }
 
 .logo {
     width: 4rem;
     position: absolute;
     left: -1rem;
+}
+
+#soundIcon {
+    position: absolute;
+    color: #AB936B;
+    left: 82rem;
+    top: 0.4rem;
 }
 
 .mainText {
@@ -325,3 +334,32 @@ nav {
     animation: fadeIn 2s ease-in-out forwards; 
     animation-delay: 3s;
 }
+
+
+@keyframes bobbing {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-10px); 
+    }
+}
+
+#hamster {
+    animation: bobbing 3s ease-in-out infinite; 
+}
+
+
+@keyframes maintext {
+    0%, 100% {
+        transform: translateY(10px); 
+    }
+    50% {
+        transform: translateY(0); 
+    }
+}ƒ
+
+.mainText {
+    animation: maintext 3s ease-in-out infinite; 
+}
+
