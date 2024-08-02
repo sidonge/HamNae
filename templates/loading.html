@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loading</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/loading.css') }}">
+     <!-- <link rel="stylesheet" href="/static/css/loading.css"> -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -52,17 +53,16 @@
 
         <div class="LOGO">
             <div class="logoText">마음도 관리가 필요하니까, 햄내와 함께 햄내!</div>
-            <img id="logoback" src = " {{ url_for('static' , path='/image/sumLOGO.png') }}">
-
-            <img id="load" src = " {{ url_for('static' , path='/image/길.png') }}">
-
+            <img id="logoback" src="/static/image/sumLOGO.png">
+            <img id="load" src="/static/image/길.png">
+            <button class="startButton">
+                <div class="btnText">시작하기</div>
+            </button>
         </div>
 
-        <button class="startButton">
-            <div class="btnText">시작하기</div>
-            
-        </button>
+
     </div>
     <script src="{{ url_for('static', path='/js/loading.js') }}" defer></script>
+    <!-- <script src="/static/js/loading.js" defer></script> -->
 </body>
 </html>

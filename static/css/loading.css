@@ -196,41 +196,46 @@ nav {
     left: 25rem;
 }
 
-.LOGO {
+/* .LOGO {
     display: flex;
     flex-direction: row;
     justify-content: center;
+} */
+
+.LOGO {
+    display: flex;
+    flex-direction: column; /* row에서 column으로 변경하여 수직 정렬 */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 5rem; /* 필요한 경우 조정 */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; /* 텍스트 가운데 정렬 */
+    width: 100%; /* 너비를 100%로 설정 */
 }
 
+
 #logoback {
-    position: absolute;
     width: 26.5rem;
     height: 18rem;
     z-index: 10;
-    left: 40rem;
-    bottom: 14.8rem;
+    margin-bottom: -14rem;
     opacity: 80%;
 }
 
-#reallogo {
-    position: absolute;
-    width: 17rem;
-    bottom: 18rem;
-    left: 39rem;
-    z-index: 20;
-}
+
 
 .logoText {
     color: #AB936B;
     font-family: "Pretendard-Medium";
     position: absolute;
-    bottom: 32rem;
+    bottom: 26rem;
     z-index:30;
-    left: 50rem;
     font-size: 1.3rem;
 }
 
-.startButton {
+/* .startButton {
     width: 13rem;
     height: 4rem;
     background-color: #F5EED1;
@@ -240,6 +245,24 @@ nav {
     position: absolute;
     bottom: 5rem;
     left: 55rem;
+
+    align-items: center;
+
+    transform: translate(50%, 50%);
+    transition: transform 0.3s ease;
+} */
+
+.startButton {
+    width: 13rem;
+    height: 4rem;
+    background-color: #F5EED1;
+    border-radius: 15px;
+    border: solid 3.5px #AB936B;
+    z-index: 20;
+    margin-top: 1rem; /* 버튼과 위 요소 사이에 간격 추가 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    cursor: pointer;
+    margin-left: 5rem;
     transition: transform 0.3s ease;
 }
 
@@ -247,6 +270,22 @@ nav {
     transform: translate(0, 5px);
     cursor: pointer;
 }
+
+.btnText {
+    font-family: "Pretendard-SemiBold";
+    color: #AB936B;
+    font-size: 1.5rem;
+}
+
+
+#load {
+    opacity: 60%;
+    width: 17rem;
+    margin-bottom: -10rem; /* 이미지와 아래 요소 사이에 간격 추가 */
+    text-align: center;
+    margin-left: 4rem;
+}
+
 .btnText {
     text-align: center;
     margin: auto 0;
@@ -255,13 +294,7 @@ nav {
     font-size: 1.5rem;
 }
 
-#load {
-    position: absolute;
-    top: -24rem;
-    left: 56rem;
-    opacity: 60%;
-    width: 17rem;
-}
+
 
 
 /* 구름 애니메이션 */
