@@ -73,31 +73,33 @@
             <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
             <div class="coinFlex">
                 <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
-                <div class="coinText">&nbsp;300</div>
+                <div class="coinText">&nbsp;&nbsp;300</div>
             </div>
         </div>
 
-        <div class="character-option" id="hamgingOption">
-            <img src="{{ url_for('static', path='image/ham1.png') }}" class="hamImg" alt="Hamging">
-            <div>
-                <div class="sectionName">햄깅이</div>
-                <div class="select">선택됨&nbsp<i class="fas fa-check"></i></div>
+        <div class="characterBox">
+            <div class="character-option" id="hamgingOption">
+                <img src="{{ url_for('static', path='image/ham1.png') }}" class="hamImg" alt="Hamging">
+                <div>
+                    <div class="sectionName">햄깅이</div>
+                    <div class="select">선택됨&nbsp<i class="fas fa-check"></i></div>
+                </div>
             </div>
-        </div>
-
-        <div class="character-option" id="dongsikOption">
-            <img src="{{ url_for('static', path='image/ham2.png') }}" class="hamImg" alt="Dongsik">
-            <div>
-                <div class="sectionName">곰식이</div>
-                <div class="select">선택하기</div>
+    
+            <div class="character-option" id="dongsikOption">
+                <img src="{{ url_for('static', path='image/ham2.png') }}" class="hamImg" alt="Dongsik">
+                <div>
+                    <div class="sectionName">곰식이</div>
+                    <div class="select">선택하기</div>
+                </div>
             </div>
-        </div>
-
-        <div class="character-option locked" id="professorOption">
-            <img src="{{ url_for('static', path='image/ham3.png') }}" class="hamImg" alt="Professor">
-            <div>
-                <div class="sectionName">교수님</div>
-                <div class="select" id="purchaseButton">구매하기</div>
+    
+            <div class="character-option locked" id="professorOption">
+                <img src="{{ url_for('static', path='image/ham3.png') }}" class="hamImg" alt="Professor">
+                <div>
+                    <div class="sectionName">교수님</div>
+                    <div class="select" id="purchaseButton">구매하기</div>
+                </div>
             </div>
         </div>
     </section>

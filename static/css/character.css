@@ -143,7 +143,7 @@ nav {
 }
 
 .logo {
-    width: 4rem;
+    width: 5rem;
     position: fixed;
     left: 2rem;
     top: 2rem;
@@ -153,7 +153,7 @@ nav {
     position: fixed;
     right: 2rem;
     top: 2rem;
-    width: 2rem;
+    width: 2.5rem;
 }
 
 /* 제목 */
@@ -166,15 +166,15 @@ nav {
 .titleWalk {
     font-family: "Pretendard-Bold";
     color: #71594E;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     letter-spacing: 0.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .titleLine {
     background: #71594E;
-    width: 12rem;
-    height: 0.2rem;
+    width: 16rem;
+    height: 0.3rem;
     border: none;
     border-radius: 1rem;
     font-family: "Pretendard-Bold";
@@ -186,9 +186,9 @@ nav {
     position: fixed;
     left: 5%;
     top: 50%;
-    padding: 1.5rem;
+    padding: 1.5rem 2.5rem;
     transform: translateY(-50%);
-    width: 12%;
+    width: 15%;
     height: 35%;
     border: 2px solid #D2BEA1;
     border-radius: 0.5rem;
@@ -197,16 +197,16 @@ nav {
 }
 
 .character-description-box .name {
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     font-family: "Pretendard-Bold";
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 
 .character-description-box .introduce {
     font-family: "Pretendard-Regular";
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
     line-height: 135%;
 }
@@ -214,53 +214,41 @@ nav {
 .intimacyBox {
     display: flex;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
 .intimacy {
     font-family: "Pretendard-SemiBold";
-    font-size: 1.15rem;
-    margin-right: 0.5rem;
+    font-size: 1.9rem;
 }
 
 .heartImg {
     margin-left: auto;
-    width: 50%;
-    height: 50%;
+    width: 45%;
+    height: 45%;
 }
 
 /* 캐릭터 선택 박스 */
 .character-select-box {
     position: fixed;
-    top: 25%;
-    right: 5%;
+    right: 7%;
     text-align: center;
     width: 12%;
     height: 55%;
     padding: 1.5rem;
-    border: 3.5px solid #D2BEA1;
-    border-radius: 2rem;
-    background-color: #FCF7E5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.coins {
-    position: relative;
-    bottom: 14.5%;
-    align-items: center;
 }
 
 .coinBackground {
-    width: 80%;
+    width: 16vw;
 }
 
 .coin {
-    width: 13%;
+    width: 15%;
 }
 
 .coinText {
     font-family: "Pretendard-Regular";
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #AB936B;
 }
 
@@ -269,9 +257,18 @@ nav {
     justify-content: center;
     align-items: center;
 
+    position: fixed;
+    width: 12%;
+    bottom: 71.5%;
+    right: 6.5%;
+}
+
+.characterBox {
     position: relative;
-    right: 0.25rem;
-    bottom: 3.2rem;
+    width: 12%;
+    text-align: center;
+    bottom: 85%;
+    left: 15%;
 }
 
 .character-option {
@@ -280,30 +277,30 @@ nav {
     margin-bottom: 1.75rem;
     cursor: pointer;
     position: relative;
-    bottom: 18%;
+    width: 12%;
 }
 
 .hamImg {
-    width: 6rem;
-    height: 6rem;
+    width: 8rem;
+    height: 8rem;
     margin-right: 1rem;
 }
 
 .sectionName {
     font-family: "Pretendard-Medium";
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
     color: #71594E;
 }
 
 .character-option .select {
     font-family: "Pretendard-Regular";
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #070000;
     background-color: #F5EED1;
     border-radius: 10rem;
-    width: 5rem;
-    height: 2rem;
+    width: 6rem;
+    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -342,7 +339,6 @@ nav {
     margin-bottom: 1rem;
 }
 
-/* 캐릭터 네비게이션 */
 .character-navigation {
     position: fixed;
     bottom: 27.5%;
@@ -374,10 +370,10 @@ nav {
 }
 
 .popup-content {
-    font-family: "Pretendard-SemiBold";
+    font-family: "Pretendard-Bold";
     background: white;
-    width: 20rem;
-    height: 10rem;
+    width: 30rem;
+    height: 15rem;
     border-radius: 8px;
     text-align: center;
 }
@@ -385,17 +381,19 @@ nav {
 .popup-content p {
     margin-top: 12.5%;
     margin-bottom: 9%;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 .popup-content button {
-    font-family: "Pretendard-Regular";
+    font-family: "Pretendard-SemiBold";
     padding: 10px 20px;
     margin: 0 10px;
     border: none;
     border-radius: 5px;
+    width: 6.25rem;
+    height: 2.75rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 #confirmPurchase {
