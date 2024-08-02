@@ -1,8 +1,13 @@
 body {
     background-image: linear-gradient(#F5EED1, white);
     padding: 0 3%;
-    overflow-y: scroll;
+
+    height: 110vh;
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }
 
 @font-face {
     font-weight: 300;
@@ -422,4 +427,8 @@ input {
     bottom: 36.5rem;
     right: 2rem;
     margin-left: auto;
+}
+
+.mapBox {
+    height: 7vh;
 }
