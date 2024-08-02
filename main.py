@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from map import router as map_router
 from auth import login, register
-from services import quest, home, character, walkpage, petlist
+from services import quest, home, character, walkpage, petlist, chat
 
 app = FastAPI()
 
@@ -31,14 +31,12 @@ app.include_router(character.router, prefix="/services")
 app.include_router(quest.router, prefix="/services")
 app.include_router(walkpage.router, prefix="/services")
 app.include_router(petlist.router, prefix="/services")
+app.include_router(chat.router, prefix="/services")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_loading(request: Request):
     return templates.TemplateResponse("loading.html", {"request": request})
 
-@app.get("/chat", response_class=HTMLResponse)
-async def get_chat(request: Request):
-    return templates.TemplateResponse("chat.html", {"request": request})
 
 if __name__ == "__main__":
     import uvicorn

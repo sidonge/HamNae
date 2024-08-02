@@ -1,10 +1,11 @@
 import google.generativeai as genai
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, APIRouter
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 import logging
+from config import templates
 from fastapi.encoders import jsonable_encoder
 import os
 
@@ -12,10 +13,9 @@ import os
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
-app = FastAPI()
+router = APIRouter(tags=["챗봇"])
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+
 
 # API 키를 읽는 함수
 # def read_api_key(filepath):
@@ -59,7 +59,7 @@ def get_model(api_key):
 model = None
 chat = None
 
-@app.on_event("startup")
+@router.on_event("startup")
 async def startup_event():
     global model, chat
     try:
@@ -85,11 +85,11 @@ async def startup_event():
 class Message(BaseModel):
     message: str
 
-@app.get("/", response_class=HTMLResponse)
+@router.get("/chat", response_class=HTMLResponse)
 async def get_chat(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
 
-@app.post("/api/chat")
+@router.post("/api/chat")
 async def api_chat(message: Message):
     try:
         if chat is None:
@@ -103,7 +103,3 @@ async def api_chat(message: Message):
     except Exception as e:
         logging.error(f"Exception during chat processing: {e}")
         return JSONResponse(status_code=500, content={"detail": str(e)})
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
