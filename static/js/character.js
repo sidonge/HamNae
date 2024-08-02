@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: '교수님',
             description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
-            model: '../static/models/rabbit.glb'
+            model: '../static/models/whiterabbit.glb'
         }
     ];
 

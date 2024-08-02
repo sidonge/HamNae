@@ -6,6 +6,8 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 import logging
 from fastapi.encoders import jsonable_encoder
+import os
+
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -16,17 +18,19 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # API 키를 읽는 함수
-def read_api_key(filepath):
-    try:
-        with open(filepath, 'r') as file:
-            return file.read().strip()  # 공백 문자 제거
-    except Exception as e:
-        logging.error(f"Failed to read the API key: {e}")
-        raise e
+# def read_api_key(filepath):
+#     try:
+#         with open(filepath, 'r') as file:
+#             return file.read().strip()  # 공백 문자 제거
+#     except Exception as e:
+#         logging.error(f"Failed to read the API key: {e}")
+#         raise e
 
 # API 키 설정
 try:
-    api_key = read_api_key('apikey.txt')
+    # api_key = read_api_key('apikey.txt')
+    api_key = os.getenv('API_KEY')
+
 except Exception as e:
     raise RuntimeError("Failed to read API key")
 

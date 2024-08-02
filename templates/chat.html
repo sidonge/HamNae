@@ -10,10 +10,8 @@
     
 </head>
 <body>
-    <!-- <nav>
-        <img src="/static/img/logo.png" class="logo"></img>
-        <img src="/static/img/menu.png" class="menuIcon" id="menuIcon">
-    </nav> -->
+    
+    <!-- chat -->
     <div class="Wrap">
         <div class="chatPage">
             <div class="topBox">
@@ -22,7 +20,7 @@
             </div>
             <div class="info">
                 <div class="circle">
-                    <img id="hamster" src="/static/image/햄스터.png">
+                    <img id="hamster" src="{{ url_for('static', path='image/햄스터.png') }}">
                 </div>
                 <div class="nameHeart">
                     <div class="name">햄깅이</div>
@@ -43,30 +41,20 @@
                 <div id="completeText">
                     <!-- 미션완료 눌렀을 때 나오는 문구 -->
                 </div>
-
                 <div class="sendWrap">
                     <div class="inputWrap">
                         <input type="text" id="userInput" placeholder="마음 속의 말을 전해보세요." maxlength="300">
-                        <!-- 글자 수를 표시할 요소 추가 -->
                         <div id="charCount"></div> 
-                        
-                        
-                        <label className="inputFileCustom" for="inputFile" />
-
+                        <label class="inputFileCustom" for="inputFile"></label>
                         <input type="file" id="inputFile" style="display:none" onchange="handleFileSelect(event)" accept="image/*"/>
-                        <img id="cameraIcon" src="/static/image/camera.png" alt="" onclick="document.getElementById('inputFile').click();">
-
-
-                        
-                        
+                        <img id="cameraIcon" src="{{ url_for('static', path='image/camera.png') }}" alt="" onclick="document.getElementById('inputFile').click();">
                     </div>
-                    
-                    <button id="sendbtn" onclick="sendMessage()"><img id="sendbtnImg" src="/static/image/sendBtn.png"></button>
+                    <button id="sendbtn" onclick="sendMessage()">
+                        <img id="sendbtnImg" src="{{ url_for('static', path='image/sendBtn.png') }}">
+                    </button>
                 </div>
-                
             </div>
             <div class="bottomBox"></div>
-            
         </div>
     </div>
 
