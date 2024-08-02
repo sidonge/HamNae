@@ -117,9 +117,11 @@ nav {
 .tapeIcon {
     width: 5.5rem;
     position: relative;
-    left: 0.5rem;
     top: 2rem;
+    left: 2rem;
 
+    margin: auto;
+    text-align: center;
     margin-bottom: 4%;
 }
 
@@ -134,7 +136,7 @@ nav {
 
     background-color: #F5EED1;
 
-    width: 12rem;
+    width: 15rem;
     padding: 1% 1.25%;
 
     box-shadow: 1px 1px 5px #BBBBBB;
