@@ -1,7 +1,86 @@
 body {
     background-image: linear-gradient(#F5EED1, white);
     padding: 0 3%;
-    overflow-y: scroll;
+
+    height: 110vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+  }
+
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+/* nav */
+nav {
+    height: 5rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+
+.logo {
+    width: 4rem;
+
+    position: absolute;
+    left: 2rem;
+    top: 1.25rem;
+}
+
+.menuIcon {
+    position: absolute;
+    right: 2rem;
+    top: 1.6rem;
+
+    width: 2rem;
+
+    cursor: pointer;
+}
+
+.exitIcon {
+    position: absolute;
+    width: 1.5rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
 }
 
 /* title */
@@ -280,10 +359,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
     bottom: 36rem;
     
-    width: 70rem;
+    width: 67em;
+    z-index: 1000;
 }
 
 .mapBottom {
@@ -292,9 +372,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
+    bottom: 37rem;
     
-    width: 70rem;
+    width: 67rem;
+    z-index: 1000;
 }
 
 .mapIcon {
@@ -338,6 +420,15 @@ input {
 
 #map
 {
-    width: 100rem;
-    height: 100rem;
+    width: 70rem;
+    height: 40rem;
+
+    position: relative;
+    bottom: 36.5rem;
+    right: 2.75rem;
+    margin-left: auto;
+}
+
+.mapBox {
+    height: 7vh;
 }

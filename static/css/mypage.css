@@ -39,6 +39,12 @@ h3, h2
     word-spacing: 0.2rem;
 }
 
+#profile > img + p
+{
+    font-weight: 700;
+    transform: translate(7.2rem, -2.4rem);
+}
+
 #profile span 
 {
     color: #71594E;
@@ -98,9 +104,6 @@ nav > a > img
 /* 정렬 */
 
 
-
-
-
 /* profile */
 
 #profile div+img 
@@ -113,7 +116,7 @@ nav > a > img
 {
     font-size: 2rem;
     margin-top: 0.42rem;
-    margin-left: 4.2rem;
+    margin-left: 4.8rem;
     margin-bottom: 0.75rem;
     letter-spacing: 0.19rem;
 }
@@ -290,16 +293,17 @@ input
 .badge
 {
     justify-content: center;
+    position: relative;
 }
 
 section > div 
 {
     display: flex;
-    margin: 2rem 17.7rem 0rem 16rem;
+    margin: 2rem 17.7rem 6rem 16rem;
     justify-content: space-between;
 }
 
-#quest_killer
+#quest_beginner
 {
     transform: translateY(-0.7rem);
 }
@@ -308,15 +312,19 @@ section > div
 {
     font-weight: 900;
     font-size: 1.3rem;  
-    transform: translate(0.6rem, 1rem);
+    /* transform: translate(0.6rem, 1rem); */
     word-spacing: 0.2rem;
     color: #71594E;
-    padding-left: 0.5rem;
+    /* padding-left: 1rem; */
+    text-align: center;
+    margin-top: 1.2rem;
 }
 
-#quest_killer+p 
+
+
+#quest_beginner+p
 {
-    transform: translate(1.2rem, 0.2rem);
+  margin-top: 0.8rem  !important;
 }
 
 #insiderking~p
@@ -355,6 +363,12 @@ nav~div
     position: absolute;
     top: 20%;
     left: 18%;
+}
 
+.unearned
+{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 

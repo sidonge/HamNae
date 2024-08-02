@@ -3,16 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     talkImages.forEach((img) => {
         const uploadInput = img.nextElementSibling;
         
-        // img 누르면 파일 삽입
         img.addEventListener('click', () => {
             if (uploadInput) {
                 uploadInput.click();
             }
         });
         
-        // uploadInput이 있을 시
         if (uploadInput) {
-            // 선택한 파일을 file에 저장
             uploadInput.addEventListener('change', (event) => {
                 const file = event.target.files[0];
                 
@@ -22,17 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mission = uploadInput.id.replace('Upload', '');
                     const stampMap = {
                         'water': 'water_cleared_stamp',
-                        'clean': 'broomstick_cleared_stamp',
-                        'cooking': 'pot_cleared_stamp',
-                        'wash': 'bath_cleared_stamp',
-                        'bed': 'meditation_cleared_stamp'
+                        'clean': 'clean_cleared_stamp',
+                        'cooking': 'cooking_cleared_stamp',
+                        'wash': 'wash_cleared_stamp',
+                        'bed': 'bed_cleared_stamp',
+                        'pills':'pills_cleared_stamp',
+                        'talk':'talk_cleared_stamp',
                     };
                     const newFileName = stampMap[mission] + '.' + file.name.split('.').pop(); // 새로운 파일 이름 설정
 
-                    // Blob을 사용하여 새로운 파일 이름으로 FormData에 추가
                     formData.append('file', new File([file], newFileName, { type: file.type }));
 
-                    // /upload에 POST 요청 (main.py)
                     fetch('/upload', {
                         method: 'POST',
                         body: formData
@@ -60,10 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStampImage(mission, file) {
         const stampMap = {
             'water': 'water_cleared_stamp',
-            'clean': 'broomstick_cleared_stamp',
-            'cooking': 'pot_cleared_stamp',
-            'wash': 'bath_cleared_stamp',
-            'bed': 'meditation_cleared_stamp'
+            'clean': 'clean_cleared_stamp',
+            'cooking': 'cooking_cleared_stamp',
+            'wash': 'wash_cleared_stamp',
+            'bed': 'bed_cleared_stamp',
+            'pills':'pills_cleared_stamp',
+            'talk':'talk_cleared_stamp',
         };
 
         const stampId = stampMap[mission];
@@ -83,5 +82,122 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 모델 뷰어 및 버튼 처리 코드...
+        // 모델 뷰어
+        const windowModel = document.getElementById('windowModel');
+        const rabbitModel = document.getElementById('rabbitModel');
+    
+        // 초기 화면 설정
+        let rotateX = 90;
+        let rotateY = -270;
+        let zoomLevel = 3.5;
+    
+        const minRotateY = -300;
+        const maxRotateY = -240;
+    
+        function updateRotation() {
+            const cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
+            windowModel.cameraOrbit = cameraOrbit;
+            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg`;
+        }
+    
+        function handleUpClick() {
+            rotateX -= 10;
+            zoomLevel = 2;
+            updateRotation();
+        }
+    
+        function handleDownClick() {
+            if (rotateX < 90) {
+                rotateX += 10;
+                zoomLevel *= 0.9;
+                updateRotation();
+            }
+        }
+    
+        function handleLeftClick() {
+            if (rotateY > minRotateY) {
+                rotateY -= 10;
+                updateRotation();
+            }
+        }
+    
+        function handleRightClick() {
+            if (rotateY < maxRotateY) {
+                rotateY += 10;
+                updateRotation();
+            }
+        }
+    
+        function handleRabbitUpClick() {
+            rotateX -= 10;
+            updateRabbitRotation();
+        }
+    
+        function handleRabbitDownClick() {
+            rotateX += 10;
+            updateRabbitRotation();
+        }
+    
+        function handleRabbitLeftClick() {
+            rotateY -= 90;
+            updateRabbitRotation();
+        }
+    
+        function handleRabbitRightClick() {
+            rotateY += 90;
+            updateRabbitRotation();
+        }
+    
+        function updateRabbitRotation() {
+            rabbitModel.cameraOrbit = `${rotateY + 90}deg ${rotateX}deg`;
+        }
+    
+        document.getElementById('up').addEventListener('click', handleUpClick);
+        document.getElementById('down').addEventListener('click', handleDownClick);
+        document.getElementById('left').addEventListener('click', handleLeftClick);
+        document.getElementById('right').addEventListener('click', handleRightClick);
+    
+        // 토끼 모델 제어 버튼 클릭 이벤트 추가
+        document.getElementById('rabbitUp').addEventListener('click', handleRabbitUpClick);
+        document.getElementById('rabbitDown').addEventListener('click', handleRabbitDownClick);
+        document.getElementById('rabbitLeft').addEventListener('click', handleRabbitLeftClick);
+        document.getElementById('rabbitRight').addEventListener('click', handleRabbitRightClick);
+    
+        // 토끼 모델 클릭 시 말풍선 이미지 토글
+        const rabbitTalk1 = document.getElementById('rabbitTalk1');
+        const rabbitTalk2 = document.getElementById('rabbitTalk2');
+        const blinkText = document.querySelector('.blink');
+        let isTalkVisible = false;
+
+        rabbitTalk1.addEventListener('click', () => {
+            window.location.href = '/petlist';
+        });
+    
+        rabbitTalk2.addEventListener('click', () => {
+            window.location.href = '/quest';
+        });
+    
+        rabbitModel.addEventListener('click', () => {
+            rotateY += 180;
+            updateRabbitRotation();
+    
+            isTalkVisible = !isTalkVisible;
+            if (isTalkVisible) {
+                rabbitTalk1.style.opacity = '1';
+                rabbitTalk2.style.opacity = '1';
+                blinkText.style.display = 'none';
+            } else {
+                rabbitTalk1.style.opacity = '0';
+                rabbitTalk2.style.opacity = '0';
+            }
+        });
+    
+        // 채팅으로 이동
+        document.querySelector('.tableTalk').addEventListener('click', () => {
+            window.location.href = '/chat';
+        });
+    
+        windowModel.addEventListener('load', () => {
+            updateRotation();
+        });
 });

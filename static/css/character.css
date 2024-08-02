@@ -1,4 +1,80 @@
-/* 기본 스타일 */
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+* {
+box-sizing: content-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
+}
+
+html {
+overflow: hidden;
+overflow-y: hidden;
+}
+
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -37,7 +113,7 @@ model-viewer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.001);
     z-index: -10000;
 }
 
@@ -45,6 +121,7 @@ model-viewer {
     width: 40%;
     height: 40%;
     bottom: 10%;
+    
 }
 
 #hamModel::after {
@@ -60,7 +137,7 @@ model-viewer {
     z-index: -10;
 }
 
-/* 내비게이션 */
+/* nav */
 nav {
     margin: 2rem 0;
 }
@@ -170,10 +247,31 @@ nav {
 .coins {
     position: relative;
     bottom: 14.5%;
+    align-items: center;
+}
+
+.coinBackground {
+    width: 80%;
 }
 
 .coin {
-    width: 75%;
+    width: 13%;
+}
+
+.coinText {
+    font-family: "Pretendard-Regular";
+    font-size: 1.1rem;
+    color: #AB936B;
+}
+
+.coinFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    right: 0.25rem;
+    bottom: 3.2rem;
 }
 
 .character-option {
@@ -182,7 +280,7 @@ nav {
     margin-bottom: 1.75rem;
     cursor: pointer;
     position: relative;
-    bottom: 11%;
+    bottom: 18%;
 }
 
 .hamImg {
@@ -215,9 +313,12 @@ nav {
     background-color: #D2BEA1;
 }
 
-.character-option.locked .select {
+#professorOption .select {
     background-color: #A88756;
-    color: white;
+}
+
+#professorOption.selected .select {
+    background-color: #D2BEA1;
 }
 
 /* 캐릭터 설명 */
