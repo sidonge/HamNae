@@ -1,0 +1,13 @@
+body {
+    background-color: #fff; /* 흰색 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* 브라우저 창 높이의 70% */
+    margin: 0;
+}
+
+model-viewer {
+    width: 150px; /* 햄스터 모델 크기 */
+    height: 150px;
+}
