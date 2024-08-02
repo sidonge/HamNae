@@ -478,3 +478,40 @@ model-viewer#rabbitModel {
 .upload-input {
     margin-top: 10px;
 }
+
+
+/* 팝업 및 오버레이 스타일 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 999;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    display: none;
+}
+
+.popup-content {
+    padding: 20px;
+}
+
+/* 팝업 내의 닫기 버튼 */
+.closeIcon img {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
