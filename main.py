@@ -89,6 +89,12 @@ except Exception as e:
     logging.error(f"Failed to configure Google Generative AI: {e}")
     raise
 
+# api key 환경변수로 잘 등록됐는지 확인
+# if api_key:
+#     print(f"API Key found: {api_key}")
+# else:
+#     print("API Key not found.")
+
 genai.configure(api_key=api_key)
 
 # gemini-1.5-flash 모델 사용
@@ -97,13 +103,19 @@ model = genai.GenerativeModel(
 
 # 초기 메시지 설정
 initial_message = {
-    "text": "I'm going to have a dialogue with you now for emotional healing. Can you ask me one routine question after another, such as how was your day, did you eat properly, etc.? Your first answer should be How was your day?",
-    "role": "user"
+    "role": "user",
+    "parts": [
+        {
+            "text": "I'm going to have a dialogue with you now for emotional healing. Can you ask me one routine question after another, such as how was your day, did you eat properly, etc.? Use emojis that give me a warm feeling."
+        }
+    ]
 }
+
 
 try:
     # 초기 메시지와 함께 채팅 세션 시작
     chat = model.start_chat(history=[initial_message])
+    logging.info("Chat session started successfully.")
 except Exception as e:
     print(f"Error starting chat session: {str(e)}")
 
