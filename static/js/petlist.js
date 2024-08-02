@@ -1,4 +1,7 @@
-// nav.js
-document.getElementById('menuIcon').addEventListener('click', function() {
-    window.location.href = 'nav.html';
+document.addEventListener("DOMContentLoaded", function() {
+    const backIcon = document.getElementById("backIcon");
+
+    backIcon.addEventListener("click", function() {
+    window.location.href = '/home';
+    });
 });

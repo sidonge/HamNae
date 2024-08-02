@@ -6,21 +6,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/petlist.css)}}">
     <script src="{{ url_for('static', path='js/petlist.js)}}"></script>
+
+    <link rel="stylesheet" href="/static/css/petlist.css">
+    <script src="/static/js/petlist.js"></script>
 </head>
 <body>
-
-    <!-- nav.html -->
-    <nav>
-        <img src="{{ url_for('static', path='image/logo.png)}}" class="logo"></img>
-        <img src="{{ url_for('static', path='image/menu.png)}}" class="menuIcon" id="menuIcon">
-    </nav>
+    <nav><img id="backIcon" src="/static/image/back.png" alt=""></nav>
 
     <div class="Wrap">
-        <div class="topText">
-            <p class="name">길동</p>
-            <p class="nameText">님의 펫 리스트</p>
+        <div class="petlist_title">
+            <p>마이페이지 > 펫 리스트</p>
+            <div>
+                <h3><span>길동</span></h3>
+                <h3>님의 펫 리스트</h3>
+            </div>
         </div>
         <hr class="topLine">
+
 
         <div class="box1">
             <div class="minBox">
