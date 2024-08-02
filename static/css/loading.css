@@ -52,6 +52,8 @@ html, body {
 nav {
     margin: 2rem 0 0 3rem;
     position: absolute;
+    display: flex;
+    flex-direction: row;
 }
 
 .logo {
@@ -59,6 +61,19 @@ nav {
     position: absolute;
     left: -1rem;
 }
+
+#soundIcon {
+    position: absolute;
+    left: 82rem;
+    color: #AB936B;
+}
+
+#soundIcon:hover {
+    cursor: pointer;
+}
+
+
+
 
 .mainText {
     font-family: "Pretendard-Medium";
@@ -353,3 +368,4 @@ nav {
 .mainText {
     animation: maintext 3s ease-in-out infinite; 
 }
+

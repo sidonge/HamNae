@@ -27,3 +27,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+async function sendMessage() {
+    var input = document.getElementsByClassName("soundIcon");
+    var messageSound = document.getElementById("messageSound")
+    if (input.value.trim() !== "") {
+        const userMessage = input.value;
+        input.value = ""; // 입력 필드 초기화
+        addMessage(userMessage, 'user'); // 사용자 메시지 추가
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                addMessage(data.response, 'bot');
+            } else {
+                let errorData = await response.json();
+                console.error("Failed to fetch:", response.status, errorData.detail);
+                addMessage("Sorry, something went wrong: " + errorData.detail, 'bot');
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            addMessage("Sorry, something went wrong.", 'bot');
+        } finally {
+            messageSound.play();
+        }
+    }
+}
