@@ -60,6 +60,13 @@ nav {
     left: -1rem;
 }
 
+#soundIcon {
+    position: absolute;
+    color: #AB936B;
+    left: 82rem;
+    top: 0.4rem;
+}
+
 .mainText {
     font-family: "Pretendard-Medium";
     color: #71594E;

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/loading.css">
+    <title>loading</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/static/css/loading.css') }}">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
 </head>
 <body>
     <nav>
         <img src="/static/image/logo.png" class="logo">
+        <i id="soundIcon" class="fas fa-volume-up fa-2x"></i>
     </nav>
 
     <button id="scrollButton">
@@ -50,6 +55,6 @@
             <a href="naver.com"></a>
         </button>
     </div>
-    <script src="/static/js/loading.js" defer></script>
+    <script src="{{ url_for('static', path='/static/js/loading.js') }}" defer></script>
 </body>
 </html>
