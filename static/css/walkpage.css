@@ -58,7 +58,7 @@ nav {
 }
 
 .logo {
-    width: 4rem;
+    width: 5rem;
 
     position: absolute;
     left: 2rem;
@@ -70,14 +70,14 @@ nav {
     right: 2rem;
     top: 1.6rem;
 
-    width: 2rem;
+    width: 2.5rem;
 
     cursor: pointer;
 }
 
 .exitIcon {
     position: absolute;
-    width: 1.5rem;
+    width: 2rem;
     right: 2rem;
     top: 2rem;
     cursor: pointer;
@@ -94,7 +94,7 @@ nav {
     font-family: "Pretendard-Bold";
     color: #71594E;
 
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     letter-spacing: 0.2rem;
 
     margin-bottom: 1%;
@@ -103,8 +103,8 @@ nav {
 .titleLine {
     background: #71594E;
 
-    width: 12rem;
-    height: 0.2rem;
+    width: 16rem;
+    height: 0.3rem;
 
     border: none;
     border-radius: 1rem;
@@ -115,10 +115,11 @@ nav {
 
 /* quest box */
 .tapeIcon {
-    width: 5.5rem;
+    width: 7rem;
+    height: 2.8rem;
     position: relative;
     top: 2rem;
-    left: 2rem;
+    left: 3rem;
 
     margin: auto;
     text-align: center;
@@ -136,7 +137,8 @@ nav {
 
     background-color: #F5EED1;
 
-    width: 15rem;
+    width: 17rem;
+    height: 30rem;
     padding: 1% 1.25%;
 
     box-shadow: 1px 1px 5px #BBBBBB;
@@ -152,10 +154,12 @@ nav {
 
 .questText {
     font-family: "Pretendard-SemiBold";
+    font-size: 1.4rem;
     color: #71594E;
 
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .line {
@@ -163,8 +167,8 @@ nav {
 
     background: #71594E;
 
-    width: 5rem;
-    height: 0.12rem;
+    width: 8rem;
+    height: 0.17rem;
 
     border: none;
     border-radius: 1rem;
@@ -189,27 +193,27 @@ nav {
     background-color: #AB936B;
     color: white;
 
-    width: 1.9rem;
-    height: 1.9rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 0.3rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 .distanceBox {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     
     display: flex;
 
     background-color: white;
     color: #71594E;
 
-    width: 7.8rem;
-    height: 2rem;
+    width: 11rem;
+    height: 2.6rem;
     border-radius: 0.3rem;
 
     margin-left: 5%;
@@ -230,8 +234,8 @@ nav {
 }
 
 .coinIcon {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
 
     position: relative;
     right: 0.3rem;
@@ -240,12 +244,12 @@ nav {
 .checkboxBox {
     display: flex;
     position: relative;
-    margin: 0.75rem 0;
+    margin: 1rem 0;
 }
 
 .checkBox {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 2.3rem;
+    height: 2.3rem;
 
     border-radius: 0.3rem;
     box-shadow: inset 3px 3px 4.5px #BBBBBB;
@@ -260,7 +264,7 @@ nav {
 
 .questCommet {
     font-family: "Pretendard-Regular";
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 
     border-radius: 0.3rem;
     letter-spacing: 0.015rem;
@@ -268,8 +272,8 @@ nav {
     background-color: white;
     color: #71594E;
 
-    width: 9rem;
-    height: 2rem;
+    width: 12rem;
+    height: 2.5rem;
 
     padding-left: 7%;
 
@@ -296,11 +300,11 @@ input {
   }
   input[type="checkbox"]::after {
     border: solid #FFB4B4;
-    border-width: 0 4px 4px 0;
+    border-width: 0 6px 6px 0;
     content: '';
     display: none;
     height: 50%;
-    left: 30%;
+    left: 40%;
     position: relative;
     top: 10%;
     transform: rotate(45deg);
@@ -319,23 +323,22 @@ input {
 
     background-color: white;
 
-    width: 8rem;
-    height: 3rem;
+    width: 10rem;
+    height: 4rem;
 
     border: 0.1px solid #BBBBBB;
     border-radius: 0.5rem;
     box-shadow: 0.1px 1px 4px #BBBBBB;
 
     position: relative;
-    bottom: 37rem;
-    right: 6rem;
+    bottom: 42rem;
 
     margin-left: auto;
 }
 
 .distanceIcon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
     position: absolute;
     top: 50%;
@@ -347,7 +350,7 @@ input {
     color: #AB936B;
 
     font-family: "Pretendard-Regular";
-    font-size: 0.9rem;
+    font-size: 1.25rem;
 
     position: absolute;
     top: 50%;
@@ -356,28 +359,28 @@ input {
 }
 
 .mapTop {
-    border: 0.25rem solid #CEB17F;
+    border: 0.4rem solid #CEB17F;
     border-radius: 10rem;
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 8.5rem;
+    left: 11rem;
     bottom: 36rem;
     
-    width: 67em;
+    width: 84em;
     z-index: 500;
 }
 
 .mapBottom {
-    border: 0.25rem solid #CEB17F;
+    border: 0.4rem solid #CEB17F;
     border-radius: 10rem;
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 8.5rem;
+    left: 11rem;
     bottom: 37rem;
     
-    width: 67rem;
+    width: 84rem;
     z-index: 500;
 }
 
@@ -433,4 +436,7 @@ input {
 
 .mapBox {
     height: 7vh;
+    position: relative;
+    bottom: 5rem;
+    left: 2.2rem;
 }
