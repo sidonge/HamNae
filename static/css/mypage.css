@@ -89,6 +89,12 @@ nav div a
     margin-left: 2.3rem;
 }
 
+
+nav > a > img
+{
+    width: 15%;
+}
+
 /* 정렬 */
 
 

@@ -35,138 +35,293 @@ src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretenda
     format("woff");
 }
 
-* {
-box-sizing: content-box;
-}
-
-html,
-body {
-margin: 0;
-padding: 0;
-width: 100%;
-height: 100%;
-overflow: hidden;
-position: absolute;
-font-size: 16px;
-z-index: -99999;
-display: block;
-}
-
-html {
-overflow: hidden;
-overflow-y: hidden;
-}
-
-main,
-div,
-h1,
-h2,
-h3 {
-margin: 0;
-padding: 0;
-}
-
-ol,
-ul,
-li {
-list-style: none;
-display: inline-block;
-padding: 0;
-margin: 0;
-}
-.Wrap {
-    display: flex;
-    flex-direction: row;
-    margin-top: 16rem;
-}
-
-#tree {
-    float: right;
-    margin-top: -2rem;
-    z-index: 1; /* 예를 들어 z-index 값을 낮게 설정 */
-    position: relative; /* position 속성 추가 */
-    width: 30rem;
-    left: 3rem;
-}
-
-#browntree {
-    float: right;
-    z-index: 1; /* 이 요소를 #tree 보다 앞에 표시하려면 z-index 값을 높게 설정 */
-    position: relative; /* position 속성 추가 */
-    bottom: 11.9rem;
-    right: 9.7rem;
-}
-
-#sideTree {
-    width: 9rem;
-    z-index: 0; /* 가장 뒤에 표시될 요소의 z-index */
-    float: right;
-    position: relative; /* position 속성 추가 */
-    left: 40rem;
-    top: 12rem;
-}
-
-#lefttree {
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 180%;
+    overflow: hidden; /* 스크롤 바 숨김 */
     position: relative;
-    z-index: 0;
-}
-#browntree2 {
-    position: relative;
-    z-index: 0;
-    bottom: 10.6rem;
-    left: 6.5rem;
+    font-size: 16px;
+    display: block;
+    background: linear-gradient(to bottom, rgba(255, 238, 208, 0.3) 0%, rgba(255, 238, 208, 1) 100%);
 }
 
+/* loading page */
 
-body {
-    background-image: url(/static/image/노을.png);
-    background-size: 150%;
-}
-
-#cloud1 {
-    position: relative;
-    right: 27rem;
-    width: 13rem;
-    bottom: 10rem;
-}
-
-#cloud2 {
-    width: 14rem;
-    position: relative;
-    bottom: 18rem;
-    left: 20rem;
-}
-
-#cloud3{
-    width: 12rem;
-    position: relative;
-    bottom: 23rem;
-    left: 28rem;
-}
-
-
-.mainLoad {
-    width: 9rem;
-    height: 30rem;
-    background-color: #D2BEA1;
-    margin-left: 13rem;
-    rotate: -15deg;
-    margin-top: 3rem;
-}
-
-#logoback {
-    width: 20rem;
-    height: 15rem;
-}
-
-#logopng {
-    width: 10rem;
-    height: 5rem;
+nav {
+    margin: 2rem 0 0 3rem;
+    position: absolute;
 }
 
 .logo {
+    width: 4rem;
+    position: absolute;
+    left: -1rem;
+}
+
+.mainText {
+    font-family: "Pretendard-Medium";
+    color: #71594E;
+    font-size: 1.5rem;
+    text-align: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* 전체 뷰포트 높이를 사용하여 중앙에 위치 */
+    margin: 0;
+    position: absolute;
+    width: 100%; /* 전체 너비 */
+    text-shadow: 0 0 1.5px #71594E;
+}
+
+
+#scrollButton {
+    background: none; /* 배경 제거 */
+    border: none; /* 테두리 제거 */
+    padding: 0; /* 패딩 제거 */
+    cursor: pointer;
+    position: fixed;
+    top: 88%; /* 화면 중앙에 위치 */
+    left: 50%; /* 화면 중앙에 위치 */
+    transform: translate(-50%, -50%); /* 정확히 중앙에 위치하도록 조정 */
+    width: 5rem; /* 이미지 크기에 맞게 조정 */
+    height: 6rem; /* 이미지 크기에 맞게 조정 */
+    z-index: 1000; /* 다른 요소들 위에 보이도록 */
+    outline: none; /* 포커스 아웃라인 제거 */
+}
+
+
+#down {
+    width: 100%; 
+    height: 100%; 
+    transition: transform 0.3s ease;
+}
+
+.down:hover {
+    transform: translate(0, 10px);
+}
+
+.gradient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.Wrap {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} 
+
+.leftTree, .rightTree {
+    position: absolute; /* 각 트리 요소들을 상대적으로 위치 설정 */
+    display: flex;
+    justify-content: space-between; /* 좌우에 요소들을 분산 배치 */
+    align-items: flex-end; /* 하단에 요소들을 정렬 */
+    bottom: 0.001rem;
+    z-index: 1;
+}
+
+.leftTree {
+    left: 0; /* 왼쪽 끝에 위치 */
+}
+
+.rightTree {
+    right: -15rem; /* 오른쪽 끝에 위치 */
+    bottom: -2rem;
+}
+
+
+#browntree2 {
+    position: absolute;
+    left: 5.7rem;
+    bottom: 0.5rem;
+    height: 10rem;
+}
+
+#browntree {
+    position: absolute;
+    left: 13.4rem;
+    height: 11rem;
+    bottom: 3.8rem;
+}
+
+#hamster {
+    position: absolute;
+    bottom: 4rem;
+    left: 26rem;
+    width: 7rem;
+}
+
+.sky {
+    position: absolute;
+    bottom: 30rem;
+}
+
+#cloud1 {
+    position: absolute;
+    right: 23rem;
+    bottom: 3rem;
+}
+#cloud2 {
+    position: absolute;
+    left: 20rem;
+    bottom: 4rem;
+}
+#cloud3 {
+    position: absolute;
+    left: 10rem;
+    bottom: 3rem;
+}
+
+.background {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 0;
+}
+#noeul {
+    position: absolute;
+    bottom: 8rem;
+    left: 5rem;
+}
+
+.LOGO {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#logoback {
+    position: absolute;
+    width: 26.5rem;
+    height: 18rem;
+    z-index: 10;
+    left: 35rem;
+    bottom: 14.8rem;
+    opacity: 80%;
+}
+
+#reallogo {
+    position: absolute;
+    width: 17rem;
+    bottom: 18rem;
+    left: 39rem;
+    z-index: 20;
+}
+
+.logoText {
+    color: #AB936B;
+    font-family: "Pretendard-Medium";
+    position: absolute;
+    bottom: 32rem;
+    z-index:30;
+    left: 37rem;
+    font-size: 1.3rem;
+}
+
+.startButton {
+    width: 13rem;
+    height: 4rem;
+    background-color: #F5EED1;
+    border-radius: 15px;
+    border: solid 3.5px #AB936B;
+    z-index: 20; 
+    position: absolute;
+    bottom: 5rem;
+    left: 43rem;
+    transition: transform 0.3s ease;
+}
+
+.startButton:hover {
+    transform: translate(0, 5px);
+    cursor: pointer;
+}
+.btnText {
+    text-align: center;
+    margin: auto 0;
+    font-family: "Pretendard-SemiBold";
+    color: #AB936B;
+    font-size: 1.5rem;
+}
+
+#load {
+    position: absolute;
+    top: -24rem;
+    left: 43rem;
+    opacity: 60%;
+    width: 17rem;
+}
+
+
+/* 구름 애니메이션 */
+@keyframes float {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(30px); /* 오른쪽으로 20px 이동 */
+    }
+}
+
+.sky {
+    animation: float 6s ease-in-out infinite; 
+}
+
+#cloud1 {
+    animation-delay: 0s; 
+}
+
+#cloud2 {
+    animation-delay: 2s; 
+}
+
+#cloud3 {
+    animation-delay: 4s;
+}
+
+/* 나무들 애니메이션 */
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.7); /* 초기에 요소의 크기를 50%로 설정 */
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1); /* 중간에 요소의 크기를 110%로 늘림 */
+        opacity: 0.5; 
+    }
+    100% {
+        transform: scale(1); /* 최종적으로 요소의 크기를 100%로 설정 */
+        opacity: 1; 
+    }
+}
+
+.leftTree, .rightTree {
+    animation: scaleUp 1s ease-in-out forwards; 
+    animation-delay: 3s;
+}
+
+/* 로고 fadein 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0; 
+    }
+    to {
+        opacity: 1; 
+    }
+}
+
+.LOGO {
+    animation: fadeIn 2s ease-in-out forwards; 
+    animation-delay: 3s;
 }

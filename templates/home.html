@@ -4,120 +4,265 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>집</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="stylesheet" href="/static/css/home.css" />
-    <script src="/static/js/home.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/home.css') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
+    <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-    <script>
-      const modelViewer = document.querySelector("#windowModel"); // model-viewer 요소 가져오기
-
-      modelViewer.addEventListener("load", () => {
-        // land0.glb 모델의 바운딩 박스 정보 가져오기
-        const houseBounds = modelViewer.model.getBoundingBox();
-        console.log("land0 모델 바운딩 박스:", houseBounds);
-
-        // 모델 중앙 좌표 계산
-        const centerX = (houseBounds.min.x + houseBounds.max.x) / 2;
-        const centerY = (houseBounds.min.y + houseBounds.max.y) / 2;
-        const centerZ = (houseBounds.min.z + houseBounds.max.z) / 2;
-
-        // 카메라 타겟 설정
-        modelViewer.cameraTarget = `${centerX} ${centerY} ${centerZ}`;
-
-        // 카메라 궤도 설정 (선택 사항)
-        const orbitDistance =
-          Math.max(houseBounds.size.x, houseBounds.size.z) * 1.5; // 모델 크기에 따라 거리 조절
-        modelViewer.cameraOrbit = `0deg 75deg ${orbitDistance}m`;
-      });
-    </script>
   </head>
   <body>
     <div class="model-container">
       <!-- 윈도우 모델 -->
       <model-viewer
         id="windowModel"
-        src="/templates/room_pill (2).glb"
-        alt="A 3D model of a window"
+        src="{{ url_for('static', path='models/room_pill.glb') }}"
         environment-image="neutral"
         ar
       ></model-viewer>
-
       <!-- 토끼 모델 -->
       <model-viewer
         id="rabbitModel"
-        src="/ImageToStl.com_fbx-rabbit.glb"
-        alt="A 3D model of a rabbit"
+        src="{{ url_for('static', path='models/ham.glb') }}"
         environment-image="neutral"
         ar
       ></model-viewer>
+    </div>
+
+    <!-- nav -->
+    <nav>
+      <img
+        src="{{ url_for('static', path='image/logo.png') }}"
+        class="logo"
+        id="logo"
+      />
+      <img
+        src="{{ url_for('static', path='image/menu.png') }}"
+        class="menuIcon"
+        id="menuIcon"
+      />
+    </nav>
+
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+      <nav>
+        <img
+          src="{{ url_for('static', path='image/exit.png') }}"
+          class="exitIcon"
+          id="exitIcon"
+          alt="Exit"
+        />
+      </nav>
+
+      <section class="menuSection">
+        <div class="menu">
+          <div class="mission" id="mission">집으로</div>
+          <hr class="hr" />
+          <div class="walk" id="walk">산책하기</div>
+          <hr class="hr" />
+          <div class="character" id="character">캐릭터 변경</div>
+          <hr class="hr" />
+          <div class="mypage" id="mypage">마이페이지</div>
+          <hr class="hr" />
+        </div>
+      </section>
     </div>
 
     <!-- 윈도우 모델 제어 버튼 -->
     <div class="controls">
-      <img src="/static/img/up.png" id="up" class="triangle" alt="Up" />
-      <div>
-        <img src="/static/img/left.png" id="left" class="triangle" alt="Left" />
-        <div class="transparent-box"></div>
-        <img
-          src="/static/img/right.png"
-          id="right"
-          class="triangle"
-          alt="Right"
-        />
-      </div>
-      <img src="/static/img/down.png" id="down" class="triangle" alt="Down" />
-    </div>
-
-    <!-- 토끼 모델 제어 버튼 추가 -->
-    <div class="rabbit-controls">
-      <img src="/static/img/up.png" id="rabbitUp" class="triangle" alt="Up" />
+      <img
+        src="{{ url_for('static', path='image/up.png') }}"
+        id="up"
+        class="triangle"
+        alt="Up"
+      />
       <div>
         <img
-          src="/static/img/left.png"
-          id="rabbitLeft"
+          src="{{ url_for('static', path='image/left.png') }}"
+          id="left"
           class="triangle"
           alt="Left"
         />
         <div class="transparent-box"></div>
         <img
-          src="/static/img/right.png"
-          id="rabbitRight"
+          src="{{ url_for('static', path='image/right.png') }}"
+          id="right"
           class="triangle"
           alt="Right"
         />
       </div>
       <img
-        src="/static/img/down.png"
-        id="rabbitDown"
+        src="{{ url_for('static', path='image/down.png') }}"
+        id="down"
         class="triangle"
         alt="Down"
       />
     </div>
 
+    <!-- 토끼 모델 제어 버튼 추가 -->
+    <div class="rabbit-controls">
+      <img
+        src="{{ url_for('static', path='image/up.png') }}"
+        id="rabbitUp"
+        class="triangle"
+        alt="Rabbit Up"
+      />
+      <div>
+        <img
+          src="{{ url_for('static', path='image/left.png') }}"
+          id="rabbitLeft"
+          class="triangle"
+          alt="Rabbit Left"
+        />
+        <div class="transparent-box"></div>
+        <img
+          src="{{ url_for('static', path='image/right.png') }}"
+          id="rabbitRight"
+          class="triangle"
+          alt="Rabbit Right"
+        />
+      </div>
+      <img
+        src="{{ url_for('static', path='image/down.png') }}"
+        id="rabbitDown"
+        class="triangle"
+        alt="Rabbit Down"
+      />
+    </div>
+
+    <!-- 토끼 모델 클릭 시 말풍선 이미지 -->
+    <div class="rabbitTalkBox">
+      <label for="rabbitTalkUpload1">
+        <img
+          src="{{ url_for('static', path='image/petListIcon.png') }}"
+          class="talkIcon"
+          id="rabbitTalk1"
+        />
+      </label>
+
+      <label for="rabbitTalkUpload2">
+        <img
+          src="{{ url_for('static', path='image/questList.png') }}"
+          class="talkIcon"
+          id="rabbitTalk2"
+        />
+      </label>
+    </div>
+
+    <!-- 토끼 모델 클릭 시 말풍선 이미지 -->
+    <div class="rabbitTalkBox">
+      <label for="rabbitTalkUpload1">
+        <img
+          src="{{ url_for('static', path='image/petListIcon.png') }}"
+          class="talkIcon"
+          id="rabbitTalk1"
+        />
+      </label>
+
+      <label for="rabbitTalkUpload2">
+        <img
+          src="{{ url_for('static', path='image/questList.png') }}"
+          class="talkIcon"
+          id="rabbitTalk2"
+        />
+      </label>
+    </div>
+
     <!-- 미션 -->
     <div class="water">
-      <div class="waterText">같이 물 마실래?</div>
-      <img class="waterTalk" src="/static/img/talkIcon.png" />
+      <img
+        id="water_cleared_stamp"
+        class="waterTalk talk-image"
+        src="{{ url_for('static', path='image/waterTalk.png') }}"
+      />
+      <input
+        type="file"
+        id="waterUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
     </div>
     <div class="clean">
-      <div class="cleanText">같이 청소할래?</div>
-      <img class="cleanTalk" src="/static/img/talkIcon.png" />
+      <img
+        id="clean_cleared_stamp"
+        class="cleanTalk talk-image"
+        src="{{ url_for('static', path='image/cleanTalk.png') }}"
+      />
+      <input
+        type="file"
+        id="cleanUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
     </div>
     <div class="cooking">
-      <div class="cookingText">같이 요리할래?</div>
-      <img class="cookingTalk" src="/static/img/talkIcon.png" />
+      <img
+        id="cooking_cleared_stamp"
+        class="cookingTalk talk-image"
+        src="{{ url_for('static', path='image/cookTalk.png') }}"
+      />
+      <input
+        type="file"
+        id="cookingUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
     </div>
     <div class="wash">
-      <div class="washText">씻으러 갈 시간!</div>
-      <img class="washTalk" src="/static/img/talkIcon.png" />
+      <img
+        id="wash_cleared_stamp"
+        class="washTalk talk-image"
+        src="{{ url_for('static', path='image/washTalk.png') }}"
+      />
+      <input
+        type="file"
+        id="washUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
     </div>
-    <div class="table">
-      <div class="tableText">약 먹을 시간!</div>
-      <img class="tableTalk" src="/static/img/talkIcon.png" />
+    <div class="talk">
+      <img
+        id="talk_cleared_stamp"
+        class="tableTalk"
+        src="{{ url_for('static', path='image/talkTalk.png') }}"
+      />
     </div>
     <div class="bed">
-      <div class="bedText">명상할 시간!</div>
-      <img class="bedTalk" src="/static/img/talkIcon.png" />
+      <img
+        id="bed_cleared_stamp"
+        class="bedTalk talk-image"
+        src="{{ url_for('static', path='image/bedIcon.png') }}"
+      />
+      <input
+        type="file"
+        id="bedUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
     </div>
+    <div class="pills">
+      <img
+        id="pills_cleared_stamp"
+        class="pillsTalk talk-image"
+        src="{{ url_for('static', path='image/pillsTalk.png') }}"
+      />
+      <input
+        type="file"
+        id="pillsUpload"
+        class="upload-input"
+        accept="image/*"
+        style="display: none"
+      />
+    </div>
+
+    <div class="blink">동물을 눌러 보세요.</div>
   </body>
 </html>

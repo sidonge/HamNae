@@ -1,39 +1,56 @@
-/* 예시 사진 */
-img {
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+/* nav-popup */
+.nav-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.76);
+    z-index: 1000;
+    transition: opacity 0.5s ease;
 }
 
-/* 팝업 */
-.opacity {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    opacity: 76%;
-
-    position: relative;
-    bottom: 43.6rem;
-}
-
-
-/* nav */
-nav {
-    margin: 2rem;
-}
-
-.logo {
-    width: 4rem;
-
-    position: relative;
-    bottom: 87rem;
-}
-
-.exitIcon {
-    position: relative;
-    left: 85.5rem;
-    bottom: 87rem;
-
-    width: 1.5rem;
+.nav-popup.show {
+    display: block;
+    opacity: 1;
 }
 
 /* menu */
@@ -41,7 +58,8 @@ nav {
     text-align: center;
 
     position: relative;
-    bottom: 85rem;
+    top: 45%;
+    transform: translate(0, -50%);
 }
 
 .menu {
@@ -49,18 +67,23 @@ nav {
     justify-content: center;
 }
 
-.talk, .mission, .walk, .character {
-    font-family: "Pretendard-SemiBold";
-    font-size: 1.3rem;
-
-    margin: 2.75% 0;
-
-    color: white;
+.menuIcon {
+    cursor: pointer;
 }
 
-hr {
+.talk, .mission, .walk, .character, .mypage {
+    font-family: "Pretendard-SemiBold";
+    font-size: 1.3rem;
+    margin: 2.75% 0;
+    color: white;
+
+    cursor: pointer;
+}
+
+.hr {
     width: 12.5rem;
-    border: 0;
+    border: none;
     height: 1px;
     background: #868381;
+    margin: auto;
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/character.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+</head>
+<body>
+    <div class="model-container">
+        <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/character.glb') }}" environment-image="neutral" ar></model-viewer>
+        <div id="backgroundOverlay"></div>
+        <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
+    </div>
+
+    <!-- nav -->
+    <nav>
+        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
+        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
+    </nav>
+
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr class="hr" />
+                <div class="walk" id="walk">산책하기</div>
+                <hr class="hr" />
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr class="hr" />
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr class="hr" />
+            </div>
+        </section>
+    </div>
+
+    <!-- title -->
+    <section class="titleSection">
+        <div class="titleWalk">캐릭터 선택</div>
+        <hr class="titleLine" />
+    </section>
+
+    <!-- 캐릭터 설명 박스 -->
+    <section class="character-description-box">
+        <div class="name" id="characterName">햄깅이</div>
+        <div class="introduce" id="characterDescription">햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.</div>
+        <div class="intimacyBox">
+            <div class="intimacy">친밀도</div>
+            <img src="{{ url_for('static', path='image/heart.png') }}" class="heartImg" alt="Heart">
+        </div>
+    </section>
+
+    <!-- 캐릭터 넘기기 -->
+    <section class="character-navigation">
+        <img src="{{ url_for('static', path='image/c_left.png') }}" class="left" id="leftArrow" alt="Left Arrow">
+        <img src="{{ url_for('static', path='image/c_right.png') }}" class="right" id="rightArrow" alt="Right Arrow">
+    </section>
+
+    <!-- 캐릭터 선택 박스 -->
+    <section class="character-select-box">
+        <div class="coins">
+            <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
+            <div class="coinFlex">
+                <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
+                <div class="coinText">&nbsp;300</div>
+            </div>
+        </div>
+
+        <div class="character-option" id="hamgingOption">
+            <img src="{{ url_for('static', path='image/ham1.png') }}" class="hamImg" alt="Hamging">
+            <div>
+                <div class="sectionName">햄깅이</div>
+                <div class="select">선택됨&nbsp<i class="fas fa-check"></i></div>
+            </div>
+        </div>
+
+        <div class="character-option" id="dongsikOption">
+            <img src="{{ url_for('static', path='image/ham2.png') }}" class="hamImg" alt="Dongsik">
+            <div>
+                <div class="sectionName">곰식이</div>
+                <div class="select">선택하기</div>
+            </div>
+        </div>
+
+        <div class="character-option locked" id="professorOption">
+            <img src="{{ url_for('static', path='image/ham3.png') }}" class="hamImg" alt="Professor">
+            <div>
+                <div class="sectionName">교수님</div>
+                <div class="select" id="purchaseButton">구매하기</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 구매 팝업 -->
+    <div id="purchasePopup">
+        <div class="popup-content">
+            <p>구매하시겠습니까?</p>
+            <button id="confirmPurchase">구매하기</button>
+            <button id="cancelPurchase">취소</button>
+        </div>
+    </div>
+</body>
+</html>
