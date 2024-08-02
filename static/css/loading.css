@@ -64,16 +64,10 @@ nav {
 
 #soundIcon {
     position: absolute;
-    left: 82rem;
     color: #AB936B;
+    left: 82rem;
+    top: 0.4rem;
 }
-
-#soundIcon:hover {
-    cursor: pointer;
-}
-
-
-
 
 .mainText {
     font-family: "Pretendard-Medium";

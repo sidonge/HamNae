@@ -13,7 +13,7 @@
 <body>
     <nav>
         <img src="/static/image/logo.png" class="logo">
-        <div id="soundIcon"><i class="fas fa-volume-up fa-2x"></i></div>
+        <i id="soundIcon" class="fas fa-volume-up fa-2x"></i>
     </nav>
     <audio id="messageSound" src="/static/audio/birdsound.mp3"></audio>
 
@@ -64,6 +64,6 @@
             
         </button>
     </div>
-    <script src="{{ url_for('static' , path='/static/js/loading.js') }}" defer></script>
+    <script src="{{ url_for('static', path='/static/js/loading.js') }}" defer></script>
 </body>
 </html>

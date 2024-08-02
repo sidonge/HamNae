@@ -6,8 +6,7 @@
     <title>chat</title>
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- 각자 맡은 페이지의 css 파일 연결 -->
-    <!-- <script src="{{ url_for('static', path='js/script.js') }}" defer></script> -->
-    <link rel="stylesheet" href=" {{ url_for('static', path='/static/css/chat.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static' , path='/static/css/chat.css') }}">
     
 </head>
 <body>
@@ -70,6 +69,7 @@
             
         </div>
     </div>
+
     <script src="{{ url_for('static', path='/static/js/chat.js') }}" defer></script>
 </body>
 </html>
