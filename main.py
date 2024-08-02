@@ -52,16 +52,13 @@ import os
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
-app = FastAPI()
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
 
 # API 키를 읽는 함수
 import os
 
 def get_api_key():
     api_key = os.getenv('API_KEY')
+    print("이거야",api_key)
     if not api_key:
         logging.error("API key is not available in the environment variables.")
         raise ValueError("API key is not available in the environment variables.")
