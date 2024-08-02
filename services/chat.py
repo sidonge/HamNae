@@ -19,16 +19,23 @@ templates = Jinja2Templates(directory="templates")
 router = APIRouter()
 
 # API 키를 읽는 함수
-def read_api_key(filepath):
-    try:
-        with open(filepath, 'r') as file:
-            return file.read().strip()  # 공백 문자 제거
-    except Exception as e:
-        logging.error(f"Failed to read the API key: {e}")
-        raise e
 
-api_key = read_api_key('apikey.txt')
+def get_api_key():
+    api_key = os.getenv('API_KEY')
+    print("이거야",api_key)
+    if not api_key:
+        logging.error("API key is not available in the environment variables.")
+        raise ValueError("API key is not available in the environment variables.")
+    return api_key
 
+#API 키 설정
+try:
+    api_key = get_api_key()
+    genai.configure(api_key=api_key)
+    logging.info("Google Generative AI configured successfully with the provided API key.")
+except Exception as e:
+    logging.error(f"Failed to configure Google Generative AI: {e}")
+    raise
 safety_settings = [
     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
     {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
