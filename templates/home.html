@@ -9,15 +9,11 @@
     <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-
-    <link rel="stylesheet" href="/static/css/home.css">
-    <script src="/static/js/home.js"></script>
   </head>
   <body>
     <div class="model-container">
         <!-- 윈도우 모델 -->
-        <!-- <model-viewer id="windowModel" src="{{ url_for('static', path='models/room_pill.glb') }}" environment-image="neutral" ar></model-viewer> -->
-        <model-viewer id="windowModel" src="/static/models/room_pill.glb" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="windowModel" src="{{ url_for('static', path='models/room_pill.glb') }}" environment-image="neutral" ar></model-viewer>
         <!-- 토끼 모델 -->
         <model-viewer id="rabbitModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>

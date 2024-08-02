@@ -1,3 +1,81 @@
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+* {
+box-sizing: content-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
+}
+
+html {
+overflow: hidden;
+overflow-y: hidden;
+}
+
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+
+
 body {
     background: linear-gradient(white, #F5EED1);
     display: flex;
@@ -35,7 +113,7 @@ body {
     color: #71594E;
     text-align: center;
     margin-bottom: 10px;
-    font-family: "Pretendard-Bold";
+    font-family: "Pretendard-ExtraBold";
     font-size: 1.6rem;
 }
 
@@ -52,14 +130,14 @@ body {
     margin-bottom: 40px;
 }
 
-.name, .userid, .email, .phone, .password, .password2 {
+.name, .userid, .email, .tel, .password, .password2 {
     display: block;
     margin-bottom: 10px;
     font-family: "Pretendard-Medium";
     font-size: 0.9rem;
 }
 
-.email::placeholder, .password::placeholder, .password2::placeholder {
+.email::placeholder, .tel::placeholder, .password::placeholder, .password2::placeholder {
     font-family: "Pretendard-Light";
     font-size: 0.8rem;
   }
@@ -84,6 +162,7 @@ button {
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .button{

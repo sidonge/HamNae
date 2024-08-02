@@ -1,38 +1,69 @@
 // 카카오 JavaScript SDK 초기화
 Kakao.init('c5c12a3803eb52af28d1041cecbf7d2f');
 
-// 사용자 정의 이미지 버튼 클릭 이벤트 추가
-document.getElementById('kakaoBtn').addEventListener('click', function() {
-    // 카카오 로그인 실행
-    Kakao.Auth.login({
-        // 로그인 성공 시 호출되는 함수
-        success: function(authObj) {
-            // 로그인 인증 객체를 콘솔에 출력
-            console.log(authObj);
+// // 사용자 정의 이미지 버튼 클릭 이벤트 추가
+// document.getElementById('kakaoBtn').addEventListener('click', function() {
+//     // 카카오 로그인 실행
+//     Kakao.Auth.login({
+//         // 로그인 성공 시 호출되는 함수
+//         success: function(authObj) {
+//             // 로그인 인증 객체를 콘솔에 출력
+//             console.log(authObj);
 
-            // 로그인 성공 시 사용자 정보 요청
-            Kakao.API.request({
-                url: '/v2/user/me',
-                // 사용자 정보 요청 성공 시 호출되는 함수
-                success: function(res) {
-                    // 사용자 정보를 콘솔에 출력
-                    console.log(res);
-                    // 사용자 정보를 활용한 로직 추가
-                },
-                // 사용자 정보 요청 실패 시 호출되는 함수
-                fail: function(error) {
-                    // 에러 정보를 콘솔에 출력
-                    console.log(error);
-                }
-            });
+//             // 로그인 성공 시 사용자 정보 요청
+//             Kakao.API.request({
+//                 url: '/v2/user/me',
+//                 // 사용자 정보 요청 성공 시 호출되는 함수
+//                 success: function(res) {
+//                     // 사용자 정보를 콘솔에 출력
+//                     console.log(res);
+//                     // 사용자 정보를 활용한 로직 추가
+//                 },
+//                 // 사용자 정보 요청 실패 시 호출되는 함수
+//                 fail: function(error) {
+//                     // 에러 정보를 콘솔에 출력
+//                     console.log(error);
+//                 }
+//             });
+//         },
+//         // 로그인 실패 시 호출되는 함수
+//         fail: function(err) {
+//             // 에러 정보를 콘솔에 출력
+//             console.log(err);
+//         }
+//     });
+// });
+
+// 로그인 버튼 클릭 이벤트
+document.getElementById('kakaoBtn').addEventListener('click', function() {
+    Kakao.Auth.login({
+        success: function(authObj) {
+            console.log('로그인 성공:', authObj);
+
+            // 로그인 후 액세스 토큰을 통해 사용자 정보를 요청합니다.
+            getUserInfo(authObj.access_token);
         },
-        // 로그인 실패 시 호출되는 함수
         fail: function(err) {
-            // 에러 정보를 콘솔에 출력
-            console.log(err);
+            console.error('로그인 실패:', err);
         }
     });
 });
+
+// 사용자 정보 요청 함수
+function getUserInfo(accessToken) {
+    Kakao.API.request({
+        url: '/v2/user/me',
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+    .then(function(response) {
+        console.log('사용자 정보:', response);
+    })
+    .catch(function(error) {
+        console.error('사용자 정보 요청 오류:', error);
+    });
+}
 
 // 네이버 로그인 객체 초기화
 var naver_id_login = new naver_id_login("k6pg43rTvvd3bJOH0bcB", "http://127.0.0.1:5500/templates/home.html");

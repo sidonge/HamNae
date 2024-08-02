@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산책하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/walkpage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <script src="{{ url_for('static', path='js/walkpage.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+</head>
+<body>
+    <!-- nav -->
+    <nav>
+        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
+        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
+    </nav>
+
+    <!-- nav popup -->
+    <div id="navPopup" class="nav-popup">
+        <nav>
+            <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
+        </nav>
+
+        <section class="menuSection">
+            <div class="menu">
+                <div class="mission" id="mission">집으로</div>
+                <hr class="hr" />
+                <div class="walk" id="walk">산책하기</div>
+                <hr class="hr"/>
+                <div class="character" id="character">캐릭터 변경</div>
+                <hr class="hr"/>
+                <div class="mypage" id="mypage">마이페이지</div>
+                <hr class="hr"/>
+            </div>
+        </section>
+    </div>
+
+    <!-- title -->
+    <section class="titleSection">
+        <div class="titleWalk">산책하기</div>
+        <hr class="titleLine" />
+    </section>
+
+    <!-- quest box -->
+    <section class="questSection">
+        <div class="imgBox">
+            <img src="{{ url_for('static', path='image/tape.png') }}" class="tapeIcon">
+        </div>
+        
+        <article class="questBox">
+            
+            <div class="questTitle">
+                <div class="questText">퀘스트 달성</div>
+                <hr class="line" />
+            </div>
+
+            <div class="questListBox">
+                <div class="questList">
+                    <div class="questNum">1</div>
+                    <div class="distanceBox">
+                        <div class="questDistance">반경 1km</div>
+                        <div class="coin">
+                            <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coinIcon">
+                            <div class="price">300</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="questList">
+                    <div class="questNum">2</div>
+                    <div class="distanceBox">
+                        <div class="questDistance">반경 3km</div>
+                        <div class="coin">
+                            <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coinIcon">
+                            <div class="price">500</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="questList">
+                    <div class="questNum">3</div>
+                    <div class="distanceBox">
+                        <div class="questDistance">반경 5km</div>
+                        <div class="coin">
+                            <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coinIcon">
+                            <div class="price">700</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="questTitle">
+                <div class="questText">추천 퀘스트</div>
+                <hr class="line" />
+            </div>
+            <div class="questCheck">
+                <div class="checkboxBox">
+                    <input class="checkBox" type="checkbox" />
+                    <div class="questCommet">편의점 다녀오기</div>
+                </div>
+                <div class="checkboxBox">
+                    <input class="checkBox" type="checkbox" />
+                    <div class="questCommet">공원에서 한 바퀴 돌기</div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <div class="mapBox">
+            <div class="distance">
+                <img src="{{ url_for('static', path='image/icon-distance.png') }}" class="distanceIcon">
+                <div class="distanceNum">반경 1km</div>
+            </div>
+            <div>
+                <hr class="mapTop"/>
+                <div id="map"></div>
+                <hr class="mapBottom"/>
+            </div>
+            <img src="{{ url_for('static', path='image/icon-map.png') }}" class="mapIcon">
+        </div>
+    </section>
+</body>
+</html>
