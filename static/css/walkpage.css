@@ -354,10 +354,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
     bottom: 36rem;
     
-    width: 70rem;
+    width: 67em;
+    z-index: 1000;
 }
 
 .mapBottom {
@@ -366,9 +367,11 @@ input {
     box-shadow: 3px 3px 2px #BBBBBB;
     
     position: relative;
-    left: 6.6rem;
+    left: 8.5rem;
+    bottom: 37rem;
     
-    width: 70rem;
+    width: 67rem;
+    z-index: 1000;
 }
 
 .mapIcon {
@@ -412,6 +415,11 @@ input {
 
 #map
 {
-    width: 100rem;
-    height: 100rem;
+    width: 70vw;
+    height: 80vh;
+
+    position: relative;
+    bottom: 36.5rem;
+    right: 2rem;
+    margin-left: auto;
 }
