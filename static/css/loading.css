@@ -93,8 +93,8 @@ nav {
 
 
 #down {
-    width: 100%; /* 버튼 크기에 맞게 조정 */
-    height: 100%; /* 버튼 크기에 맞게 조정 */
+    width: 100%; 
+    height: 100%; 
     transition: transform 0.3s ease;
 }
 
@@ -121,5 +121,207 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+} 
+
+.leftTree, .rightTree {
+    position: absolute; /* 각 트리 요소들을 상대적으로 위치 설정 */
+    display: flex;
+    justify-content: space-between; /* 좌우에 요소들을 분산 배치 */
+    align-items: flex-end; /* 하단에 요소들을 정렬 */
+    bottom: 0.001rem;
+    z-index: 1;
 }
 
+.leftTree {
+    left: 0; /* 왼쪽 끝에 위치 */
+}
+
+.rightTree {
+    right: -15rem; /* 오른쪽 끝에 위치 */
+    bottom: -2rem;
+}
+
+
+#browntree2 {
+    position: absolute;
+    left: 5.7rem;
+    bottom: 0.5rem;
+    height: 10rem;
+}
+
+#browntree {
+    position: absolute;
+    left: 13.4rem;
+    height: 11rem;
+    bottom: 3.8rem;
+}
+
+#hamster {
+    position: absolute;
+    bottom: 4rem;
+    left: 26rem;
+    width: 7rem;
+}
+
+.sky {
+    position: absolute;
+    bottom: 30rem;
+}
+
+#cloud1 {
+    position: absolute;
+    right: 23rem;
+    bottom: 3rem;
+}
+#cloud2 {
+    position: absolute;
+    left: 20rem;
+    bottom: 4rem;
+}
+#cloud3 {
+    position: absolute;
+    left: 10rem;
+    bottom: 3rem;
+}
+
+.background {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 0;
+}
+#noeul {
+    position: absolute;
+    bottom: 8rem;
+    left: 5rem;
+}
+
+.LOGO {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#logoback {
+    position: absolute;
+    width: 26.5rem;
+    height: 18rem;
+    z-index: 10;
+    left: 35rem;
+    bottom: 14.8rem;
+    opacity: 80%;
+}
+
+#reallogo {
+    position: absolute;
+    width: 17rem;
+    bottom: 18rem;
+    left: 39rem;
+    z-index: 20;
+}
+
+.logoText {
+    color: #AB936B;
+    font-family: "Pretendard-Medium";
+    position: absolute;
+    bottom: 32rem;
+    z-index:30;
+    left: 37rem;
+    font-size: 1.3rem;
+}
+
+.startButton {
+    width: 13rem;
+    height: 4rem;
+    background-color: #F5EED1;
+    border-radius: 15px;
+    border: solid 3.5px #AB936B;
+    z-index: 20; 
+    position: absolute;
+    bottom: 5rem;
+    left: 43rem;
+    transition: transform 0.3s ease;
+}
+
+.startButton:hover {
+    transform: translate(0, 5px);
+    cursor: pointer;
+}
+.btnText {
+    text-align: center;
+    margin: auto 0;
+    font-family: "Pretendard-SemiBold";
+    color: #AB936B;
+    font-size: 1.5rem;
+}
+
+#load {
+    position: absolute;
+    top: -24rem;
+    left: 43rem;
+    opacity: 60%;
+    width: 17rem;
+}
+
+
+/* 구름 애니메이션 */
+@keyframes float {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(30px); /* 오른쪽으로 20px 이동 */
+    }
+}
+
+.sky {
+    animation: float 6s ease-in-out infinite; 
+}
+
+#cloud1 {
+    animation-delay: 0s; 
+}
+
+#cloud2 {
+    animation-delay: 2s; 
+}
+
+#cloud3 {
+    animation-delay: 4s;
+}
+
+/* 나무들 애니메이션 */
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.7); /* 초기에 요소의 크기를 50%로 설정 */
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1); /* 중간에 요소의 크기를 110%로 늘림 */
+        opacity: 0.5; 
+    }
+    100% {
+        transform: scale(1); /* 최종적으로 요소의 크기를 100%로 설정 */
+        opacity: 1; 
+    }
+}
+
+.leftTree, .rightTree {
+    animation: scaleUp 1s ease-in-out forwards; 
+    animation-delay: 3s;
+}
+
+/* 로고 fadein 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0; 
+    }
+    to {
+        opacity: 1; 
+    }
+}
+
+.LOGO {
+    animation: fadeIn 2s ease-in-out forwards; 
+    animation-delay: 3s;
+}
