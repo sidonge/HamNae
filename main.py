@@ -73,7 +73,8 @@ STAMP_MAP = {
     'cooking': 'cooking_cleared_stamp.png',
     'wash': 'wash_cleared_stamp.png',
     'bed': 'bed_cleared_stamp.png',
-    'pills':'pills_cleared_stamp'
+    'pills':'pills_cleared_stamp',
+    'talk':'talk_cleared_stamp',
 }
 
 def save_status(mission: str):

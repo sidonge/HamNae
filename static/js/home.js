@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'cooking': 'cooking_cleared_stamp',
                         'wash': 'wash_cleared_stamp',
                         'bed': 'bed_cleared_stamp',
-                        'pills':'pills_cleared_stamp'
+                        'pills':'pills_cleared_stamp',
+                        'talk':'talk_cleared_stamp',
                     };
                     const newFileName = stampMap[mission] + '.' + file.name.split('.').pop(); // 새로운 파일 이름 설정
 
@@ -60,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'cooking': 'cooking_cleared_stamp',
             'wash': 'wash_cleared_stamp',
             'bed': 'bed_cleared_stamp',
-            'pills':'pills_cleared_stamp'
+            'pills':'pills_cleared_stamp',
+            'talk':'talk_cleared_stamp',
         };
 
         const stampId = stampMap[mission];

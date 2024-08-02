@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'bed': 'bed_cleared_stamp',
         'talk': 'talk_cleared_stamp',
         'walk': 'sprout_cleared_stamp',
-        'pills': 'pills_cleared_stamp'
+        'pills': 'pills_cleared_stamp',
     };
 
     // 스탬프 이미지 업데이트 함수
