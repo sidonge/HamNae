@@ -158,13 +158,13 @@ async def update_quest_stamps(request: Request):
     except Exception as e:
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
 
-@app.get("/", response_class=HTMLResponse)
-def get_loading(request: Request):
-    return templates.TemplateResponse("loading.html", {"request": request})
+#@app.get("/", response_class=HTMLResponse)
+#def get_loading(request: Request):
+#    return templates.TemplateResponse("loading.html", {"request": request})
 
-# @app.get("/", response_class=HTMLResponse)
-# async def main(request: Request):
-#     return templates.TemplateResponse("main.html", {"request": request})
+@app.get("/main", response_class=HTMLResponse)
+async def main(request: Request):
+    return templates.TemplateResponse("main.html", {"request": request})
 
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
