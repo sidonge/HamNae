@@ -1,12 +1,8 @@
-from fastapi import FastAPI, File, UploadFile, Request
-from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import  HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
-import shutil
-import os
-import json
 from typing import Optional
 from map import router as map_router
 from api.pet import router as pet_router
@@ -16,7 +12,6 @@ from api.quest import router as quest_router
 
 app = FastAPI()
 
-# CORS 설정
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,14 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static Files 설정
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
 templates = Jinja2Templates(directory="templates")
 
-# 템플릿 설정
-# Import and include routers for authentication
-from auth import login, register
+# 라우터 등록
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
@@ -137,55 +128,32 @@ async def update_quest_stamps(request: Request):
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
 
 @app.get("/", response_class=HTMLResponse)
-async def main(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
-
-@app.get("/home", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
-
-@app.get("/walkpage", response_class=HTMLResponse)
-async def quest(request: Request):
-    return templates.TemplateResponse("walkpage.html", {"request": request})
-
-@app.get("/petslist")
-async def petslist(request: Request):
-    return templates.TemplateResponse("petslist.html", {"request": request})
-
-@app.get("/quest", response_class=HTMLResponse)
-async def quest(request: Request):
-    return templates.TemplateResponse("quest.html", {"request": request})
-
-@app.get("/quest_status")
-async def quest_status():
-    status = get_status()
-    return JSONResponse(content={"status": status}, status_code=200)
-
-@app.get("/character", response_class=HTMLResponse)
-async def quest(request: Request):
-    return templates.TemplateResponse("character.html", {"request": request})
-
-@app.get("/models/{model_name}")
-async def get_model(model_name: str):
-    file_path = os.path.join("templates", "models", model_name)
-    if os.path.exists(file_path):
-        return FileResponse(file_path)
-    return JSONResponse(content={"success": False, "error": "File not found"}, status_code=404)
-
-@app.get("/character", response_class=HTMLResponse)
-async def read_character(request: Request):
-    return templates.TemplateResponse("character.html", {"request": request})
-
-@app.get("/chat", response_class=HTMLResponse)
 async def get_chat(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
 
-app.include_router(map_router)
 
-@app.get("/walk", response_class=HTMLResponse)
-def read_root(request: Request):
-    # 'walkpage.html'을 응답으로 반환
-    return templates.TemplateResponse("walkpage.html", {"request": request})
+@app.post("/api/chat")
+async def api_chat(message: Message):
+    try:
+        response = chat.send_message(message.message)
+        logging.debug(f"Full response object: {response}")
+        response_content = response.text if hasattr(
+            response, 'text') else str(response)
+
+        response_data = jsonable_encoder({
+            "response": response_content,
+        })
+        return JSONResponse(content=response_data)
+    except Exception as e:
+        logging.error(f"Exception during chat processing: {e}")
+        return JSONResponse(status_code=500, content={"detail": str(e)})
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
+
+
 
 if __name__ == "__main__":
     import uvicorn

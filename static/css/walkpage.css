@@ -363,7 +363,7 @@ input {
     bottom: 36rem;
     
     width: 67em;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .mapBottom {
@@ -376,7 +376,7 @@ input {
     bottom: 37rem;
     
     width: 67rem;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .mapIcon {

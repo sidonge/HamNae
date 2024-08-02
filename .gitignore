@@ -1,2 +1,4 @@
 apikey.txt
 mapapikey.txt
+__pycache__/
+*.pyc
