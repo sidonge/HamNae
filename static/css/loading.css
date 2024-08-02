@@ -52,21 +52,12 @@ html, body {
 nav {
     margin: 2rem 0 0 3rem;
     position: absolute;
-    display: flex;
-    flex-direction: row;
 }
 
 .logo {
     width: 4rem;
     position: absolute;
     left: -1rem;
-}
-
-#soundIcon {
-    position: absolute;
-    color: #AB936B;
-    left: 82rem;
-    top: 0.4rem;
 }
 
 .mainText {
@@ -202,7 +193,7 @@ nav {
 #noeul {
     position: absolute;
     bottom: 8rem;
-    left: 5rem;
+    left: 25rem;
 }
 
 .LOGO {
@@ -216,7 +207,7 @@ nav {
     width: 26.5rem;
     height: 18rem;
     z-index: 10;
-    left: 35rem;
+    left: 40rem;
     bottom: 14.8rem;
     opacity: 80%;
 }
@@ -235,7 +226,7 @@ nav {
     position: absolute;
     bottom: 32rem;
     z-index:30;
-    left: 37rem;
+    left: 50rem;
     font-size: 1.3rem;
 }
 
@@ -248,7 +239,7 @@ nav {
     z-index: 20; 
     position: absolute;
     bottom: 5rem;
-    left: 43rem;
+    left: 55rem;
     transition: transform 0.3s ease;
 }
 
@@ -267,7 +258,7 @@ nav {
 #load {
     position: absolute;
     top: -24rem;
-    left: 43rem;
+    left: 56rem;
     opacity: 60%;
     width: 17rem;
 }
@@ -334,32 +325,3 @@ nav {
     animation: fadeIn 2s ease-in-out forwards; 
     animation-delay: 3s;
 }
-
-
-@keyframes bobbing {
-    0%, 100% {
-        transform: translateY(0); 
-    }
-    50% {
-        transform: translateY(-10px); 
-    }
-}
-
-#hamster {
-    animation: bobbing 3s ease-in-out infinite; 
-}
-
-
-@keyframes maintext {
-    0%, 100% {
-        transform: translateY(10px); 
-    }
-    50% {
-        transform: translateY(0); 
-    }
-}ƒ
-
-.mainText {
-    animation: maintext 3s ease-in-out infinite; 
-}
-

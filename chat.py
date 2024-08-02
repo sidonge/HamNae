@@ -30,6 +30,7 @@ templates = Jinja2Templates(directory="templates")
 try:
     # api_key = read_api_key('apikey.txt')
     api_key = os.getenv('API_KEY')
+    print(api_key)
 
 except Exception as e:
     raise RuntimeError("Failed to read API key")
