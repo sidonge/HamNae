@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             alert('미션 성공! 퀘스트 달성도를 확인해 보세요.');
                             localStorage.setItem(`${uploadInput.id.replace('Upload', '')}Cleared`, 'true');
                             updateStampImage(uploadInput.id.replace('Upload', ''), file);
-
-                            img.style.display = 'none'; // 업로드 후 이미지 숨기기
                         } else {
                             alert('올바르지 않은 사진이에요. 다시 시도해 주세요.');
                         }
