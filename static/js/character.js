@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // DOM 요소들 가져오기
     const backgroundModel = document.getElementById('backgroundModel');
     const hamModel = document.getElementById('hamModel');
     const leftArrow = document.getElementById('leftArrow');
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchasePopup = document.getElementById('purchasePopup');
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
-    const purchaseButton = document.getElementById('purchaseButton');
 
     const characters = [
         {
@@ -39,36 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
-    
+
         // 모델 뷰어 소스 업데이트
         if (currentIndex === 2 && purchasedCharacterIndex === 2) {
-            // 교수님 캐릭터가 선택된 상태이고, 이미 구매한 경우
             hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb');
             document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
         } else {
-            // 현재 선택된 캐릭터에 맞는 모델을 설정
             hamModel.setAttribute('src', character.model);
         }
-    
-        // 모든 선택 옵션의 초기화
+
+        // 모든 선택 옵션 초기화
         hamgingOption.querySelector('.select').textContent = '선택하기';
         dongsikOption.querySelector('.select').textContent = '선택하기';
         professorOption.querySelector('.select').textContent = purchasedCharacterIndex === 2 ? '선택하기' : '구매하기';
-    
+
         // 초기 상태 설정
         hamgingOption.classList.remove('selected');
         dongsikOption.classList.remove('selected');
         professorOption.classList.remove('selected');
-        
-        // 구매 상태와 선택 상태에 따른 배경색 설정
+
+        // 배경색 설정
         if (purchasedCharacterIndex === 2) {
             professorOption.querySelector('.select').style.backgroundColor = '#F5EED1'; // '선택하기' 색상
         } else {
             professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
         }
         professorOption.querySelector('.select').style.color = '#070000'; // 텍스트 색상 설정
-    
-        // 현재 선택된 캐릭터에 대한 선택 상태 적용
+
+        // 현재 선택된 캐릭터의 선택 상태 적용
         if (currentIndex === 0) {
             hamgingOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
             hamgingOption.classList.add('selected');
@@ -86,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
 
     function showPurchasePopup(index) {
         pendingPurchaseIndex = index;
@@ -94,17 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handlePurchase() {
-        purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스를 저장
+        purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스 저장
         purchasePopup.style.display = 'none'; // 팝업 숨기기
-    
+
         // 교수님 캐릭터 구매 후 모델 뷰어 설정
         if (purchasedCharacterIndex === 2) {
             hamModel.setAttribute('src', '../static/models/rabbitblack.glb'); // rabbitblack으로 변경
         }
-    
+
         updateCharacter(); // 캐릭터 상태 업데이트
+
+        // 로그인 시 사용자 ID를 서버에서 클라이언트로 전달하는 예
+        fetch('/get_user_id')
+            .then(response => response.json())
+            .then(data => {
+                let currentUserId = data.user_id; // 서버에서 받은 사용자 ID
+
+                // 서버에 선택된 캐릭터 정보 전송
+                return fetch('/select_character', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUserId, // 서버에서 받은 사용자 ID
+                        pet_id: characters[pendingPurchaseIndex].pet_id // 데이터베이스에서 확인된 pet_id
+                    })
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
-    
 
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;
@@ -118,13 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     professorOption.addEventListener('click', () => {
         if (purchasedCharacterIndex === 2) {
-            // 이미 구매한 캐릭터인 경우, 선택 상태로 변경
             currentIndex = 2;
             updateCharacter();
         } else {
-            // 구매 대기 중인 캐릭터인 경우, 팝업 표시
             currentIndex = 2;
-            showPurchasePopup(currentIndex); // 구매 대기 중인 캐릭터의 인덱스 저장 및 팝업 표시
+            showPurchasePopup(currentIndex);
         }
     });
 
@@ -138,16 +158,13 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCharacter();
     });
 
-    // 팝업 취소 버튼 클릭 시 팝업 숨기기
     cancelPurchase.addEventListener('click', () => {
         purchasePopup.style.display = 'none';
     });
 
-    // 팝업 확인 버튼 클릭 시 구매 처리
     confirmPurchase.addEventListener('click', handlePurchase);
 
     // 모델 뷰어 조정
-    // 초기 카메라 설정
     let rotateX = 55; // 세로 각도
     let rotateY = 230; // 가로 각도
     let zoomLevel = 50; // 확대 비율
@@ -156,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
     }
 
-    // 시점 조정
     backgroundModel.style.transform = 'translateY(4rem)';
 
     updateRotation();
