@@ -194,5 +194,6 @@ function onChatComplete() {
 
 // 창 닫기 기능
 function closeEvent() {
-    document.getElementsByClassName("chatPage")[0].style.display = "none";
+    // document.getElementsByClassName("chatPage")[0].style.display = "none";
+    window.location.href = "/home";
 }

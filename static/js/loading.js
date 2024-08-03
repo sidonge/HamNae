@@ -1,5 +1,8 @@
 // 화살표 버튼 눌렀을 때 화면 부드럽게 전환
 document.getElementById('scrollButton').addEventListener('click', function() {
+    const backgroundSound = document.getElementById("backgroundSound")
+    backgroundSound.play();
+
     window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
