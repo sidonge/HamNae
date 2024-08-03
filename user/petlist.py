@@ -1,23 +1,21 @@
-from fastapi import APIRouter, Request, HTTPException, Depends
-from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
+from fastapi import APIRouter, HTTPException, Depends, Request, Cookie
+from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 from database.db_setup import get_db
 from api.models import Pet, UserPet, User
 from config import templates, session_data
-import os
 
-router = APIRouter(tags=["캐릭터 선택"])
+router = APIRouter()
 
-@router.get("/character", response_class=HTMLResponse)
-async def read_character(request: Request, db: Session = Depends(get_db)):
-    print("/character")
+@router.get("/petlist", response_class=HTMLResponse)
+async def get_pets(request: Request, db: Session = Depends(get_db)):
+    print("/petlist")
     session_id = request.cookies.get("session_id")
     print("session_id : "+ session_id)
     user_info = session_data[session_id]
     user_id = user_info.get('id')
     user_name = user_info.get('name')
-
     if not session_id:
         raise HTTPException(status_code=401, detail="Unauthorized")
     
@@ -43,11 +41,4 @@ async def read_character(request: Request, db: Session = Depends(get_db)):
     result = db.execute(pets_query)
     pet_data = result.scalars().all()
 
-    return templates.TemplateResponse("character.html", {"request": request, "pets": pet_data, "name": user_name})
-
-@router.get("/models/{model_name}")
-async def get_model(model_name: str):
-    file_path = os.path.join("templates", "models", model_name)
-    if os.path.exists(file_path):
-        return FileResponse(file_path)
-    return JSONResponse(content={"success": False, "error": "File not found"}, status_code=404)
+    return templates.TemplateResponse("petlist.html", {"request": request, "pets": pet_data, "name": user_name})
