@@ -9,7 +9,8 @@ from api.pet import router as pet_router
 from api.mypet import router as mainpet_router
 from api.quest import router as quest_router
 from auth import login, register
-from user import petlist
+from user import petlist, mypage
+from services import walkpage
 
 app = FastAPI()
 
@@ -85,9 +86,9 @@ async def main(request: Request):
 async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
-@app.get("/walkpage", response_class=HTMLResponse)
-async def quest(request: Request):
-    return templates.TemplateResponse("walkpage.html", {"request": request})
+# @app.get("/walkpage", response_class=HTMLResponse)
+# async def quest(request: Request):
+#     return templates.TemplateResponse("walkpage.html", {"request": request})
 
 # @app.get("/petslist")
 # async def petslist(request: Request):
@@ -165,3 +166,6 @@ app.include_router(mainpet_router)
 
 app.include_router(quest_router)
 app.include_router(petlist.router, prefix="/user")
+app.include_router(mypage.router, prefix="/user")
+app.include_router(map_router)
+app.include_router(walkpage.router)
