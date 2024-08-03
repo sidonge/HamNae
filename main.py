@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
-from services import quest, home, character, walkpage, petlist, chat, map
+from services import quest, home, character, walkpage, petlist, map
 from user import petlist, mypage
 from services import walkpage
 
@@ -32,7 +32,7 @@ app.include_router(character.router)
 app.include_router(quest.router)
 app.include_router(walkpage.router)
 app.include_router(petlist.router)
-app.include_router(chat.router)
+# app.include_router(chat.router)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -122,11 +122,7 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
 
-app.include_router(pet_router)
-app.include_router(mainpet_router)
-
-app.include_router(quest_router)
 app.include_router(petlist.router, prefix="/user")
 app.include_router(mypage.router, prefix="/user")
-app.include_router(map_router)
+
 app.include_router(walkpage.router)

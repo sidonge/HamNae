@@ -20,4 +20,3 @@ def get_api_key_route():
     api_key = os.getenv('MAP_API_KEY')
     print("이거ㅓㅓㅓㅓ",api_key)
     return {"api_key": api_key}
-
