@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 초기 화면 설정
   let rotateX = 90;
   let rotateY = -270;
-  let zoomLevel = 3.5;
+  let zoomLevel = 5;
 
   const minRotateY = -300;
   const maxRotateY = -240;
@@ -212,7 +212,5 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "/chat";
   });
 
-  windowModel.addEventListener("load", () => {
-    updateRotation();
-  });
+  updateRotation();
 });

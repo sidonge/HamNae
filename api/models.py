@@ -57,6 +57,7 @@ class UserPet(Base):
     
     user_id = Column(String, ForeignKey('users.id'), primary_key=True)
     pet_id = Column(String, ForeignKey('pets.pet_id'), primary_key=True)
+    selected_character = Column(Integer, default=0)  # selected_character 열 추가
 
     # 관계 정의
     user = relationship("User", back_populates="pets")
@@ -85,6 +86,15 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def init_db():
     # 데이터베이스 테이블 생성
     Base.metadata.create_all(engine)
+
+    # 기본 캐릭터를 선택 상태로 초기화
+    with Session(engine) as session:
+        # 모든 캐릭터의 선택 상태를 0으로 초기화
+        session.execute(update(UserPet).values(selected_character=0))
+        # 기본 캐릭터인 hamster를 선택 상태로 설정
+        session.execute(update(UserPet).where(UserPet.pet_id == 'hamster').values(selected_character=1))
+        session.commit()
+
 
 # 데이터베이스 초기화 호출
 if __name__ == "__main__":

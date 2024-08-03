@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>산책하기</title>
+    <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="{{ url_for('static', path='css/walkpage.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <script src="{{ url_for('static', path='js/walkpage.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+
 </head>
 <body>
     <!-- nav -->
@@ -106,18 +108,17 @@
         </article>
     </section>
 
-    <section>
-        <div class="mapBox">
+    <section class="mapSection">
             <div class="distance">
                 <img src="{{ url_for('static', path='image/icon-distance.png') }}" class="distanceIcon">
                 <div class="distanceNum">반경 1km</div>
             </div>
+
             <div class="mapBox">
                 <hr class="mapTop"/>
                     <div id="map"></div>
                 <hr class="mapBottom"/>
             </div>
-        </div>
     </section>
     <button id="setHome" class="custom-map-control-button">나의 홈 설정</button>
     <button id="setLocation">현재 위치</button>
