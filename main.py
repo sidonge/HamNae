@@ -32,7 +32,6 @@ app.include_router(quest.router, prefix="/services")
 app.include_router(walkpage.router, prefix="/services")
 app.include_router(petlist.router, prefix="/services")
 
-
 @app.get("/", response_class=HTMLResponse)
 async def get_loading(request: Request):
     return templates.TemplateResponse("loading.html", {"request": request})

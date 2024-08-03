@@ -1,20 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const homeSound = document.getElementById("homeSound");
-
-  if (homeSound) {
-    homeSound.play().catch(error => {
-      console.error("Failed to play sound:", error);
-    });
-  }
-
-  const cooking_cleared_stamp = document.getElementById("cooking_cleared_stamp")
-  const cookingSound = document.getElementById("cookingSound")
-
-  cooking_cleared_stamp.addEventListener("click", () => {
-  cookingSound.play();
-  });
-
   const talkImages = document.querySelectorAll(".talk-image");
   talkImages.forEach((img) => {
     const uploadInput = img.nextElementSibling;

@@ -59,8 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     questText.style.textAlign = "center";
 
+    questText.style.textAlign = "center";
+
     greenBtn.addEventListener("click", function() {
-        
         var message = "내일의 나에게 하고 싶은 말 적어보기";
         if (!isMissionComplete) {
             messageSound.play();
