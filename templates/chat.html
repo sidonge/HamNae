@@ -58,8 +58,8 @@
         </div>
     </div>
 
-    <audio id="messageSound" src="/static/sound/MP_맑은 미션 성공(jingle).mp3"></audio>
-    <audio id="closeSound" src="/static/sound/MP_통화 종료음.mp3"></audio>
+    <audio id="messageSound" src="{{ url_for('static', path='/sound/MP_Pling.mp3') }}"></audio>
+    <audio id="closeSound" src="{{ url_for('static', path='/sound/MP_통화 종료음.mp3') }}"></audio>
 
     <script src="{{ url_for('static', path='/js/chat.js') }}" defer></script>
 </body>

@@ -1,7 +1,6 @@
 // 메시지 전송 기능
 async function sendMessage() {
     var input = document.getElementById("userInput");
-    var messageSound = document.getElementById("messageSound")
     if (input.value.trim() !== "") {
         const userMessage = input.value;
         input.value = ""; // 입력 필드 초기화
