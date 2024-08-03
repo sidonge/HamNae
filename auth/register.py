@@ -8,7 +8,7 @@ from api.models import User
 from passlib.context import CryptContext
 from datetime import datetime
 
-router = APIRouter()
+router = APIRouter(tags=["회원가입"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class UserCreate(BaseModel):

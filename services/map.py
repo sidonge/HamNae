@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import os
 
-router = APIRouter()
+router = APIRouter(tags=["지도"])
 
 def get_api_key() -> str:
     api_key_file_path = "mapapikey.txt"
