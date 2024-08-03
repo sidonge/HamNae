@@ -20,8 +20,7 @@ safety_settings = [
 
 router = APIRouter()
 
-api_key = os.environ["API_KEY"]
-print("이거야", api_key)
+api_key = os.getenv('API_KEY')
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel(
     'gemini-1.5-flash', safety_settings=safety_settings)

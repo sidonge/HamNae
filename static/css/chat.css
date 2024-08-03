@@ -278,7 +278,8 @@ margin: 0;
     color: #71594E;
     font-family: "Pretendard-Regular";
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem */
+    margin: 0.5rem 4rem;
 }
 /* 모델이 답하는 말풍선 */
 .message.bot {

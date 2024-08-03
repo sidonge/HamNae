@@ -63,5 +63,5 @@ async function sendMessage() {
 
 // 선택하기 버튼 눌렀을 때 메인 화면으로 이동하기(main으로 바꿔야됨)
 function navigateToMain() {
-    window.location.href = "/services/quest";
+    window.location.href = "/quest";
 }
