@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from config import templates
 import os, json, shutil
 
-router = APIRouter()
+router = APIRouter(tags=["홈"])
 
 UPLOAD_DIR = "./uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)

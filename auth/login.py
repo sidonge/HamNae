@@ -9,7 +9,7 @@ from config import templates, generate_session_id, session_data
 from passlib.context import CryptContext
 from auth.dependencies import get_current_user  # 수정된 부분
 
-router = APIRouter()
+router = APIRouter(tags=["로그인"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -23,9 +23,11 @@ def login_form(request: Request, user: dict = Depends(get_current_user)):
 
 @router.post("/login")
 async def login(request: Request, id: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+    print("/login - post 도착")
     user = db.query(User).filter(User.id == id).first()
     if user and verify_password(password, user.password):
         session_id = generate_session_id()
+        print("세션아이디 : "+ session_id)
         session_data[session_id] = {
             "id": user.id,
             "name": user.name,

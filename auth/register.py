@@ -11,7 +11,7 @@ from datetime import datetime
 from config import templates
 from auth.dependencies import get_current_user
 
-router = APIRouter()
+router = APIRouter(tags=["회원가입"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class UserCreate(BaseModel):
