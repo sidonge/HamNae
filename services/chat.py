@@ -20,7 +20,7 @@ safety_settings = [
 
 router = APIRouter()
 
-api_key = os.getenv('API_KEY')
+api_key = os.environ["API_KEY"]
 print("이거야", api_key)
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel(
