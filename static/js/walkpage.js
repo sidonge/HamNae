@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function initMap() {
-    // Google Maps API가 로드된 후 실행되는 함수
-    const { Map, Marker, PlacesService } = google.maps;
+    const { Map, Marker, Polyline, PlacesService } = google.maps;
 
     // 지도 초기화
     const map = new Map(document.getElementById('map'), {
@@ -50,6 +49,15 @@ function initMap() {
     const convenienceMarkers = [];
     const parkMarkers = [];
     const parksSearchRadius = 1000;
+    const positions = [];
+
+    // 경로를 그릴 Polyline 객체 생성
+    const path = new Polyline({
+        strokeColor: '#00FF00',
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+        map: map
+    });
 
     // 위치 오류 처리
     function handleLocationError(browserHasGeolocation, pos) {
@@ -150,6 +158,11 @@ function initMap() {
                     },
                     () => {
                         handleLocationError(true, map.getCenter());
+                    },
+                    {
+                        enableHighAccuracy: true, // 고정밀도 모드 활성화
+                        timeout: 5000, // 5초 내 위치 정보 요청
+                        maximumAge: 0 // 최신 위치 정보만 사용
                     }
                 );
             } else {
@@ -202,6 +215,11 @@ function initMap() {
                     },
                     () => {
                         handleLocationError(true, map.getCenter());
+                    },
+                    {
+                        enableHighAccuracy: true, // 고정밀도 모드 활성화
+                        timeout: 5000, // 5초 내 위치 정보 요청
+                        maximumAge: 0 // 최신 위치 정보만 사용
                     }
                 );
             } else {
@@ -255,4 +273,57 @@ function initMap() {
             map.setZoom(18);
         }
     });
+
+    // 실시간 위치 업데이트 함수
+    function updatePosition(position) {
+        // 위치 정확도 필터링: 정확도가 50미터 이하일 때만 업데이트
+        if (position.coords.accuracy <= 50) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            const newPos = new google.maps.LatLng(lat, lng);
+            positions.push(newPos);
+
+            if (currentLocationMarker) {
+                currentLocationMarker.setPosition(newPos);
+            } else {
+                currentLocationMarker = new google.maps.Marker({
+                    position: newPos,
+                    map: map,
+                    title: "현재 위치",
+                    icon: "/static/image/햄스터.png"
+                });
+            }
+
+            map.setCenter(newPos);
+            path.setPath(positions);
+            sendPositionToServer(lat, lng);
+        }
+    }
+
+    // 위치 정보를 서버로 전송
+    function sendPositionToServer(lat, lng) {
+        fetch('/track', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ latitude: lat, longitude: lng })
+        });
+    }
+
+    // Geolocation API를 사용하여 위치 트래킹
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(updatePosition, 
+            (error) => {
+                console.error("위치 업데이트 중 오류 발생:", error);
+            },
+            {
+                enableHighAccuracy: true, // 고정밀도 모드 활성화
+                timeout: 10000, // 10초 내 위치 정보 요청
+                maximumAge: 0 // 최신 위치 정보만 사용
+            }
+        );
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
 }
