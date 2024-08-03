@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from config import templates
 import os, json
 
-router = APIRouter()
+router = APIRouter(tags=["퀘스트"])
 
 UPLOAD_DIR = "./uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)

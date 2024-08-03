@@ -9,7 +9,7 @@ from config import templates, generate_session_id, session_data
 from passlib.context import CryptContext
 from auth.dependencies import get_current_user  # 수정된 부분
 
-router = APIRouter()
+router = APIRouter(tags=["로그인"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:

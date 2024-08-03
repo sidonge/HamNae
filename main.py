@@ -1,14 +1,11 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import  HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
-from map import router as map_router
-from api.pet import router as pet_router
-from api.mypet import router as mainpet_router
-from api.quest import router as quest_router
 from auth import login, register
+from services import quest, home, character, walkpage, petlist, chat, map
 from user import petlist, mypage
 from services import walkpage
 
@@ -29,56 +26,18 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
-# # 업로드 디렉토리 설정
-# UPLOAD_DIR = "./uploads"
-# os.makedirs(UPLOAD_DIR, exist_ok=True)
+app.include_router(map.router)
+app.include_router(home.router)
+app.include_router(character.router)
+app.include_router(quest.router)
+app.include_router(walkpage.router)
+app.include_router(petlist.router)
+app.include_router(chat.router)
 
-# # 클리어 상태를 저장할 파일
-# STATUS_FILE = "status.json"
-
-# # 미션과 파일 이름 매핑
-# STAMP_MAP = {
-#     'water': 'water_cleared_stamp.png',
-#     'clean': 'clean_cleared_stamp.png',
-#     'cooking': 'cooking_cleared_stamp.png',
-#     'wash': 'wash_cleared_stamp.png',
-#     'bed': 'bed_cleared_stamp.png',
-#     'pills':'pills_cleared_stamp',
-#     'talk':'talk_cleared_stamp',
-# }
-
-# def save_status(mission: str):
-#     try:
-#         # 파일이 없으면 새로 생성
-#         if not os.path.exists(STATUS_FILE):
-#             with open(STATUS_FILE, "w") as f:
-#                 f.write("{}")
-        
-#         # 상태 파일 읽기
-#         with open(STATUS_FILE, "r") as f:
-#             status = json.load(f)
-        
-#         # 상태 업데이트
-#         status[mission] = "true"
-        
-#         # 상태 파일에 저장
-#         with open(STATUS_FILE, "w") as f:
-#             json.dump(status, f)
-#     except Exception as e:
-#         print(f"Error saving status: {e}")
-
-# def get_status():
-#     try:
-#         if os.path.exists(STATUS_FILE):
-#             with open(STATUS_FILE, "r") as f:
-#                 return json.load(f)
-#         else:
-#             return {}
-#     except Exception as e:
-#         print(f"Error reading status: {e}")
-#         return {}
 
 @app.get("/", response_class=HTMLResponse)
+async def get_loading(request: Request):
+    return templates.TemplateResponse("loading.html", {"request": request})
 async def main(request: Request):
     return templates.TemplateResponse("main.html", {"request": request})
 
@@ -153,6 +112,8 @@ async def quest(request: Request):
 
 if __name__ == "__main__":
     import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
 
 
