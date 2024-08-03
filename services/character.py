@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from config import templates
 import os
 
-router = APIRouter()
+router = APIRouter(tags=["캐릭터 선택"])
 
 @router.get("/character", response_class=HTMLResponse)
 async def read_character(request: Request):

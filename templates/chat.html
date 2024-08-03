@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chatpage</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/chat.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <title>chat</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
+    <!-- 각자 맡은 페이지의 css 파일 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static' , path='/css/chat.css') }}">
+    
 </head>
 <body>
     
@@ -14,19 +16,16 @@
         <div class="chatPage">
             <div class="topBox">
                 <p class="topBoxText">채팅하기</p>
-                <p class="closeIcon" onclick="closeEvent()">
-                    <img src="{{ url_for('static', path='image/close.png') }}">
-                </p>
+                <p class="closeIcon" onclick="closeEvent()"><img src="{{ url_for('static', path='/image/close.png') }}"></p>
             </div>
             <div class="info">
                 <div class="circle">
-                    <img id="hamster" src="{{ url_for('static', path='image/햄스터.png') }}">
+                    <img id="hamster" src="{{ url_for('static', path='/image/hamster.png') }}">
                 </div>
                 <div class="nameHeart">
                     <div class="name">햄깅이</div>
-                    <div class="heart">
-                        <img src="{{ url_for('static', path='image/heart (1).png') }}">
-                    </div>
+                    <div><img id="heart" src="{{ url_for('static', path='/image/heart.png') }}"></div>
+                    
                 </div>
                 <div class="greenCircle">
                     <button id="greenCircleText" class="greenCircleText">오늘의 질문</button>
@@ -59,7 +58,7 @@
             <div class="bottomBox"></div>
         </div>
     </div>
-    
-    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+
+    <script src="{{ url_for('static', path='/js/chat.js') }}" defer></script>
 </body>
 </html>

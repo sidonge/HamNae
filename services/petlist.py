@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-router = APIRouter()
+router = APIRouter(tags=["펫리스트"])
 
 templates = Jinja2Templates(directory="templates")
 
