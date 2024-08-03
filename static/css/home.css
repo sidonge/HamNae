@@ -130,6 +130,9 @@ model-viewer#rabbitModel {
     transform: translate(-50%, -50%);
 }
 
+model-viewer#rabbitModel:hover {
+    cursor: pointer;
+}
 /* Controls */
 .controls, .rabbit-controls {
     position: absolute;
