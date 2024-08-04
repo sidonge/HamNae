@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchasePopup = document.getElementById('purchasePopup');
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
+    const purchaseSound = document.getElementById('purchaseSound');
+    const purchaseButton = document.getElementById('purchaseButton');
 
     const characters = [
         {
@@ -162,7 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         purchasePopup.style.display = 'none';
     });
 
-    confirmPurchase.addEventListener('click', handlePurchase);
+    // 팝업 구매 버튼 클릭 시 구매 처리
+    confirmPurchase.addEventListener('click', () => {
+        handlePurchase();
+        purchaseSound.play();
+    });
 
     // 모델 뷰어 조정
     let rotateX = 55; // 세로 각도
@@ -173,6 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
     }
 
+    // 시점 조정
+    backgroundModel.style.transform = 'translateX(5rem) scale(1.4)';
     backgroundModel.style.transform = 'translateY(4rem)';
 
     updateRotation();

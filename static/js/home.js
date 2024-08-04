@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  function addClickHandler(elementId, soundId) {
+    const element = document.getElementById(elementId);
+    const sound = document.getElementById(soundId);
+  
+    element.addEventListener("click", () => {
+      sound.play();
+    });
+  }
+  
+  addClickHandler("cooking_cleared_stamp", "cookingSound");
+  addClickHandler("clean_cleared_stamp", "cleanSound");
+  addClickHandler("pills_cleared_stamp", "pillsSound");
+  addClickHandler("wash_cleared_stamp", "washSound")
+
   const talkImages = document.querySelectorAll(".talk-image");
   talkImages.forEach((img) => {
     const uploadInput = img.nextElementSibling;
@@ -214,3 +229,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateRotation();
 });
+
