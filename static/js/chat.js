@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var greenBtn = document.getElementById("greenCircleText");
     var questText = document.getElementById("questText");
     var isMissionComplete = false;
-    var messageSound = document.getElementById("messageSound");
+    var openSound = document.getElementById("openSound");
     var closeSound = document.getElementById("closeSound");
 
     questText.style.textAlign = "center";
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     greenBtn.addEventListener("click", function() {
         var message = "내일의 나에게 하고 싶은 말 적어보기";
         if (!isMissionComplete) {
-            messageSound.play();
+            openSound.play();
             greenBtn.textContent = "미션완료";
             greenBtn.style.backgroundColor = "#8CD179";
             greenBtn.style.width = "6.7rem";
