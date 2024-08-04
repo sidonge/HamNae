@@ -118,16 +118,11 @@ body {
 }
 
 .titleLine {
-    background: #71594E;
-
-    width: 15rem;
-    height: 0.2rem;
-
-    border: none;
-    border-radius: 1rem;
-
     font-family: "Pretendard-Bold";
-    margin-bottom: 40px;
+    color: #71594E;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .name, .userid, .email, .tel, .password, .password2 {

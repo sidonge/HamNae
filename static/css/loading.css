@@ -48,18 +48,6 @@ html, body {
 }
 
 /* loading page */
-
-nav {
-    margin: 2rem 0 0 3rem;
-    position: absolute;
-}
-
-.logo {
-    width: 4rem;
-    position: absolute;
-    left: -1rem;
-}
-
 .mainText {
     font-family: "Pretendard-Medium";
     color: #71594E;
