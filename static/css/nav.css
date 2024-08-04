@@ -73,17 +73,17 @@ src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretenda
 
 .talk, .mission, .walk, .character, .mypage {
     font-family: "Pretendard-SemiBold";
-    font-size: 1.3rem;
-    margin: 2.75% 0;
+    font-size: 2rem;
+    margin: 2.5% 0;
     color: white;
 
     cursor: pointer;
 }
 
 .hr {
-    width: 12.5rem;
+    width: 18rem;
     border: none;
-    height: 1px;
+    height: 2px;
     background: #868381;
     margin: auto;
 }

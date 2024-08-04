@@ -143,6 +143,12 @@ margin: 0;
     margin-top: -3.3rem;
 }
 
+#heart {
+    margin-top: 0.3rem;
+    width: 4.2rem;
+    height: 1rem;
+}
+
 .name {
     font-family: "Pretendard-Regular";
     font-size: 0.9rem;
@@ -181,7 +187,62 @@ margin: 0;
 }
 
 
+.centered-message {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+    font-family: "Pretendard-Regular";
+    font-size: 1rem;
+    color: #71594E;
+}
 
+.centered-message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.message-line {
+    width: 50px; /* 라인의 길이 조절 */
+    height: 2px;
+    background-color: #ffffff; 
+    margin: 0 5px;
+}
+
+.message-diamond, .message-circle {
+    margin: 0 2rem; /* 텍스트와 도형 사이의 여백 */
+}
+
+.message-diamond {
+    width: 20px;
+    height: 15px;
+    background-color: #ffffff; /* 도형의 색상 */
+    transform: rotate(45deg); /* 다이아몬드 모양 만들기 */
+    margin: 1rem 1rem; /* 텍스트와 도형 사이의 여백 */
+}
+
+.message-circle {
+    width: 10px;
+    height: 7px;
+    background-color: #ffffff; /* 도형의 색상 */
+    border-radius: 100%;
+    margin: 0 5px; /* 텍스트와 도형 사이의 여백 */
+}
+
+.centered-message {
+    font-family: "Pretendard-Regular";
+    font-size: 1rem;
+    color: #71594E;
+    text-align: center;
+    margin: 0 5px;
+}
+
+
+#questText {
+    display: none; /* questText 요소 숨기기 */
+}
 
 /* 대화 부분 */
 
@@ -206,6 +267,7 @@ margin: 0;
     box-shadow: 0px 0px 4px 0.5px #cbcbcb;
     border-radius: 1.5rem;
     margin: 0 4rem;
+    max-width: 25rem;
     /* margin-right: 5rem;
     margin-left: 4rem; */
 }
@@ -216,6 +278,8 @@ margin: 0;
     color: #71594E;
     font-family: "Pretendard-Regular";
     padding: 1rem;
+    /* margin-bottom: 1.5rem */
+    margin: 0.5rem 4rem;
 }
 /* 모델이 답하는 말풍선 */
 .message.bot {
@@ -274,7 +338,7 @@ input::placeholder {
     background-color: #AB936B;
     border-bottom-left-radius: 1.3rem;
     border-bottom-right-radius: 1.3rem;
-    margin-top: 8.2rem;
+    margin-top: 8.5rem;
     position: fixed;
 }
 
