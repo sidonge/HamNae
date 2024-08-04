@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  // 사용 예시
   addClickHandler("cooking_cleared_stamp", "cookingSound");
   addClickHandler("clean_cleared_stamp", "cleanSound");
   addClickHandler("pills_cleared_stamp", "pillsSound");

@@ -7,9 +7,8 @@
 
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
     <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='js/main.js') }}">
+    
     <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='js/nav.js') }}" defer>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
   
   </head>
@@ -58,5 +57,7 @@
           </div>
       </section>
     </div>
+    <script src="{{ url_for('static', path='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
   </body>
 </html>
