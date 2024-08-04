@@ -83,7 +83,8 @@ function initMap() {
     }
 
     // 편의점 검색 함수
-    function searchConvenienceStores() {
+       // 편의점 검색 함수
+       function searchConvenienceStores() {
         const request = {
             location: map.getCenter(),
             radius: '1000',
@@ -311,19 +312,50 @@ function initMap() {
         });
     }
 
-    // Geolocation API를 사용하여 위치 트래킹
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(updatePosition, 
-            (error) => {
-                console.error("위치 업데이트 중 오류 발생:", error);
-            },
-            {
-                enableHighAccuracy: true, // 고정밀도 모드 활성화
-                timeout: 10000, // 10초 내 위치 정보 요청
-                maximumAge: 0 // 최신 위치 정보만 사용
+    // 여행 경로 기록하기 버튼 설정
+    const startTrackingButton = document.getElementById('startTracking');
+    const stopTrackingButton = document.getElementById('stopTracking');
+    let tracking = false;
+    let watchId = null;
+
+    function startTracking() {
+        if (!tracking) {
+            tracking = true;
+            startTrackingButton.classList.add('active');
+            stopTrackingButton.classList.remove('active');
+
+            watchId = navigator.geolocation.watchPosition(updatePosition, 
+                (error) => {
+                    console.error("위치 업데이트 중 오류 발생:", error);
+                },
+                {
+                    enableHighAccuracy: true, // 고정밀도 모드 활성화
+                    timeout: 10000, // 10초 내 위치 정보 요청
+                    maximumAge: 0 // 최신 위치 정보만 사용
+                }
+            );
+        }
+    }
+
+    function stopTracking() {
+        if (tracking) {
+            tracking = false;
+            startTrackingButton.classList.remove('active');
+            stopTrackingButton.classList.add('active');
+
+            if (watchId !== null) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
             }
-        );
-    } else {
-        alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    if (startTrackingButton) {
+        startTrackingButton.addEventListener('click', startTracking);
+    }
+
+    if (stopTrackingButton) {
+        stopTrackingButton.addEventListener('click', stopTracking);
     }
 }
+
