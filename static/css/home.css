@@ -113,26 +113,23 @@ nav {
 model-viewer#windowModel {
     position: absolute;
     transition: cameraOrbit 0.3s ease;
-    width: 150vw;
-    height: 150vh;
+    width: 130vw;
+    height: 130vh;
     left: 50%;
-    top: 50%;
+    top: -50%;
     transform: translate(-50%, -50%);
 }
 
 model-viewer#rabbitModel {
     position: absolute;
     transition: cameraOrbit 0.3s ease;
-    width: 15vw;
-    height: 15vh;
-    top: 50%;
+    width: 20vw;
+    height: 20vh;
+    top: 305%;  /* 위치를 더 많이 아래로 내림 */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%); /* Y축 조정을 더 줄임 */
 }
 
-model-viewer#rabbitModel:hover {
-    cursor: pointer;
-}
 /* Controls */
 .controls, .rabbit-controls {
     position: absolute;

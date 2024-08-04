@@ -64,7 +64,23 @@ async function sendMessage() {
     }
 }
 
+
+
+// 클래스 'startButton'을 가진 모든 버튼을 찾아서 첫 번째 버튼에만 이벤트 리스너를 추가
+document.getElementsByClassName('startButton')[0].addEventListener('click', function() {
+    const birdsound = document.getElementById("birdsound");
+    // 오디오 재생 시도
+    birdsound.play().then(() => {
+        // 오디오 재생이 성공적으로 시작되면 페이지 이동
+        window.location.href = "/quest";
+    }).catch(error => {
+        console.error("오디오 재생에 실패했습니다.", error);
+        // 오디오 재생에 실패한 경우에도 페이지 이동
+        window.location.href = "/quest";
+    });
+});
+
 // 선택하기 버튼 눌렀을 때 메인 화면으로 이동하기(main으로 바꿔야됨)
-function navigateToMain() {
-    window.location.href = "/quest";
-}
+// function navigateToMain() {
+//     window.location.href = "/quest";
+// }
