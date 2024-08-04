@@ -12,11 +12,11 @@
 </head>
 <body>
     <div class="model-container">
-        <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/character.glb') }}" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/3.0007-home-x.glb') }}" environment-image="neutral" ar></model-viewer>
         <div id="backgroundOverlay"></div>
         <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>
-
+    
     <!-- nav -->
     <nav>
         <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
@@ -104,6 +104,8 @@
             </div>
         </div>
     </section>
+
+    <audio id="purchaseSound" src="{{ url_for('static', path='/sound/MP_입금 돈버는 소리.mp3') }}"></audio>
 
     <!-- 구매 팝업 -->
     <div id="purchasePopup" class="purchase-popup">
