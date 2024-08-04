@@ -392,6 +392,10 @@ nav {
     font-size: 2rem;
 }
 
+button {
+    border: 0;
+}
+
 .popup-content button {
     font-family: "Pretendard-SemiBold";
     padding: 10px 20px;

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>캐릭터 선택</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/character.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
-    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
 </head>
 <body>
@@ -72,44 +71,49 @@
             <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
             <div class="coinFlex">
                 <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
-                <div class="coinText">&nbsp;&nbsp;300</div>
+                <div class="coinText" id="coinAmount">&nbsp;&nbsp;{{ user.coin }}</div>
             </div>
         </div>
 
         <div class="characterBox">
+            <!-- 햄깅이 -->
             <div class="character-option" id="hamgingOption">
                 <img src="{{ url_for('static', path='image/ham1.png') }}" class="hamImg" alt="Hamging">
                 <div>
                     <div class="sectionName">햄깅이</div>
-                    <div class="select">선택됨&nbsp;<i class="fas fa-check"></i></div>
+                    <button class="select" id="selectHamging">선택하기</button>
                 </div>
             </div>
-    
+
+            <!-- 곰식이 -->
             <div class="character-option" id="dongsikOption">
                 <img src="{{ url_for('static', path='image/ham2.png') }}" class="hamImg" alt="Dongsik">
                 <div>
                     <div class="sectionName">곰식이</div>
-                    <div class="select">선택하기</div>
+                    <button class="select" id="selectDongsik">선택하기</button>
                 </div>
             </div>
-    
-            <div class="character-option locked" id="professorOption">
+
+            <!-- 교수님 (rabbit) -->
+            <div class="character-option" id="professorOption">
                 <img src="{{ url_for('static', path='image/ham3.png') }}" class="hamImg" alt="Professor">
                 <div>
                     <div class="sectionName">교수님</div>
-                    <div class="select" id="purchaseButton">구매하기</div>
+                    <button class="select" id="selectProfessor">선택하기</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 구매 팝업 -->
-    <div id="purchasePopup">
+    <div id="purchasePopup" class="purchase-popup">
         <div class="popup-content">
-            <p>구매하시겠습니까?</p>
+            <p>교수님을 200 coin에 구매하시겠습니까?</p>
             <button id="confirmPurchase">구매하기</button>
             <button id="cancelPurchase">취소</button>
         </div>
     </div>
+
+    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
 </body>
 </html>

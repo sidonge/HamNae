@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM 요소들 가져오기
+    // 요소 선택
     const backgroundModel = document.getElementById('backgroundModel');
     const hamModel = document.getElementById('hamModel');
     const leftArrow = document.getElementById('leftArrow');
@@ -12,142 +12,180 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchasePopup = document.getElementById('purchasePopup');
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
+    const coinAmount = document.getElementById('coinAmount');
 
+    // 캐릭터 데이터
     const characters = [
         {
             name: '햄깅이',
             description: '햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 진심이랍니다.',
-            model: '../static/models/ham.glb'
+            model: '../static/models/ham.glb',
+            pet_id: 'hamster'
         },
         {
             name: '곰식이',
             description: '동식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
-            model: '../static/models/bearbear.glb'
+            model: '../static/models/bearbear.glb',
+            pet_id: 'bear'
         },
         {
             name: '교수님',
             description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
-            model: '../static/models/whiterabbit.glb'
+            model: '../static/models/whiterabbit.glb',
+            pet_id: 'rabbit'
         }
     ];
 
     let currentIndex = 0;
-    let purchasedCharacterIndex = null; // 구매된 캐릭터의 인덱스
-    let pendingPurchaseIndex = null; // 현재 구매 대기 중인 캐릭터의 인덱스
+    let purchasedCharacterIndex = null; // 구매된 캐릭터 인덱스
+    let pendingPurchaseIndex = null; // 구매 대기 중인 캐릭터 인덱스
 
+    // 캐릭터 업데이트 함수
     function updateCharacter() {
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
 
-        // 모델 뷰어 소스 업데이트
-        if (currentIndex === 2 && purchasedCharacterIndex === 2) {
-            hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb');
-            document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png';
-        } else {
-            hamModel.setAttribute('src', character.model);
-        }
+        // 현재 인덱스에 맞는 모델 업데이트
+        hamModel.setAttribute('src', character.model);
 
-        // 모든 선택 옵션 초기화
-        hamgingOption.querySelector('.select').textContent = '선택하기';
-        dongsikOption.querySelector('.select').textContent = '선택하기';
-        professorOption.querySelector('.select').textContent = purchasedCharacterIndex === 2 ? '선택하기' : '구매하기';
-
-        // 초기 상태 설정
-        hamgingOption.classList.remove('selected');
-        dongsikOption.classList.remove('selected');
-        professorOption.classList.remove('selected');
-
-        // 배경색 설정
-        if (purchasedCharacterIndex === 2) {
-            professorOption.querySelector('.select').style.backgroundColor = '#F5EED1'; // '선택하기' 색상
-        } else {
-            professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
-        }
-        professorOption.querySelector('.select').style.color = '#070000'; // 텍스트 색상 설정
-
-        // 현재 선택된 캐릭터의 선택 상태 적용
-        if (currentIndex === 0) {
-            hamgingOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
-            hamgingOption.classList.add('selected');
-        } else if (currentIndex === 1) {
-            dongsikOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
-            dongsikOption.classList.add('selected');
-        } else if (currentIndex === 2) {
-            if (purchasedCharacterIndex === 2) {
-                professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
-                professorOption.classList.add('selected');
-                professorOption.querySelector('.select').style.backgroundColor = '#D2BEA1'; // '선택됨' 색상
-            } else {
-                professorOption.querySelector('.select').innerHTML = '구매하기';
-                professorOption.querySelector('.select').style.backgroundColor = '#A88756'; // '구매하기' 색상
-            }
-        }
+        // 버튼 상태 업데이트
+        updateButtonStates();
     }
 
+    // 버튼 상태 업데이트 함수
+    function updateButtonStates() {
+        const options = [hamgingOption, dongsikOption, professorOption];
+        
+        options.forEach((option, index) => {
+            const button = option.querySelector('.select');
+            option.classList.remove('selected');
+            button.textContent = (index === currentIndex) ? '선택됨' : (index === 2 && purchasedCharacterIndex !== 2) ? '구매하기' : '선택하기';
+            button.style.backgroundColor = (index === currentIndex || (index === 2 && purchasedCharacterIndex === 2)) ? '#D2BEA1' : '#A88756';
+            button.style.color = '#070000';
+            if (index === currentIndex) {
+                option.classList.add('selected');
+            }
+        });
+    }
+
+    // 구매 팝업 표시 함수
     function showPurchasePopup(index) {
         pendingPurchaseIndex = index;
-        purchasePopup.style.display = 'flex'; // 팝업 표시
+        purchasePopup.style.display = 'flex'; // 구매 팝업 표시
     }
 
     function handlePurchase() {
-        purchasedCharacterIndex = pendingPurchaseIndex; // 구매된 캐릭터의 인덱스 저장
-        purchasePopup.style.display = 'none'; // 팝업 숨기기
-
-        // 교수님 캐릭터 구매 후 모델 뷰어 설정
-        if (purchasedCharacterIndex === 2) {
-            hamModel.setAttribute('src', '../static/models/rabbitblack.glb'); // rabbitblack으로 변경
-        }
-
-        updateCharacter(); // 캐릭터 상태 업데이트
-
-        // 로그인 시 사용자 ID를 서버에서 클라이언트로 전달하는 예
+        if (pendingPurchaseIndex === null) return;
+    
         fetch('/get_user_id')
-            .then(response => response.json())
-            .then(data => {
-                let currentUserId = data.user_id; // 서버에서 받은 사용자 ID
-
-                // 서버에 선택된 캐릭터 정보 전송
-                return fetch('/select_character', {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch user ID');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data || !data.user_id) {
+                throw new Error('Invalid user ID response');
+            }
+            let currentUserId = data.user_id;
+            if (pendingPurchaseIndex !== null && characters[pendingPurchaseIndex]) {
+                return fetch('/manage_character', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        user_id: currentUserId, // 서버에서 받은 사용자 ID
-                        pet_id: characters[pendingPurchaseIndex].pet_id // 데이터베이스에서 확인된 pet_id
+                        user_id: currentUserId,
+                        pet_id: characters[pendingPurchaseIndex].pet_id,
+                        action: 'purchase' // 구매 액션
+                    })
+                });
+            } else {
+                throw new Error('Invalid character index');
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Server responded with an error');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                alert('문제가 발생했습니다. 서버 로그를 확인하세요.');
+            } else {
+                console.log('Character purchased successfully');
+                coinAmount.textContent = `${data.coin_balance}`;
+                purchasedCharacterIndex = pendingPurchaseIndex; // 구매한 캐릭터 인덱스 업데이트
+                purchasePopup.style.display = 'none';
+                updateCharacter();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('문제가 발생했습니다. 서버 로그를 확인하세요.');
+        });
+    }
+    
+    // 캐릭터 선택 함수
+    function selectCharacter(index) {
+        currentIndex = index;
+        updateCharacter();
+
+        fetch('/get_user_id')
+            .then(response => response.json())
+            .then(data => {
+                const currentUserId = data.user_id;
+                return fetch('/manage_character', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUserId,
+                        pet_id: characters[currentIndex].pet_id,
+                        action: 'select' // 선택 액션
                     })
                 });
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(`Server error: ${text}`);
+                    });
+                }
             })
-            .catch((error) => {
+            .then(data => {
+                if (data.detail) {
+                    console.error('Error:', data.detail);
+                } else {
+                    console.log('Character selected successfully');
+                }
+            })
+            .catch(error => {
                 console.error('Error:', error);
+                alert('문제가 발생했습니다. 서버 로그를 확인하세요.');
             });
     }
 
-    hamgingOption.addEventListener('click', () => {
-        currentIndex = 0;
-        updateCharacter();
-    });
-
-    dongsikOption.addEventListener('click', () => {
-        currentIndex = 1;
-        updateCharacter();
-    });
-
+    // 버튼 클릭 이벤트 리스너 설정
+    hamgingOption.addEventListener('click', () => selectCharacter(0));
+    dongsikOption.addEventListener('click', () => selectCharacter(1));
     professorOption.addEventListener('click', () => {
         if (purchasedCharacterIndex === 2) {
-            currentIndex = 2;
-            updateCharacter();
+            selectCharacter(2);
         } else {
             currentIndex = 2;
             showPurchasePopup(currentIndex);
         }
     });
 
+    // 좌우 화살표 버튼 이벤트 리스너 설정
     leftArrow.addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? characters.length - 1 : currentIndex - 1;
         updateCharacter();
@@ -158,16 +196,17 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCharacter();
     });
 
+    // 구매 팝업의 취소 및 확인 버튼 이벤트 리스너 설정
     cancelPurchase.addEventListener('click', () => {
         purchasePopup.style.display = 'none';
     });
 
     confirmPurchase.addEventListener('click', handlePurchase);
 
-    // 모델 뷰어 조정
-    let rotateX = 55; // 세로 각도
-    let rotateY = 230; // 가로 각도
-    let zoomLevel = 50; // 확대 비율
+    // 3D 모델 회전 및 확대/축소 관련 변수
+    let rotateX = 55; 
+    let rotateY = 230; 
+    let zoomLevel = 50; 
 
     function updateRotation() {
         backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
