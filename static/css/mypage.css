@@ -6,14 +6,15 @@
     box-sizing: border-box;
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     letter-spacing: -0.1rem;
+    
 }
 
 body
 {
-    background-image: url(../image/해커톤-마이페이지.png);
+    /* background-image: url(../image/해커톤-마이페이지.png); */
     background-repeat : no-repeat;
     background-size : cover;
-/* background: linear-gradient(white, #F5EED1); */
+background: linear-gradient(white, #F5EED1);
 }
 
 
@@ -29,20 +30,31 @@ body
 h3, h2
 {
     font-weight: 700;
-    font-size: 1.7rem;   
+    font-size: 2.2rem;   
+}
+
+p
+{
+    font-size: 1.3rem;
 }
 
 #profile p
 {
+    
     font-weight: 700;
-    margin: 0.36rem 0.5rem 0rem 0.16rem;
+    margin: 1rem 0.5rem 0rem 0.16rem;
     word-spacing: 0.2rem;
+}
+
+#profile > img
+{
+    width: 60%;
 }
 
 #profile > img + p
 {
     font-weight: 700;
-    transform: translate(7.2rem, -2.4rem);
+    transform: translate(10rem, -3.6rem);
 }
 
 #profile span 
@@ -59,14 +71,15 @@ h3, h2
 {
     display: inline-block;
     font-weight: 900;
-    margin: 0.28rem 0rem 2.7rem 0.18rem;
+    margin: 0rem 0rem 2.7rem 0.18rem;
     letter-spacing: 0.07rem;
+
 }
 
 #profile > div :nth-child(2)
 {
     padding: 0.16rem 0rem 0rem 0.2rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     letter-spacing: -0.02rem;
 }
 
@@ -100,18 +113,18 @@ nav {
     top: 2rem;
     cursor: pointer;
 }
-/* nav 
+/* nav
 {
     border: 0.1rem solid black;
     height: 7rem;
     margin: 2.7rem 3.5rem 0rem 2.9rem;
     display: flex;
     justify-content: space-between;
-}
+}*/
 
 nav~div 
 {
-    margin: 1rem 2.9rem 0rem 3rem;
+    margin: 1rem 6rem 0rem 4.2rem;
     display: flex;
     justify-content: space-between;
 
@@ -125,10 +138,6 @@ nav div a
 }
 
 
-nav a > img
-{
-    width: 30%;
-} */
 
 /* 정렬 */
 
@@ -143,30 +152,34 @@ nav a > img
 
 #profile > h3 
 {
-    font-size: 2rem;
-    margin-top: 0.42rem;
-    margin-left: 4.8rem;
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.19rem;
+    font-size: 2.5rem;
+    margin-top: -3rem;
+    margin-left:5.5rem;
+    margin-bottom: 1.4rem;
+    letter-spacing: 1.4rem;
 }
 
 #profile>span
 {
     padding: 5.5rem;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    margin-left: 1.8rem;
     letter-spacing: -0.002rem;
     word-spacing: -0.1rem;
 }
 
 #xp_level
 {
-    margin: 0.45rem 0rem 0.14rem -0.5rem;
+    width:87%;
+    margin: 0rem 0rem 0rem -0.7rem;
 }
+
 #xp_level+p
 {
     margin-left: 1.1rem;
-    font-size: 1rem;
+    font-size: 1.4rem;
     letter-spacing: 0.01rem;
     word-spacing: 0.1rem;
 }
@@ -181,13 +194,13 @@ nav a > img
     background-color: #ffffff;
 border: 1px solid #cbcbcb;
 border-radius: 0.75rem;
-padding: 0.55rem 3.48rem;
-  margin: 1rem;
-  margin-left: 1.6rem;
+padding: 0.7rem 4.5rem;
+  margin: 1.1rem;
+  margin-left: 2rem;
   margin-bottom: 1.25rem;
   color: #5C5B5E;
   font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.4rem;
     word-spacing: 0.16rem;
 }
 
@@ -198,7 +211,7 @@ padding: 0.55rem 3.48rem;
 
 section
 {
-    margin-top: 0.15rem;
+    margin-top: 0.6rem;
     margin-left: 1.18rem;
     margin-bottom: 2rem;
 }
@@ -206,20 +219,22 @@ section
 section>img
 {
     width: 93.5%;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 section > h3
 {
-    margin: 1.3rem 0rem 1.6rem 2.6rem;
+    margin: 2rem 0rem 1.6rem 4rem;
 }
 
 /* second div */
 
 #profile ~ div
 {
-    margin-right: -1.6rem;
+    margin-right: 0.3rem
 }
+
+
 
 
 /* attendance */
@@ -227,25 +242,30 @@ section > h3
 
 #attd
 {
-    margin-top: 1.8rem;
+    margin-top: 2.8rem;
     /* margin-right: 2.9rem; */
-    margin-bottom: 2.25rem;
+    margin-bottom: 3rem;
+    width: 58rem;
     
 }
 
 #attd>h3
 {
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     letter-spacing: -0.05rem;
-    word-spacing: 0.1rem;
-    padding-bottom: 0.3rem;
+    word-spacing: -0.1rem;
+    padding-bottom: 0.5rem;
+}
+
+#attd>h3+img, #user_info>h3+img
+{
+    width:58.5rem;
 }
 
 #attd p
 {
     font-weight: 600;
-    font-size: 1.3rem;
-    margin-top: 0.1rem;
+    font-size: 1.77rem;
     margin-left: 0.4rem;
     word-spacing: 0.15rem;
 }
@@ -253,35 +273,38 @@ section > h3
 #attd p > img
 {
     transform: translateY(0.68rem);
+    width: 3.4rem;
 }
 
 #attd>div
 {
-    margin-bottom: 0.2rem;
+    margin-top: 2rem !important;
 }
 
 /* user_info */
 
 #user_info > img 
 {
-    margin-top: 1.3rem;
+    margin-top: 1.6rem;
 }
 #user_info > div
 {
     display: flex;
+    margin-top: 1rem;
 }
 
 .info_box
 {
-    font-size: 1.3rem;
+
     font-weight: 800;
-    margin-left: 1.7rem;
+    margin-left: 2.2rem;
     margin-top: 2.2rem;
 }
 
 .info_box p
 {
-    padding-bottom: 2.5rem;
+    font-size: 1.7rem;
+    padding-bottom: 3.5rem;
     color: #71594E;
 }
 
@@ -292,27 +315,28 @@ section > h3
 
 .info_box~div
 {
-    margin-left: 1.24rem;
-    margin-top: 0.4rem;
+    margin-left: 1.4rem;
+    margin-top: 0.2rem;
 }
 
 input
 {
     display: block;
     border: 0;
-    /* background-color: rgba(255, 255, 255, 0); */
+    /* background-color: rgba(233, 143, 143, 0.743); */
     background-image: url(../image/id_pw_email_box.png);
     background-size: cover;
     color: #71594E;
     font-weight: 500;
-    padding-left: 1.2rem;
-    font-size: 1rem;
+    padding-left: 1.7rem;
+    font-size: 1.4rem;
     letter-spacing: 0.03rem;
 
-    width: 19rem;
-    height: 3rem;
+    width: 26rem;
+    height: 4.1rem;
     margin-top: 1.06rem;
     border-radius: 1.1rem;
+    margin-bottom: 1.3rem;
 }
 
 
@@ -325,22 +349,24 @@ input
     position: relative;
 }
 
+
+
 section > div 
 {
     display: flex;
-    margin: 2rem 17.7rem 6rem 16rem;
+    margin: 3rem 24rem 8rem 21.6rem;
     justify-content: space-between;
 }
 
 #quest_beginner
 {
-    transform: translateY(-0.7rem);
+    transform: translateY(-1rem);
 }
 
 .badge > p
 {
     font-weight: 900;
-    font-size: 1.3rem;  
+    font-size: 1.7rem;  
     /* transform: translate(0.6rem, 1rem); */
     word-spacing: 0.2rem;
     color: #71594E;
@@ -353,7 +379,7 @@ section > div
 
 #quest_beginner+p
 {
-  margin-top: 0.8rem  !important;
+  margin-top: 0rem  !important;
 }
 
 #insiderking~p
@@ -388,6 +414,11 @@ nav~div
     position: relative;
 }
 
+.circle
+{
+    width: 6rem;
+}
+
 .stamp
 {
     position: absolute;
@@ -397,8 +428,13 @@ nav~div
 
 .unearned
 {
+    width: 12.4rem;
     position: absolute;
     top: 0;
     left: 0;
 }
 
+.badgeIcon
+{
+    width: 12.4rem;
+}

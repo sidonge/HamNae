@@ -5,9 +5,14 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
+<<<<<<< Updated upstream
 from services import quest, home, character, walkpage, petlist, map
 from user import petlist, mypage
 from services import walkpage
+=======
+from services import quest, home, character, walkpage, petlist, chat, map
+from user import mypage, petlist
+>>>>>>> Stashed changes
 
 app = FastAPI()
 
@@ -32,7 +37,12 @@ app.include_router(character.router)
 app.include_router(quest.router)
 app.include_router(walkpage.router)
 app.include_router(petlist.router)
+<<<<<<< Updated upstream
 # app.include_router(chat.router)
+=======
+app.include_router(chat.router)
+app.include_router(mypage.router, prefix="/user")
+>>>>>>> Stashed changes
 
 
 @app.get("/", response_class=HTMLResponse)
