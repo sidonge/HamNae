@@ -11,31 +11,7 @@
     <title>퀘스트 달성도</title>
 </head>
 <body>
-    <!-- nav -->
-    <nav>
-        <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
-        <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
-    </nav>
-
-    <!-- nav popup -->
-    <div id="navPopup" class="nav-popup">
-        <nav>
-            <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
-        </nav>
-
-        <section class="menuSection">
-            <div class="menu">
-                <div class="mission" id="mission">집으로</div>
-                <hr class="hr" />
-                <div class="walk" id="walk">산책하기</div>
-                <hr class="hr" />
-                <div class="character" id="character">캐릭터 변경</div>
-                <hr class="hr" />
-                <div class="mypage" id="mypage">마이페이지</div>
-                <hr class="hr" />
-            </div>
-        </section>
-    </div>
+    <nav><img id="backIcon" src="{{ url_for('static', path='image/back.png')}}" alt=""></nav>
 
     <section class="questSection">
         <div class="quest_title">

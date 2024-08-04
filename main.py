@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -38,6 +39,17 @@ async def get_loading(request: Request):
     return templates.TemplateResponse("loading.html", {"request": request})
 
 
+@app.get("/main", response_class=HTMLResponse)
+async def main(request: Request):
+    return templates.TemplateResponse("main.html", {"request": request})
+
+
+@app.get("/chat", response_class=HTMLResponse)
+async def get_chat(request: Request):
+    return templates.TemplateResponse("chat.html", {"request": request})
+
 if __name__ == "__main__":
     import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+
     uvicorn.run(app, host="127.0.0.1", port=8000)
