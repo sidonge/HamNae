@@ -7,8 +7,7 @@ from database.db_setup import get_db
 from api.models import User
 from config import templates, generate_session_id, session_data
 from passlib.context import CryptContext
-from auth.dependencies import get_current_user  # 수정된 부분
-
+from auth.dependencies import get_current_user 
 router = APIRouter(tags=["로그인"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -38,7 +37,7 @@ async def login(request: Request, id: str = Form(...), password: str = Form(...)
             "level" : user.level,
             "main_pet_id" : user.main_pet_id
         }
-        response = RedirectResponse(url="/garden.html", status_code=302)
+        response = RedirectResponse(url="/main", status_code=302)
         response.set_cookie(key="session_id", value=session_id, httponly=True)
         return response
     else:

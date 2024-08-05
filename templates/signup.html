@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/signup_style.css')}}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/signup_style.css')}}"
+    />
     <title>회원 정보 입력</title>
   </head>
   <body>
     <div class="back">
-      <a href="/login">
+      <a href="/auth/login">
         <img
-        src="{{ url_for('static', path='image/back.png') }}"
+          src="{{ url_for('static', path='image/back.png') }}"
           alt="뒤로가기"
       /></a>
     </div>
@@ -36,9 +39,12 @@
           />
         </div>
         <div class="input-group">
-          <div class="phone">전화번호</div>
+          <div class="tel">전화번호</div>
           <input
-            type="text" name="tel"
+            type="text"
+            name="tel"
+            class="tel"
+            placeholder="숫자만 입력해주세요"
             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
           />
         </div>

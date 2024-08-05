@@ -3,25 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Animated Hamster</title>
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
+    <title>Go Home</title>
     <link rel="stylesheet" href="/static/css/run_ham.css" />
-    <p></p>
   </head>
   <body>
-    <model-viewer
-      src="no_ham (1).glb"
-      alt="Animated Hamster"
-      autoplay
-      camera-controls
-      environment-image="neutral"
-      ar
-    >
-    </model-viewer>
+    <!-- 로딩 페이지 -->
+    <div class="load_home">
+      <div class="background">
+        <img src="/templates/main_noham.png" alt="" />
+        <div id="backgroundOverlay"></div>
+      </div>
+      <div class="group">
+        <div class="hamster">
+          <div class="ment">집으로 가자!</div>
+          <img src="/templates/walk_ham.png" alt="" />
+        </div>
 
-    <div>집으로 가는 중</div>
+        <!-- <script>
+          setTimeout(() => {
+            const loadHome = document.querySelector('.load_home');
+            loadHome.style.display = 'none'; // 3초 후 로딩 페이지 숨기기
+          }, 3000); // 3000 milliseconds = 3 seconds
+        </script> -->
+      </div>
   </body>
 </html>
