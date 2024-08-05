@@ -4,129 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/petlist.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/petlist.css') }}">
     <script src="{{ url_for('static', path='js/petlist.js')}}"></script>
 </head>
 <body>
-
-    <!-- nav.html -->
-    <nav>
-        <img src="{{ url_for('static', path='image/logo.png')}}" class="logo"></img>
-        <img src="{{ url_for('static', path='image/menu.png')}}" class="menuIcon" id="menuIcon">
-    </nav>
+    <nav><img id="backIcon" src="{{ url_for('static', path='image/back.png') }}" alt=""></nav>
 
     <div class="Wrap">
-        <div class="topText">
-            <p class="name">{{ name }}</p>
-            <p class="nameText">님의 펫 리스트</p>
+        <div class="petlist_title">
+            <p>마이페이지 > 펫 리스트</p>
+            <div>
+                <h3><span>{{ name }}</span></h3>
+                <h3>님의 펫 리스트</h3>
+            </div>
         </div>
         <hr class="topLine">
 
         <div class="box1">
-            <div class="minBox">
-                <div class="charBox"><img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt=""></div>
-                <div class="TextBox">
-                    <div class="nameBox">
-                        <div class="nameBoxName">햄토리</div>
-                        <p class="heartIcon"><img src="{{ url_for('static', path='image/heart (1).png')}}" alt=""></p>
-                    </div>
-                    
-                    <div class="descriptionBox">
-                        <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
-                    </div>
-                </div>   
-            </div>
-
-            <div class="minBox">
-                <div class="charBox"><img id="hamster" src="{{ url_for('static', path='image/토끼.png')}}" alt=""></div>
-                <div class="TextBox">
-                    <div class="nameBox">
-                        <div class="nameBoxName">토깽이</div>
-                        <p class="heartIcon"><img src="{{ url_for('static', path='image/heartUnion.png')}}" alt=""></p>
-                    </div>
-                    
-                    <div class="descriptionBox">
-                        <div class="descriptionBoxText">INFJ<br>소심하지만 상냥하다.</div>                        
-                    </div>
-                </div>   
-            </div>
-        </div>
-
-        <div class="box2">
-            <div class="container">
+            {% for pet in pets[:2] %}
                 <div class="minBox">
                     <div class="charBox">
-                        <img id="hamster" src="{{ url_for('static', path='image/곰.png')}}" alt=""></div>
-                    <div class="TextBox">
-                        <div class="nameBox">
-                            <div class="nameBoxName">곰도리</div>
-                            <p class="heartIcon"><img src="{{ url_for('static', path='image/heart (1).png')}}" alt=""></p>
-                        </div>
-                        
-                        <div class="descriptionBox">
-                            <div class="descriptionBoxText">ESFP<br>장난끼가 많다.</div>                  
-                        </div>
+                        <img id="hamster" src="{{ url_for('static', path='image/' ~ pet.image)}}" alt="">
                     </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="minBox" id="minBox4">
-                    <div class="charBox">
-                        <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt=""></div>
                     <div class="TextBox">
                         <div class="nameBox">
-                            <div class="nameBoxName">햄토리</div>
-                            <p class="heartIcon"><img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt=""></p>
-                        </div>
-                    
-                        <div class="descriptionBox">
-                            <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
-                        </div>
-                    </div>
-                </div>
-                <div class="lock"><img src="{{ url_for('static', path='image/Component 48.png')}}" alt=""></div>
-            </div>
-        </div>
-
-            
-        <div class="box3">
-            <div class="container">
-                <div class="minBox" id="minBox5">
-                    <div class="charBox">
-                        <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt=""></div>
-                    <div class="TextBox">
-                        <div class="nameBox">
-                            <div class="nameBoxName">햄토리</div>
-                            <p class="heartIcon"><img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt=""></p>
+                            <div class="nameBoxName">{{ pet.name }}</div>
+                            <p class="heartIcon">
+                                <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
+                            </p>
                         </div>
                         <div class="descriptionBox">
-                            <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
+                            <div class="descriptionBoxText">{{ pet.mbti }}<br>{{ pet.short_description }}</div>                        
                         </div>
                     </div>   
                 </div>
-                <div class="lock"><img src="{{ url_for('static', path='image/Component 48.png')}}" alt=""></div>
-            </div>
-            
-            <div class="container">
-                <div class="minBox" id="minBox6">
-                    <div class="charBox">
-                        <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt=""></div>
-                    <div class="TextBox">
-                        <div class="nameBox">
-                            <div class="nameBoxName">햄토리</div>
-                            <p class="heartIcon"><img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt=""></p>
+            {% else %}
+                <div class="container">
+                    <div class="minBox" id="blurBox">
+                        <div class="charBox">
+                            <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt="">
                         </div>
-                        <div class="descriptionBox">
-                            <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
-                        </div>               
+                        <div class="TextBox">
+                            <div class="nameBox">
+                                <div class="nameBoxName">햄토리</div>
+                                <p class="heartIcon">
+                                    <img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt="">
+                                </p>
+                            </div>
+                            <div class="descriptionBox">
+                                <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="lock">
+                        <img src="{{ url_for('static', path='image/Component 48.png')}}" alt="">
                     </div>
                 </div>
-                <div class="lock"><img src="{{ url_for('static', path='image/Component 48.png')}}" alt=""></div>
-            </div>
+            {% endfor %}
         </div>
 
-            
+        <div class="box2">
+            {% for pet in pets[2:4] %}
+            div class="minBox">
+            <div class="charBox">
+                <img id="hamster" src="{{ url_for('static', path='image/' ~ pet.image)}}" alt="">
+            </div>
+            <div class="TextBox">
+                <div class="nameBox">
+                    <div class="nameBoxName">{{ pet.name }}</div>
+                    <p class="heartIcon">
+                        <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
+                    </p>
+                </div>
+                <div class="descriptionBox">
+                    <div class="descriptionBoxText">{{ pet.mbti }}<br>{{ pet.short_description }}</div>                        
+                </div>
+            </div>   
+        </div>
+            {% else %}
+                <div class="container">
+                    <div class="minBox" id="blurBox">
+                        <div class="charBox">
+                            <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt="">
+                        </div>
+                        <div class="TextBox">
+                            <div class="nameBox">
+                                <div class="nameBoxName">햄토리</div>
+                                <p class="heartIcon">
+                                    <img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt="">
+                                </p>
+                            </div>
+                            <div class="descriptionBox">
+                                <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="lock">
+                        <img src="{{ url_for('static', path='image/Component 48.png')}}" alt="">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="box3">
+            {% for pet in pets[4:6] %}
+                <div class="container">
+                    <div class="minBox" id="minBox{{ loop.index }}">
+                        <div class="charBox">
+                            <img id="hamster" src="{{ url_for('static', path='image/' ~ pet.image)}}" alt="">
+                        </div>
+                        <div class="TextBox">
+                            <div class="nameBox">
+                                <div class="nameBoxName">{{ pet.name }}</div>
+                                <p class="heartIcon">
+                                    <img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt="">
+                                </p>
+                            </div>
+                            <div class="descriptionBox">
+                                <div class="descriptionBoxText">{{ pet.description }}</div>                        
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="lock">
+                        <img src="{{ url_for('static', path='image/Component 48.png')}}" alt="">
+                    </div>
+                </div>
+            {% else %}
+                <div class="container">
+                    <div class="minBox" id="blurBox">
+                        <div class="charBox">
+                            <img id="hamster" src="{{ url_for('static', path='image/햄스터 (1).png')}}" alt="">
+                        </div>
+                        <div class="TextBox">
+                            <div class="nameBox">
+                                <div class="nameBoxName">햄토리</div>
+                                <p class="heartIcon">
+                                    <img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt="">
+                                </p>
+                            </div>
+                            <div class="descriptionBox">
+                                <div class="descriptionBoxText">ISTP<br>낯을 조금 가린다.</div>                        
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="lock">
+                        <img src="{{ url_for('static', path='image/Component 48.png')}}" alt="">
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </body>

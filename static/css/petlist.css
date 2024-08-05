@@ -103,7 +103,7 @@ nav {
     margin-top: 2rem;
 }
 
-#minBox4, #minBox5, #minBox6 {
+#blurBox {
     filter: blur(4px);
 }
 

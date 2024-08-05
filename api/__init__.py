@@ -9,11 +9,35 @@ SessionLocal = sessionmaker(bind=engine)
 
 def insert_default_pets(session):
     # 기본 펫 데이터 정의
+    # Pet 객체 생성
     pets = [
-        Pet(pet_id='hamster', name='햄깅이', mbti='ISTP', description='햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.', short_description='낯을 조금 가린다.'),
-        Pet(pet_id='rabbit', name='토깽이', mbti='ESFP', description='A friendly and playful rabbit.', price=200, short_description='소심하지만 상냥하다.'),
-        Pet(pet_id='bear', name='곰식이', mbti='INFJ', description='A strong and gentle bear.', short_description='장난끼가 많다.')
+    Pet(
+        pet_id='hamster',
+        name='햄깅이',
+        mbti='ISTP',
+        description='햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.',
+        short_description='낯을 조금 가린다.',
+        pet_image='햄스터.png'
+    ),
+    Pet(
+        pet_id='rabbit',
+        name='토깽이',
+        mbti='ESFP',
+        description='A friendly and playful rabbit.',
+        price=200,
+        short_description='소심하지만 상냥하다.',
+        pet_image='토끼.png'
+    ),
+    Pet(
+        pet_id='bear',
+        name='곰식이',
+        mbti='INFJ',
+        description='A strong and gentle bear.',
+        short_description='장난끼가 많다.',
+        pet_image='곰.png'
+    )
     ]
+
 
     for pet in pets:
         if not session.query(Pet).filter_by(pet_id=pet.pet_id).first():
