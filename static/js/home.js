@@ -216,11 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const stampMap = {
       water: "water_cleared_stamp",
       clean: "clean_cleared_stamp",
-      cooking: "cooking_cleared_stamp",
-      wash: "wash_cleared_stamp",
-      bed: "bed_cleared_stamp",
-      pills: "pills_cleared_stamp",
-      talk: "talk_cleared_stamp",
+      cooking: "cooking_cleared_stamp", //
+      wash: "wash_cleared_stamp", // 샤워 - 설문 제출 시 응답하게
+      bed: "bed_cleared_stamp", // 명상 - 타이머 끝나는 시간 받기 (밑에 if문으로 정의돼 있음)
+      pills: "pills_cleared_stamp", 
+      talk: "talk_cleared_stamp", // 채팅 - 채팅 페이지 
     };
 
     const stampId = stampMap[mission];
