@@ -27,7 +27,7 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
-app.include_router(mainpage.router)
+# app.include_router(mainpage.router)
 app.include_router(map.router)
 app.include_router(home.router)
 app.include_router(character.router)

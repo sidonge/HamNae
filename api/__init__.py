@@ -21,9 +21,9 @@ def insert_default_pets(session):
     ),
     Pet(
         pet_id='rabbit',
-        name='토깽이',
+        name='교수님',
         mbti='ESFP',
-        description='A friendly and playful rabbit.',
+        description="교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요.",
         price=200,
         short_description='소심하지만 상냥하다.',
         pet_image='토끼.png'
@@ -32,7 +32,7 @@ def insert_default_pets(session):
         pet_id='bear',
         name='곰식이',
         mbti='INFJ',
-        description='A strong and gentle bear.',
+        description='동식이는 진중하고 과묵한 곰이에요.',
         short_description='장난끼가 많다.',
         pet_image='곰.png'
     )
