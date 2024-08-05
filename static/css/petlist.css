@@ -99,11 +99,7 @@
     margin-top: 2rem;
 }
 
-.box1, .box2, .box3:hover{
-    cursor: pointer;
-}
-
-#minBox4, #minBox5, #minBox6 {
+#blurBox {
     filter: blur(4px);
 }
 

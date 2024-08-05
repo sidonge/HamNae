@@ -115,34 +115,68 @@ model-viewer {
 }
 
 /* nav */
+/* nav */
 nav {
-    margin: 2rem 0;
+    height: 5rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
 }
 
 .logo {
     width: 5rem;
-    position: fixed;
+
+    position: absolute;
     left: 2rem;
-    top: 2rem;
+    top: 1.25rem;
 }
 
 .menuIcon {
-    position: fixed;
+    position: absolute;
+    right: 2rem;
+    top: 1.6rem;
+
+    width: 2.5rem;
+
+    cursor: pointer;
+}
+
+.exitIcon {
+    position: absolute;
+    width: 2rem;
     right: 2rem;
     top: 2rem;
-    width: 2.5rem;
+    cursor: pointer;
 }
 
 .blink {
     position: fixed;
     bottom: 22%;
-    left: calc(52.25% - 5rem);
+    left: calc(52.25% - 7rem);
     font-family: "Pretendard-Boid";
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #71594E;
     z-index: 3;
     animation: blinker 2s linear infinite;
 }
 @keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.homeblink {
+    position: fixed;
+    bottom: 68%;
+    left: calc(52.25% - -2rem);
+    font-family: "Pretendard-Boid";
+    font-size: 1rem;
+    color: #71594E;
+    z-index: 3;
+    animation: homeblinker 2s linear infinite;
+}
+
+@keyframes homeblinker {
     50% { opacity: 0; }
 }

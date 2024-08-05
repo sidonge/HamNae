@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model Viewer Example</title>
+    <title>햄내_main</title>
+    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
     <link
@@ -90,7 +91,9 @@
         </div>
       </section>
     </div>
-    <div class="blink">동물을 눌러 보세요.</div>
+    <div class="blink">동물을 누르면 소리가 나요.</div>
+
+    <div class="homeblink">집을 눌러 보세요.</div>
     <script src="{{ url_for('static', path='js/main.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
   </body>

@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>loading</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='/css/loading.css') }}">
-     <!-- <link rel="stylesheet" href="/static/css/loading.css"> -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
+    <title>햄내_loading</title>
+    <link rel="stylesheet" href="/static/css/loading.css">
+    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 </head>
 <body>
     <nav>
         <img src="/static/image/logo.png" class="logo">
-        <i id="soundIcon" class="fas fa-volume-up fa-2x"></i>
     </nav>
-    <audio id="messageSound" src="/static/audio/birdsound.mp3"></audio>
+    <!-- <audio id="messageSound" src="/static/audio/birdsound.mp3"></audio> -->
 
 
 
@@ -25,7 +20,7 @@
         <img id="down" class="down" src="/static/image/scrollDown.png" alt="">
     </button>
     <div class="mainText">귀여운 친구들과 함께 마음의 숲을 탐험해볼까요?</div>
-    <audio id="backgroundSound" src="/static/sound/videoplayback.m4a"></audio>
+    <audio id="backgroundSound" src="/static/audio/videoplayback.m4a"></audio>
 
     <div class="gradient-background"></div>
     <div class="Wrap">
@@ -56,12 +51,12 @@
             <img id="load" src="/static/image/길.png">
             <button class="startButton" onclick="navigateToMain()">
                 <div class="btnText">시작하기</div>
+                <audio id="birdsound" src="/static/audio/birdsound.mp3"></audio>
             </button>
         </div>
 
 
     </div>
     <script src="{{ url_for('static', path='/js/loading.js') }}" defer></script>
-    <!-- <script src="/static/js/loading.js" defer></script> -->
 </body>
 </html>
