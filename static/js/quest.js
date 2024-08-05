@@ -17,6 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
         'pills': 'pills_cleared_stamp',
     };
 
+    // XP 및 레벨 초기화
+    let currentXP = parseInt(localStorage.getItem('currentXP')) || 0;
+    const XP_PER_QUEST = 10;
+
+    function updateXPDisplay() {
+        const xpDisplay = document.getElementById('xpDisplay');
+        xpDisplay.textContent = `현재 XP: ${currentXP}`;
+    }
+
     // 스탬프 이미지 업데이트 함수
     function updateStampImage(mission) {
         const stampId = stampMap[mission];
@@ -30,6 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Invalid mission:', mission);
         }
+    }
+
+    // XP 증가 함수
+    function increaseXP(amount) {
+        currentXP += amount;
+        localStorage.setItem('currentXP', currentXP);
+        updateXPDisplay();
     }
 
     // talk 이미지 및 파일 업로드 설정
@@ -99,6 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error fetching quest status:', error);
         });
+
+        updateXPDisplay();
 });
 
 

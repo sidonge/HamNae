@@ -18,8 +18,7 @@
         <div class="quest_title">
             <p>마이페이지 > 퀘스트 달성도</p>
             <div>
-                <h3><span>길동</span></h3>
-                <h3>님의 퀘스트 달성도</h3>
+                <h3><span>{{ user_name }}</span>님의 퀘스트 달성도</h3>
             </div>
             <img src="{{ url_for('static', path='image/quest_line.png') }}">
         </div>
@@ -72,8 +71,8 @@
                 <div>
                     <img src="{{ url_for('static', path='image/coin.png') }}">
                     <h2>포인트 <span>1500XP</span></h2>
-                    <button type="button">수령</button>
-                    <p>수령까지 6개의 도장이 남았어요.</p>
+                    <button type="button" id="rewardButton" {% if not all_completed %}disabled{% endif %}>수령</button>
+                    <p>수령까지 {{ remaining_count }}개의 도장이 남았어요.</p>
                 </div>
             </div>
         </div>

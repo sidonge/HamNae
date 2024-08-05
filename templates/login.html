@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>햄내_로그인</title>
     
     <link rel="stylesheet" href="{{ url_for('static', path='css/login_style.css') }}" />
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+    <!-- 네이버 로그인 JavaScript SDK 로드 -->
+    <script
+      src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+      charset="utf-8"
+    ></script>
+
+    <!-- jQuery 라이브러리 로드 -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- <meta name="google-signin-client_id" content="1032858913846-3t5dhced44sv170k0tg92oq9spnkggs7.apps.googleusercontent.com.apps.googleusercontent.com"> -->
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
@@ -18,7 +25,7 @@
         <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
         <div class="signup-link">
           <span class="signup-text">아직 회원이 아니신가요?</span>
-          <a href="/signup">회원가입 하기</a>
+          <a href="/auth/register">회원가입 하기</a>
         </div>
       </div>
       <form method="POST" action="/auth/login" style="width: 100%">
@@ -26,7 +33,7 @@
           <input
             type="text"
             id="userid"
-            name="id" 
+            name="id"
             placeholder="아이디"
             required
           />
@@ -45,10 +52,11 @@
       </form>
     </div>
 
+    <!-- 간편로그인 -->
     <div class="loginBox">
-        <hr class="loginLine" />
-        <div class="social-label">간편 로그인</div>
-        <hr class="loginLine" />
+      <hr class="loginLine" />
+      <div class="social-label">간편 로그인</div>
+      <hr class="loginLine" />
     </div>
     <div class="login-social">
       <img
