@@ -306,6 +306,7 @@ body {
     font-family: "Pretendard-Regular";
     padding: 1rem;
     margin-right: auto;
+    margin: 0.5rem 4rem;
 }
 .user { text-align: right; }
 .bot { text-align: left; }
@@ -342,7 +343,8 @@ input::placeholder {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 7.5rem;
+    /* bottom: 7.5rem; */
+    top: 27rem;
 }
 
 .greenCircleText.active {

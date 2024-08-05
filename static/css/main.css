@@ -136,13 +136,28 @@ nav {
 .blink {
     position: fixed;
     bottom: 22%;
-    left: calc(52.25% - 5rem);
+    left: calc(52.25% - 7rem);
     font-family: "Pretendard-Boid";
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #71594E;
     z-index: 3;
     animation: blinker 2s linear infinite;
 }
 @keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.homeblink {
+    position: fixed;
+    bottom: 68%;
+    left: calc(52.25% - -2rem);
+    font-family: "Pretendard-Boid";
+    font-size: 1rem;
+    color: #71594E;
+    z-index: 3;
+    animation: homeblinker 2s linear infinite;
+}
+
+@keyframes homeblinker {
     50% { opacity: 0; }
 }
