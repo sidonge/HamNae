@@ -192,6 +192,50 @@ nav {
     cursor: pointer;
 }
 
+/* record nav */
+.recordWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+    width: 24rem;
+    height: 3.3rem;
+    background-color: beige;
+    position: absolute;
+    top: 0;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    background-color: #000000;
+    opacity: 25%;
+}
+
+#homenameRecord, #homerecord, #homestop {
+    cursor: pointer;
+    position: relative;
+    z-index: 900; /* 동일하게 900 설정 */
+}
+
+#homenameRecord {
+    width: 2.1rem;
+    height: 2.2rem;
+    margin-right: -1rem;
+    color: #FFFFFF;
+    opacity: 100%;
+    margin-right: 3.5rem;
+}
+#homerecord{
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 4.1rem;
+    margin-bottom: 0.3rem;
+}
+#homestop {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-bottom: 0.1rem;
+}
+
 /* Title Section */
 .titleSection {
     text-align: center;
@@ -549,7 +593,7 @@ model-viewer#rabbitModel {
 
 .Topblink {
     position: fixed;
-    top: 10%;
+    top: 13%;
     font-family: "Pretendard-Boid";
     font-size: 1.1rem;
     color: #71594E;
