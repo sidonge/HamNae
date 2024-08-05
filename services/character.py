@@ -28,22 +28,46 @@ async def get_character_page(request: Request, db: Session = Depends(get_db)):
     user_pets = db.query(UserPet).filter(UserPet.user_id == user_id).all()
     pet_ids = [user_pet.pet_id for user_pet in user_pets]
 
-    # 애완동물 정보 가져오기
-    pets = db.query(Pet).filter(Pet.pet_id.in_(['hamster', 'bear', 'rabbit'])).all()
+    # 애완동물 정보 가져오기 (sort_order에 따라 정렬)
+    pets = db.query(Pet).filter(Pet.pet_id.in_(['hamster', 'bear', 'rabbit'])).order_by(Pet.sort_order).all()
 
-    # 소유 여부에 따른 버튼 텍스트 설정
+    # 소유 여부에 따른 버튼 텍스트 및 이미지 설정
     pet_buttons = {}
+    pet_images = {}
+
     for pet in pets:
-        if pet.pet_id in pet_ids:
-            pet_buttons[pet.pet_id] = "선택하기"
+        if pet.pet_id == 'rabbit':
+            # rabbit의 경우 구매 여부에 따라 이미지 파일 이름 설정
+            if pet.pet_id not in pet_ids:
+                # rabbit이 구매되지 않은 경우
+                pet_buttons[pet.pet_id] = "구매하기"
+                pet_images[pet.pet_id] = "ham4.png"
+            elif  pet.pet_id == user.main_pet_id:
+                pet_images[pet.pet_id] = "ham3.png"
+                pet_buttons[pet.pet_id] = "선택됨"
+            else:
+                 # rabbit이 구매된 경우
+                pet_buttons[pet.pet_id] = "선택하기"
+                pet_images[pet.pet_id] = "ham3.png"
         else:
-            pet_buttons[pet.pet_id] = "구매하기"
+            # 다른 애완동물의 경우
+            if pet.pet_id == user.main_pet_id:
+                pet_buttons[pet.pet_id] = "선택됨"
+            else:
+                pet_buttons[pet.pet_id] = "선택하기"
+            pet_images[pet.pet_id] = f"ham{pet.sort_order}.png"
+
+    # Debugging Output (임시로 로그를 확인할 수 있습니다)
+    print("Pet IDs:", pet_ids)
+    print("Pet Buttons:", pet_buttons)
+    print("Pet Images:", pet_images)
 
     return templates.TemplateResponse("character.html", {
         "request": request,
         "user": user,
         "pets": pets,
-        "pet_buttons": pet_buttons
+        "pet_buttons": pet_buttons,
+        "pet_images": pet_images  # 이미지 정보를 템플릿에 전달
     })
 
 

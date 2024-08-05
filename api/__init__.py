@@ -17,26 +17,29 @@ def insert_default_pets(session):
         mbti='ISTP',
         description='햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.',
         short_description='낯을 조금 가린다.',
-        pet_image='햄스터.png'
+        pet_image='햄스터.png',
+        sort_order=1
     ),
     Pet(
         pet_id='rabbit',
         name='교수님',
         mbti='ESFP',
-        description="교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요.",
+        description="교수님은 지혜로운 토끼로 많은 지식을 가지고 있어요.",
         price=200,
         short_description='소심하지만 상냥하다.',
-        pet_image='토끼.png'
+        pet_image='토끼.png',
+        sort_order=3
     ),
     Pet(
         pet_id='bear',
         name='곰식이',
         mbti='INFJ',
         description='동식이는 진중하고 과묵한 곰이에요.',
-        short_description='장난끼가 많다.',
-        pet_image='곰.png'
+        short_description='생각이 많고 사려깊다.',
+        pet_image='곰.png',
+        sort_order=2
     )
-    ]
+]
 
 
     for pet in pets:
