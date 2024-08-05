@@ -12,23 +12,36 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="logo-container">
-            <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
-            <div class="signup-link">
-                <span class="signup-text">아직 회원이 아니신가요?</span>
-                <a href="/signup">회원가입 하기</a>
-            </div>
+      <div class="logo-container">
+        <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
+        <div class="signup-link">
+          <span class="signup-text">아직 회원이 아니신가요?</span>
+          <a href="/signup">회원가입 하기</a>
         </div>
-        <form id="loginForm" style="width: 100%">
-            <div class="input-group">
-                <input type="text" id="userid" name="id" placeholder="아이디" required />
-            </div>
-            <div class="password-group">
-                <input type="password" id="password" name="password" placeholder="비밀번호" required />
-                <div class="resetPassword">비밀번호 찾기</div>
-            </div>
-            <button type="submit">로그인 하기</button>
-        </form>
+      </div>
+      <form method="POST" action="/auth/login" style="width: 100%">
+        <div class="input-group">
+          <!-- name -> userid 에서 id로 바꿈 -->
+          <input
+            type="text"
+            id="userid"
+            name="id" 
+            placeholder="아이디"
+            required
+          />
+        </div>
+        <div class="password-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호"
+            required
+          />
+          <div class="resetPassword">비밀번호 찾기</div>
+        </div>
+        <button type="submit">로그인 하기</button>
+      </form>
     </div>
 
     <div class="loginBox">
@@ -37,11 +50,32 @@
         <hr class="loginLine" />
     </div>
     <div class="login-social">
-        <img id="naverBtn" src="{{ url_for('static', path='image/naver.png') }}" alt="naver" />
-        <img id="googleBtn" src="{{ url_for('static', path='image/google.png') }}" alt="google" />
-        <img id="kakaoBtn" src="{{ url_for('static', path='image/kakao.png') }}" alt="kakao" />
-        <div id="naver_id_login" style="display: none;"></div>
-        <div class="g-signin2" data-onsuccess="onSignIn" style="display: none"></div>
+      <!-- 이미지 -->
+      <img
+        id="naverBtn"
+        src="{{ url_for('static', path='image/naver.png') }}"
+        alt="naver"
+      />
+      <img
+        id="googleBtn"
+        src="{{ url_for('static', path='image/google.png') }}"
+        alt="google"
+      />
+      <img
+        id="kakaoBtn"
+        src="{{ url_for('static', path='image/kakao.png') }}"
+        alt="kakao"
+      />
+
+      <div id="naver_id_login" style="display: none"></div>
+      <!-- 기존 구글 로그인 버튼 (숨겨진 상태) -->
+      <div
+        class="g-signin2"
+        data-onsuccess="onSignIn"
+        style="display: none"
+      ></div>
+
+      <script src="{{ url_for('static', path='js/sns_login.js)}}"></script>
     </div>
 
     <!-- <script>
