@@ -995,3 +995,60 @@ model-viewer#rabbitModel {
     width: 24px;
     height: 24px;
 }
+
+/* popup css */
+
+.popupWrap {
+    position: fixed; /* 팝업을 페이지에 고정 */
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    background-color: rgba(0, 0, 0, 0.85); /* 검은색 배경에 투명도 적용 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeIcon {
+    color: #FFFFFF;
+    position: absolute !important;
+    top: 2.6rem !important;
+    right: 2.6rem !important;
+    cursor: pointer;
+}
+
+
+model-viewer#rabbitModel2 {
+    position: absolute;
+    top: 50%;  /* 팝업 중앙에 위치 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    width: 30vw; 
+    height: 30vh; 
+    z-index: 1001;
+    cursor: pointer;
+}
+
+.bottomCircle {
+    width: 15rem;
+    height: 7rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 27rem;
+    background-color: #FFFFFF;
+    opacity: 50%;
+    z-index: -19;
+}
+
+.popupBlink {
+    position: fixed;
+    top: 16rem;
+    font-family: "Pretendard-Boid";
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    animation: popupblinker 2s linear infinite;
+}
+
+@keyframes popupblinker {
+    50% { opacity: 0; }
+}

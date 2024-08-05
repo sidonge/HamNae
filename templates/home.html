@@ -11,15 +11,54 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
     <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
-    <script src="{{ url_for('static', path='js/chat.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
   </head>
   <body>
+    <!-- home 팝업화면 -->
+    <div class="popupWrap">
+      <div class="popupBody">
+        <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
+      </div>
+      <model-viewer
+        id="rabbitModel2"
+        src="{{ url_for('static', path='models/ham.glb') }}"
+        environment-image="neutral"
+        ar
+        onclick="hideText()"
+      ></model-viewer>
+      <div class="bottomCircle"></div>
+      <div class="popupBlink">귀여운 친구를 눌러 이름을 말해주세요.</div>
+      
+      <button id="start-listening-btn">Start Listening</button>
+    <button id="stop-btn">Stop</button>
+    <div id="result">Speak something...</div>
+    <div id="animated-object"></div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 기존 home -->
     <div class="model-container">
       <!-- 윈도우 모델 -->
       <model-viewer
         id="windowModel"
-        src="{{ url_for('static', path='models/room_pill.glb') }}"
+        src="{{ url_for('static', path='models/window.glb') }}"
         environment-image="neutral"
         ar
       ></model-viewer>
@@ -153,7 +192,7 @@
     </div>
 
     <!-- 미션 -->
-    <div class="water">
+    <div class="water" id="waterContainer">
       <img
         id="water_cleared_stamp"
         class="waterTalk talk-image"
@@ -167,7 +206,7 @@
         style="display: none"
       />
     </div>
-    <div class="clean">
+    <div class="clean" id="cleanContainer">
       <img
         id="clean_cleared_stamp"
         class="cleanTalk talk-image"
@@ -181,7 +220,7 @@
         style="display: none"
       />
     </div>
-    <div class="cooking">
+    <div class="cooking" id="cookingContainer">
       <img
         id="cooking_cleared_stamp"
         class="cookingTalk talk-image"
@@ -195,7 +234,7 @@
         style="display: none"
       />
     </div>
-    <div class="wash">
+    <div class="wash" id="washContainer">
       <img
         id="wash_cleared_stamp"
         class="washTalk talk-image"
@@ -216,21 +255,26 @@
         src="{{ url_for('static', path='image/talkTalk.png') }}"
       />
     </div>
-    <div class="bed">
+    <div class="bed" id="bedContainer">
       <img
         id="bed_cleared_stamp"
         class="bedTalk talk-image"
         src="{{ url_for('static', path='image/bedIcon.png') }}"
       />
-      <input
-        type="file"
-        id="bedUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
+      
+      <div id="timerDisplay" style="display:none;">
+        <div class="timerText" >1분 명상 시작!</div>
+        <div class="timerNum">
+          <div class="timer-part" id="minute">01</div> 
+          <div class="timer-colon">:</div>
+          <div class="timer-part" id="second">00</div>
+        </div> 
+        <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
+
+      </div>
+    
     </div>
-    <div class="pills">
+    <div class="pills" id="pillsContainer">
       <img
         id="pills_cleared_stamp"
         class="pillsTalk talk-image"
@@ -247,12 +291,17 @@
 
     <div class="blink">동물을 눌러 보세요.</div>
 
+    <div class="Topblink">가구들을 눌러 햄깅이의 미션을 도와주세요!</div>
+
+
+    
     <audio id="homeSound" src="{{ url_for('static', path='/sound/good-afternoon.mp3') }}"></audio>
 
-    <audio id="cookingSound" src="{{ url_for('static', path='/sound/MP_Bubbling Cauldron.mp3') }}"></audio>
-    <audio id="cleanSound" src="{{ url_for('static', path='/sound/MP_Sweeping Broom Shorter.mp3') }}"></audio>
-    <audio id="pillsSound" src="{{ url_for('static', path='/sound/MP_Pill Bottle.mp3') }}"></audio>
-    <audio id="washSound" src="{{ url_for('static', path='/sound/MP_Bathroom Sink.mp3') }}"></audio>
-    <!-- water, bed 필요 -->
+    <audio id="cookingSound" src="{{ url_for('static', path='/sound/cookingSound.mp3') }}"></audio>
+    <audio id="cleanSound" src="{{ url_for('static', path='/sound/cleanSound.mp3') }}"></audio>
+    <audio id="pillsSound" src="{{ url_for('static', path='/sound/pillsSound.mp3') }}"></audio>
+    <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
+    <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
+    <!— bed 필요 —>
   </body>
 </html>

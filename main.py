@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
 from services import quest, home, character, walkpage, petlist, chat, map, mainpage
-
+from user import mypage
 app = FastAPI()
 
 app.add_middleware(
@@ -32,6 +32,7 @@ app.include_router(character.router)
 app.include_router(quest.router)
 app.include_router(walkpage.router)
 app.include_router(petlist.router)
+app.include_router(mypage.router)
 # app.include_router(chat.router)
 
 

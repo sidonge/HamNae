@@ -1,3 +1,122 @@
+// popup js
+document.addEventListener('DOMContentLoaded', function() {
+  // 닫기 버튼 이벤트 연결
+  var closeButton = document.querySelector('.closeIcon');
+  closeButton.onclick = togglePopup;
+
+  // 페이지 로딩 시 팝업 자동 열기
+  openPopup();
+});
+
+function togglePopup() {
+  var popup = document.querySelector('.popupWrap');
+  // 팝업 표시 상태 토글
+  popup.style.display = 'none'; // 팝업 숨기기
+}
+
+function openPopup() {
+  var popup = document.querySelector('.popupWrap');
+  popup.style.display = 'flex'; // 팝업 열기
+}
+
+// blink text 모델 클릭 시 사라짐
+function hideText() {
+  var blinkText = document.querySelector('.popupBlink');
+  blinkText.style.display = 'none'; // 텍스트 숨기기
+}
+
+
+// 음성 인식
+function togglePopup() {
+  const popup = document.querySelector('.popupWrap');
+  popup.style.display = (popup.style.display === 'none' ? 'flex' : 'none');
+}
+
+function startRecognition() {
+  if (annyang) {
+      annyang.setLanguage('ko');
+
+      const commands = {
+          '*term': function(term) {
+              handleCommand(term);
+          }
+      };
+
+      annyang.addCommands(commands);
+      annyang.start({ continuous: false });
+  }
+}
+
+function handleCommand(term) {
+  const modelViewer = document.getElementById('rabbitModel2');
+  if (term.toLowerCase() === "뛰어") {
+      modelViewer.style.transform = 'translate(-50%, -60%)'; // Adjust to make the model jump
+      setTimeout(() => { // Reset position after 2 seconds
+          modelViewer.style.transform = 'translate(-50%, -50%)';
+      }, 2000);
+  } else {
+      // Save the name and prepare for the next command
+      window.userName = term;
+      const blinkText = document.querySelector('.popupBlink');
+      blinkText.textContent = `${term}이(가) 이름으로 설정되었습니다. "뛰어"라고 말해보세요.`;
+  }
+}
+
+// 사용자 음성을 글자로 띄움
+const animatedObject = document.getElementById('animated-object');
+const resultDisplay = document.getElementById('result');
+const startBtn = document.getElementById('start-listening-btn');
+const stopBtn = document.getElementById('stop-btn');
+
+if (annyang) {
+    var commands = {
+        '뛰어': () => {
+            animatedObject.classList.add('jump');
+            setTimeout(() => { animatedObject.classList.remove('jump'); }, 2100);
+        },
+        '아래로 이동': () => {
+            animatedObject.classList.add('move-right');
+        }
+    };
+
+    annyang.addCommands(commands);
+    annyang.setLanguage('ko');
+
+    annyang.addCallback('result', function(phrases) {
+        resultDisplay.textContent = phrases[0];
+    });
+
+    startBtn.addEventListener('click', () => {
+        annyang.start({ continuous: true });
+    });
+
+    stopBtn.addEventListener('click', () => {
+        annyang.abort();
+        animatedObject.className = '';
+        resultDisplay.textContent = 'Recognition stopped';
+    });
+} else {
+    console.log("Speech Recognition is not supported");
+    resultDisplay.textContent = 'Speech Recognition not supported';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// home js
 document.addEventListener("DOMContentLoaded", () => {
 
   function addClickHandler(elementId, soundId) {
@@ -9,10 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  addClickHandler("cooking_cleared_stamp", "cookingSound");
-  addClickHandler("clean_cleared_stamp", "cleanSound");
-  addClickHandler("pills_cleared_stamp", "pillsSound");
-  addClickHandler("wash_cleared_stamp", "washSound")
+  addClickHandler("cookingContainer", "cookingSound");
+  addClickHandler("cleanContainer", "cleanSound");
+  addClickHandler("pillsContainer", "pillsSound");
+  addClickHandler("washContainer", "washSound");
+  addClickHandler("waterContainer", "waterSound");
+
+
+  
 
   const talkImages = document.querySelectorAll(".talk-image");
   talkImages.forEach((img) => {
@@ -108,10 +231,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const windowModel = document.getElementById("windowModel");
   const rabbitModel = document.getElementById("rabbitModel");
 
+
   // 초기 화면 설정
   let rotateX = 90;
   let rotateY = -270;
-  let zoomLevel = 3.5;
+  let zoomLevel = 5;
 
   const minRotateY = -300;
   const maxRotateY = -240;
@@ -197,7 +321,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const rabbitTalk1 = document.getElementById("rabbitTalk1");
   const rabbitTalk2 = document.getElementById("rabbitTalk2");
   const blinkText = document.querySelector(".blink");
+  const homeSound = document.getElementById("homeSound");
   let isTalkVisible = false;
+
+  // 캐릭터 클릭 시 홈 배경음악 재생
+  rabbitModel.addEventListener("click", () => {
+    homeSound.play().catch(error => {
+      console.error("오디오 재생 중 에러 발생:", error);
+    });
+  });
 
   rabbitTalk1.addEventListener("click", () => {
     window.location.href = "/petlist";
@@ -223,12 +355,112 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 채팅으로 이동
-  document.querySelector(".tableTalk").addEventListener("click", () => {
+  document.querySelector(".talk").addEventListener("click", () => {
     window.location.href = "/chat";
   });
 
-  windowModel.addEventListener("load", () => {
-    updateRotation();
-  });
+  updateRotation();
 });
+
+
+// 가구들 눌렀을 때 파일 선택 기능
+document.getElementById('cookingContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'cookingUpload') {
+      document.getElementById('cookingUpload').click();
+  }
+});
+
+document.getElementById('waterContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'waterUpload') {
+      document.getElementById('waterUpload').click();
+  }
+});
+
+document.getElementById('cleanContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'cleanUpload') {
+      document.getElementById('cleanUpload').click();
+  }
+});
+
+document.getElementById('washContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'washUpload') {
+      document.getElementById('washUpload').click();
+  }
+});
+
+document.getElementById('pillsContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'pillsUpload') {
+      document.getElementById('pillsUpload').click();
+  }
+});
+
+document.getElementById('bedContainer').addEventListener('click', function(event) {
+  if (event.target.id !== 'bedUpload') {
+      document.getElementById('bedUpload').click();
+  }
+});
+
+
+
+// 가구 누르도록 블링크 메세지
+document.addEventListener('DOMContentLoaded', function() {
+  const topBlinkMessage = document.querySelector('.Topblink');
+
+  setTimeout(function() {
+      topBlinkMessage.style.display = 'none';
+  }, 10000); 
+});
+
+
+// 명상하기 눌렀을 때 1분 타이머
+document.getElementById('bedContainer').addEventListener('click', function() {
+  const display = document.getElementById('timerDisplay');
+  const timeWrap = document.querySelector('.timerNum');
+  const startText = document.querySelector('.timerText');
+  const minuteElem = document.getElementById('minute');
+  const secondElem = document.getElementById('second');
+  const completeMessage = document.getElementById('timerCompleteMessage');
+
+  // 초기 설정
+  minuteElem.textContent = "01";
+  secondElem.textContent = "00";
+  completeMessage.style.display = "none"; // 완료 메시지를 초기에 숨김
+  startText.style.display = "block"; // 시작 텍스트 표시
+  timeWrap.style.display = "flex"; // 시간 표시 요소를 표시
+
+  startTimer(60, minuteElem, secondElem, startText, completeMessage, timeWrap, display);
+  display.style.display = "block"; // 타이머 디스플레이를 표시
+});
+
+function startTimer(duration, minuteElem, secondElem, startText, completeMessage, timeWrap, display) {
+  let timer = duration;
+  const interval = setInterval(function () {
+    let minutes = parseInt(timer / 60, 10);
+    let seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    minuteElem.textContent = minutes;
+    secondElem.textContent = seconds;
+
+    if (--timer < 0) {
+      clearInterval(interval);
+      timeWrap.style.display = "none"; // 시간 표시 요소 숨김
+      startText.style.display = "none"; // 시작 텍스트 숨김
+      completeMessage.style.display = "block"; // 완료 메시지 표시
+      
+      display.style.height = "3rem";
+      display.style.position = "absolute"; // 또는 'relative'에 따라 요구 사항에 맞게 설정
+      display.style.bottom = "10rem";
+
+      display.style.borderRadius = "10px";
+      
+      setTimeout(function() {
+        display.style.display = "none"; // 1초 후 전체 타이머 디스플레이 숨김
+      }, 3000);
+    }
+  }, 1000); // 각 초마다 반복
+}
+
 
