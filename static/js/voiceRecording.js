@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 제출 버튼 클릭 시 서버에 데이터 전송
         submitBtn.addEventListener('click', () => {
             if (userName) {
+                console.log(userName)
                 fetch('/set_custom_name', {
                     method: 'POST',
                     headers: {

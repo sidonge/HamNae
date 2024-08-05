@@ -20,6 +20,8 @@ async def set_custom_name(name_request: NameRequest, session_id: str = Cookie(No
     if session_id is None or session_id not in session_data:
         raise HTTPException(status_code=401, detail="Invalid session")
 
+    print("custom_name :" + name_request.custom_name)  # 수정된 부분
+
     user_info = session_data[session_id]
     user_id = user_info.get('id')
     main_pet = user_info.get('main_pet_id')
