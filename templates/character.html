@@ -68,13 +68,14 @@
 
     <!-- 캐릭터 선택 박스 -->
     <section class="character-select-box">
-        <div class="coins">
-            <div class="coinBackgroundContainer">
-                <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
-                <div class="coinText" id="coinAmount">&nbsp;&nbsp;{{ user.coin }}</div>
+            <div class="coins">
+                <div class="coinBigBackground">
+                    <div class="coinFlex">
+                        <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coinIcon">
+                        <div class="coinText" id="coinAmount">{{ user.coin }}</div>
+                    </div>
             </div>
-        </div>
-
+            <div class="characterBackground"></div>
         <div class="characterBox">
             <!-- 햄깅이 -->
             <div class="character-option" id="hamgingOption">

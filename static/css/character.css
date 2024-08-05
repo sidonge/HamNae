@@ -243,29 +243,67 @@ nav {
     position: fixed;
     right: 7%;
     text-align: center;
-    width: 12%;
-    height: 55%;
+    /* width: 14%; */
+    height: 85%;
     padding: 1.5rem;
 }
 
-.coinBackground {
-    width: 16vw;
+.characterBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    width: 16rem;
+    height: 25rem;
 }
 
-.coin {
-    width: 15%;
+.coinBigBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    width: 9rem;
+    height: 4rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.coinIcon {
+    width: 20%;
+    float: left;
+}
+
+.coins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .coinText {
     font-family: "Pretendard-Regular";
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #AB936B;
+    float: right;
 }
-
-.coins .coinFlex {
-    display: flex;
+.coinFlex {
     justify-content: center;
     align-items: center;
+
+    background-color: #FEF5D3;
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    padding: 1rem 1rem;
+
+    z-index: 100;
+
+    position: relative;
+    text-align: center;
+    margin: auto;
 }
 
 .characterBox {
@@ -313,10 +351,6 @@ nav {
 
 .character-option.selected .select {
     background-color: #D2BEA1;
-}
-
-#professorOption .select {
-    background-color: #A88756;
 }
 
 #professorOption.selected .select {

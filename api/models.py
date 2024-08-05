@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey, Boolean, insert, JSON
+from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey, Boolean, insert
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, Session
 from datetime import date
@@ -23,8 +23,9 @@ class User(Base):
     xp = Column(Integer, nullable=False, default=200)
     coin = Column(Integer, nullable=False, default=300)
     main_pet_id = Column(String, default="hamster", nullable=True)
-    purchased_pets = Column(String, default='[]')
     
+    # 관계 정의
+    purchased_pets = relationship("UserPet", back_populates="user")
     attendances = relationship('Attendance', order_by='Attendance.id', back_populates='user')
     pets = relationship('UserPet', back_populates='user')
     quests = relationship('UserQuest', back_populates='user')
@@ -58,8 +59,9 @@ class UserPet(Base):
     pet_id = Column(String, ForeignKey('pets.pet_id'), primary_key=True)
     selected_character = Column(Integer, default=0)
 
-    user = relationship("User", back_populates="pets")
+    # 관계 정의
     pet = relationship("Pet")
+    user = relationship("User", back_populates="purchased_pets")
 
 class Quest(Base):
     __tablename__ = 'quests'

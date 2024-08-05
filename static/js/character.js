@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: '곰식이',
             description: '동식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
-            model: '../static/models/bear.glb',
+            model: '../static/models/bearbear.glb',
             pet_id: 'bear'
         },
         {
             name: '교수님',
             description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
-            model: '../static/models/rabbit.glb',
+            model: '../static/models/whiterabbit.glb',
             pet_id: 'rabbit'
         }
     ];
@@ -45,44 +45,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
-
+    
         // 모델 및 이미지 초기화
-        const modelMap = {
-            hamster: 'ham',
-            bear: 'bear',
-            rabbit: 'rabbit'
-        };
-        const selectedModel = modelMap[character.pet_id] + (purchasedCharacterIndex !== null ? 'rabbit' : '');
-        hamModel.setAttribute('src', `../static/models/${selectedModel}.glb`);
-
+        hamModel.setAttribute('src', character.model);
         document.querySelector('#hamgingOption .hamImg').src = '../static/image/ham1.png';
         document.querySelector('#dongsikOption .hamImg').src = '../static/image/ham2.png';
         document.querySelector('#professorOption .hamImg').src = '../static/image/ham3.png';
-
+    
         // 버튼 초기화
         hamgingOption.querySelector('.select').textContent = '선택하기';
         dongsikOption.querySelector('.select').textContent = '선택하기';
         professorOption.querySelector('.select').textContent = '구매하기';
         professorOption.querySelector('.select').style.backgroundColor = '#A88756';
-
+    
         // professorOption의 경우, 소유 여부 및 코인 잔액에 따라 표시 내용 변경
         if (purchasedCharacterIndex === 2 || userCoinBalance >= 200) {
             professorOption.querySelector('.select').textContent = '선택하기';
             professorOption.querySelector('.select').style.backgroundColor = '#F5EED1';
             if (purchasedCharacterIndex === 2) {
-                hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb');
+                hamModel.setAttribute('src', '../static/models/whiterabbit.glb');
                 document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png'; // 이미지 업데이트
             } else {
-                hamModel.setAttribute('src', '../static/models/rabbit.glb');
+                hamModel.setAttribute('src', '../static/models/whiterabbit.glb');
                 document.querySelector('#professorOption .hamImg').src = '../static/image/ham3.png'; // 구매 전 이미지
             }
         }
-
+    
         // 선택된 상태 초기화
         hamgingOption.classList.remove('selected');
         dongsikOption.classList.remove('selected');
         professorOption.classList.remove('selected');
-
+    
         // 현재 캐릭터 선택 표시
         if (currentIndex === 0) {
             hamgingOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
@@ -95,12 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 professorOption.querySelector('.select').innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
                 professorOption.classList.add('selected');
                 professorOption.querySelector('.select').style.backgroundColor = '#D2BEA1';
-                hamModel.setAttribute('src', '../static/models/rabbitrabbit.glb'); // 선택된 캐릭터 모델 업데이트
+                hamModel.setAttribute('src', '../static/models/whiterabbit.glb'); // 선택된 캐릭터 모델 업데이트
                 document.querySelector('#professorOption .hamImg').src = '../static/image/ham4.png'; // 이미지 업데이트
             }
         }
     }
-
+    
     // 구매 팝업 표시
     function showPurchasePopup(index) {
         pendingPurchaseIndex = index;
