@@ -39,18 +39,19 @@
   <body>
     <div class="login-container">
       <div class="logo-container">
-        <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
+        <img src="{{ url_for('static', path='images/logo.png') }}" alt="로고" />
         <div class="signup-link">
           <span class="signup-text">아직 회원이 아니신가요?</span>
           <a href="/signup">회원가입 하기</a>
         </div>
       </div>
-      <form method="POST" action="/login" style="width: 100%">
+      <form method="POST" action="/auth/login" style="width: 100%">
         <div class="input-group">
+          <!-- name -> userid 에서 id로 바꿈 -->
           <input
             type="text"
             id="userid"
-            name="userid"
+            name="id" 
             placeholder="아이디"
             required
           />
@@ -79,17 +80,17 @@
       <!-- 이미지 -->
       <img
         id="naverBtn"
-        src="{{ url_for('static', path='image/naver.png') }}"
+        src="{{ url_for('static', path='images/naver.png') }}"
         alt="naver"
       />
       <img
         id="googleBtn"
-        src="{{ url_for('static', path='image/google.png') }}"
+        src="{{ url_for('static', path='images/google.png') }}"
         alt="google"
       />
       <img
         id="kakaoBtn"
-        src="{{ url_for('static', path='image/kakao.png') }}"
+        src="{{ url_for('static', path='images/kakao.png') }}"
         alt="kakao"
       />
 
@@ -102,6 +103,7 @@
       ></div>
 
       <script src="{{ url_for('static', path='js/sns_login.js)}}"></script>
+      <script src="/static/js/sns_login.js"></script>
     </div>
   </body>
 </html>
