@@ -143,7 +143,7 @@ nav {
 }
 
 .logo {
-    width: 4rem;
+    width: 5rem;
     position: fixed;
     left: 2rem;
     top: 2rem;
@@ -153,10 +153,18 @@ nav {
     position: fixed;
     right: 2rem;
     top: 2rem;
-    width: 2rem;
+    width: 2.5rem;
 }
 
-/* 제목 */
+.exitIcon {
+    position: absolute;
+    width: 2rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+}
+
+/* title */
 .titleSection {
     text-align: center;
     position: fixed;
@@ -164,20 +172,22 @@ nav {
 }
 
 .titleWalk {
-    font-family: "Pretendard-Bold";
     color: #71594E;
-    font-size: 1.8rem;
-    letter-spacing: 0.2rem;
-    margin-bottom: 1rem;
+    text-align: center;
+    font-family: "Pretendard-ExtraBold";
+    font-size: 1.6rem;
 }
 
 .titleLine {
-    background: #71594E;
+    font-family: "Pretendard-Bold";
+    background-color: #71594E;
     width: 12rem;
     height: 0.2rem;
     border: none;
     border-radius: 1rem;
-    font-family: "Pretendard-Bold";
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* 캐릭터 설명 박스 */
@@ -186,9 +196,9 @@ nav {
     position: fixed;
     left: 5%;
     top: 50%;
-    padding: 1.5rem;
+    padding: 1.5rem 2.5rem;
     transform: translateY(-50%);
-    width: 12%;
+    width: 15%;
     height: 35%;
     border: 2px solid #D2BEA1;
     border-radius: 0.5rem;
@@ -206,8 +216,8 @@ nav {
 
 .character-description-box .introduce {
     font-family: "Pretendard-Regular";
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
     line-height: 135%;
 }
 
@@ -219,59 +229,89 @@ nav {
 
 .intimacy {
     font-family: "Pretendard-SemiBold";
-    font-size: 1.15rem;
-    margin-right: 0.5rem;
+    font-size: 1.4rem;
 }
 
 .heartImg {
     margin-left: auto;
-    width: 50%;
-    height: 50%;
+    width: 35%;
+    height: 35%;
 }
 
 /* 캐릭터 선택 박스 */
 .character-select-box {
     position: fixed;
-    top: 25%;
-    right: 5%;
+    right: 7%;
     text-align: center;
-    width: 12%;
-    height: 55%;
+    /* width: 14%; */
+    height: 85%;
     padding: 1.5rem;
-    border: 3.5px solid #D2BEA1;
-    border-radius: 2rem;
-    background-color: #FCF7E5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.coins {
-    position: relative;
-    bottom: 14.5%;
+.characterBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    width: 16rem;
+    height: 25rem;
+}
+
+.coinBigBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    width: 9rem;
+    height: 4rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
 
-.coinBackground {
-    width: 80%;
+.coinIcon {
+    width: 20%;
+    float: left;
 }
 
-.coin {
-    width: 13%;
+.coins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .coinText {
     font-family: "Pretendard-Regular";
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: #AB936B;
+    float: right;
 }
-
 .coinFlex {
-    display: flex;
     justify-content: center;
     align-items: center;
 
+    background-color: #FEF5D3;
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    padding: 1rem 1rem;
+
+    z-index: 100;
+
     position: relative;
-    right: 0.25rem;
-    bottom: 3.2rem;
+    text-align: center;
+    margin: auto;
+}
+
+.characterBox {
+    position: relative;
+    width: 12%;
+    text-align: center;
+    bottom: 62vh;
+    left: 15%;
 }
 
 .character-option {
@@ -280,7 +320,7 @@ nav {
     margin-bottom: 1.75rem;
     cursor: pointer;
     position: relative;
-    bottom: 18%;
+    width: 12%;
 }
 
 .hamImg {
@@ -291,7 +331,7 @@ nav {
 
 .sectionName {
     font-family: "Pretendard-Medium";
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
     color: #71594E;
 }
@@ -303,7 +343,7 @@ nav {
     background-color: #F5EED1;
     border-radius: 10rem;
     width: 5rem;
-    height: 2rem;
+    height: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -311,10 +351,6 @@ nav {
 
 .character-option.selected .select {
     background-color: #D2BEA1;
-}
-
-#professorOption .select {
-    background-color: #A88756;
 }
 
 #professorOption.selected .select {
@@ -342,7 +378,6 @@ nav {
     margin-bottom: 1rem;
 }
 
-/* 캐릭터 네비게이션 */
 .character-navigation {
     position: fixed;
     bottom: 27.5%;
@@ -374,10 +409,10 @@ nav {
 }
 
 .popup-content {
-    font-family: "Pretendard-SemiBold";
+    font-family: "Pretendard-Bold";
     background: white;
-    width: 20rem;
-    height: 10rem;
+    width: 30rem;
+    height: 15rem;
     border-radius: 8px;
     text-align: center;
 }
@@ -385,17 +420,23 @@ nav {
 .popup-content p {
     margin-top: 12.5%;
     margin-bottom: 9%;
-    font-size: 1.2rem;
+    font-size: 2rem;
+}
+
+button {
+    border: 0;
 }
 
 .popup-content button {
-    font-family: "Pretendard-Regular";
+    font-family: "Pretendard-SemiBold";
     padding: 10px 20px;
     margin: 0 10px;
     border: none;
     border-radius: 5px;
+    width: 6.25rem;
+    height: 2.75rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 #confirmPurchase {

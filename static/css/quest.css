@@ -27,7 +27,7 @@ nav {
 }
 
 .logo {
-    width: 4rem;
+    width: 5rem;
 
     position: absolute;
     left: 2rem;
@@ -39,21 +39,28 @@ nav {
     right: 2rem;
     top: 1.6rem;
 
-    width: 2rem;
+    width: 2.5rem;
 
     cursor: pointer;
 }
 
 .exitIcon {
     position: absolute;
-    width: 1.5rem;
+    width: 2rem;
     right: 2rem;
     top: 2rem;
     cursor: pointer;
 }
 
-.questSection {
-    margin: 7rem 0;
+#backIcon {
+    width: 3rem;
+    position: relative;
+    left: 2.5rem;
+    top: 0.3rem;
+}
+
+#backIcon:hover {
+    cursor: pointer;
 }
 
 h3, h2 {

@@ -65,7 +65,7 @@ def register_user(id: str = Form(...), name: str = Form(...),
     db.refresh(new_user)
     
     # 기본 펫 데이터 삽입
-    default_pets = ['hamster', 'rabbit']  # 기본 펫 ID 목록
+    default_pets = ['hamster', 'bear']  # 기본 펫 ID 목록
     for pet_id in default_pets:
         user_pet = UserPet(user_id=id, pet_id=pet_id)
         db.add(user_pet)

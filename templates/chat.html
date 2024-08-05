@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat</title>
+    <title>햄내_채팅하기</title>
     <!-- <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}"> -->
     <!-- 각자 맡은 페이지의 css 파일 연결 -->
     <link rel="stylesheet" href="{{ url_for('static' , path='/css/chat.css') }}">
-    
+    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 </head>
 <body>
     
     <!-- chat -->
+    <div class="blackBack"></div>
     <div class="Wrap">
         <div class="chatPage">
             <div class="topBox">
@@ -23,7 +24,7 @@
                     <img id="hamster" src="{{ url_for('static', path='/image/hamster.png') }}">
                 </div>
                 <div class="nameHeart">
-                    <div class="name">햄깅이</div>
+                    <div class="name">{{ pet_name }}</div>
                     <div><img id="heart" src="{{ url_for('static', path='/image/heart.png') }}"></div>
                     
                 </div>
@@ -58,6 +59,9 @@
             <div class="bottomBox"></div>
         </div>
     </div>
+
+    <audio id="openSound" src="{{ url_for('static', path='/sound/MP_Pling.mp3') }}"></audio>
+    <audio id="closeSound" src="{{ url_for('static', path='/sound/MP_통화 종료음.mp3') }}"></audio>
 
     <script src="{{ url_for('static', path='/js/chat.js') }}" defer></script>
 </body>

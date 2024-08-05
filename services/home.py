@@ -69,10 +69,3 @@ async def upload_file(file: UploadFile = File(...)):
         return JSONResponse(content={"success": True, "file_path": file_location}, status_code=200)
     except Exception as e:
         return JSONResponse(content={"success": False, "error": str(e)}, status_code=500)
-    
-@router.get("/models/{model_name}")
-async def get_model(model_name: str):
-    file_path = os.path.join("templates", "models", model_name)
-    if os.path.exists(file_path):
-        return FileResponse(file_path)
-    return JSONResponse(content={"success": False, "error": "File not found"}, status_code=404)

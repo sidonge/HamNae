@@ -1,0 +1,182 @@
+@font-face {
+    font-weight: 300;
+    font-family: "Pretendard-Light";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 400;
+font-family: "Pretendard-Regular";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 500;
+font-family: "Pretendard-Medium";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 600;
+font-family: "Pretendard-SemiBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 700;
+font-family: "Pretendard-Bold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+font-weight: 800;
+font-family: "Pretendard-ExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
+}
+
+* {
+box-sizing: content-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+font-size: 16px;
+z-index: -99999;
+display: block;
+}
+
+html {
+overflow: hidden;
+overflow-y: hidden;
+}
+
+main,
+div,
+h1,
+h2,
+h3 {
+margin: 0;
+padding: 0;
+}
+
+ol,
+ul,
+li {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(rgb(163, 217, 237), rgb(217, 224, 213));
+}
+
+.model-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#backgroundModelreal {
+    width: 100%;
+    height: 100%;
+    z-index: -9999999;
+}
+
+#hamModel {
+    width: 23%;
+    height: 23%;
+    bottom: 25%;
+    
+}
+
+/* nav */
+/* nav */
+nav {
+    height: 5rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+
+.logo {
+    width: 5rem;
+
+    position: absolute;
+    left: 2rem;
+    top: 1.25rem;
+}
+
+.menuIcon {
+    position: absolute;
+    right: 2rem;
+    top: 1.6rem;
+
+    width: 2.5rem;
+
+    cursor: pointer;
+}
+
+.exitIcon {
+    position: absolute;
+    width: 2rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+}
+
+.blink {
+    position: fixed;
+    bottom: 22%;
+    left: calc(52.25% - 7rem);
+    font-family: "Pretendard-Boid";
+    font-size: 1rem;
+    color: #71594E;
+    z-index: 3;
+    animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.homeblink {
+    position: fixed;
+    bottom: 68%;
+    left: calc(52.25% - -2rem);
+    font-family: "Pretendard-Boid";
+    font-size: 1rem;
+    color: #71594E;
+    z-index: 3;
+    animation: homeblinker 2s linear infinite;
+}
+
+@keyframes homeblinker {
+    50% { opacity: 0; }
+}

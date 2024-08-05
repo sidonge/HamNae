@@ -54,12 +54,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var greenBtn = document.getElementById("greenCircleText");
     var questText = document.getElementById("questText");
     var isMissionComplete = false;
+    var openSound = document.getElementById("openSound");
+    var closeSound = document.getElementById("closeSound");
+
+    questText.style.textAlign = "center";
 
     questText.style.textAlign = "center";
 
     greenBtn.addEventListener("click", function() {
         var message = "내일의 나에게 하고 싶은 말 적어보기";
         if (!isMissionComplete) {
+            openSound.play();
             greenBtn.textContent = "미션완료";
             greenBtn.style.backgroundColor = "#8CD179";
             greenBtn.style.width = "6.7rem";
@@ -70,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addCenteredMessage(message);
             addMessage(message, 'bot');
         } else {
+            closeSound.play();
             greenBtn.textContent = "오늘의 질문";
             greenBtn.style.backgroundColor = "#ffffff";  // 배경색 변경
             greenBtn.style.color = "#588B47";  // 텍스트 색상 원래대로
@@ -194,5 +200,6 @@ function onChatComplete() {
 
 // 창 닫기 기능
 function closeEvent() {
-    document.getElementsByClassName("chatPage")[0].style.display = "none";
+    // document.getElementsByClassName("chatPage")[0].style.display = "none";
+    window.location.href = "/home";
 }
