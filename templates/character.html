@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 </head>
 <body>
     <div class="model-container">
@@ -68,9 +69,8 @@
     <!-- 캐릭터 선택 박스 -->
     <section class="character-select-box">
         <div class="coins">
-            <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
-            <div class="coinFlex">
-                <img src="{{ url_for('static', path='image/icon-coin.png') }}" class="coin">
+            <div class="coinBackgroundContainer">
+                <img src="{{ url_for('static', path='image/coinBackground.png') }}" class="coinBackground">
                 <div class="coinText" id="coinAmount">&nbsp;&nbsp;{{ user.coin }}</div>
             </div>
         </div>
@@ -110,7 +110,7 @@
     <!-- 구매 팝업 -->
     <div id="purchasePopup" class="purchase-popup">
         <div class="popup-content">
-            <p>교수님을 200 coin에 구매하시겠습니까?</p>
+            <p>구매하시겠습니까?</p>
             <button id="confirmPurchase">구매하기</button>
             <button id="cancelPurchase">취소</button>
         </div>
