@@ -108,9 +108,9 @@ model-viewer {
 }
 
 #hamModel {
-    width: 40%;
-    height: 40%;
-    bottom: 10%;
+    width: 23%;
+    height: 23%;
+    bottom: 25%;
     
 }
 
@@ -131,4 +131,18 @@ nav {
     right: 2rem;
     top: 2rem;
     width: 2.5rem;
+}
+
+.blink {
+    position: fixed;
+    bottom: 22%;
+    left: calc(52.25% - 5rem);
+    font-family: "Pretendard-Boid";
+    font-size: 0.8rem;
+    color: #71594E;
+    z-index: 3;
+    animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
 }

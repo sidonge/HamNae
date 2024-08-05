@@ -10,10 +10,10 @@
 
 body
 {
-    /* background-image: url(../image/메인페이지.png); */
+    background-image: url(../image/해커톤-마이페이지.png);
     background-repeat : no-repeat;
     background-size : cover;
-background: linear-gradient(white, #F5EED1);
+/* background: linear-gradient(white, #F5EED1); */
 }
 
 
@@ -37,6 +37,12 @@ h3, h2
     font-weight: 700;
     margin: 0.36rem 0.5rem 0rem 0.16rem;
     word-spacing: 0.2rem;
+}
+
+#profile > img + p
+{
+    font-weight: 700;
+    transform: translate(7.2rem, -2.4rem);
 }
 
 #profile span 
@@ -67,8 +73,37 @@ h3, h2
 /* font end */
 
 /* nav */
-nav 
+
+/* nav */
+nav {
+    margin: 2rem 0;
+}
+
+.logo {
+    width: 5rem;
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+}
+
+.menuIcon {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    width: 2.5rem;
+}
+
+.exitIcon {
+    position: absolute;
+    width: 2rem;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+}
+/* nav 
 {
+    border: 0.1rem solid black;
+    height: 7rem;
     margin: 2.7rem 3.5rem 0rem 2.9rem;
     display: flex;
     justify-content: space-between;
@@ -90,15 +125,12 @@ nav div a
 }
 
 
-nav > a > img
+nav a > img
 {
-    width: 15%;
-}
+    width: 30%;
+} */
 
 /* 정렬 */
-
-
-
 
 
 /* profile */
@@ -113,7 +145,7 @@ nav > a > img
 {
     font-size: 2rem;
     margin-top: 0.42rem;
-    margin-left: 4.2rem;
+    margin-left: 4.8rem;
     margin-bottom: 0.75rem;
     letter-spacing: 0.19rem;
 }
@@ -290,16 +322,17 @@ input
 .badge
 {
     justify-content: center;
+    position: relative;
 }
 
 section > div 
 {
     display: flex;
-    margin: 2rem 17.7rem 0rem 16rem;
+    margin: 2rem 17.7rem 6rem 16rem;
     justify-content: space-between;
 }
 
-#quest_killer
+#quest_beginner
 {
     transform: translateY(-0.7rem);
 }
@@ -308,15 +341,19 @@ section > div
 {
     font-weight: 900;
     font-size: 1.3rem;  
-    transform: translate(0.6rem, 1rem);
+    /* transform: translate(0.6rem, 1rem); */
     word-spacing: 0.2rem;
     color: #71594E;
-    padding-left: 0.5rem;
+    /* padding-left: 1rem; */
+    text-align: center;
+    margin-top: 1.2rem;
 }
 
-#quest_killer+p 
+
+
+#quest_beginner+p
 {
-    transform: translate(1.2rem, 0.2rem);
+  margin-top: 0.8rem  !important;
 }
 
 #insiderking~p
@@ -328,6 +365,7 @@ section > div
 
 nav~div
 {
+    margin-top: 10rem;
     margin-right: 6rem;
 }
 
@@ -355,6 +393,12 @@ nav~div
     position: absolute;
     top: 20%;
     left: 18%;
+}
 
+.unearned
+{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 

@@ -26,3 +26,13 @@ const mainSound = document.getElementById("mainSound")
 hamModel.addEventListener('click', () => {
     mainSound.play();
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const blinkText = document.querySelector(".blink");
+    isTalkVisible = !isTalkVisible;
+    if (isTalkVisible) {
+      
+      blinkText.style.display = "none";
+    } 
+});

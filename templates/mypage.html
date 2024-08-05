@@ -4,24 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', path='css/mypage.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css')}}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-    <style>
-    *{
-        margin: 0;
-        padding: 0;
-        /* border: 0.01px solid black; */
-    }
-  
-    </style>
     <title>Document</title>
 </head>
 <body>
     <nav>
-        <a href=""><img src="/static/image/logo.png" alt="logo"></a>
-        <div>
-            <a href=""><img src="/static/image/menu_burger.png" alt="menu"></a> <!--메뉴바를 a태그로 하는게 맞나-->
-        </div> 
+        <img src="/static/image/logo.png" class="logo"></img>
+        <img src="/static/image/menu.png" class="menuIcon" id="menuIcon">
     </nav>
+
     <div>
         <div id="profile">
             <p>마이페이지 > 기본정보</p>
@@ -30,6 +22,7 @@
                 <h3>님과 함께한 지 <span>+{{ days_since_joined}}</span>일째</h3>
             </div>
             <img src="/static/image/sprout_gildong.png" alt="sprout_profile" />
+            <p>{{ user.level }}</p>
             <h3>{{ user.name }}</h3>
             <span>{{ user.xp }}XP</p>
             <img id="xp_level" src="/static/image/xp_level.png" alt="level_bar">
@@ -78,17 +71,33 @@
         <div>
             <div class="badge">
                 <img src="/static/image/king_paw.png" alt="">
+                <p> 모험의 시작 </p>
+            </div>
+            <div class="badge">
+                <img id="quest_beginner" src="/static/image/quest_beginner.png" alt="">
+                <p> 퀘스트 초심자 </p>
+            </div>
+            <div class="badge">
+                <img id="insiderking" src="/static/image/first_step_badge.png" alt="">
+                <p> 우정의 첫걸음 </p>
+            </div>
+        </div>
+        <div>
+            <div class="badge">
+                <img src="/static/image/attd_king.png" alt="">
+                <img class="unearned" src="/static/image/unearned_badge.png" alt="">
                 <p> 이번주 출석왕 </p>
             </div>
             <div class="badge">
                 <img id="quest_killer" src="/static/image/quest_killer.png" alt="">
+                <img class="unearned" src="/static/image/unearned_badge.png" alt="">
                 <p> 퀘스트 킬러 </p>
             </div>
             <div class="badge">
                 <img id="insiderking" src="/static/image/insiderking.png" alt="">
+                <img class="unearned" src="/static/image/unearned_badge.png" alt="">
                 <p> 이 구역의 인싸왕 </p>
             </div>
-          
         </div>
     </section>
 </body>

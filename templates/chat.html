@@ -16,15 +16,16 @@
         <div class="chatPage">
             <div class="topBox">
                 <p class="topBoxText">채팅하기</p>
-                <p class="closeIcon" onclick="closeEvent()"><img src="/image/close.png'"></p>
+                <p class="closeIcon" onclick="closeEvent()"><img src="{{ url_for('static', path='/image/close.png') }}"></p>
             </div>
             <div class="info">
                 <div class="circle">
-                    <img id="hamster" src="{{ url_for('static', path='image/햄스터.png') }}">
+                    <img id="hamster" src="{{ url_for('static', path='/image/hamster.png') }}">
                 </div>
                 <div class="nameHeart">
                     <div class="name">햄깅이</div>
-                    <div><img id="heart" src="/static/image/heart.png"></div>
+                    <div><img id="heart" src="{{ url_for('static', path='/image/heart.png') }}"></div>
+                    
                 </div>
                 <div class="greenCircle">
                     <button id="greenCircleText" class="greenCircleText">오늘의 질문</button>
