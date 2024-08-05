@@ -11,41 +11,6 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- <meta name="google-signin-client_id" content="1032858913846-3t5dhced44sv170k0tg92oq9spnkggs7.apps.googleusercontent.com.apps.googleusercontent.com"> -->
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-    <style>
-        /* 모달 스타일 */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px; 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; 
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div class="login-container">
@@ -112,29 +77,16 @@
       <script src="{{ url_for('static', path='js/sns_login.js')}}"></script>
     </div>
 
-    <!-- 팝업 모달 -->
-    <div id="errorModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <p id="errorMessage"></p>
-      </div>
-    </div>
-
-    <script>
-        function showModal(message) {
-            document.getElementById('errorMessage').innerText = message;
-            document.getElementById('errorModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('errorModal').style.display = 'none';
-        }
-</script>
+   
+       
         {% if error %}
         <script>
-            showModal("{{ error }}");
-          </script>
+           // 페이지 로드 시 오류 메시지가 있으면 알림 창을 띄웁니다.
+        window.onload = function() {
+            alert("{{ error }}");
+        }
+      </script>
         {% endif %}
-    </script>
+   
 </body>
 </html>
