@@ -149,6 +149,16 @@ html, body {
     bottom: 4rem;
     left: 26rem;
     width: 7rem;
+    animation: upDown 2s ease-in-out infinite;
+}
+/* 햄스터 애니메이션 */
+@keyframes upDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .sky {
@@ -209,7 +219,7 @@ html, body {
     height: 18rem;
     z-index: 10;
     margin-bottom: -14rem;
-    opacity: 80%;
+    opacity: 95%;
 }
 
 
@@ -291,7 +301,7 @@ html, body {
         transform: translateX(0);
     }
     50% {
-        transform: translateX(30px); /* 오른쪽으로 20px 이동 */
+        transform: translateX(30px); 
     }
 }
 
@@ -314,22 +324,22 @@ html, body {
 /* 나무들 애니메이션 */
 @keyframes scaleUp {
     0% {
-        transform: scale(0.7); /* 초기에 요소의 크기를 50%로 설정 */
+        transform: scale(0.7); 
         opacity: 0;
     }
     50% {
-        transform: scale(1.1); /* 중간에 요소의 크기를 110%로 늘림 */
+        transform: scale(1.1); 
         opacity: 0.5; 
     }
     100% {
-        transform: scale(1); /* 최종적으로 요소의 크기를 100%로 설정 */
+        transform: scale(1); 
         opacity: 1; 
     }
 }
 
 .leftTree, .rightTree {
     animation: scaleUp 1s ease-in-out forwards; 
-    animation-delay: 3s;
+    animation-delay: 5s;
 }
 
 /* 로고 fadein 애니메이션 */
@@ -344,5 +354,5 @@ html, body {
 
 .LOGO {
     animation: fadeIn 2s ease-in-out forwards; 
-    animation-delay: 3s;
+    animation-delay: 5s;
 }

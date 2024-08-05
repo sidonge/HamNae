@@ -1,5 +1,5 @@
 // 카카오 JavaScript SDK 초기화
-Kakao.init('c5c12a3803eb52af28d1041cecbf7d2f');
+// Kakao.init('c5c12a3803eb52af28d1041cecbf7d2f');
 
 // // 사용자 정의 이미지 버튼 클릭 이벤트 추가
 // document.getElementById('kakaoBtn').addEventListener('click', function() {
@@ -110,3 +110,40 @@ document.getElementById('googleBtn').addEventListener('click', function() {
     // 숨겨진 기존 구글 로그인 버튼 클릭
     document.querySelector('.g-signin2').firstChild.click();
 });
+
+
+//팝업
+document.addEventListener('DOMContentLoaded', function() {
+    const errorMessage = document.getElementById('error-message').textContent.trim();
+    if (errorMessage) {
+        alert("아이디 또는 비밀번호가 잘못되었습니다. 정확히 입력해주세요.");
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // 폼 제출 방지
+
+        const formData = new FormData(loginForm);
+        fetch('/auth/login', {
+            method: 'POST',
+            body: new URLSearchParams(formData)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // 로그인 성공 시 JSON 응답 처리
+            } else {
+                return response.text().then(text => { throw new Error(text) }); // 로그인 실패 시 텍스트 응답 처리
+            }
+        })
+        .then(data => {
+            window.location.href = data.redirect; // 성공 시 페이지 이동
+        })
+        .catch(error => {
+            alert('아이디 또는 비밀번호가 잘못되었습니다.'); // 실패 시 알림
+        });
+    });
+});
+

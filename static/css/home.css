@@ -43,6 +43,122 @@ body {
     src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
 }
 
+/* popup css */
+
+.popupWrap {
+    position: fixed; /* 팝업을 페이지에 고정 */
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    background-color: rgba(0, 0, 0, 0.85); /* 검은색 배경에 투명도 적용 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeIcon {
+    color: #FFFFFF;
+    position: absolute !important;
+    top: 2.6rem !important;
+    right: 2.6rem !important;
+    cursor: pointer;
+}
+
+
+model-viewer#rabbitModel2 {
+    position: absolute;
+    top: 50%;  /* 팝업 중앙에 위치 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    width: 30vw; 
+    height: 30vh; 
+    z-index: 1001;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+
+
+.bottomCircle {
+    width: 15rem;
+    height: 7rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 27rem;
+    background-color: #FFFFFF;
+    opacity: 50%;
+    z-index: -19;
+}
+
+.popupBlink {
+    position: fixed;
+    top: 16rem;
+    font-family: "Pretendard-Boid";
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    animation: popupblinker 2s linear infinite;
+}
+
+@keyframes popupblinker {
+    50% { opacity: 0; }
+}
+
+.recording {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 35rem;
+}
+
+#nameRecord {
+    width: 2.5rem;
+    height: 2.7rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+#record {
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+#stop {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+#result {
+    z-index: 1010;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 40rem;
+    opacity: 80%;
+    font-family: "Pretendard-Medium";
+}
+
+#status-indicator {
+    position: absolute;
+    top: 39.3rem;
+    color: #8DBD81;
+    z-index: 1010;
+    font-family: "Pretendard-SemiBold";
+}
+
+
+.highlight {
+    color: #FF8181;
+    font-weight: bold;
+    font-family: "Pretendard-Bold";
+}
+
+
+
+
+
 /* nav */
 nav {
     height: 5rem;
@@ -78,6 +194,50 @@ nav {
     right: 2rem;
     top: 2rem;
     cursor: pointer;
+}
+
+/* record nav */
+.recordWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+    width: 24rem;
+    height: 3.3rem;
+    background-color: beige;
+    position: absolute;
+    top: 0;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    background-color: #000000;
+    opacity: 25%;
+}
+
+#homenameRecord, #homerecord, #homestop {
+    cursor: pointer;
+    position: relative;
+    z-index: 900; /* 동일하게 900 설정 */
+}
+
+#homenameRecord {
+    width: 2.1rem;
+    height: 2.2rem;
+    margin-right: -1rem;
+    color: #FFFFFF;
+    opacity: 100%;
+    margin-right: 3.5rem;
+}
+#homerecord{
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 4.1rem;
+    margin-bottom: 0.3rem;
+}
+#homestop {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-bottom: 0.1rem;
 }
 
 /* Title Section */
@@ -117,21 +277,21 @@ nav {
 model-viewer#windowModel {
     position: absolute;
     transition: cameraOrbit 0.3s ease;
-    width: 150vw;
-    height: 150vh;
+    width: 130vw;
+    height: 130vh;
     left: 50%;
-    top: 50%;
+    top: -50%;
     transform: translate(-50%, -50%);
 }
 
 model-viewer#rabbitModel {
     position: absolute;
     transition: cameraOrbit 0.3s ease;
-    width: 15vw;
-    height: 15vh;
-    top: 50%;
+    width: 20vw;
+    height: 20vh;
+    top: 305%;  /* 위치를 더 많이 아래로 내림 */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%); /* Y축 조정을 더 줄임 */
 }
 
 /* Controls */
@@ -179,7 +339,7 @@ model-viewer#rabbitModel {
     width: 2rem;
     height: 4rem;
     position: fixed;
-    top: 27rem;
+    top: 30rem;
     right: 31.5rem;
     z-index: 2;
 }
@@ -187,7 +347,7 @@ model-viewer#rabbitModel {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 16rem;
+    bottom: 20rem;
     right: 25rem;
     z-index: 2;
     transition: opacity 0.5s;
@@ -199,18 +359,18 @@ model-viewer#rabbitModel {
 
 /* 청소하기 */
 .clean {
-    width: 6rem;
+    width: 15rem;
     height: 30rem;
     position: fixed;
-    top: 13rem;
-    left: 9rem;
+    top: 40rem;
+    left: -1rem;
 }
 .cleanTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 28rem;
-    left: 8.5rem;
+    bottom: 10rem;
+    left: 6rem;
     transition: opacity 0.5s;
 }
 .clean:hover .cleanTalk{
@@ -223,15 +383,16 @@ model-viewer#rabbitModel {
     width: 12rem;
     height: 14rem;
     position: fixed;
-    bottom: 16rem;
-    left: 65rem;
+    bottom: 20rem;
+    left: 66rem;
+    cursor: pointer;
 }
 .cookingTalk {
     display: none;
     width: 10rem;
     position: fixed;
-    bottom: 28rem;
-    right: 21rem;
+    bottom: 33rem;
+    right: 23rem;
     transition: opacity 0.5s;
 }
 .cooking:hover .cookingTalk{
@@ -240,18 +401,18 @@ model-viewer#rabbitModel {
 }
 /* 씻기 */
 .wash {
-    width: 4rem;
-    height: 35rem;
+    width: 7rem;
+    height: 40rem;
     position: fixed;
     bottom: 1rem;
-    right: 8.5rem;
+    right: 1rem;
 }
 .washTalk {
     display: none;
     width: 10rem;
     position: fixed;
     top: 5.5rem;
-    right: 7.5rem;
+    right: 5rem;
     transition: opacity 0.5s;
 }
 .wash:hover .washTalk{
@@ -264,7 +425,7 @@ model-viewer#rabbitModel {
     width: 10rem;
     height: 10rem;
     position: fixed;
-    bottom: 3rem;
+    bottom: 7rem;
     right: 20rem;
 }
 .tableTalk {
@@ -282,10 +443,10 @@ model-viewer#rabbitModel {
 
 /* 명상하기 */
 .bed {
-    width: 19rem;
-    height: 8rem;
+    width: 17rem;
+    height: 10rem;
     position: fixed;
-    top: 33rem;
+    top: 34rem;
     left: 14rem;
 }
 .bedTalk {
@@ -299,6 +460,65 @@ model-viewer#rabbitModel {
 .bed:hover .bedTalk{
     display: block;
     opacity: 1;
+}
+
+/* 타이머 css */
+#timerDisplay {
+    position: absolute;
+    bottom: 8rem;
+    left: 7rem;
+    width: 15rem;
+    height: 8rem;
+    background-color: #D2BEA1; 
+    color: #71594E; 
+    font-size: 1.5em; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+}
+
+.timerText {
+    text-align: center;
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+    position: relative;
+    top: 10%;
+    font-size: 1.25rem;
+}
+
+.timerNum {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20%;
+}
+.timer-part {
+    width: 6rem;
+    height: 3.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #FFFFFF;
+    background-color: #AB936B;
+}
+
+.timer-colon {
+    font-size: 2em;
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+/* 1분 종료 됐을 때 css */
+#timerCompleteMessage {
+    text-align: center;
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+    position: relative;
+    font-size: 1rem;
+    top: 30%;
 }
 
 /* 약 먹기 */
@@ -324,9 +544,9 @@ model-viewer#rabbitModel {
 
 .blink {
     position: fixed;
-    bottom: 20rem;
+    bottom: 15.5rem;
     font-family: "Pretendard-Boid";
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #71594E;
     z-index: 3;
     animation: blinker 2s linear infinite;
@@ -343,13 +563,15 @@ model-viewer#rabbitModel {
     transition: opacity 0.5s;
 }
 #rabbitTalk1 {
-    bottom: 13rem;
-    left: 39rem;
+    bottom: 15rem;
+    left: 40rem;
+    cursor: pointer;
 }
 
 #rabbitTalk2 {
-    bottom: 13rem;
-    left: 49rem;
+    bottom: 15rem;
+    left: 50rem;
+    cursor: pointer;
 }
 
 #rabbitUp, #rabbitDown {
@@ -371,3 +593,20 @@ model-viewer#rabbitModel {
 .upload-input {
     margin-top: 10px;
 }
+
+
+.Topblink {
+    position: fixed;
+    top: 13%;
+    font-family: "Pretendard-Boid";
+    font-size: 1.1rem;
+    color: #71594E;
+    z-index: 3;
+    animation: topblinker 2s linear infinite;
+}
+
+@keyframes topblinker {
+    50% { opacity: 0; }
+}
+
+
