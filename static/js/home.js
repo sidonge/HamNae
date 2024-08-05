@@ -147,9 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
   addClickHandler("washContainer", "washSound");
   addClickHandler("waterContainer", "waterSound");
 
-
-  
-
   const talkImages = document.querySelectorAll(".talk-image");
   talkImages.forEach((img) => {
     const uploadInput = img.nextElementSibling;
@@ -172,40 +169,34 @@ document.addEventListener("DOMContentLoaded", () => {
             water: "water_cleared_stamp",
             clean: "clean_cleared_stamp",
             cooking: "cooking_cleared_stamp",
-            wash: "wash_cleared_stamp",
-            bed: "bed_cleared_stamp",
-            pills: "pills_cleared_stamp",
-            talk: "talk_cleared_stamp",
           };
-          const newFileName =
-            stampMap[mission] + "." + file.name.split(".").pop(); // 새로운 파일 이름 설정
 
-          formData.append(
-            "file",
-            new File([file], newFileName, { type: file.type })
-          );
+          const newFileName = stampMap[mission] ? stampMap[mission] + "." + file.name.split(".").pop() : "";
 
-          fetch("/upload", {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.success) {
-                alert("미션 성공! 퀘스트 달성도를 확인해 보세요.");
-                localStorage.setItem(
-                  `${uploadInput.id.replace("Upload", "")}Cleared`,
-                  "true"
-                );
-                updateStampImage(uploadInput.id.replace("Upload", ""), file);
-              } else {
-                alert("올바르지 않은 사진이에요. 다시 시도해 주세요.");
-              }
+          if (newFileName) {
+            formData.append("file", new File([file], newFileName, { type: file.type }));
+
+            fetch("/upload", {
+              method: "POST",
+              body: formData,
             })
-            .catch((error) => {
-              console.error("업로드 중 오류가 생겼어요:", error);
-              alert("업로드 중 오류가 생겼어요. 다시 시도해 주세요.");
-            });
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.success) {
+                  alert("미션 성공! 퀘스트 달성도를 확인해 보세요.");
+                  localStorage.setItem(`${uploadInput.id.replace("Upload", "")}Cleared`, "true");
+                  updateStampImage(uploadInput.id.replace("Upload", ""), file);
+                } else {
+                  alert("올바르지 않은 사진이에요. 다시 시도해 주세요.");
+                }
+              })
+              .catch((error) => {
+                console.error("업로드 중 오류가 생겼어요:", error);
+                alert("업로드 중 오류가 생겼어요. 다시 시도해 주세요.");
+              });
+          } else {
+            alert("잘못된 미션입니다.");
+          }
         }
       });
     }
@@ -216,11 +207,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const stampMap = {
       water: "water_cleared_stamp",
       clean: "clean_cleared_stamp",
-      cooking: "cooking_cleared_stamp", //
-      wash: "wash_cleared_stamp", // 샤워 - 설문 제출 시 응답하게
-      bed: "bed_cleared_stamp", // 명상 - 타이머 끝나는 시간 받기 (밑에 if문으로 정의돼 있음)
-      pills: "pills_cleared_stamp", 
-      talk: "talk_cleared_stamp", // 채팅 - 채팅 페이지 
+      cooking: "cooking_cleared_stamp",
+      wash: "wash_cleared_stamp",
+      talk: "talk_cleared_stamp",
+      bed: "bed_cleared_stamp",
+      pills: "pills_cleared_stamp",
+      walk: "walk_cleared_stamp"
     };
 
     const stampId = stampMap[mission];
@@ -243,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 모델 뷰어
   const windowModel = document.getElementById("windowModel");
   const rabbitModel = document.getElementById("rabbitModel");
-
 
   // 초기 화면 설정
   let rotateX = 90;
@@ -481,3 +472,81 @@ function startTimer(duration, minuteElem, secondElem, startText, completeMessage
 }
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  const showerPopup = document.querySelector('.showerPopup');
+  const showerHam = document.querySelectorAll('.showerHam');
+  const showerSend = document.querySelector('.showerSend');
+  const overlay = document.querySelector('.overlay');
+  let selectedImage = null; // 선택된 이미지 저장
+
+  // 요소들이 존재하는지 확인
+  const washContainer = document.getElementById('washContainer');
+  if (!washContainer) {
+    console.error('Element with id "washContainer" not found.');
+    return;
+  }
+  
+  if (!showerPopup || !showerSend || !overlay) {
+    console.error('One or more required elements are not found.');
+    return;
+  }
+
+  // 샤워 버튼 클릭 시 팝업을 표시
+  washContainer.addEventListener('click', function() {
+    showerPopup.classList.add('popup-visible');
+    overlay.style.display = 'block'; // 오버레이 표시
+  });
+
+  // 감정 이미지 클릭 시
+  showerHam.forEach(img => {
+    img.addEventListener('click', function() {
+      showerHam.forEach(image => image.classList.remove('selected'));
+      this.classList.add('selected');
+      console.log('Image clicked:', this); 
+      selectedImage = this;
+    });
+  });
+
+  // 샤워 후 제출 버튼 클릭 시
+  showerSend.addEventListener('click', function() {
+    if (selectedImage) {
+      // 서버로 스탬프 업데이트 요청
+      const mission = 'wash'; // 샤워 후에 업데이트할 미션
+      fetch('/update-stamp', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ mission })
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert('미션 성공! 퀘스트 달성도를 확인해 보세요.');
+              localStorage.setItem(`${mission}Completed`, 'true');
+              updateStampImage(mission);
+              increaseXP(XP_PER_QUEST); // XP 증가
+          } else {
+              alert('미션 업데이트에 실패했습니다. 다시 시도해 주세요.');
+          }
+      })
+      .catch(error => {
+          console.error('업로드 중 오류가 발생했습니다:', error);
+          alert('업로드 중 오류가 발생했습니다. 다시 시도해 주세요.');
+      });
+
+      // 팝업과 오버레이 숨기기
+      showerPopup.classList.remove('popup-visible');
+      overlay.style.display = 'none';
+    } else {
+      alert('Please select an image first.');
+    }
+  });
+
+  // 오버레이 클릭 시 팝업과 오버레이 숨기기
+  overlay.addEventListener('click', function() {
+      showerPopup.classList.remove('popup-visible');
+      overlay.style.display = 'none';
+  });
+});

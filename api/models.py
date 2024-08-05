@@ -72,6 +72,7 @@ class Quest(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, nullable=False)
     points = Column(Integer, default=150, nullable=False)
+    completed = Column(Boolean, default=False) 
 
 # UserQuest 테이블 정의
 class UserQuest(Base):
@@ -80,6 +81,7 @@ class UserQuest(Base):
     user_id = Column(String, ForeignKey('users.id'), primary_key=True)
     quest_id = Column(Integer, ForeignKey('quests.id'), primary_key=True)
     completed = Column(Boolean, default=False)
+    claimed_xp = Column(Boolean, default=False)
     
     user = relationship('User', back_populates='quests')
     quest = relationship('Quest')

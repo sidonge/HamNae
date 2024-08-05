@@ -253,13 +253,6 @@
         class="washTalk talk-image"
         src="{{ url_for('static', path='image/washTalk.png') }}"
       />
-      <input
-        type="file"
-        id="washUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
     </div>
     <div class="talk">
       <img
@@ -295,13 +288,19 @@
         class="pillsTalk talk-image"
         src="{{ url_for('static', path='image/pillsTalk.png') }}"
       />
-      <input
-        type="file"
-        id="pillsUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
+    </div>
+
+    <div class="overlay" style="display: none;"></div>
+    <div class="showerPopup">
+      <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
+      <div class="showerImg">
+        <img class="showerHam" src="{{ url_for('static', path='image/happyHam.png') }}" alt="happy">
+        <img class="showerHam" src="{{ url_for('static', path='image/badHam.png') }}" alt="bad">
+        <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
+      </div>
+      <div class="showerSend">
+        <button class="sendText" id="sendTextButton">내 기분 보내기</button>
+      </div>
     </div>
 
     <div class="blink">동물을 눌러 보세요.</div>

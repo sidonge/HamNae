@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // nav
     const backIcon = document.getElementById("backIcon");
-    backIcon.addEventListener("click", function() {
-    window.location.href = '/home';
+    backIcon.addEventListener("click", () => {
+        window.location.href = '/home';
     });
-    
+
     // 미션 이름 : 스탬프 요소 ID 매핑
     const stampMap = {
         'water': 'water_cleared_stamp',
@@ -20,11 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // XP 및 레벨 초기화
     let currentXP = parseInt(localStorage.getItem('currentXP')) || 0;
     const XP_PER_QUEST = 10;
-
-    function updateXPDisplay() {
-        const xpDisplay = document.getElementById('xpDisplay');
-        xpDisplay.textContent = `현재 XP: ${currentXP}`;
-    }
 
     // 스탬프 이미지 업데이트 함수
     function updateStampImage(mission) {
@@ -45,14 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function increaseXP(amount) {
         currentXP += amount;
         localStorage.setItem('currentXP', currentXP);
-        updateXPDisplay();
     }
 
     // talk 이미지 및 파일 업로드 설정
     const talkImages = document.querySelectorAll('.talk-image');
     talkImages.forEach((img) => {
         const uploadInput = img.nextElementSibling;
-        
+
         img.addEventListener('click', () => {
             if (uploadInput) {
                 uploadInput.click();
@@ -88,6 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 팝업에서 기분 선택 후 sendText 버튼 클릭 시 스탬프 업데이트
+    const sendTextButton = document.getElementById('sendTextButton');
+    if (sendTextButton) {
+        sendTextButton.addEventListener('click', () => {
+            const moodSelected = true; // 실제로 기분 선택 여부를 체크해야 함
+            if (moodSelected) {
+                updateStampImage('wash');
+                increaseXP(XP_PER_QUEST);
+            }
+        });
+    }
+
+    // stop 버튼 클릭 시 스탬프 업데이트
+    const stopButton = document.getElementById('stop');
+    if (stopButton) {
+        stopButton.addEventListener('click', () => {
+            updateStampImage('pills');
+            increaseXP(XP_PER_QUEST);
+        });
+    }
+
+    // 타이머 종료 시 스탬프 업데이트
+    function timerEnded() {
+        updateStampImage('bed');
+        increaseXP(XP_PER_QUEST);
+    }
+
     // 로컬 스토리지에서 완료된 미션 상태 체크 및 업데이트
     for (const mission in stampMap) {
         if (localStorage.getItem(`${mission}Completed`) === 'true') {
@@ -107,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.status) {
                 for (const [mission, cleared] of Object.entries(data.status)) {
                     if (cleared === "true") {
+                        localStorage.setItem(`${mission}Completed`, 'true');
                         updateStampImage(mission);
                     }
                 }
@@ -116,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching quest status:', error);
         });
 
-        updateXPDisplay();
+    updateXPDisplay();
 });
 
 
