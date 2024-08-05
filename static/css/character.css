@@ -310,8 +310,8 @@ nav {
     position: relative;
     width: 12%;
     text-align: center;
-    bottom: 62vh;
-    left: 15%;
+    /* bottom: 62vh;
+    left: 15%; */
 }
 
 .character-option {

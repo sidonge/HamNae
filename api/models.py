@@ -49,7 +49,9 @@ class Pet(Base):
     name = Column(String, nullable=False)
     mbti = Column(String, nullable=False)
     description = Column(String)
-    price = Column(Integer, nullable=True, default=None)
+    price = Column(Integer, nullable=True, default=None)  # 가격 컬럼 추가
+    short_description = Column(String)  # 짧은 설명 컬럼 추가
+    pet_image = Column(String)  # 이미지 컬럼 추가
 
 # UserPet 테이블 정의
 class UserPet(Base):
@@ -57,12 +59,13 @@ class UserPet(Base):
     
     user_id = Column(String, ForeignKey('users.id'), primary_key=True)
     pet_id = Column(String, ForeignKey('pets.pet_id'), primary_key=True)
-    selected_character = Column(Integer, default=0)
+    custom_name = Column(String, nullable=True)  # nullable 설정
 
     # 관계 정의
     pet = relationship("Pet")
     user = relationship("User", back_populates="purchased_pets")
 
+# Quest 테이블 정의
 class Quest(Base):
     __tablename__ = 'quests'
     
@@ -70,6 +73,7 @@ class Quest(Base):
     name = Column(String, unique=True, nullable=False)
     points = Column(Integer, default=150, nullable=False)
 
+# UserQuest 테이블 정의
 class UserQuest(Base):
     __tablename__ = 'user_quests'
     

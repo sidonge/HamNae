@@ -5,7 +5,10 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
-from services import quest, home, character, walkpage, petlist, chat, map, mainpage, popup
+from services import quest, home, character, walkpage, petlist, chat, map
+from user import mypage, petlist
+from api import voiceRecording
+
 
 app = FastAPI()
 
@@ -24,15 +27,18 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
-app.include_router(mainpage.router)
+# app.include_router(mainpage.router)
 app.include_router(map.router)
 app.include_router(home.router)
 app.include_router(character.router)
 app.include_router(quest.router)
 app.include_router(walkpage.router)
 app.include_router(petlist.router)
+
 # app.include_router(chat.router)
-app.include_router(popup.router)
+
+app.include_router(mypage.router, prefix="/user")
+
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -43,3 +49,18 @@ async def get_loading(request: Request):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
+
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+
+app.include_router(petlist.router, prefix="/user")
+app.include_router(mypage.router, prefix="/user")
+
+app.include_router(walkpage.router)
+
+app.include_router(voiceRecording.router)
