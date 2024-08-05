@@ -11,24 +11,22 @@ from auth.dependencies import get_current_user
 router = APIRouter(tags=["로그인"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
-
 
 @router.get("/login", response_class=HTMLResponse)
 def login_form(request: Request, user: dict = Depends(get_current_user)):
     if user:
-        raise HTTPException(
-            status_code=403, detail="Access forbidden: already logged in")
+        raise HTTPException(status_code=403, detail="Access forbidden: already logged in")
     return templates.TemplateResponse("login.html", {"request": request})
-
 
 @router.post("/login")
 async def login(request: Request, id: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+    print("/login - post 도착")
     user = db.query(User).filter(User.id == id).first()
     if user and verify_password(password, user.password):
         session_id = generate_session_id()
+        print("세션아이디 : "+ session_id)
         session_data[session_id] = {
             "id": user.id,
             "name": user.name,
@@ -36,8 +34,8 @@ async def login(request: Request, id: str = Form(...), password: str = Form(...)
             "tel": user.tel,
             "xp": user.xp,
             "join_date": user.join_date,
-            "level": user.level,
-            "main_pet_id": user.main_pet_id
+            "level" : user.level,
+            "main_pet_id" : user.main_pet_id
         }
         response = RedirectResponse(url="/main", status_code=302)
         response.set_cookie(key="session_id", value=session_id, httponly=True)
