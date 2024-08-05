@@ -1,3 +1,5 @@
+@media (min-width: 1441px)
+{
 *{
     margin: 0;
     padding: 0;
@@ -14,7 +16,7 @@ body
     /* background-image: url(../image/해커톤-마이페이지.png); */
     background-repeat : no-repeat;
     background-size : cover;
-background: linear-gradient(white, #F5EED1);
+    background: linear-gradient(white, #F5EED1);
 }
 
 
@@ -53,8 +55,9 @@ p
 
 #profile > img + p
 {
+    font-size: 1.5rem;
     font-weight: 700;
-    transform: translate(10rem, -3.6rem);
+    transform: translate(10rem, -3.8rem);
 }
 
 #profile span 
@@ -421,6 +424,7 @@ nav~div
 
 .stamp
 {
+    width: 4rem;
     position: absolute;
     top: 20%;
     left: 18%;
@@ -437,4 +441,5 @@ nav~div
 .badgeIcon
 {
     width: 12.4rem;
+}
 }

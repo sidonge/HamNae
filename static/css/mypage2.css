@@ -1,0 +1,413 @@
+@media (max-width: 1440px)
+{
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;   
+        letter-spacing: -0.1rem;
+    }
+    
+    body
+    {
+        /* background-image: url(../image/해커톤-마이페이지.png); */
+        background-repeat : no-repeat;
+        background-size : cover;
+    background: linear-gradient(white, #F5EED1);
+    }
+    
+    
+    /* fontweight
+        black :  900
+        extra bold : 800
+        bold : 700
+        semi bold : 600
+        medium : 500
+        regular : 400
+    */
+    
+    h3, h2
+    {
+        font-weight: 700;
+        font-size: 1.7rem;
+    }
+    
+    #profile p
+    {
+        font-weight: 700;
+        margin: 0.36rem 0.5rem 0rem 0.16rem;
+        word-spacing: 0.2rem;
+    }
+    
+    #profile > img + p
+    {
+        font-weight: 700;
+        transform: translate(7.2rem, -2.4rem);
+    }
+    
+    #profile span
+    {
+        color: #71594E;
+    }
+    
+    #profile > div
+    {
+        display: flex;
+    }
+    
+    
+    #profile > div+img
+    {
+        margin-left: 2.5rem;
+    }
+
+    #profile>div> h3 :nth-child(1)
+    {
+        display: inline-block;
+        font-weight: 900;
+        margin: 0.28rem 0rem 2.7rem 0.18rem;
+        letter-spacing: 0.07rem;
+    }
+    
+    #profile > div :nth-child(2)
+    {
+        padding: 0.16rem 0rem 0rem 0.2rem;
+        font-size: 1.5rem;
+        letter-spacing: -0.02rem;
+    }
+    
+    /* font end */
+    
+    /* nav */
+    
+    /* nav */
+    nav {
+        margin: 2rem 0;
+    }
+    
+    .logo {
+        width: 5rem;
+        position: absolute;
+        left: 2rem;
+        top: 2rem;
+    }
+    
+    .menuIcon {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        width: 2.5rem;
+    }
+    
+    .exitIcon {
+        position: absolute;
+        width: 2rem;
+        right: 2rem;
+        top: 2rem;
+        cursor: pointer;
+    }
+    /* nav
+    {
+        border: 0.1rem solid black;
+        height: 7rem;
+        margin: 2.7rem 3.5rem 0rem 2.9rem;
+        display: flex;
+        justify-content: space-between;
+    }*/
+    
+    nav~div
+    {
+        margin: 1rem 2.9rem 0rem 3rem;
+        display: flex;
+        justify-content: space-between;
+    
+    }
+    
+    
+    
+    nav div a
+    {
+        margin-left: 2.3rem;
+    }
+    
+    
+    nav a > img
+    {
+        width: 30%;
+    } */
+    
+    /* 정렬 */
+    
+    
+    /* profile */
+    
+    #profile div+img
+    {
+        margin-top: 0.3rem;
+        margin-left: 2.5rem;
+    }
+    
+    #profile > h3
+    {
+        font-size: 2rem;
+        margin-top: 0.42rem;
+        margin-left: 4.8rem;
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.19rem;
+    }
+    
+    #profile>span
+    {
+        padding: 5.5rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: -0.002rem;
+        word-spacing: -0.1rem;
+    }
+    
+    #xp_level
+    {
+        margin: 0.45rem 0rem 0.14rem -0.5rem;
+    }
+    #xp_level+p
+    {
+        margin-left: 1.1rem;
+        font-size: 1rem;
+        letter-spacing: 0.01rem;
+        word-spacing: 0.1rem;
+    }
+    #xp_level+p span
+    {
+        margin-left: 0.05rem;
+        letter-spacing: 0.01rem;
+    }
+    
+    #profile  button
+    {
+        background-color: #ffffff;
+    border: 1px solid #cbcbcb;
+    border-radius: 0.75rem;
+    padding: 0.55rem 3.48rem;
+      margin: 1rem;
+      margin-left: 1.6rem;
+      margin-bottom: 1.25rem;
+      color: #5C5B5E;
+      font-weight: 600;
+        font-size: 1rem;
+        word-spacing: 0.16rem;
+    }
+    
+    
+    
+    
+    /* badge section*/
+    
+    section
+    {
+        margin-top: 0.15rem;
+        margin-left: 1.18rem;
+        margin-bottom: 2rem;
+    }
+    
+    section>img
+    {
+        width: 93.5%;
+        margin-left: 1rem;
+    }
+    
+    section > h3
+    {
+        margin: 1.3rem 0rem 1.6rem 2.6rem;
+    }
+    
+    /* second div */
+    
+    #profile ~ div
+    {
+        margin-right: -1.6rem;
+    }
+    
+    
+    /* attendance */
+    
+    
+    #attd
+    {
+        margin-top: 1.8rem;
+        /* margin-right: 2.9rem; */
+        margin-bottom: 2.25rem;
+    
+    }
+    
+    #attd>h3
+    {
+        font-size: 1.6rem;
+        letter-spacing: -0.05rem;
+        word-spacing: 0.1rem;
+        padding-bottom: 0.3rem;
+    }
+    
+    #attd p
+    {
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-top: 0.1rem;
+        margin-left: 0.4rem;
+        word-spacing: 0.15rem;
+    }
+    
+    #attd p > img
+    {
+        transform: translateY(0.68rem);
+    }
+    
+    #attd>div
+    {
+        margin-bottom: 0.2rem;
+    }
+    
+    /* user_info */
+    
+    #user_info > img
+    {
+        margin-top: 1.3rem;
+    }
+    #user_info > div
+    {
+        display: flex;
+    }
+    
+    .info_box
+    {
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-left: 1.7rem;
+        margin-top: 2.2rem;
+    }
+    
+    .info_box p
+    {
+        padding-bottom: 2.5rem;
+        color: #71594E;
+    }
+    
+    .info_box :last-child
+    {
+        padding-bottom: 0;
+    }
+    
+    .info_box~div
+    {
+        margin-left: 1.24rem;
+        margin-top: 0.4rem;
+    }
+    
+    input
+    {
+        display: block;
+        border: 0;
+        /* background-color: rgba(255, 255, 255, 0); */
+        background-image: url(../image/id_pw_email_box.png);
+        background-size: cover;
+        color: #71594E;
+        font-weight: 500;
+        padding-left: 1.2rem;
+        font-size: 1rem;
+        letter-spacing: 0.03rem;
+    
+        width: 19rem;
+        height: 3rem;
+        margin-top: 1.06rem;
+        border-radius: 1.1rem;
+    }
+    
+    
+    /* badge */
+    
+    
+    .badge
+    {
+        justify-content: center;
+        position: relative;
+    }
+    
+    section > div
+    {
+        display: flex;
+        margin: 2rem 17.7rem 6rem 16rem;
+        justify-content: space-between;
+    }
+    
+    #quest_beginner
+    {
+        transform: translateY(-0.7rem);
+    }
+    
+    .badge > p
+    {
+        font-weight: 900;
+        font-size: 1.3rem;
+        /* transform: translate(0.6rem, 1rem); */
+        word-spacing: 0.2rem;
+        color: #71594E;
+        /* padding-left: 1rem; */
+        text-align: center;
+        margin-top: 1.2rem;
+    }
+    
+    
+    
+    #quest_beginner+p
+    {
+      margin-top: 0.8rem  !important;
+    }
+    
+    #insiderking~p
+    {
+        padding-left: 0rem;
+    }
+    
+    
+    
+    nav~div
+    {
+        margin-top: 10rem;
+        margin-right: 6rem;
+    }
+    
+    #attd > div
+    {
+        margin-top: 1rem;
+        margin-right: 1.8rem;
+        display: flex;
+        justify-content: space-between;
+        /* margin-bottom: 0.5rem; */
+    }
+    
+    nav~div
+    {
+        margin-right: 6rem;
+    }
+    
+    .stamped
+    {
+        position: relative;
+    }
+    
+    .stamp
+    {
+        position: absolute;
+        top: 20%;
+        left: 18%;
+    }
+    
+    .unearned
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+}
