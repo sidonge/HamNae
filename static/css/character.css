@@ -105,8 +105,6 @@ model-viewer {
     width: 170%;
     height: 170%;
     z-index: -9999999;
-
-    position: absolute;
 }
 
 #backgroundOverlay {
@@ -119,14 +117,14 @@ model-viewer {
     z-index: -10000;
 }
 
-#characterModel {
+#hamModel {
     width: 40%;
     height: 40%;
     bottom: 10%;
     
 }
 
-#characterModel::after {
+#hamModel::after {
     content: '';
     position: fixed;
     bottom: 0%;
@@ -137,15 +135,6 @@ model-viewer {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     z-index: -10;
-}
-
-#soundIcon{
-    width: 4rem;
-    color: #71594E;
-    position: relative;
-    right: 95%;
-    top:45%;
-    cursor: pointer;
 }
 
 /* nav */
@@ -260,7 +249,7 @@ nav {
 
 .characterBackground {
     border: 3px solid #D2BEA1;
-    border-radius: 20px;
+    border-radius: 50px;
     background-color: #FCF7E5;
 
     width: 16rem;
@@ -425,17 +414,17 @@ nav {
 }
 
 /* 구매 팝업 */
-.purchase-popup {
-    display: none; /* 기본적으로 숨겨진 상태 */
-    position: fixed; /* 화면에 고정 위치 */
+#purchasePopup {
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
-    justify-content: center; /* 수직 중앙 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
-    z-index: 1000; /* 다른 요소들보다 위에 위치 */
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .popup-content {
@@ -445,11 +434,7 @@ nav {
     height: 15rem;
     border-radius: 8px;
     text-align: center;
-    padding: 1rem; /* 여백 추가 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
 }
-
-
 
 .popup-content p {
     margin-top: 12.5%;

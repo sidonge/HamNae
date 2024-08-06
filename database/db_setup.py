@@ -5,6 +5,12 @@ from api.models import Pet
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///hamnae.db"
 
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+SQLALCHEMY_DATABASE_URL = "sqlite:///hamnae.db"
+
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
     connect_args={"check_same_thread" : False}
@@ -25,14 +31,3 @@ def get_db():
     finally:
         db.close()
 
-
-def add_model_paths(db: Session):
-    pets = db.query(Pet).all()
-    for pet in pets:
-        if pet.pet_id == 'hamster':
-            pet.model_path = 'ham.glb'
-        elif pet.pet_id == 'bear':
-            pet.model_path = 'bearbear.glb'
-        elif pet.pet_id == 'rabbit':
-            pet.model_path = 'rabbitrabbit.glb'
-    db.commit()

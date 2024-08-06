@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/character.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
-    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
     <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 </head>
@@ -16,7 +15,7 @@
     <div class="model-container">
         <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/3.0007-home-x.glb') }}" environment-image="neutral" ar></model-viewer>
         <div id="backgroundOverlay"></div>
-        <model-viewer id="characterModel" src="{{ url_for('static', path='models/' + selected_pet_model_path) }}" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
     </div>
     
     <!-- nav -->
@@ -53,8 +52,8 @@
 
     <!-- 캐릭터 설명 박스 -->
     <section class="character-description-box">
-        <div class="name" id="characterName">{{ selected_pet_name }}</div>
-        <div class="introduce" id="characterDescription">{{ selected_pet_description }}</div>
+        <div class="name" id="characterName">햄깅이</div>
+        <div class="introduce" id="characterDescription">햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.</div>
         <div class="intimacyBox">
             <div class="intimacy">친밀도</div>
             <img src="{{ url_for('static', path='image/heart.png') }}" class="heartImg" alt="Heart">
@@ -62,10 +61,10 @@
     </section>
 
     <!-- 캐릭터 넘기기 -->
-    <!-- <section class="character-navigation">
+    <section class="character-navigation">
         <img src="{{ url_for('static', path='image/c_left.png') }}" class="left" id="leftArrow" alt="Left Arrow">
         <img src="{{ url_for('static', path='image/c_right.png') }}" class="right" id="rightArrow" alt="Right Arrow">
-    </section> -->
+    </section>
 
     <!-- 캐릭터 선택 박스 -->
     <section class="character-select-box">
@@ -77,11 +76,10 @@
                 </div>
             </div>
             <div class="characterBackground"></div>
-        </div>
             <div class="characterBox">
                 {% for pet in pets %}
                     <div class="character-option" id="{{ pet.pet_id }}Option">
-                        <img src="{{ url_for('static', path='image/' + pet_images[pet.pet_id]) }}" class="hamImg" alt="{{ pet.name }}">
+                        <img src="{{ url_for('static', path='image/' + pet.pet_image) }}" class="hamImg" alt="{{ pet.name }}">
                         <div>
                             <div class="sectionName">{{ pet.name }}</div>
                             <button class="select" id="select{{ pet.pet_id }}">{{ pet_buttons[pet.pet_id] }}</button>
@@ -89,13 +87,10 @@
                     </div>
                 {% endfor %}
             </div>
+        </div>
     </section>
 
     <audio id="purchaseSound" src="{{ url_for('static', path='/sound/MP_입금 돈버는 소리.mp3') }}"></audio>
-    <audio id="selectSound" src="{{ url_for('static', path='/sound/MP_Button Click On.mp3') }}" preload="auto"></audio>
-    <audio id="characterSound" src="{{ url_for('static', path='/sound/Memo.mp3') }}"></audio>
-
-    <i id="soundIcon" class="fas fa-volume-up fa-2x"></i>
 
     <!-- 구매 팝업 -->
     <div id="purchasePopup" class="purchase-popup">
@@ -105,5 +100,72 @@
             <button id="cancelPurchase">취소</button>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.select').forEach(button => {
+                button.addEventListener('click', async function() {
+                    const petId = this.id.replace('select', '');
+                    
+                    if (this.innerText === '구매하기') {
+                        // 구매 확인 팝업 표시
+                        document.getElementById('purchasePopup').style.display = 'block';
+                        
+                        // 구매 버튼 클릭 시 처리
+                        document.getElementById('confirmPurchase').addEventListener('click', async function() {
+                            try {
+                                const response = await fetch('/purchase_pet', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ pet_id: petId }),  // 올바른 형식으로 데이터 전송
+                                });
+        
+                                const result = await response.json();
+                                if (response.ok) {
+                                    alert(result.message);
+                                    location.reload();  // 페이지 새로고침
+                                } else {
+                                    alert(result.detail);
+                                }
+                            } catch (error) {
+                                alert("요청 처리 중 오류가 발생했습니다.");
+                            }
+        
+                            document.getElementById('purchasePopup').style.display = 'none';
+                        });
+        
+                        // 취소 버튼 클릭 시 팝업 숨기기
+                        document.getElementById('cancelPurchase').addEventListener('click', function() {
+                            document.getElementById('purchasePopup').style.display = 'none';
+                        });
+                    } else if (this.innerText === '선택하기') {
+                        // 애완동물 선택 요청
+                        try {
+                            const response = await fetch('/update_main_pet', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ pet_id: petId }),  // 선택한 애완동물 ID 전송
+                            });
+        
+                            const result = await response.json();
+                            if (response.ok) {
+                                alert(result.message);
+                                location.reload();  // 페이지 새로고침
+                            } else {
+                                alert(result.detail);
+                            }
+                        } catch (error) {
+                            alert("요청 처리 중 오류가 발생했습니다.");
+                        }
+                    }
+                });
+            });
+        });
+        </script>
+        
+    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
 </body>
 </html>

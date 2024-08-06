@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     mypage.addEventListener("click", function() {
-        window.location.href = '/user/mypage';
+        window.location.href = '/mypage';
     });
 
     menuIcon.addEventListener('click', () => {
