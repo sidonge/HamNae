@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/character.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
     <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 </head>
@@ -100,80 +101,5 @@
             <button id="cancelPurchase">취소</button>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.select');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const petId = this.id.replace('select', '');
-
-            if (this.innerHTML.includes('구매하기')) {
-                // 구매 확인 팝업 표시
-                document.getElementById('purchasePopup').style.display = 'block';
-
-                // 구매 버튼 클릭 시 처리
-                document.getElementById('confirmPurchase').addEventListener('click', async function confirmHandler() {
-                    try {
-                        const response = await fetch('/purchase_pet', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ pet_id: petId }),
-                        });
-
-                        const result = await response.json();
-                        if (response.ok) {
-                            alert(result.message);
-                            location.reload();
-                        } else {
-                            alert(result.detail);
-                        }
-                    } catch (error) {
-                        alert("요청 처리 중 오류가 발생했습니다.");
-                    }
-
-                    document.getElementById('purchasePopup').style.display = 'none';
-                    document.getElementById('confirmPurchase').removeEventListener('click', confirmHandler);
-                });
-
-                // 취소 버튼 클릭 시 팝업 숨기기
-                document.getElementById('cancelPurchase').addEventListener('click', function cancelHandler() {
-                    document.getElementById('purchasePopup').style.display = 'none';
-                    document.getElementById('cancelPurchase').removeEventListener('click', cancelHandler);
-                });
-            } else if (this.innerHTML.includes('선택됨')) {
-                // 이미 선택된 경우 (기본 상태)
-                alert('이미 선택된 캐릭터입니다.');
-            } else if (this.innerHTML.includes('선택하기')) {
-                // 애완동물 선택 요청
-                try {
-                    const response = await fetch('/update_main_pet', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ pet_id: petId }),
-                    });
-
-                    const result = await response.json();
-                    if (response.ok) {
-                        alert(result.message);
-                        location.reload();
-                    } else {
-                        alert(result.detail);
-                    }
-                } catch (error) {
-                    alert("요청 처리 중 오류가 발생했습니다.");
-                }
-            }
-        });
-    });
-});
-    </script>
-    
-        
-    <script src="{{ url_for('static', path='js/character.js') }}" defer></script>
 </body>
 </html>
