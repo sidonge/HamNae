@@ -36,6 +36,7 @@ async def get_character_page(request: Request, db: Session = Depends(get_db)):
     pet_images = {}
     pet_models = {}
     pet_descriptions = {}
+    pet_models = {}
 
     for pet in pets:
         if pet.pet_id == 'rabbit':
