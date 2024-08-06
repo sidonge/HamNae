@@ -139,6 +139,15 @@ model-viewer {
     z-index: -10;
 }
 
+#soundIcon{
+    width: 4rem;
+    color: #71594E;
+    position: relative;
+    right: 95%;
+    top:45%;
+    cursor: pointer;
+}
+
 /* nav */
 nav {
     margin: 2rem 0;

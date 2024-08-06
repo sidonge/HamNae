@@ -40,5 +40,6 @@ async def get_pets(request: Request, db: Session = Depends(get_db)):
     pets_query = select(Pet).where(Pet.pet_id.in_(user_pet_ids))
     result = db.execute(pets_query)
     pet_data = result.scalars().all()
+    
 
     return templates.TemplateResponse("petlist.html", {"request": request, "pets": pet_data, "name": user_name})

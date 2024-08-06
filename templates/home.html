@@ -13,13 +13,19 @@
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
+    <link
+      rel="icon"
+      href="{{ url_for('static', path='image/fav.ico') }}"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    <!-- home 팝업화면 -->
+    home 팝업화면
     <div class="popupWrap">
       <div class="popupBody">
-        <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
+        <div class="closeIcon" onclick="togglePopup()">
+          <img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}" />
+        </div>
       </div>
       <!-- 3D model -->
       <!-- <div class="popupModel">
@@ -32,7 +38,9 @@
       </div> -->
       <div class="popupModel"><img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}"></div>
       <div class="bottomCircle"></div>
-      <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
+      <div class="popupBlink">
+        마이크를 눌러 귀여운 친구의 이름을 정해주세요.
+      </div>
 
       <div class="recording">
         <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
@@ -47,19 +55,6 @@
 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- 기존 home -->
     <div class="model-container">
@@ -273,20 +268,21 @@
         class="bedTalk talk-image"
         src="{{ url_for('static', path='image/bedIcon.png') }}"
       />
-      
-      <div id="timerDisplay" style="display:none;">
-        <div class="timerText" >1분 명상 시작!</div>
+
+      <div id="timerDisplay" style="display: none">
+        <div class="timerText">1분 명상 시작!</div>
         <div class="timerNum">
-          <div class="timer-part" id="minute">01</div> 
+          <div class="timer-part" id="minute">01</div>
           <div class="timer-colon">:</div>
           <div class="timer-part" id="second">00</div>
         </div> 
-        <div id="timerCompleteMessage" onclick="">시간이 완료되었습니다!</div>
+        <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
 
       </div>
-      <audio id="pieceSound" src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"></audio>
-
-    
+      <audio
+        id="pieceSound"
+        src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"
+      ></audio>
     </div>
     <div class="pills" id="pillsContainer">
       <img
@@ -313,15 +309,31 @@
 
     <div class="Topblink">가구들을 눌러 햄깅이의 미션을 도와주세요!</div>
 
+    <audio
+      id="homeSound"
+      src="{{ url_for('static', path='/sound/good-afternoon.mp3') }}"
+    ></audio>
 
-    
-    <audio id="homeSound" src="{{ url_for('static', path='/sound/good-afternoon.mp3') }}"></audio>
-
-    <audio id="cookingSound" src="{{ url_for('static', path='/sound/cookingSound.mp3') }}"></audio>
-    <audio id="cleanSound" src="{{ url_for('static', path='/sound/cleanSound.mp3') }}"></audio>
-    <audio id="pillsSound" src="{{ url_for('static', path='/sound/pillsSound.mp3') }}"></audio>
-    <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
-    <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
+    <audio
+      id="cookingSound"
+      src="{{ url_for('static', path='/sound/cookingSound.mp3') }}"
+    ></audio>
+    <audio
+      id="cleanSound"
+      src="{{ url_for('static', path='/sound/cleanSound.mp3') }}"
+    ></audio>
+    <audio
+      id="pillsSound"
+      src="{{ url_for('static', path='/sound/pillsSound.mp3') }}"
+    ></audio>
+    <audio
+      id="washSound"
+      src="{{ url_for('static', path='/sound/washSound.mp3') }}"
+    ></audio>
+    <audio
+      id="waterSound"
+      src="{{ url_for('static', path='/sound/waterSound.mp3') }}"
+    ></audio>
     <!-- bed 필요 -->
 
 

@@ -7,11 +7,18 @@
     <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
 
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
-    
-    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-  
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/main.css') }}"
+    />
+
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- <model-viewer
@@ -25,37 +32,63 @@
     </model-viewer> -->
 
     <div class="model-container">
-      <model-viewer id="backgroundModelreal" src="{{ url_for('static', path='models/main-real.glb') }}" environment-image="neutral" ar
-      camera-orbit="215deg 90deg 2.5m"
-      camera-target="-2m 3m 0m"
-      field-of-view="11.5deg"></model-viewer>
-      <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
+      <model-viewer
+        id="backgroundModelreal"
+        src="{{ url_for('static', path='models/main-real.glb') }}"
+        environment-image="neutral"
+        ar
+        camera-orbit="215deg 90deg 2.5m"
+        camera-target="-2m 3m 0m"
+        field-of-view="11.5deg"
+      ></model-viewer>
+      <model-viewer
+        id="hamModel"
+        src="{{ url_for('static', path='models/ham.glb') }}"
+        environment-image="neutral"
+        ar
+      ></model-viewer>
     </div>
 
-    <audio id="mainSound" src="{{ url_for('static', path='sound/birdsound.mp3') }}"></audio>
+    <audio
+      id="mainSound"
+      src="{{ url_for('static', path='sound/birdsound.mp3') }}"
+    ></audio>
     <!-- nav -->
     <nav>
-      <img src="{{ url_for('static', path='image/logo.png') }}" class="logo" id="logo">
-      <img src="{{ url_for('static', path='image/menu.png') }}" class="menuIcon" id="menuIcon">
+      <img
+        src="{{ url_for('static', path='image/logo.png') }}"
+        class="logo"
+        id="logo"
+      />
+      <img
+        src="{{ url_for('static', path='image/menu.png') }}"
+        class="menuIcon"
+        id="menuIcon"
+      />
     </nav>
 
     <!-- nav popup -->
     <div id="navPopup" class="nav-popup">
       <nav>
-          <img src="{{ url_for('static', path='image/exit.png') }}" class="exitIcon" id="exitIcon" alt="Exit">
+        <img
+          src="{{ url_for('static', path='image/exit.png') }}"
+          class="exitIcon"
+          id="exitIcon"
+          alt="Exit"
+        />
       </nav>
 
       <section class="menuSection">
-          <div class="menu">
-              <div class="mission" id="mission">집으로</div>
-              <hr class="hr" />
-              <div class="walk" id="walk">산책하기</div>
-              <hr class="hr" />
-              <div class="character" id="character">캐릭터 변경</div>
-              <hr class="hr" />
-              <div class="mypage" id="mypage">마이페이지</div>
-              <hr class="hr" />
-          </div>
+        <div class="menu">
+          <div class="mission" id="mission">집으로</div>
+          <hr class="hr" />
+          <div class="walk" id="walk">산책하기</div>
+          <hr class="hr" />
+          <div class="character" id="character">캐릭터 변경</div>
+          <hr class="hr" />
+          <div class="mypage" id="mypage">마이페이지</div>
+          <hr class="hr" />
+        </div>
       </section>
     </div>
     <div class="blink">동물을 누르면 소리가 나요.</div>

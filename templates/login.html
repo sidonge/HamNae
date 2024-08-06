@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>햄내_로그인</title>
+    <title>로그인</title>
     
     <link rel="stylesheet" href="{{ url_for('static', path='css/login_style.css') }}" />
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -26,6 +26,7 @@
         <div class="signup-link">
           <span class="signup-text">아직 회원이 아니신가요?</span>
           <a href="/auth/register">회원가입 하기</a>
+          <a href="/auth/register">회원가입 하기</a>
         </div>
       </div>
       <form method="POST" action="/auth/login" style="width: 100%">
@@ -33,6 +34,7 @@
           <input
             type="text"
             id="userid"
+            name="id"
             name="id"
             placeholder="아이디"
             required
@@ -83,6 +85,7 @@
       ></div>
 
       <script src="{{ url_for('static', path='js/sns_login.js')}}"></script>
+      <script src="{{ url_for('static', path='js/sns_login.js')}}"></script>
     </div>
 
    
@@ -98,3 +101,4 @@
    
 </body>
 </html>
+
