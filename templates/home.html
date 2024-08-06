@@ -21,12 +21,16 @@
       <div class="popupBody">
         <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
       </div>
-      <model-viewer
-        id="rabbitModel2"
-        src="{{ url_for('static', path='models/ham.glb') }}"
-        environment-image="neutral"
-        ar
-      ></model-viewer>
+      <!-- 3D model -->
+      <!-- <div class="popupModel">
+          <model-viewer
+          id="rabbitModel2"
+          src="{{ url_for('static', path='models/ham.glb') }}"
+          environment-image="neutral"
+          ar
+        ></model-viewer>
+      </div> -->
+      <div class="popupModel"><img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}"></div>
       <div class="bottomCircle"></div>
       <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
 
@@ -37,7 +41,7 @@
       </div>
       <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
       <div id="status-indicator">녹음 전</div>
-
+      <button id="submit-btn" onclick="stopText()">저장</button>
 
 
 
@@ -91,10 +95,12 @@
 
     <!-- nav record -->
     <div class="recordWrap">
-      <img id="homenameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
-      <img id="homerecord" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
-      <img id="homestop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText()">
+      <img id="homenameRecord" src="{{ url_for('static', path='/image/whitenameRecord.png') }}" onclick="hideText()">
+      <img id="homestop" src="{{ url_for('static', path='/image/whitestop.png') }}" onclick="stopText()">
+      <div id="recording-status-indicator"></div>
     </div>
+    
+
 
 
 

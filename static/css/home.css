@@ -65,20 +65,6 @@ body {
 }
 
 
-model-viewer#rabbitModel2 {
-    position: absolute;
-    top: 50%;  /* 팝업 중앙에 위치 */
-    left: 50%; /* 중앙 정렬 */
-    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
-    width: 30vw; 
-    height: 30vh; 
-    z-index: 1001;
-    cursor: pointer;
-    transition: transform 0.5s ease;
-}
-
-
-
 .bottomCircle {
     width: 15rem;
     height: 7rem;
@@ -86,7 +72,7 @@ model-viewer#rabbitModel2 {
     position: absolute;
     top: 27rem;
     background-color: #FFFFFF;
-    opacity: 50%;
+    opacity: 40%;
     z-index: -19;
 }
 
@@ -113,15 +99,17 @@ model-viewer#rabbitModel2 {
 }
 
 #nameRecord {
-    width: 2.5rem;
-    height: 2.7rem;
-    margin-right: 1.5rem;
+    width: 2.9rem;
+    height: 2.8rem;
+    margin-right: 1.8rem;
     cursor: pointer;
 }
 
 #record {
-    margin-right: 2rem;
+    margin-right: 2.2rem;
     cursor: pointer;
+    width: 2.5rem;
+    height: 2.8rem;
 }
 
 #stop {
@@ -154,7 +142,92 @@ model-viewer#rabbitModel2 {
     font-weight: bold;
     font-family: "Pretendard-Bold";
 }
+/* 저장버튼 */
+#submit-btn {
+    border: none;
+    position: absolute;
+    top: 43.5rem;
+    width: 5.5rem;
+    height: 1.8rem;
+    background-color: #ffffff;
+    border: solid 3.3px #A89470;
+    font-family: "Pretendard-SemiBold";
+    text-align: center;
+    border-radius: 10px;
+    color: #A89470;
+}
+#submit-btn:hover {
+    cursor: pointer;
+    background-color: #A89470;
+    color: #FFFFFF;
 
+
+}
+
+
+#rabbitModel2 {
+    position: absolute;
+    top: 50%;  /* 팝업 중앙에 위치 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    width: 8.5vw; 
+    height: 23vh; 
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+/* 이름 부를 때 애니메이션 정의 */
+@keyframes moveUp {
+    0% {
+      top: 50%;
+    }
+    50% {
+      top: 40%;
+    }
+    100% {
+      top: 50%;
+    }
+}
+
+.move-up {
+    position: relative;
+    animation: moveUp 2s ease-in-out forwards;
+}
+
+/* 오른쪽으로 갈 때 애니메이션 */
+.move-right {
+    position: relative;
+    animation: moveRight 2s ease-in-out forwards;
+}
+@keyframes moveRight {
+    0% {
+      left: 50%;
+    }
+    50% {
+      left: 60%;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+/* 왼쪽으로 갈 때 애니메이션 */
+.move-left {
+    position: relative;
+    animation: moveLeft 2s ease-in-out forwards;
+}
+
+@keyframes moveLeft {
+    0% {
+        left: 50%;
+      }
+    50% {
+        left: 40%;
+    }
+    100% {
+        left: 50%;
+    }
+}
 
 
 
@@ -203,21 +276,17 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 900;
-    width: 24rem;
+    width: 16rem;
     height: 3.3rem;
-    background-color: beige;
     position: absolute;
     top: 0;
-    border-bottom-left-radius: 45px;
-    border-bottom-right-radius: 45px;
-    background-color: #000000;
-    opacity: 25%;
+    border-bottom-left-radius: 38px;
+    border-bottom-right-radius: 38px;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
-#homenameRecord, #homerecord, #homestop {
+#homenameRecord, #homestop {
     cursor: pointer;
-    position: relative;
-    z-index: 900; /* 동일하게 900 설정 */
 }
 
 #homenameRecord {
@@ -225,20 +294,24 @@ nav {
     height: 2.2rem;
     margin-right: -1rem;
     color: #FFFFFF;
-    opacity: 100%;
+    opacity: 50%;
     margin-right: 3.5rem;
+    margin-bottom: 0.4rem;
 }
-#homerecord{
-    width: 3.2rem;
-    height: 3.2rem;
-    margin-right: 4.1rem;
-    margin-bottom: 0.3rem;
-}
+
 #homestop {
     width: 1.7rem;
     height: 1.7rem;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.4rem;
+    opacity: 50%;
+
 }
+
+#recording-status-indicator {
+    position: absolute;
+    top: 99%;
+}
+
 
 /* Title Section */
 .titleSection {
@@ -521,13 +594,14 @@ model-viewer#rabbitModel {
     top: 30%;
 }
 
-/* 약 먹기 */
+/* 약 먹기 -> 캐릭터 이름 지어주기로 변경 */
 .pills {
     width: 3rem;
     height: 4rem;
     position: fixed;
     top: 26rem;
     left: 20rem;
+    display: none;
 }
 .pillsTalk {
     display: none;
@@ -536,10 +610,12 @@ model-viewer#rabbitModel {
     top: 23.5rem;
     left: 19.5rem;
     transition: opacity 0.5s;
+    display: none;
 }
 .pills:hover .pillsTalk{
     display: block;
     opacity: 1;
+    display: none;
 }
 
 .blink {

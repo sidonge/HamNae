@@ -22,7 +22,7 @@ function openPopup() {
 // blink text 마이크 클릭 시 텍스트 바뀜
 function hideText() {
   var blinkText = document.querySelector('.popupBlink');
-  blinkText.innerText = "이름을 불렀다면 멈춤 버튼을 눌러주세요.";
+  blinkText.innerText = "이름을 불렀다면 멈춤 버튼과 저장 버튼을 눌러주세요.";
 }
 
 function stopText() {
@@ -32,7 +32,7 @@ function stopText() {
 
 function startText() {
   var blinkText = document.querySelector('.popupBlink');
-  blinkText.innerHTML = "귀여운 친구의 이름을 불러보세요! <br> '뛰어'나 '(오른쪽 혹은 왼쪽)으로 가'라고 말해보세요.";
+  blinkText.innerHTML = "귀여운 친구의 이름을 불러보세요! <br> '뛰어'나 '오른쪽' 혹은 '왼쪽'이라고 말해보세요.";
   blinkText.style.textAlign = "center"; 
   blinkText.style.top = "15rem"
 }
@@ -45,6 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const stopBtn = document.getElementById('stop');
   const resultElem = document.getElementById('result');
   const statusIndicator = document.getElementById('status-indicator');
+  const recordingStatusIndicator = document.getElementById('recording-status-indicator'); 
+  const submitBtn = document.getElementById('submit-btn'); // 제출 버튼
+
+  const homeNameRecordBtn = document.getElementById('homenameRecord');
+  const homeStopBtn = document.getElementById('homestop');
+
+  const bedContainer = document.getElementById('bedContainer'); // 명상하기 컨테이너
+  const cookingContainer = document.getElementById('cookingContainer');
+  const waterContainer = document.getElementById('waterContainer');
+  const cleanContainer = document.getElementById('cleanContainer');
+  const washContainer = document.getElementById('washContainer');
 
   let recognition;
   let isListening = false;
@@ -52,61 +63,166 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ('webkitSpeechRecognition' in window) {
     recognition = new webkitSpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = false;
-    recognition.lang = "ko-KR";
+    recognition.continuous = true; //연속적으로 인식하도록(이거 false하면 사용자의 음성이 끊기면 자동으로 녹음 중단됨)
+    recognition.interimResults = false; //중간 결과 반환 false
+    recognition.lang = "ko-KR"; //한국어로 설정
 
-    
     recognition.onresult = (event) => {
       const transcript = event.results[event.results.length - 1][0].transcript.trim();
+
       console.log(transcript);
 
       if (!userName) {
-          userName = transcript.toLowerCase();
-          resultElem.textContent = `이름 : ${userName}`;
+        userName = transcript.toLowerCase();
+        resultElem.textContent = `이름 : ${userName}`;
       } else {
-          const words = transcript.split(' ');
-          const highlightedText = words.map(word => {
-              if (word.toLowerCase() === userName) {
-                  return `<span class="highlight">${word}</span>`;
-              } else {
-                  return word;
-              }
-          }).join(' ');
-          resultElem.innerHTML = `나 : ${highlightedText}`;
+        // 단어별로 나누고, 이름과 정확히 일치하는 경우만 강조
+        const words = transcript.split(' ');
+        const highlightedText = words.map(word => {
+          if (word.toLowerCase() === userName) {
+            return `<span class="highlight">${word}</span>`;
+          } else {
+            return word;
+          }
+        }).join(' ');
+        resultElem.innerHTML = `나 : ${highlightedText}`;
+        modelViewer.style.marginBottom = "10rem";
+
+        if (modelViewer) {
+          modelViewer.classList.add('move-up');
+        }
+
+        // 모델 뷰어 이동 애니메이션
+        if (transcript === '오른쪽') {
+          modelViewer.classList.add('move-right');
+        } else if (transcript === '왼쪽') {
+          modelViewer.classList.add('move-left');
+        }
+
+        setTimeout(() => {
+          modelViewer.classList.remove('move-up','move-right', 'move-left');
+        }, 3000);
+
+        // "대화하자"를 말했을 때 /chat 경로로 이동
+        if (transcript === '대화하자') {
+          window.location.href = '/chat';
+        } 
+        else if (transcript === '산책하자') {
+          window.location.href = '/walkpage';
+        }
+        else if (transcript === '명상하자') {
+          bedContainer.click(); // "명상하자"를 말했을 때 bedContainer의 클릭 이벤트 트리거
+        }
+        else if (transcript === '밥 먹자') {
+          // cookingContainer.click(); 
+          cookingContainer.querySelector('input[type="file"]').click(); 
+        }
+        else if (transcript === '물 먹자') {
+          waterContainer.click(); 
+        }
+        else if (transcript === '청소하자') {
+          cleanContainer.click();
+        }
+        else if (transcript === '씻자') {
+          washContainer.click();
+        }
+
+        
       }
     };
 
     recognition.onstart = () => {
-        statusIndicator.textContent = '듣는 중...';
-        statusIndicator.classList.add('recording');
+      statusIndicator.textContent = '듣는 중...';
+      statusIndicator.classList.add('recording');
+      statusIndicator.style.color = "#FF9100";
+      statusIndicator.style.fontFamily = "Pretendard-SemiBold";
+
+      //홈 nav record
+      recordingStatusIndicator.textContent = '듣는 중...';
+      recordingStatusIndicator.style.display = 'block';
+      recordingStatusIndicator.style.color = "#71594E";
+      recordingStatusIndicator.style.fontFamily = "Pretendard-SemiBold";
+      homeNameRecordBtn.style.opacity = "100%";
     };
 
     recognition.onend = () => {
-        statusIndicator.textContent = '녹음 중단';
-        statusIndicator.classList.remove('recording');
+      statusIndicator.textContent = '녹음 중지됨';
+      statusIndicator.classList.remove('recording');
+      statusIndicator.style.fontFamily = "Pretendard-SemiBold";
+      statusIndicator.style.color = "#FF8181";
+      isListening = false;
+      // 음성 인식 자동 재시작
+      // recognition.start();
+
+      recordingStatusIndicator.textContent = '녹음 중지됨';
+      recordingStatusIndicator.style.color = "#71594E";
+      setTimeout(() => {
+        recordingStatusIndicator.style.display = 'none';
+      }, 4000); // 4초 후에 사라짐
+      homeNameRecordBtn.style.opacity = "50%";
+      homeStopBtn.style.opacity = "100%";
     };
 
     nameRecordBtn.addEventListener('click', () => {
-        userName = ''; // 사용자 이름 초기화
-        recognition.start();
+      userName = ''; // 사용자 이름 초기화
+      recognition.start();
     });
 
     recordBtn.addEventListener('click', () => {
-        if (!isListening) {
-            recognition.start();
-            isListening = true;
-        }
+      if (!isListening) {
+        recognition.start();
+        isListening = true;
+      }
     });
 
     stopBtn.addEventListener('click', () => {
-        recognition.stop();
+      recognition.stop();
+    });
+
+    // 홈 버튼 추가 기능
+    homeNameRecordBtn.addEventListener('click', () => {
+      if (!isListening) {
+        recognition.start();
+        isListening = true;
+      }
+    });
+
+    homeStopBtn.addEventListener('click', () => {
+      recognition.stop();
+    });
+
+    // 제출 버튼 클릭 시 서버에 데이터 전송
+    submitBtn.addEventListener('click', async () => {
+      const userName = document.getElementById('result').textContent.replace('이름 : ', '').trim();
+      if (userName) {
+        try {
+          const response = await fetch('/set_custom_name', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ custom_name: userName })
+          });
+          if (response.ok) {
+            const data = await response.json();
+            alert('이름이 저장되었습니다.');
+          } else {
+            throw new Error('네트워크 응답이 올바르지 않습니다.');
+          }
+        } catch (error) {
+          console.error('오류:', error);
+          alert('이름 저장에 실패했습니다.');
+        }
+      } else {
+        alert('제출할 이름이 없습니다.');
+      }
     });
   } else {
-      resultElem.textContent = 'Speech Recognition not supported.';
+    resultElem.textContent = '음성 인식 기능을 지원하지 않습니다.';
   }
 });
-
+  
 
 
 
