@@ -60,22 +60,23 @@ body {
 
 .closeIcon {
     color: #FFFFFF;
-    position: absolute !important;
+    position: fixed !important;
     top: 2.6rem !important;
-    right: 2.6rem !important;
+    /* right: 2.6rem !important; */
+    left: 85rem;
     cursor: pointer;
 }
 
 .popupModel {
-    position: relative;
+    position: fixed;
 }
 
 .bottomCircle {
     width: 15rem;
     height: 7rem;
     border-radius: 100%;
-    position: absolute;
-    top: 27rem;
+    position: fixed;
+    top: 25rem;
     background-color: #FFFFFF;
     opacity: 40%;
     z-index: -19;
