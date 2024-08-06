@@ -21,20 +21,27 @@
       <div class="popupBody">
         <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
       </div>
-      <model-viewer
-        id="rabbitModel2"
-        src="{{ url_for('static', path='models/ham.glb') }}"
-        environment-image="neutral"
-        ar
-        onclick="hideText()"
-      ></model-viewer>
+      <!-- 3D model -->
+      <!-- <div class="popupModel">
+          <model-viewer
+          id="rabbitModel2"
+          src="{{ url_for('static', path='models/ham.glb') }}"
+          environment-image="neutral"
+          ar
+        ></model-viewer>
+      </div> -->
+      <div class="popupModel"><img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}"></div>
       <div class="bottomCircle"></div>
-      <div class="popupBlink">귀여운 친구를 눌러 이름을 말해주세요.</div>
-      
-      <button id="start-listening-btn">Start Listening</button>
-    <button id="stop-btn">Stop</button>
-    <div id="result">Speak something...</div>
-    <div id="animated-object"></div>
+      <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
+
+      <div class="recording">
+        <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
+        <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
+        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText(); completeMission('pills')">
+      </div>
+      <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
+      <div id="status-indicator">녹음 전</div>
+      <button id="submit-btn" onclick="stopText()">저장</button>
 
 
 
@@ -88,10 +95,12 @@
 
     <!-- nav record -->
     <div class="recordWrap">
-      <img id="homenameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
-      <img id="homerecord" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
-      <img id="homestop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText()">
+      <img id="homenameRecord" src="{{ url_for('static', path='/image/whitenameRecord.png') }}" onclick="hideText()">
+      <img id="homestop" src="{{ url_for('static', path='/image/whitestop.png') }}" onclick="stopText()">
+      <div id="recording-status-indicator"></div>
     </div>
+    
+
 
 
 
@@ -110,7 +119,7 @@
         <div class="menu">
           <div class="mission" id="mission">집으로</div>
           <hr class="hr" />
-          <div class="walk" id="walk">산책하기</div>
+          <div class="walk" id="walk" onclick="completeMission('walk')">산책하기</div>
           <hr class="hr" />
           <div class="character" id="character">캐릭터 변경</div>
           <hr class="hr" />
@@ -250,14 +259,6 @@
         class="washTalk talk-image"
         src="{{ url_for('static', path='image/washTalk.png') }}"
       />
-      <input
-        type="file"
-        id="washUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
-      
     </div>
     <div class="talk">
       <img
@@ -266,7 +267,7 @@
         src="{{ url_for('static', path='image/talkTalk.png') }}"
       />
     </div>
-    <div class="bed" id="bedContainer">
+    <div class="bed" id="bedContainer"  onclick="completeMission('bed')">
       <img
         id="bed_cleared_stamp"
         class="bedTalk talk-image"
@@ -291,13 +292,19 @@
         class="pillsTalk talk-image"
         src="{{ url_for('static', path='image/pillsTalk.png') }}"
       />
-      <input
-        type="file"
-        id="pillsUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
+    </div>
+
+    <div class="overlay" style="display: none;"></div>
+    <div class="showerPopup">
+      <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
+      <div class="showerImg">
+        <img class="showerHam" src="{{ url_for('static', path='image/happyHam.png') }}" alt="happy">
+        <img class="showerHam" src="{{ url_for('static', path='image/badHam.png') }}" alt="bad">
+        <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
+      </div>
+      <div class="showerSend">
+        <button class="sendText" id="sendTextButton" onclick="completeMission('wash')">내 기분 보내기</button>
+      </div>
     </div>
 
     <div class="blink">동물을 눌러 보세요.</div>
@@ -313,22 +320,33 @@
     <audio id="pillsSound" src="{{ url_for('static', path='/sound/pillsSound.mp3') }}"></audio>
     <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
     <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
-    <!— bed 필요 —>
-
-    <div class="showerPopup">
-      <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
-      <div class="showerImg">
-        <img class="showerHam" src="{{ url_for('static', path='image/happyHam.png') }}" alt="happy">
-        <img class="showerHam" src="{{ url_for('static', path='image/badHam.png') }}" alt="bad">
-        <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
-      </div>
-      <div class="showerSend">
-        <div class="sendText">내 기분 보내기</div>
-      </div>
-    </div>
+    <!-- bed 필요 -->
 
 
 
-    </div>
+
+
+
+
+    <script>
+      // 미션 완료 함수
+      function completeMission(mission) {
+        fetch(`/complete_mission?mission=${mission}`, { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              document.getElementById(`${mission}_cleared_stamp`).style.display = 'block';
+            } else {
+              console.error(data.message);
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      }
+    
+      // Walk page 이동 (예시)
+      document.getElementById('walk').addEventListener('click', () => {
+        window.location.href = '/walkpage';
+      });
+    </script>
   </body>
 </html>

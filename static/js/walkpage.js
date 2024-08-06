@@ -409,5 +409,25 @@ function initMap() {
     if (stopTrackingButton) {
         stopTrackingButton.addEventListener('click', stopTracking);
     }
+
+
+
+
+
+
+    async function updateWalkStamp() {
+        try {
+            await fetch('/api/update-stamp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mission: 'walk_cleared_stamp' })
+            });
+            console.log('Walk mission completed.');
+        } catch (error) {
+            console.error('Error updating walk stamp:', error);
+        }
+    }
+
+    updateWalkStamp();
 }
 

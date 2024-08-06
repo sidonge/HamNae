@@ -51,20 +51,6 @@
 }
 
 
-model-viewer#rabbitModel2 {
-    position: absolute;
-    top: 50%;  /* 팝업 중앙에 위치 */
-    left: 50%; /* 중앙 정렬 */
-    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
-    width: 30vw; 
-    height: 30vh; 
-    z-index: 1001;
-    cursor: pointer;
-    transition: transform 0.5s ease;
-}
-
-
-
 .bottomCircle {
     width: 15rem;
     height: 7rem;
@@ -72,7 +58,7 @@ model-viewer#rabbitModel2 {
     position: absolute;
     top: 27rem;
     background-color: #FFFFFF;
-    opacity: 50%;
+    opacity: 40%;
     z-index: -19;
 }
 
@@ -97,6 +83,140 @@ model-viewer#rabbitModel2 {
     position: absolute;
     top: 35rem;
 }
+
+#nameRecord {
+    width: 2.9rem;
+    height: 2.8rem;
+    margin-right: 1.8rem;
+    cursor: pointer;
+}
+
+#record {
+    margin-right: 2.2rem;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.8rem;
+}
+
+#stop {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+#result {
+    z-index: 1010;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 40rem;
+    opacity: 80%;
+    font-family: "Pretendard-Medium";
+}
+
+#status-indicator {
+    position: absolute;
+    top: 39.3rem;
+    color: #8DBD81;
+    z-index: 1010;
+    font-family: "Pretendard-SemiBold";
+}
+
+
+.highlight {
+    color: #FF8181;
+    font-weight: bold;
+    font-family: "Pretendard-Bold";
+}
+/* 저장버튼 */
+#submit-btn {
+    border: none;
+    position: absolute;
+    top: 43.5rem;
+    width: 5.5rem;
+    height: 1.8rem;
+    background-color: #ffffff;
+    border: solid 3.3px #A89470;
+    font-family: "Pretendard-SemiBold";
+    text-align: center;
+    border-radius: 10px;
+    color: #A89470;
+}
+#submit-btn:hover {
+    cursor: pointer;
+    background-color: #A89470;
+    color: #FFFFFF;
+
+
+}
+
+
+#rabbitModel2 {
+    position: absolute;
+    top: 50%;  /* 팝업 중앙에 위치 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    width: 8.5vw; 
+    height: 23vh; 
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+/* 이름 부를 때 애니메이션 정의 */
+@keyframes moveUp {
+    0% {
+      top: 50%;
+    }
+    50% {
+      top: 40%;
+    }
+    100% {
+      top: 50%;
+    }
+}
+
+.move-up {
+    position: relative;
+    animation: moveUp 2s ease-in-out forwards;
+}
+
+/* 오른쪽으로 갈 때 애니메이션 */
+.move-right {
+    position: relative;
+    animation: moveRight 2s ease-in-out forwards;
+}
+@keyframes moveRight {
+    0% {
+      left: 50%;
+    }
+    50% {
+      left: 60%;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+/* 왼쪽으로 갈 때 애니메이션 */
+.move-left {
+    position: relative;
+    animation: moveLeft 2s ease-in-out forwards;
+}
+
+@keyframes moveLeft {
+    0% {
+        left: 50%;
+      }
+    50% {
+        left: 40%;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+
+
 
 /* nav */
 nav {
@@ -142,21 +262,17 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 900;
-    width: 24rem;
+    width: 16rem;
     height: 3.3rem;
-    background-color: beige;
     position: absolute;
     top: 0;
-    border-bottom-left-radius: 45px;
-    border-bottom-right-radius: 45px;
-    background-color: #000000;
-    opacity: 25%;
+    border-bottom-left-radius: 38px;
+    border-bottom-right-radius: 38px;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
-#homenameRecord, #homerecord, #homestop {
+#homenameRecord, #homestop {
     cursor: pointer;
-    position: relative;
-    z-index: 900; /* 동일하게 900 설정 */
 }
 
 #homenameRecord {
@@ -164,20 +280,24 @@ nav {
     height: 2.2rem;
     margin-right: -1rem;
     color: #FFFFFF;
-    opacity: 100%;
+    opacity: 50%;
     margin-right: 3.5rem;
+    margin-bottom: 0.4rem;
 }
-#homerecord{
-    width: 3.2rem;
-    height: 3.2rem;
-    margin-right: 4.1rem;
-    margin-bottom: 0.3rem;
-}
+
 #homestop {
     width: 1.7rem;
     height: 1.7rem;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.4rem;
+    opacity: 50%;
+
 }
+
+#recording-status-indicator {
+    position: absolute;
+    top: 99%;
+}
+
 
 /* Title Section */
 .titleSection {
@@ -400,18 +520,74 @@ model-viewer#rabbitModel {
     display: block;
     opacity: 1;
 }
-.bed:hover .bedText{
-    display: block;
-    opacity: 1;
+
+/* 타이머 css */
+#timerDisplay {
+    position: absolute;
+    bottom: 8rem;
+    left: 7rem;
+    width: 15rem;
+    height: 8rem;
+    background-color: #D2BEA1; 
+    color: #71594E; 
+    font-size: 1.5em; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    text-align: center;
 }
 
-/* 약 먹기 */
+.timerText {
+    text-align: center;
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+    position: relative;
+    top: 10%;
+    font-size: 1.25rem;
+}
+
+.timerNum {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20%;
+}
+.timer-part {
+    width: 6rem;
+    height: 3.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #FFFFFF;
+    background-color: #AB936B;
+}
+
+.timer-colon {
+    font-size: 2em;
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+/* 1분 종료 됐을 때 css */
+#timerCompleteMessage {
+    text-align: center;
+    font-family: "Pretendard-SemiBold";
+    color: #71594E;
+    position: relative;
+    font-size: 1rem;
+    top: 30%;
+}
+
+/* 약 먹기 -> 캐릭터 이름 지어주기로 변경 */
 .pills {
     width: 3rem;
     height: 4rem;
     position: fixed;
     top: 26rem;
     left: 20rem;
+    display: none;
 }
 .pillsTalk {
     display: none;
@@ -420,25 +596,17 @@ model-viewer#rabbitModel {
     top: 23.5rem;
     left: 19.5rem;
     transition: opacity 0.5s;
-}
-.pillsText {
-    font-family: "Pretendard-Boid";
-    font-size: 0.9rem;
-    color: #71594E;
     display: none;
-    width: 10rem;
-    position: fixed;
-    left: 25.2rem;
-    bottom: 21rem;
-    z-index: 11;
 }
 .pills:hover .pillsTalk{
     display: block;
     opacity: 1;
+    display: none;
 }
 .pills:hover .pillsText{
     display: block;
     opacity: 1;
+    display: none;
 }
 
 .blink {
@@ -999,9 +1167,12 @@ model-viewer#rabbitModel2 {
     border-radius: 1rem;
     z-index: 100000;
     display: none;
-    position: relative;
-    bottom: 3rem;
-    left: 35rem;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .popup-visible {
@@ -1049,3 +1220,15 @@ model-viewer#rabbitModel2 {
     text-align: center;
     padding: 0.25rem;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1009;
+  }
+
+  

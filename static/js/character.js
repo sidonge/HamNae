@@ -1,31 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const backgroundModel = document.getElementById('backgroundModel');
-    const leftArrow = document.getElementById('leftArrow');
-    const rightArrow = document.getElementById('rightArrow');
-    
-    let rotateX = 55; // 세로 각도
-    let rotateY = 230; // 가로 각도
-    let zoomLevel = 30; // 확대 비율
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.select');
 
-    function updateRotation() {
-        backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
-    }
+    buttons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const petId = this.id;
 
-    leftArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex === 0) ? characters.length - 1 : currentIndex - 1;
-        updateCharacter();
+            // 캐릭터 정보 요청
+            try {
+                const response = await fetch(`/pet_details/${petId}`);
+                if (!response.ok) {
+                    throw new Error('캐릭터 정보를 가져오는 데 실패했습니다.');
+                }
+
+                const data = await response.json();
+                // 캐릭터 이름, 설명, GLB 모델 업데이트
+                document.getElementById('characterName').textContent = data.name;
+                document.getElementById('characterDescription').textContent = data.description;
+                
+                const modelViewer = document.querySelector('#petModelViewer');
+                modelViewer.src = `/static/models/${data.model}`;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('캐릭터 정보를 가져오는 데 오류가 발생했습니다.');
+            }
+        });
     });
-
-    rightArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex === characters.length - 1) ? 0 : currentIndex + 1;
-        updateCharacter();
-    });
-
-    function adjustView() {
-        backgroundModel.style.transform = 'translateX(5rem) scale(1.4)'; // X축으로 이동 및 확대
-        backgroundModel.style.transform += ' translateY(4rem)'; // Y축으로 이동
-    }
-
-    updateRotation();
-    adjustView();
 });
