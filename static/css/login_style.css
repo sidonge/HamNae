@@ -142,8 +142,14 @@ input[type="password"] {
     border: 1px solid #E5E5E5;
     border-radius: 7px;
     box-sizing: border-box;
-    
 }
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: 1px solid #8D8C8E;
+  border: .5px solid #8D8C8E;
+}
+
 
 .resetPassword{
     font-family: "Pretendard-Medium";
