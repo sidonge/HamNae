@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 요소 선택
     const buttons = document.querySelectorAll('.select');
     const backgroundModel = document.getElementById('backgroundModel');
-    const hamModel = document.getElementById('hamModel');
+    const characterModel = document.getElementById('characterModel');
     const leftArrow = document.getElementById('leftArrow');
     const rightArrow = document.getElementById('rightArrow');
     const characterName = document.getElementById('characterName');
@@ -11,36 +10,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
 
-    let currentIndex = 0; // 현재 캐릭터 인덱스 (초기값 설정)
-    const characters = [
-        {
-            name: '햄깅이',
-            description: '햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 진심이랍니다.',
-            model: '../static/models/ham.glb',
-            pet_id: 'hamster'
-        },
-        {
-            name: '곰식이',
-            description: '곰식이는 진중하고 과묵한 곰이에요. 그만큼 어른스럽고 속이 깊어서 누구나 의지한답니다.',
-            model: '../static/models/bearbear.glb',
-            pet_id: 'bear'
-        },
-        {
-            name: '교수님',
-            description: '교수님은 지혜로운 토끼로서 많은 지식을 가지고 있어요. 생김새와 달리 연륜이 깊답니다.',
-            model: '../static/models/rabbitrabbit.glb',
-            pet_id: 'rabbit'
+    let characters = [];
+    let currentIndex = 0;
+
+    async function fetchCharacters() {
+        try {
+            const response = await fetch('/api/characters');  // Adjust the endpoint as needed
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            characters = data.characters;  // Ensure that your endpoint returns this structure
+            updateCharacter();
+        } catch (error) {
+            console.error('Error fetching characters:', error);
         }
-    ];
+    }
 
     function updateCharacter() {
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
-        hamModel.setAttribute('src', character.model);
+        characterModel.src = `../static/${character.model}`;
+    
+        buttons.forEach(button => {
+            button.innerHTML = '선택하기';
+            button.style.backgroundColor = ''; // 초기화
+        });
+    
+        const selectedButton = document.getElementById(`select${character.pet_id}`);
+        if (selectedButton) {
+            selectedButton.innerHTML = '선택됨&nbsp;<i class="fas fa-check"></i>';
+            selectedButton.style.backgroundColor = '#D2BEA1';
+        }
     }
+    
+    fetchCharacters();
 
-    // 시점 조정
     let rotateX = 55; 
     let rotateY = 230; 
     let zoomLevel = 50; 
@@ -48,11 +54,34 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateRotation() {
         backgroundModel.cameraOrbit = `${rotateY}deg ${rotateX}deg ${zoomLevel}m`;
     }
-
-    updateCharacter();
     updateRotation();
 
-    // 캐릭터 구매
+    async function fetchCharacterInfo(characterId) {
+        try {
+            const response = await fetch(`/api/character/${characterId}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
+            characterName.textContent = data.name;
+            characterDescription.textContent = data.description;
+            characterModel.src = `../static/${data.model_path}`;
+            
+            buttons.forEach(button => {
+                if (button.id === `select${characterId}`) {
+                    button.innerHTML = "선택됨&nbsp;<i class='fas fa-check'></i>";
+                    button.style.backgroundColor = '#D2BEA1';
+                } else {
+                    button.innerHTML = "선택하기";
+                    button.style.backgroundColor = '';
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching character info:', error);
+        }
+    }
+
     buttons.forEach(button => {
         button.addEventListener('click', async function() {
             const petId = this.id.replace('select', '');
@@ -73,15 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         const result = await response.json();
                         if (response.ok) {
                             alert(result.message);
-                            // 선택된 캐릭터로 현재 인덱스 업데이트
                             currentIndex = characters.findIndex(c => c.pet_id === petId);
                             updateCharacter();
-                            location.reload(); // 페이지 새로고침
                         } else {
                             alert(result.detail);
                         }
-                    } catch (error) {
-                        alert("요청 처리 중 오류가 발생했습니다.");
                     } finally {
                         purchasePopup.style.display = 'none';
                         confirmPurchase.removeEventListener('click', confirmHandler);
@@ -111,10 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const result = await response.json();
                     if (response.ok) {
                         alert(result.message);
-                        // 선택된 캐릭터로 현재 인덱스 업데이트
-                        currentIndex = characters.findIndex(c => c.pet_id === petId);
-                        updateCharacter();
-                        location.reload(); // 페이지 새로고침
+                        location.reload();
                     } else {
                         alert(result.detail);
                     }
@@ -125,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 화살표 클릭 시 캐릭터 업데이트
     leftArrow.addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? characters.length - 1 : currentIndex - 1;
         updateCharacter();

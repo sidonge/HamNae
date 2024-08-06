@@ -28,6 +28,6 @@ async def get_pets(request: Request, db: Session = Depends(get_db)):
 
     pets = db.query(Pet).filter(Pet.pet_id.in_(user_pet_ids)).all()
 
-    pets_list = [{"name": pet.name, "description": pet.description, "pet_id": pet.pet_id} for pet in pets]
+    pets_list = [{"name": pet.name, "description": pet.description, "pet_id": pet.pet_id, "model_path": pet.model_path} for pet in pets]
     
     return JSONResponse(content={"pets": pets_list})

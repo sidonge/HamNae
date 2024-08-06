@@ -16,7 +16,7 @@
     <div class="model-container">
         <model-viewer id="backgroundModel" src="{{ url_for('static', path='models/3.0007-home-x.glb') }}" environment-image="neutral" ar></model-viewer>
         <div id="backgroundOverlay"></div>
-        <model-viewer id="hamModel" src="{{ url_for('static', path='models/ham.glb') }}" environment-image="neutral" ar></model-viewer>
+        <model-viewer id="characterModel" src="{{ url_for('static', path='models/' + selected_pet_model_path) }}" environment-image="neutral" ar></model-viewer>
     </div>
     
     <!-- nav -->
@@ -53,8 +53,8 @@
 
     <!-- 캐릭터 설명 박스 -->
     <section class="character-description-box">
-        <div class="name" id="characterName">햄깅이</div>
-        <div class="introduce" id="characterDescription">햄깅이는 잠이 많은 햄스터예요. 따뜻한 마음씨를 가져서 남을 도와주는 것에 누구보다 진심이랍니다.</div>
+        <div class="name" id="characterName">{{ selected_pet_name }}</div>
+        <div class="introduce" id="characterDescription">{{ selected_pet_description }}</div>
         <div class="intimacyBox">
             <div class="intimacy">친밀도</div>
             <img src="{{ url_for('static', path='image/heart.png') }}" class="heartImg" alt="Heart">
