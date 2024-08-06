@@ -16,7 +16,7 @@
     <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
   </head>
   <body>
-    <!-- home 팝업화면 -->
+    home 팝업화면
     <div class="popupWrap">
       <div class="popupBody">
         <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
@@ -281,11 +281,9 @@
           <div class="timer-colon">:</div>
           <div class="timer-part" id="second">00</div>
         </div> 
-        <div id="timerCompleteMessage" onclick="">시간이 완료되었습니다!</div>
+        <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
 
       </div>
-      <audio id="pieceSound" src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"></audio>
-
     
     </div>
     <div class="pills" id="pillsContainer">

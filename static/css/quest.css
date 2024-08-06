@@ -8,11 +8,12 @@
     letter-spacing: -0.1rem;
 }
 
-body {
-    /* background-image: url(../image/해커톤-퀘스트달성도.png); */
-    background-repeat: no-repeat;
-    background-size: cover;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x : hidden;
     background: linear-gradient(white, #F5EED1);
+    position: relative;
 }
 
 /* nav */
@@ -54,9 +55,10 @@ nav {
 
 #backIcon {
     width: 3rem;
-    position: relative;
-    left: 2.5rem;
-    top: 0.3rem;
+    position: absolute;
+    top : 1.5rem;
+    left: 2.2rem;
+    cursor: pointer;
 }
 
 #backIcon:hover {
@@ -65,17 +67,20 @@ nav {
 
 h3, h2 {
     font-weight: 700;
-    font-size: 1.7rem;   
+    font-size: 1.7rem;
 }
 
 .quest_title {
-    margin-top: 1.1rem;
-    margin-left: 3rem;
+    width: 100%;
+    height: 100%;
+    margin-top: 6rem;
+    position: relative;
 }
 
 .quest_title > div {
+    width: 100%;
     display: flex;
-    margin-left: 0.2rem;
+    margin-left: 3rem;
 }
 
 .quest_title > div :nth-child(2) {
@@ -86,8 +91,13 @@ h3, h2 {
 }
 
 .quest_title img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: auto;
     margin-top: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4.2rem;
 }
 
 .quest_title p {
@@ -95,6 +105,7 @@ h3, h2 {
     margin: 0.34rem 0.5rem 0.54rem 0.16rem;
     word-spacing: 0.16rem;
     letter-spacing: -0.08rem;
+    margin-left: 3rem;
 }
 
 .quest_title span {
@@ -106,10 +117,6 @@ h3, h2 {
 
 /* section */
 
-section {
-    margin-bottom: 5rem;
-}
-
 .quest_title ~ div {
     display: flex;
     justify-content: space-between;
@@ -118,7 +125,8 @@ section {
 }
 
 #quest_stamps {
-    margin-top: 2rem;
+    margin-top: 9.2rem;
+    margin-bottom: 9.2rem;
     display: flex;
     background-image: url(../image/quest_background.png);
     background-size: cover;
@@ -126,14 +134,15 @@ section {
     height: 39.58rem;
     width: 72.5%;
     flex-wrap: wrap;
-    padding: 2.6rem 1.3rem;  
+    padding: 2.6rem 1.3rem;
+    position: relative;
 }
 
 .stamp_card {
     background-color: #c5b28d63;
     border: 1px solid #C5B18D;
     border-radius: 2.5rem;
-    margin: 0rem 0.2rem 3.8rem 1rem;
+    margin: 1rem 0.2rem 3.8rem 1rem;
     width: 12.7rem;
     height: 14.3rem;
     text-align: center;
@@ -159,8 +168,8 @@ section {
 }
 
 #point_card {
-    margin-top: 0.5rem;
-    margin-right: 0.51rem;
+    margin-top: 7.5rem;
+    margin-bottom: 7.5rem;
     border-radius: 0.5rem;
     width: 20.8em;
     height: 41.9rem;
