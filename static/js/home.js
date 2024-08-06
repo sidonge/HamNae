@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const waterContainer = document.getElementById('waterContainer');
   const cleanContainer = document.getElementById('cleanContainer');
   const washContainer = document.getElementById('washContainer');
-
+  const talkImages = document.querySelectorAll(".talk-image");
+ 
   let recognition;
   let isListening = false;
   let userName = '';

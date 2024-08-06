@@ -1,290 +1,247 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>집</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', path='css/home.css') }}"
-    />
-    <style>
-      .showerPopup {
-    width: 26rem;
-    height: 12rem;
-    background-color: #D2BEA1;
-    border-radius: 1rem;
-    z-index: 100000;
-    display: none;
-    position: relative;
-    bottom: 3rem;
-    left: 35rem;
-}
-
-.popup-visible {
-    display: block;
-}
-
-.showerText {
-    font-family: "Pretendard-SemiBold";
-    font-size: 1.25rem;
-    color: #71594E;
-    text-align: center;
-    padding: 1rem
-}
-
-.showerImg {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0.2rem;
-}
-
-.showerHam {
-    width: 6.8rem;
-    height: 4.5rem;
-    cursor: pointer;
-}
-
-.showerHam:not(.selected) {
-    opacity: 0.5;
-}
-
-.showerSend {
-    width: 5.8rem;
-    height: 1.5rem;
-    background-color: #71594E;
-    border-radius: 0.3rem;
-    margin-top: 1.6rem;
-    margin-left: 19rem;
-    cursor: pointer;
-}
-
-.sendText {
-    font-family: "Pretendard-SemiBold";
-    font-size: 0.75rem;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 0.25rem;
-}
-    </style>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
-    <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
-    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-    <link
-      rel="icon"
-      href="{{ url_for('static', path='image/fav.ico') }}"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
-    
-    <div class="popupWrap">
-      <div class="popupBody">
-        <div class="closeIcon" onclick="togglePopup()">
-          <img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}" />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>집</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
+  <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
+  <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+  <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon" />
+</head>
+<body>
+     
+  <div class="popupWrap">
+    <div class="popupBody">
+      <div class="closeIcon" onclick="togglePopup()">
+        <img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}" />
       </div>
-      <!-- 3D model -->
-      <!-- <div class="popupModel">
-          <model-viewer
-          id="rabbitModel2"
-          src="{{ url_for('static', path='models/ham.glb') }}"
-          environment-image="neutral"
-          ar
-        ></model-viewer>
-      </div> -->
-      <div class="popupModel">
-        <img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}">
-        <div class="bottomCircle"></div>
-      </div>
-      <div class="popupBlink">
-        마이크를 눌러 귀여운 친구의 이름을 정해주세요.
-      </div>
-
-      <div class="recording">
-        <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
-        <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
-        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText();">
-      </div>
-      <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
-      <div id="status-indicator">녹음 전</div>
-      <button id="submit-btn" onclick="stopText()">저장</button>
-
     </div>
-
-    <!-- 기존 home -->
-    <div class="model-container">
-      <!-- 윈도우 모델 -->
-      <model-viewer
-        id="windowModel"
-        src="{{ url_for('static', path='models/window.glb') }}"
-        environment-image="neutral"
-        ar
-      ></model-viewer>
-      <!-- 토끼 모델 -->
-      <model-viewer
-        id="rabbitModel"
+    <!-- 3D model -->
+    <!-- <div class="popupModel">
+        <model-viewer
+        id="rabbitModel2"
         src="{{ url_for('static', path='models/ham.glb') }}"
         environment-image="neutral"
         ar
       ></model-viewer>
+    </div> -->
+    <div class="popupModel">
+      <img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}">
+    </div>
+    <div class="bottomCircle"></div>
+    <div class="popupBlink">
+      마이크를 눌러 귀여운 친구의 이름을 정해주세요.
     </div>
 
-    <!-- nav -->
+    <div class="recording">
+      <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
+      <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
+      <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText(); completeMission('pills')">
+    </div>
+    <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
+    <div id="status-indicator">녹음 전</div>
+    <button id="submit-btn" onclick="stopText()">저장</button>
+
+
+
+
+  </div>
+
+  <!-- 기존 home -->
+  <div class="model-container">
+    <!-- 윈도우 모델 -->
+    <model-viewer
+      id="windowModel"
+      src="{{ url_for('static', path='models/window.glb') }}"
+      environment-image="neutral"
+      ar
+    ></model-viewer>
+    <!-- 토끼 모델 -->
+    <model-viewer
+      id="rabbitModel"
+      src="{{ url_for('static', path='models/ham.glb') }}"
+      environment-image="neutral"
+      ar
+    ></model-viewer>
+  </div>
+
+  <!-- nav -->
+  <nav>
+    <img
+      src="{{ url_for('static', path='image/logo.png') }}"
+      class="logo"
+      id="logo"
+    />
+    <img
+      src="{{ url_for('static', path='image/menu.png') }}"
+      class="menuIcon"
+      id="menuIcon"
+    />
+  </nav>
+
+  <!-- nav record -->
+  <div class="recordWrap">
+    <img id="homenameRecord" src="{{ url_for('static', path='/image/whitenameRecord.png') }}" onclick="hideText()">
+    <img id="homestop" src="{{ url_for('static', path='/image/whitestop.png') }}" onclick="stopText()">
+    <div id="recording-status-indicator"></div>
+  </div>
+  
+
+
+
+
+  <!-- nav popup -->
+  <div id="navPopup" class="nav-popup">
     <nav>
       <img
-        src="{{ url_for('static', path='image/logo.png') }}"
-        class="logo"
-        id="logo"
-      />
-      <img
-        src="{{ url_for('static', path='image/menu.png') }}"
-        class="menuIcon"
-        id="menuIcon"
+        src="{{ url_for('static', path='image/exit.png') }}"
+        class="exitIcon"
+        id="exitIcon"
+        alt="Exit"
       />
     </nav>
 
-    <!-- nav record -->
-    <div class="recordWrap">
-      <img id="homenameRecord" src="{{ url_for('static', path='/image/whitenameRecord.png') }}" onclick="hideText()">
-      <img id="homestop" src="{{ url_for('static', path='/image/whitestop.png') }}" onclick="stopText()">
-      <div id="recording-status-indicator"></div>
-    </div>
-    
-
-    <!-- nav popup -->
-    <div id="navPopup" class="nav-popup">
-      <nav>
-        <img
-          src="{{ url_for('static', path='image/exit.png') }}"
-          class="exitIcon"
-          id="exitIcon"
-          alt="Exit"
-        />
-      </nav>
-
-      <section class="menuSection">
-        <div class="menu">
-          <div class="mission" id="mission">집으로</div>
-          <hr class="hr" />
-          <div class="walk" id="walk">산책하기</div>
-          <hr class="hr" />
-          <div class="character" id="character">캐릭터 변경</div>
-          <hr class="hr" />
-          <div class="mypage" id="mypage">마이페이지</div>
-          <hr class="hr" />
-        </div>
-      </section>
-    </div>
-
-    <!-- 윈도우 모델 제어 버튼 -->
-    <div class="controls">
-      <img
-        src="{{ url_for('static', path='image/up.png') }}"
-        id="up"
-        class="triangle"
-        alt="Up"
-      />
-      <div>
-        <img
-          src="{{ url_for('static', path='image/left.png') }}"
-          id="left"
-          class="triangle"
-          alt="Left"
-        />
-        <div class="transparent-box"></div>
-        <img
-          src="{{ url_for('static', path='image/right.png') }}"
-          id="right"
-          class="triangle"
-          alt="Right"
-        />
+    <section class="menuSection">
+      <div class="menu">
+        <div class="mission" id="mission">집으로</div>
+        <hr class="hr" />
+        <div class="walk" id="walk" onclick="completeMission('walk')">산책하기</div>
+        <hr class="hr" />
+        <div class="character" id="character">캐릭터 변경</div>
+        <hr class="hr" />
+        <div class="mypage" id="mypage">마이페이지</div>
+        <hr class="hr" />
       </div>
+    </section>
+  </div>
+
+  <!-- 윈도우 모델 제어 버튼 -->
+  <div class="controls">
+    <img
+      src="{{ url_for('static', path='image/up.png') }}"
+      id="up"
+      class="triangle"
+      alt="Up"
+    />
+    <div>
       <img
-        src="{{ url_for('static', path='image/down.png') }}"
-        id="down"
+        src="{{ url_for('static', path='image/left.png') }}"
+        id="left"
         class="triangle"
-        alt="Down"
+        alt="Left"
+      />
+      <div class="transparent-box"></div>
+      <img
+        src="{{ url_for('static', path='image/right.png') }}"
+        id="right"
+        class="triangle"
+        alt="Right"
       />
     </div>
+    <img
+      src="{{ url_for('static', path='image/down.png') }}"
+      id="down"
+      class="triangle"
+      alt="Down"
+    />
+  </div>
 
-    <!-- 토끼 모델 제어 버튼 추가 -->
-    <div class="rabbit-controls">
+  <!-- 토끼 모델 제어 버튼 추가 -->
+  <div class="rabbit-controls">
+    <img
+      src="{{ url_for('static', path='image/up.png') }}"
+      id="rabbitUp"
+      class="triangle"
+      alt="Rabbit Up"
+    />
+    <div>
       <img
-        src="{{ url_for('static', path='image/up.png') }}"
-        id="rabbitUp"
+        src="{{ url_for('static', path='image/left.png') }}"
+        id="rabbitLeft"
         class="triangle"
-        alt="Rabbit Up"
+        alt="Rabbit Left"
       />
-      <div>
-        <img
-          src="{{ url_for('static', path='image/left.png') }}"
-          id="rabbitLeft"
-          class="triangle"
-          alt="Rabbit Left"
-        />
-        <div class="transparent-box"></div>
-        <img
-          src="{{ url_for('static', path='image/right.png') }}"
-          id="rabbitRight"
-          class="triangle"
-          alt="Rabbit Right"
-        />
-      </div>
+      <div class="transparent-box"></div>
       <img
-        src="{{ url_for('static', path='image/down.png') }}"
-        id="rabbitDown"
+        src="{{ url_for('static', path='image/right.png') }}"
+        id="rabbitRight"
         class="triangle"
-        alt="Rabbit Down"
+        alt="Rabbit Right"
       />
     </div>
+    <img
+      src="{{ url_for('static', path='image/down.png') }}"
+      id="rabbitDown"
+      class="triangle"
+      alt="Rabbit Down"
+    />
+  </div>
 
-    <!-- 토끼 모델 클릭 시 말풍선 이미지 -->
-    <div class="rabbitTalkBox">
-      <label for="rabbitTalkUpload1">
-        <img
-          src="{{ url_for('static', path='image/petListIcon.png') }}"
-          class="talkIcon"
-          id="rabbitTalk1"
-        />
-      </label>
+  <!-- 토끼 모델 클릭 시 말풍선 이미지 -->
+  <div class="rabbitTalkBox">
+    <label for="rabbitTalkUpload1">
+      <img
+        src="{{ url_for('static', path='image/petListIcon.png') }}"
+        class="talkIcon"
+        id="rabbitTalk1"
+      />
+    </label>
 
-      <label for="rabbitTalkUpload2">
+    <label for="rabbitTalkUpload2">
+      <img
+        src="{{ url_for('static', path='image/questList.png') }}"
+        class="talkIcon"
+        id="rabbitTalk2"
+      />
+    </label>
+  </div>
+       <!-- 미션 완료를 위한 파일 입력 요소 -->
+       <div class="water" id="waterContainer">
         <img
-          src="{{ url_for('static', path='image/questList.png') }}"
-          class="talkIcon"
-          id="rabbitTalk2"
+            id="water_cleared_stamp"
+            class="waterTalk talk-image"
+            src="{{ url_for('static', path='image/waterTalk.png') }}"
         />
-      </label>
+        <input
+            type="file"
+            id="water"
+            class="upload-input"
+            accept="image/*"
+        />
     </div>
-    <!-- 미션 완료를 위한 파일 입력 요소 -->
-    <div class="water" id="waterContainer">
-      <img id="water_cleared_stamp" class="waterTalk talk-image" src="{{ url_for('static', path='image/waterTalk.png') }}" />
-      <input type="file" id="waterUpload" class="upload-input" accept="image/*" style="display: none" />
-    </div>
-    
     <div class="clean" id="cleanContainer">
-      <img
-        id="clean_cleared_stamp"
-        class="cleanTalk talk-image"
-        src="{{ url_for('static', path='image/cleanTalk.png') }}"
-      />
-      <input
-        type="file"
-        id="cleanUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
+        <img
+            id="clean_cleared_stamp"
+            class="cleanTalk talk-image"
+            src="{{ url_for('static', path='image/cleanTalk.png') }}"
+        />
+        <input
+            type="file"
+            id="clean"
+            class="upload-input"
+            accept="image/*"
+        />
+    </div>
+    <div class="cooking" id="cookingContainer">
+        <img
+            id="cooking_cleared_stamp"
+            class="cookingTalk talk-image"
+            src="{{ url_for('static', path='image/cookTalk.png') }}"
+        />
+        <input
+            type="file"
+            id="cooking"
+            class="upload-input"
+            accept="image/*"
+        />
     </div>
 
-    <div class="cooking" id="cookingContainer">
-      <img id="cooking_cleared_stamp" class="cookingTalk talk-image" src="{{ url_for('static', path='image/cookTalk.png') }}" />
-      <input type="file" id="cookingUpload" class="upload-input" accept="image/*" style="display: none" />
-    </div>
-    <div class="wash" id="washContainer" style="width: 10rem; height: 10rem;">
+        
+    <div class="wash" id="washContainer" style="width: 10rem; height: 10rem; ">
       <img
         id="wash_cleared_stamp"
         class="washTalk talk-image"
@@ -292,6 +249,7 @@
       />
 
     </div>
+
     <div class="talk">
       <img
         id="talk_cleared_stamp"
@@ -316,47 +274,16 @@
         <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
 
       </div>
-      <audio
-        id="pieceSound"
-        src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"
-      ></audio>
-    </div>
-
-    <div class="bed" id="bedContainer">
-      <img id="bed_cleared_stamp" class="bedTalk talk-image" src="{{ url_for('static', path='image/bedIcon.png') }}" />
-      <input type="file" id="bedUpload" class="upload-input" accept="image/*" style="display: none" onclick="completeMission('bed')" />
-    </div>
-    
-    <div id="timerDisplay" style="display: none">
-      <div class="timerText">1분 명상 시작!</div>
-      <div class="timerNum">
-        <div class="timer-part" id="minute">01</div>
-        <div class="timer-colon">:</div>
-        <div class="timer-part" id="second">00</div>
-      </div> 
-      <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
-
-    </div>
-    <audio
-      id="pieceSound"
-      src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"
-    ></audio>
-  </div>
-  <div class="pills" id="pillsContainer">
-    <img
-      id="pills_cleared_stamp"
-      class="pillsTalk talk-image"
-      src="{{ url_for('static', path='image/pillsTalk.png') }}"
-    />
-  </div>
-<div class="wash" id="washContainer" >
+      
+    <div class="pills" id="pillsContainer">
       <img
-        id="wash_cleared_stamp"
-        class="washTalk talk-image"
-        src="{{ url_for('static', path='image/washTalk.png') }}"
+        id="pills_cleared_stamp"
+        class="pillsTalk talk-image"
+        src="{{ url_for('static', path='image/pillsTalk.png') }}"
       />
+    </div>
 
-  <div class="overlay" style="display: none;"></div>
+    <div class="overlay" style="display: none;"></div>
     <div class="showerPopup">
       <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
       <div class="showerImg">
@@ -365,173 +292,174 @@
         <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
       </div>
       <div class="showerSend">
-        <button class="sendText" id="sendTextButton" onclick="completeMission('wash')">내 기분 보내기</button>
+        <button class="sendText" id="sendTextButton" >내 기분 보내기</button>
       </div>
     </div>
-  </div>
 
-  <script>
-    async function completeMission(missionName) {
-      if (missionName === 'wash') {
-        try {
-          const response = await fetch('/complete_mission', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ mission: missionName })
+    <div class="blink">동물을 눌러 보세요.</div>
+
+    <div class="Topblink">가구들을 눌러 햄깅이의 미션을 도와주세요!</div>
+
+   
+    <script>
+        document.getElementById('waterContainer').addEventListener('click', function() {
+            document.getElementById('water').click();
+        });
+
+        document.getElementById('cleanContainer').addEventListener('click', function() {
+            document.getElementById('clean').click();
+        });
+
+        document.getElementById('cookingContainer').addEventListener('click', function() {
+            document.getElementById('cooking').click();
           });
-    
-          const responseText = await response.text();
-          if (response.ok) {
-            if (responseText === "Mission completed successfully") {
-              document.getElementById(missionName + '_cleared_stamp').style.display = 'block';
-              alert('미션이 성공적으로 완료되었습니다!');
-            } else {
-              alert('미션 완료 중 오류가 발생했습니다.');
-            }
-          } else {
-            alert(`서버 응답이 유효하지 않습니다: ${responseText}`);
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          alert('미션 완료 중 오류가 발생했습니다.');
-        }
-      } else {
-        // 파일 제출이 필요한 다른 미션 처리
+
+      async function completeMission(missionName) {
         const fileInput = document.getElementById(missionName + 'Upload');
-        const file = fileInput?.files[0];
-    
+        const file = fileInput ? fileInput.files[0] : null;
+  
         const formData = new FormData();
         formData.append('mission', missionName);
         if (file) {
           formData.append('file', file);
         }
-    
+  
         try {
           const response = await fetch('/complete_mission', {
             method: 'POST',
             body: formData,
           });
-    
-          const responseText = await response.text();
-            if (response.ok) {
-                if (responseText === "Mission completed successfully") {
-                    alert('미션이 성공적으로 완료되었습니다!');
-                } else {
-                    alert('미션 완료 중 오류가 발생했습니다.');
-                }
-            } else {
-                alert(`서버 응답이 유효하지 않습니다: ${responseText}`);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('미션 완료 중 오류가 발생했습니다.');
-      }
-    }
-  }
-    document.addEventListener('DOMContentLoaded', function() {
-  const showerPopup = document.querySelector('.showerPopup');
-  const showerHam = document.querySelectorAll('.showerHam');
-  const showerSend = document.querySelector('.showerSend');
-  const overlay = document.querySelector('.overlay');
-  let selectedImage = null; // 선택된 이미지 저장
-
-  // 요소들이 존재하는지 확인
-  const washContainer = document.getElementById('washContainer');
-  if (!washContainer) {
-    console.error('Element with id "washContainer" not found.');
-    return;
-  }
   
-  if (!showerPopup || !showerSend || !overlay) {
-    console.error('One or more required elements are not found.');
-    return;
-  }
-
-  // 샤워 버튼 클릭 시 팝업을 표시
-  washContainer.addEventListener('click', function() {
-    showerPopup.classList.add('popup-visible');
-    overlay.style.display = 'block'; // 오버레이 표시
-  });
-
-  // 감정 이미지 클릭 시
-  showerHam.forEach(img => {
-    img.addEventListener('click', function() {
-      showerHam.forEach(image => image.classList.remove('selected')); // 기존 선택 해제
-      this.classList.add('selected'); // 현재 이미지 선택
-      console.log('Image clicked:', this); 
-      selectedImage = this; // 선택된 이미지 저장
-    });
-  });
-
-  // 샤워 후 제출 버튼 클릭 시
-  showerSend.addEventListener('click', function() {
-    // 'wash' 미션을 완료하는 요청을 서버로 전송
-    completeMission('wash');
-
-    // 팝업과 오버레이 숨기기
-    showerPopup.classList.remove('popup-visible');
-    overlay.style.display = 'none';
-  });
-});
-
-// 명상하기 눌렀을 때 1분 타이머
-document.getElementById('bedContainer').addEventListener('click', function() {
+          if (response.ok) {
+            const result = await response.text();
+            if (result === "Mission completed successfully") {
+      
+              alert('미션이 성공적으로 완료되었습니다!');
+            } else {
+              alert('미션 완료 중 오류가 발생했습니다.');
+            }
+          } else {
+            const errorDetail = await response.json();
+            alert(`서버 응답이 유효하지 않습니다: ${errorDetail.detail}`);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('미션 완료 중 오류가 발생했습니다.');
+        }
+      }
+  
+      
+  
+      // 파일 선택 후 미션 완료
+      document.querySelectorAll('.upload-input').forEach(input => {
+        input.addEventListener('change', () => {
+          const missionName = input.id
+          if (input.files.length > 0) {
+            completeMission(missionName);
+          }
+        });
+      });
+  
+      // DOMContentLoaded 이벤트에서 실행되는 코드
+      document.addEventListener('DOMContentLoaded', function() {
+        const showerPopup = document.querySelector('.showerPopup');
+        const showerHam = document.querySelectorAll('.showerHam');
+        const showerSend = document.querySelector('.showerSend');
+        const overlay = document.querySelector('.overlay');
+        let selectedImage = null; // 선택된 이미지 저장
+  
+        // 요소들이 존재하는지 확인
+        const washContainer = document.getElementById('washContainer');
+        if (!washContainer) {
+          console.error('Element with id "washContainer" not found.');
+          return;
+        }
+        if (!showerPopup || !showerSend || !overlay) {
+          console.error('One or more required elements are not found.');
+          return;
+        }
+  
+        // 샤워 버튼 클릭 시 팝업을 표시
+        washContainer.addEventListener('click', function() {
+          showerPopup.classList.add('popup-visible');
+          overlay.style.display = 'block'; // 오버레이 표시
+        });
+  
+        // 감정 이미지 클릭 시
+        showerHam.forEach(img => {
+          img.addEventListener('click', function() {
+            showerHam.forEach(image => image.classList.remove('selected')); // 기존 선택 해제
+            this.classList.add('selected'); // 현재 이미지 선택
+            selectedImage = this; // 선택된 이미지 저장
+          });
+        });
+  
+        // 샤워 후 제출 버튼 클릭 시
+        showerSend.addEventListener('click', function() {
+          if (selectedImage) {
+            completeMission('wash');
+            // 팝업과 오버레이 숨기기
+            showerPopup.classList.remove('popup-visible');
+            overlay.style.display = 'none';
+          } else {
+            alert('Please select an image first.');
+          }
+        });
+      });
+  
+      // 명상하기 눌렀을 때 1분 타이머
+      document.getElementById('bedContainer').addEventListener('click', function() {
         const display = document.getElementById('timerDisplay');
         const timeWrap = document.querySelector('.timerNum');
         const startText = document.querySelector('.timerText');
         const minuteElem = document.getElementById('minute');
         const secondElem = document.getElementById('second');
         const completeMessage = document.getElementById('timerCompleteMessage');
-        const pieceSound = document.getElementById('pieceSound');
-
-        pieceSound.play().catch(error => console.error("오디오 재생 중 에러 발생:", error));
-
+  
         // 초기 설정
         minuteElem.textContent = "01";
         secondElem.textContent = "00";
         completeMessage.style.display = "none"; // 완료 메시지를 초기에 숨김
         startText.style.display = "block"; // 시작 텍스트 표시
         timeWrap.style.display = "flex"; // 시간 표시 요소를 표시
-
+  
         startTimer(60, minuteElem, secondElem, startText, completeMessage, timeWrap, display);
         display.style.display = "block"; // 타이머 디스플레이를 표시
-    });
-
-    function startTimer(duration, minuteElem, secondElem, startText, completeMessage, timeWrap, display) {
+      });
+  
+      function startTimer(duration, minuteElem, secondElem, startText, completeMessage, timeWrap, display) {
         let timer = duration;
         const interval = setInterval(function () {
-            let minutes = parseInt(timer / 60, 10);
-            let seconds = parseInt(timer % 60, 10);
-
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            minuteElem.textContent = minutes;
-            secondElem.textContent = seconds;
-
-            if (--timer < 0) {
-                clearInterval(interval);
-                timeWrap.style.display = "none"; // 시간 표시 요소 숨김
-                startText.style.display = "none"; // 시작 텍스트 숨김
-                completeMessage.style.display = "block"; // 완료 메시지 표시
-
-                display.style.height = "3rem";
-                display.style.position = "absolute"; // 또는 'relative'에 따라 요구 사항에 맞게 설정
-                display.style.bottom = "10rem";
-                display.style.borderRadius = "10px";
-
-                setTimeout(function() {
-                    display.style.display = "none"; // 1초 후 전체 타이머 디스플레이 숨김
-                }, 3000);
-
-                // 명상 미션 완료 요청
-                missionComplete('bed');
-            }
+          let minutes = parseInt(timer / 60, 10);
+          let seconds = parseInt(timer % 60, 10);
+  
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+          minuteElem.textContent = minutes;
+          secondElem.textContent = seconds;
+  
+          if (--timer < 0) {
+            clearInterval(interval);
+            timeWrap.style.display = "none"; // 시간 표시 요소 숨김
+            startText.style.display = "none"; // 시작 텍스트 숨김
+            completeMessage.style.display = "block"; // 완료 메시지 표시
+  
+            display.style.height = "3rem";
+            display.style.position = "absolute";
+            display.style.bottom = "10rem";
+            display.style.borderRadius = "10px";
+  
+            setTimeout(function() {
+              display.style.display = "none"; // 1초 후 전체 타이머 디스플레이 숨김
+            }, 3000);
+  
+            // 명상 미션 완료 요청
+            completeMission('bed');
+          }
         }, 1000); // 각 초마다 반복
-    }
+      }
     </script>
-
+  
   </body>
-</html>
+  </html>
