@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelPurchase = document.getElementById('cancelPurchase');
     const purchaseSound = document.getElementById('purchaseSound');
     const purchaseButton = document.getElementById('purchaseButton');
+    const selectSound = document.getElementById('selectSound');
+
 
     const characters = [
         {
@@ -37,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let pendingPurchaseIndex = null; // 현재 구매 대기 중인 캐릭터의 인덱스
 
     function updateCharacter() {
+        selectSound.currentTime = 0;
+        selectSound.play();
         const character = characters[currentIndex];
         characterName.textContent = character.name;
         characterDescription.textContent = character.description;
@@ -161,8 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 시점 조정
-    backgroundModel.style.transform = 'translateX(5rem) scale(1.4)';
-    backgroundModel.style.transform = 'translateY(4rem)';
+    backgroundModel.style.transform = 'translateX(5rem) rotateX(3deg) rotateY(15deg) scale(1.4)';
 
     updateRotation();
     updateCharacter();

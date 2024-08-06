@@ -382,11 +382,11 @@ document.getElementById('cleanContainer').addEventListener('click', function(eve
   }
 });
 
-document.getElementById('washContainer').addEventListener('click', function(event) {
-  if (event.target.id !== 'washUpload') {
-      document.getElementById('washUpload').click();
-  }
-});
+// document.getElementById('washContainer').addEventListener('click', function(event) {
+//   if (event.target.id !== 'washUpload') {
+//       document.getElementById('washUpload').click();
+//   }
+// });
 
 document.getElementById('pillsContainer').addEventListener('click', function(event) {
   if (event.target.id !== 'pillsUpload') {
@@ -463,4 +463,31 @@ function startTimer(duration, minuteElem, secondElem, startText, completeMessage
   }, 1000); // 각 초마다 반복
 }
 
+// 샤워 후 감정 선택
+document.addEventListener('DOMContentLoaded', function() {
+  const showerPopup = document.querySelector('.showerPopup');
+  const showerHam = document.querySelectorAll('.showerHam');
+  const showerSend = document.querySelector('.showerSend');
+
+  document.getElementById('washContainer').addEventListener('click', function(event) {
+    showerPopup.classList.add('popup-visible');
+  });
+  
+  showerHam.forEach(img => {
+    img.addEventListener('click', function() {
+      showerHam.forEach(image => image.classList.remove('selected'));
+      this.classList.add('selected');
+      console.log('Image clicked:', this); 
+      selectedImage = this;
+    });
+  });
+
+  showerSend.addEventListener('click', function() {
+    if (selectedImage) {
+      showerPopup.classList.remove('popup-visible'); 
+    } else {
+      alert('Please select an image first.');
+    }
+  });
+});
 

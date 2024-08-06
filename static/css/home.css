@@ -1,14 +1,3 @@
-body { 
-    margin: 0; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    background-color: #a7c4ff; 
-    overflow: hidden; 
-    position: relative;
-}
-
 @font-face {
     font-weight: 300;
     font-family: "Pretendard-Light";
@@ -65,43 +54,6 @@ body {
     background-color: #a7c4ff; 
     overflow: hidden; 
     position: relative;
-}
-
-@font-face {
-    font-weight: 300;
-    font-family: "Pretendard-Light";
-    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
-    format("woff");
-}
-@font-face {
-font-weight: 400;
-font-family: "Pretendard-Regular";
-src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-    format("woff");
-}
-@font-face {
-font-weight: 500;
-font-family: "Pretendard-Medium";
-src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
-    format("woff");
-}
-@font-face {
-font-weight: 600;
-font-family: "Pretendard-SemiBold";
-src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
-    format("woff");
-}
-@font-face {
-font-weight: 700;
-font-family: "Pretendard-Bold";
-src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
-    format("woff");
-}
-@font-face {
-font-weight: 800;
-font-family: "Pretendard-ExtraBold";
-src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
-    format("woff");
 }
 
 /* nav */
@@ -1051,4 +1003,62 @@ model-viewer#rabbitModel2 {
 
 @keyframes popupblinker {
     50% { opacity: 0; }
+}
+
+.showerPopup {
+    width: 26rem;
+    height: 12rem;
+    background-color: #D2BEA1;
+    border-radius: 1rem;
+    z-index: 100000;
+    display: none;
+    position: relative;
+    bottom: 3rem;
+    left: 35rem;
+}
+
+.popup-visible {
+    display: block;
+}
+
+.showerText {
+    font-family: "Pretendard-SemiBold";
+    font-size: 1.25rem;
+    color: #71594E;
+    text-align: center;
+    padding: 1rem
+}
+
+.showerImg {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.2rem;
+}
+
+.showerHam {
+    width: 6.8rem;
+    height: 4.5rem;
+    cursor: pointer;
+}
+
+.showerHam:not(.selected) {
+    opacity: 0.5;
+}
+
+.showerSend {
+    width: 5.8rem;
+    height: 1.5rem;
+    background-color: #71594E;
+    border-radius: 0.3rem;
+    margin-top: 1.6rem;
+    margin-left: 19rem;
+    cursor: pointer;
+}
+
+.sendText {
+    font-family: "Pretendard-SemiBold";
+    font-size: 0.75rem;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.25rem;
 }
