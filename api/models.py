@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey, Boolean, insert
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import relationship, sessionmaker, Session
 from datetime import date
 
 # 데이터베이스 엔진 생성 (SQLite 사용)
@@ -19,12 +19,13 @@ class User(Base):
     email = Column(String, nullable=False, unique=True)
     tel = Column(String, nullable=True)
     join_date = Column(Date, nullable=False, default=date.today)
-    level = Column(Integer, nullable=False, default=1)  # level 컬럼 추가
+    level = Column(Integer, nullable=False, default=1)
     xp = Column(Integer, nullable=False, default=200)
     coin = Column(Integer, nullable=False, default=300)
-    main_pet_id = Column(String, default="hamster", nullable=True)  # 기본값을 '햄깅이'로 설정 
+    main_pet_id = Column(String, default="hamster", nullable=True)
     
     # 관계 정의
+    purchased_pets = relationship("UserPet", back_populates="user")
     attendances = relationship('Attendance', order_by='Attendance.id', back_populates='user')
     pets = relationship('UserPet', back_populates='user')
     quests = relationship('UserQuest', back_populates='user')
@@ -38,7 +39,6 @@ class Attendance(Base):
     attendance_date = Column(Date, index=True)
     streak = Column(Integer)
     
-    # 관계 정의
     user = relationship("User", back_populates="attendances")
 
 # Pet 테이블 정의
@@ -50,6 +50,8 @@ class Pet(Base):
     mbti = Column(String, nullable=False)
     description = Column(String)
     price = Column(Integer, nullable=True, default=None)  # 가격 컬럼 추가
+    short_description = Column(String)  # 짧은 설명 컬럼 추가
+    pet_image = Column(String)  # 이미지 컬럼 추가
 
 # UserPet 테이블 정의
 class UserPet(Base):
@@ -57,12 +59,13 @@ class UserPet(Base):
     
     user_id = Column(String, ForeignKey('users.id'), primary_key=True)
     pet_id = Column(String, ForeignKey('pets.pet_id'), primary_key=True)
-    selected_character = Column(Integer, default=0)  # selected_character 열 추가
+    custom_name = Column(String, nullable=True)  # nullable 설정
 
     # 관계 정의
-    user = relationship("User", back_populates="pets")
     pet = relationship("Pet")
+    user = relationship("User", back_populates="purchased_pets")
 
+# Quest 테이블 정의
 class Quest(Base):
     __tablename__ = 'quests'
     
@@ -70,6 +73,7 @@ class Quest(Base):
     name = Column(String, unique=True, nullable=False)
     points = Column(Integer, default=150, nullable=False)
 
+# UserQuest 테이블 정의
 class UserQuest(Base):
     __tablename__ = 'user_quests'
     
@@ -84,17 +88,13 @@ class UserQuest(Base):
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def init_db():
-    # 데이터베이스 테이블 생성
     Base.metadata.create_all(engine)
-
-    # 기본 캐릭터를 선택 상태로 초기화
+    # 데이터베이스 세션 생성
     with Session(engine) as session:
-        # 모든 캐릭터의 선택 상태를 0으로 초기화
-        session.execute(update(UserPet).values(selected_character=0))
-        # 기본 캐릭터인 hamster를 선택 상태로 설정
-        session.execute(update(UserPet).where(UserPet.pet_id == 'hamster').values(selected_character=1))
+        # 기본 캐릭터를 선택 상태로 초기화
+        session.execute(insert(UserPet).values(selected_character=0))
+        session.execute(insert(UserPet).where(UserPet.pet_id == 'hamster').values(selected_character=1))
         session.commit()
-
 
 # 데이터베이스 초기화 호출
 if __name__ == "__main__":
