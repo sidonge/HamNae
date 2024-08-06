@@ -52,6 +52,7 @@ class Pet(Base):
     price = Column(Integer, nullable=True, default=None)  # 가격 컬럼 추가
     short_description = Column(String)  # 짧은 설명 컬럼 추가
     pet_image = Column(String)  # 이미지 컬럼 추가
+    sort_order = Column(Integer, nullable=False)  # 정렬 순서 컬럼 추가
 
 # UserPet 테이블 정의
 class UserPet(Base):
