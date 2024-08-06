@@ -135,8 +135,8 @@ nav {
     height: 2.8rem;
     position: relative;
     top: 2rem;
-    left: 3rem;
-
+    left: 8rem;
+    margin-left: 3.4rem;
     margin: auto;
     text-align: center;
     margin-bottom: 4%;
@@ -156,6 +156,7 @@ nav {
     width: 17rem;
     height: 30rem;
     padding: 1% 1.25%;
+    margin-left: 4rem;
 
     box-shadow: 1px 1px 5px #BBBBBB;
 }
@@ -305,31 +306,31 @@ input {
     margin: 0;
 }
 
-  input[type="checkbox"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: 0;
-  }
-  input[type="checkbox"]::after {
-    border: solid #FFB4B4;
-    border-width: 0 6px 6px 0;
-    content: '';
-    display: none;
-    height: 50%;
-    left: 40%;
-    position: relative;
-    top: 10%;
-    transform: rotate(45deg);
-    width: 20%;
-  }
+input[type="checkbox"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background: #fff;
+border-radius: 4px;
+cursor: pointer;
+outline: 0;
+}
+input[type="checkbox"]::after {
+border: solid #FFB4B4;
+border-width: 0 6px 6px 0;
+content: '';
+display: none;
+height: 50%;
+left: 40%;
+position: relative;
+top: 10%;
+transform: rotate(45deg);
+width: 20%;
+}
 
-  input[type="checkbox"]:checked::after {
-    display: block;
-  }
+input[type="checkbox"]:checked::after {
+display: block;
+}
 
 
 /* map */
@@ -384,7 +385,7 @@ input {
     left: 11rem;
     bottom: 36rem;
     
-    width: 84em;
+    width: 70rem;
     z-index: 500;
 }
 
@@ -397,7 +398,7 @@ input {
     left: 11rem;
     bottom: 37rem;
     
-    width: 84rem;
+    width: 70rem;
     z-index: 500;
 }
 
@@ -434,7 +435,7 @@ input {
 
     position: relative;
     bottom: 36.5rem;
-    right: 12.3%;
+    right: 10%;
     margin-left: auto;
 }
 
@@ -445,11 +446,11 @@ input {
 }
 #controlBox
 {
-    width: 67rem;
-    height: 40rem;
+    width: 65rem;
+    height:37rem;
     position: absolute;
-    top: 27%;
-    left: 29.6%;
+    top: 44%;
+    left: 33%;
     /* background-color: rgba(255, 192, 203, 0.202); */
 }
 
