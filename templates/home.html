@@ -20,7 +20,7 @@
     />
   </head>
   <body>
-    home 팝업화면
+    
     <div class="popupWrap">
       <div class="popupBody">
         <div class="closeIcon" onclick="togglePopup()">
@@ -36,8 +36,10 @@
           ar
         ></model-viewer>
       </div> -->
-      <div class="popupModel"><img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}"></div>
-      <div class="bottomCircle"></div>
+      <div class="popupModel">
+        <img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}">
+        <div class="bottomCircle"></div>
+      </div>
       <div class="popupBlink">
         마이크를 눌러 귀여운 친구의 이름을 정해주세요.
       </div>

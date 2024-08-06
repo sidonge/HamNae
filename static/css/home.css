@@ -43,6 +43,8 @@ body {
     src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
 }
 
+
+
 /* popup css */
 
 .popupWrap {
@@ -64,13 +66,19 @@ body {
     cursor: pointer;
 }
 
+.popupModel {
+    position: relative;
+}
 
 .bottomCircle {
     width: 15rem;
     height: 7rem;
     border-radius: 100%;
     position: absolute;
-    top: 27rem;
+    /* top: 27rem;
+    right: 40rem; */
+    top: 50%;
+    right: 60%;
     background-color: #FFFFFF;
     opacity: 40%;
     z-index: -19;
