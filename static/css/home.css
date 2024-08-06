@@ -646,13 +646,13 @@ model-viewer#rabbitModel {
 }
 #rabbitTalk1 {
     bottom: 15rem;
-    left: 40rem;
+    left: 34rem;
     cursor: pointer;
 }
 
 #rabbitTalk2 {
     bottom: 15rem;
-    left: 50rem;
+    left: 44rem;
     cursor: pointer;
 }
 
