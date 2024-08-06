@@ -30,20 +30,6 @@ async function sendMessage() {
     }
 }
 
-async function onChatComplete() {
-    try {
-        await fetch('/api/update-stamp', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mission: 'talk_cleared_stamp' })
-        });
-        console.log('Talk mission completed.');
-    } catch (error) {
-        console.error('Error updating talk stamp:', error);
-    }
-}
-
-
 // 메시지 추가 함수
 function addMessage(text, type) {
     var chatBox = document.getElementById("chatBox");
@@ -56,9 +42,6 @@ function addMessage(text, type) {
 
 // 엔터 키 이벤트 리스너 설정
 document.addEventListener('DOMContentLoaded', function() {
-    // 스탬프 업데이트
-    onChatComplete();
-
     var userInput = document.getElementById("userInput");
     userInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter' && !event.shiftKey) {

@@ -75,10 +75,7 @@ body {
     height: 7rem;
     border-radius: 100%;
     position: absolute;
-    /* top: 27rem;
-    right: 40rem; */
-    top: 40%;
-    right: 60%;
+    top: 27rem;
     background-color: #FFFFFF;
     opacity: 40%;
     z-index: -19;
