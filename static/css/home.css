@@ -113,7 +113,7 @@ body {
 #record {
     margin-right: 2.2rem;
     cursor: pointer;
-    width: 2.5rem;
+    width: 2.9rem;
     height: 2.8rem;
 }
 
@@ -178,19 +178,19 @@ body {
     width: 8.5vw; 
     height: 23vh; 
     cursor: pointer;
-    transition: transform 0.5s ease;
+    /* transition: transform 0.5s ease; */
 }
 
 /* 이름 부를 때 애니메이션 정의 */
 @keyframes moveUp {
     0% {
-      top: 50%;
+      top: 0rem;
     }
     50% {
-      top: 40%;
+      top: -10rem;
     }
     100% {
-      top: 50%;
+      top: 0rem;
     }
 }
 
@@ -206,13 +206,13 @@ body {
 }
 @keyframes moveRight {
     0% {
-      left: 50%;
+      left: 0rem;
     }
     50% {
-      left: 60%;
+      left: 10rem;
     }
     100% {
-        left: 50%;
+        left: 0rem;
     }
 }
 
@@ -224,13 +224,13 @@ body {
 
 @keyframes moveLeft {
     0% {
-        left: 50%;
+        left: 0rem;
       }
     50% {
-        left: 40%;
+        left: -10rem;
     }
     100% {
-        left: 50%;
+        left: 0rem;
     }
 }
 

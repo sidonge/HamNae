@@ -27,7 +27,8 @@ function hideText() {
 
 function stopText() {
   var blinkText = document.querySelector('.popupBlink');
-  blinkText.innerText = "이름 설정이 끝났으면 record 버튼을 눌러 자유롭게 말해보세요!";
+  blinkText.innerHTML = "이름 설정이 끝났으면 record 버튼을 눌러 자유롭게 말해보세요. <br> 창을 닫은 후에도 녹음 버튼을 누르고 '대화하자', '명상하자', '산책하자'라고 말하면 페이지가 이동된다는 사실!";
+  blinkText.style.textAlign = "center"; 
 }
 
 function startText() {
@@ -97,11 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
           modelViewer.classList.add('move-right');
         } else if (transcript === '왼쪽') {
           modelViewer.classList.add('move-left');
+        } else if (transcript == userName) {
+          modelViewer.classList.add('move-up');
         }
 
         setTimeout(() => {
           modelViewer.classList.remove('move-up','move-right', 'move-left');
-        }, 3000);
+        }, 7000);
 
         // "대화하자"를 말했을 때 /chat 경로로 이동
         if (transcript === '대화하자') {
@@ -222,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
     resultElem.textContent = '음성 인식 기능을 지원하지 않습니다.';
   }
 });
+  
+
+
   
 
 
@@ -687,3 +693,5 @@ function completeMission(mission) {
       .catch(error => console.error('Network Error:', error));
   }
 });
+
+

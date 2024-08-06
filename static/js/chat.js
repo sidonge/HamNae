@@ -198,8 +198,10 @@ function onChatComplete() {
     localStorage.setItem('talkCompleted', 'true');
 }
 
-// 창 닫기 기능
-function closeEvent() {
-    // document.getElementsByClassName("chatPage")[0].style.display = "none";
+
+function togglePopup() {
+    // 로컬 스토리지에 팝업 숨김 플래그 설정
+    localStorage.setItem('hidePopup', 'true');
+    // 홈 페이지로 리다이렉트
     window.location.href = "/home";
 }
