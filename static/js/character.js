@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundModel = document.getElementById('backgroundModel');
     const hamModel = document.getElementById('hamModel');
     const leftArrow = document.getElementById('leftArrow');
-    const rightArrow = document.getElementById('rightArrow');
+    const rightArrow = document.getElementById('rightArrow');햐
     const characterName = document.getElementById('characterName');
     const characterDescription = document.getElementById('characterDescription');
     const hamgingOption = document.getElementById('hamgingOption');
@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmPurchase = document.getElementById('confirmPurchase');
     const cancelPurchase = document.getElementById('cancelPurchase');
     const purchaseSound = document.getElementById('purchaseSound');
-    const purchaseButton = document.getElementById('purchaseButton');
     const selectSound = document.getElementById('selectSound');
+    const characterSound = document.getElementById('characterSound')
+    const soundIcon = document.getElementById('soundIcon')
 
 
     const characters = [
@@ -110,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCharacter(); // 캐릭터 상태 업데이트
     }
     
+    // 배경 사운드
+    soundIcon.addEventListener('click', () => {
+        characterSound.play();
+    });
 
     hamgingOption.addEventListener('click', () => {
         currentIndex = 0;
@@ -165,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 시점 조정
-    backgroundModel.style.transform = 'translateX(5rem) rotateX(3deg) rotateY(15deg) scale(1.4)';
+    backgroundModel.style.transform = 'translateX(5rem) scale(1.4)';
 
     updateRotation();
     updateCharacter();
