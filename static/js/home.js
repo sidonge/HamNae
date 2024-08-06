@@ -356,7 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let rotateX = 90;
   let rotateY = -270;
   let zoomLevel = 5;
-  let zoomLevel = 5;
 
   const minRotateY = -300;
   const maxRotateY = -240;
@@ -443,15 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rabbitTalk2 = document.getElementById("rabbitTalk2");
   const blinkText = document.querySelector(".blink");
   const homeSound = document.getElementById("homeSound");
-  const homeSound = document.getElementById("homeSound");
   let isTalkVisible = false;
-
-  // 캐릭터 클릭 시 홈 배경음악 재생
-  rabbitModel.addEventListener("click", () => {
-    homeSound.play().catch(error => {
-      console.error("오디오 재생 중 에러 발생:", error);
-    });
-  });
 
   // 캐릭터 클릭 시 홈 배경음악 재생
   rabbitModel.addEventListener("click", () => {
@@ -485,7 +476,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 채팅으로 이동
   document.querySelector(".talk").addEventListener("click", () => {
-  document.querySelector(".talk").addEventListener("click", () => {
     window.location.href = "/chat";
   });
 
@@ -511,26 +501,6 @@ document.getElementById('cleanContainer').addEventListener('click', function(eve
       document.getElementById('cleanUpload').click();
   }
 });
-
-document.getElementById('washContainer').addEventListener('click', function(event) {
-  if (event.target.id !== 'washUpload') {
-      document.getElementById('washUpload').click();
-  }
-});
-
-document.getElementById('pillsContainer').addEventListener('click', function(event) {
-  if (event.target.id !== 'pillsUpload') {
-      document.getElementById('pillsUpload').click();
-  }
-});
-
-document.getElementById('bedContainer').addEventListener('click', function(event) {
-  if (event.target.id !== 'bedUpload') {
-      document.getElementById('bedUpload').click();
-  }
-});
-
-
 
 // 가구 누르도록 블링크 메세지
 document.addEventListener('DOMContentLoaded', function() {
@@ -697,46 +667,23 @@ document.addEventListener('DOMContentLoaded', function() {
     completeMission('wash');
   });
 
-  function completeMission(mission) {
-    // 서버에 미션 완료를 알림
-    fetch('/update-stamp', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ mission: mission })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.message) {
-        alert('미션 완료!');
-        localStorage.setItem(`${mission}_cleared`, "true");
-        updateStampImage(mission);
-      } else {
-        alert('미션 완료 처리 중 오류가 발생했습니다.');
-      }
-    })
-    .catch(error => {
-      console.error('미션 완료 처리 중 오류 발생:', error);
-    });
-  }
-
-  function updateStampImage(mission) {
-    const stampMap = {
-      pills: 'pills_cleared_stamp',
-      wash: 'wash_cleared_stamp'
-    };
-
-    const stampId = stampMap[mission];
-    if (stampId) {
-      const stampElement = document.getElementById(stampId);
-      if (stampElement) {
-        stampElement.src = '/path_to_cleared_stamp_image.png';
-      } else {
-        console.error("Stamp element not found:", stampId);
-      }
-    } else {
-      console.error("Invalid mission:", mission);
-    }
+  // 미션 완료 함수
+function completeMission(mission) {
+  fetch(`/complete_mission?mission=${mission}`, { method: 'POST' })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              // 미션 완료 이미지 표시
+              let stampElement = document.getElementById(`${mission}_cleared_stamp`);
+              if (stampElement) {
+                  stampElement.style.display = 'block';
+              } else {
+                  console.error(`Element with id ${mission}_cleared_stamp not found`);
+              }
+          } else {
+              console.error(`Error: ${data.message}`);
+          }
+      })
+      .catch(error => console.error('Network Error:', error));
   }
 });
