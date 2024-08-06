@@ -111,7 +111,6 @@ model-viewer {
     width: 23%;
     height: 23%;
     bottom: 25%;
-    cursor: pointer;
 }
 
 /* nav */
@@ -181,12 +180,78 @@ nav {
     50% { opacity: 0; }
 }
 
-.homeModel {
-    width: 30rem;
-    height: 15rem;
-    position: absolute;
+.homeIcon {
+    position: fixed;
     top: 30%;
     left: 45%;
-    opacity: 0%;
+    width: 32rem;
+    height: 15rem;
     cursor: pointer;
+    z-index: 3; /* 햄스터 모델보다 위에 표시 */
+}
+
+.group {
+    position: absolute;
+    bottom: 35%; 
+    left: 48%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    display: none; 
+}
+
+#backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 검은색, 투명도 50% */
+    z-index: 1; /* 햄스터 모델과 배경 사이 값으로 변경 */
+    display: none; /* 초기에는 숨김 상태 */
+}
+
+.ment {
+    margin-bottom: 3rem;
+    font-size: 1.7rem;
+    font-family: "Pretendard-Bold";
+    text-align: center;
+    color: #71594E;
+
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16rem;
+
+    width: 15rem;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 10px 20px; 
+    border-radius: 3rem; 
+}
+
+.hamster {
+    position: absolute;
+    bottom: 25%; 
+    left: 37%;
+}
+
+.hamster img {
+    width: 10rem; 
+    z-index: 100;
+}
+
+/* 햄스터 이동 애니메이션 */
+@keyframes moveHamster {
+    0% {
+        left: 37%; 
+        bottom: 25%;
+    }
+    100% {
+        left: 48%;
+        bottom: 38%;
+    }
+}
+
+.group {
+    animation: moveHamster 3s linear infinite; /* 애니메이션 적용 */
 }

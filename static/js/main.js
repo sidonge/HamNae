@@ -20,19 +20,38 @@
 //     updateCharacter();
 // });
 
-const hamModel = document.getElementById("hamModel")
-const mainSound = document.getElementById("mainSound")
+const hamModel = document.getElementById("hamModel");
+const mainSound = document.getElementById("mainSound");
 
-hamModel.addEventListener('click', () => {
-    mainSound.play();
+const homeIcon = document.querySelector(".homeIcon");
+const group = document.querySelector(".group");
+const backgroundOverlay = document.getElementById("backgroundOverlay");
+
+hamModel.addEventListener("click", () => {
+  mainSound.play();
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
-    const blinkText = document.querySelector(".blink");
-    isTalkVisible = !isTalkVisible;
-    if (isTalkVisible) {
-      
-      blinkText.style.display = "none";
-    } 
+  const blinkText = document.querySelector(".blink");
+  isTalkVisible = !isTalkVisible;
+  if (isTalkVisible) {
+    blinkText.style.display = "none";
+  }
 });
+
+// 집 클릭 이벤트
+if (homeIcon && group && hamModel && backgroundOverlay) {
+  // backgroundOverlay 변수 확인 추가
+  homeIcon.addEventListener("click", () => {
+    hamModel.style.display = "none";
+    group.style.display = "flex";
+    backgroundOverlay.style.display = "block";
+    group.style.animation = "moveHamster 3s linear infinite";
+
+    setTimeout(() => {
+      window.location.href = "/home";
+    }, 3000);
+  });
+} else {
+  console.error("필요한 요소를 찾을 수 없습니다.");
+}

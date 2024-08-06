@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>햄내_main</title>
-    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
+    <link
+      rel="icon"
+      href="{{ url_for('static', path='image/fav.ico') }}"
+      type="image/x-icon"
+    />
 
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
     <link
@@ -92,9 +96,20 @@
       </section>
     </div>
     <div class="blink">동물을 누르면 소리가 나요.</div>
-
     <div class="homeblink">집을 눌러 보세요.</div>
-    <div class="homeModel"></div>
+
+    <div class="homeIcon"></div>
+
+    <div class="group">
+        <div id="backgroundOverlay"></div>
+        <div class="hamster">
+        <div class="ment">집으로 가자!</div>
+        <img src="/static/image/walk_ham.png" alt="" />
+        </div>
+        </div>
+      </div>
+    </div>
+
     <script src="{{ url_for('static', path='js/main.js') }}" defer></script>
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
   </body>

@@ -132,7 +132,7 @@ body {
 
 .name, .userid, .email, .tel, .password, .password2 {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
     font-family: "Pretendard-Medium";
     font-size: 0.9rem;
 }
@@ -140,7 +140,7 @@ body {
 .email::placeholder, .tel::placeholder, .password::placeholder, .password2::placeholder {
     font-family: "Pretendard-Light";
     font-size: 0.8rem;
-  }
+}
 
 input[type="text"],
 input[type="email"],
@@ -151,14 +151,17 @@ input[type="password"] {
     border: 1px solid #E5E5E5;
     border-radius: 7px;
     box-sizing: border-box;
+    font-family: "Pretendard-Medium";
+    font-size: 0.9rem;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="password"]:focus {
-  outline: 1px solid #8D8C8E;
   border: .5px solid #8D8C8E;
+  font-family: "Pretendard-Medium";
+  font-size: 0.9rem;
 }
 
 button {

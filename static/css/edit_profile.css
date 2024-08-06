@@ -138,28 +138,31 @@ body {
 }
 
 .email::placeholder, .tel::placeholder, .password::placeholder, .password2::placeholder {
-    font-family: "Pretendard-Light";
-    font-size: 0.8rem;
+    font-family: "Pretendard-Medium";
+    font-size: 0.9rem;
   }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"] {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #E5E5E5;
-    border-radius: 7px;
-    box-sizing: border-box;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="password"]:focus {
-  outline: 1px solid #8D8C8E;
-  border: .5px solid #8D8C8E;
-}
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"] {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #E5E5E5;
+      border-radius: 7px;
+      box-sizing: border-box;
+      font-family: "Pretendard-Medium";
+      font-size: 0.9rem;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="password"]:focus {
+    border: .5px solid #8D8C8E;
+    font-family: "Pretendard-Medium";
+    font-size: 0.9rem;
+  }
 
 button {
     background-color: #AB936B;
@@ -180,5 +183,4 @@ button {
 
 button:hover {
     background-color: #71594E;
-    cursor: pointer;
 }
