@@ -748,6 +748,10 @@ model-viewer#rabbitModel {
     font-family: "Pretendard-Medium";
     font-size: 0.7rem;
     border: none;
+    color: white;
+    font-family: "Pretendard-Medium";
+    font-size: 0.7rem;
+    border: none;
 }
 
 .overlay {
