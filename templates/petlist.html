@@ -69,21 +69,23 @@
 
         <div class="box2">
             {% for pet in pets[2:3] %}
-            <div class="minBox">
-                <div class="charBox">
-                    <img id="hamster" src="{{ url_for('static', path='image/' + pet.pet_image) }}" alt="">
+            <div class="container">
+                <div class="minBox">
+                    <div class="charBox">
+                        <img id="hamster" src="{{ url_for('static', path='image/' + pet.pet_image) }}" alt="">
+                    </div>
+                    <div class="TextBox">
+                        <div class="nameBox">
+                            <div class="nameBoxName">{{ pet.name }}</div>
+                            <p class="heartIcon">
+                                <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
+                            </p>
+                        </div>
+                        <div class="descriptionBox">
+                            <div class="descriptionBoxText">{{ pet.mbti }}<br>{{ pet.short_description }}</div>                        
+                        </div>
+                    </div>   
                 </div>
-                <div class="TextBox">
-                    <div class="nameBox">
-                        <div class="nameBoxName">{{ pet.name }}</div>
-                        <p class="heartIcon">
-                            <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
-                        </p>
-                    </div>
-                    <div class="descriptionBox">
-                        <div class="descriptionBoxText">{{ pet.mbti }}<br>{{ pet.short_description }}</div>                        
-                    </div>
-                </div>   
         </div>
         {% endfor %}
                 <div class="container">
