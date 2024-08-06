@@ -118,8 +118,8 @@ model-viewer {
 }
 
 #hamModel {
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 30%;
     bottom: 10%;
     
 }
@@ -249,7 +249,7 @@ nav {
 
 .characterBackground {
     border: 3px solid #D2BEA1;
-    border-radius: 50px;
+    border-radius: 30px;
     background-color: #FCF7E5;
 
     width: 16rem;
@@ -327,8 +327,8 @@ nav {
     text-align: center;
 
     position: relative;
-    bottom: 14rem;
-    left: 11rem;
+    top: 10rem;
+    right: 14rem;
 
     z-index: 20;
 }
