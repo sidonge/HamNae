@@ -72,13 +72,19 @@
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
+    <link
+      rel="icon"
+      href="{{ url_for('static', path='image/fav.ico') }}"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    home 팝업화면
+    
     <div class="popupWrap">
       <div class="popupBody">
-        <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
+        <div class="closeIcon" onclick="togglePopup()">
+          <img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}" />
+        </div>
       </div>
       <!-- 3D model -->
       <!-- <div class="popupModel">
@@ -89,9 +95,13 @@
           ar
         ></model-viewer>
       </div> -->
-      <div class="popupModel"><img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}"></div>
-      <div class="bottomCircle"></div>
-      <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
+      <div class="popupModel">
+        <img id="rabbitModel2" src="{{ url_for('static', path='image/ham_pngver.png') }}">
+        <div class="bottomCircle"></div>
+      </div>
+      <div class="popupBlink">
+        마이크를 눌러 귀여운 친구의 이름을 정해주세요.
+      </div>
 
       <div class="recording">
         <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
@@ -281,6 +291,7 @@
         src="{{ url_for('static', path='image/washTalk.png') }}"
       />
 
+    </div>
     <div class="talk">
       <img
         id="talk_cleared_stamp"
@@ -338,7 +349,7 @@
       src="{{ url_for('static', path='image/pillsTalk.png') }}"
     />
   </div>
-<div class="wash" id="washContainer">
+<div class="wash" id="washContainer" >
       <img
         id="wash_cleared_stamp"
         class="washTalk talk-image"
@@ -404,23 +415,21 @@
           });
     
           const responseText = await response.text();
-          if (response.ok) {
-            if (responseText === "Mission completed successfully") {
-              document.getElementById(missionName + '_cleared_stamp').style.display = 'block';
-              alert('미션이 성공적으로 완료되었습니다!');
+            if (response.ok) {
+                if (responseText === "Mission completed successfully") {
+                    alert('미션이 성공적으로 완료되었습니다!');
+                } else {
+                    alert('미션 완료 중 오류가 발생했습니다.');
+                }
             } else {
-              alert('미션 완료 중 오류가 발생했습니다.');
+                alert(`서버 응답이 유효하지 않습니다: ${responseText}`);
             }
-          } else {
-            alert(`서버 응답이 유효하지 않습니다: ${responseText}`);
-          }
         } catch (error) {
-          console.error('Error:', error);
-          alert('미션 완료 중 오류가 발생했습니다.');
-        }
+            console.error('Error:', error);
+            alert('미션 완료 중 오류가 발생했습니다.');
       }
     }
-    
+  }
     document.addEventListener('DOMContentLoaded', function() {
   const showerPopup = document.querySelector('.showerPopup');
   const showerHam = document.querySelectorAll('.showerHam');
@@ -523,6 +532,6 @@ document.getElementById('bedContainer').addEventListener('click', function() {
         }, 1000); // 각 초마다 반복
     }
     </script>
-    
+
   </body>
 </html>

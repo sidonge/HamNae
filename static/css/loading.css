@@ -48,6 +48,17 @@ html, body {
 }
 
 /* loading page */
+
+nav {
+    margin: 2rem 0 0 3rem;
+    position: absolute;
+}
+
+.logo {
+    width: 4rem;
+    position: absolute;
+    left: -1rem;
+}
 .mainText {
     font-family: "Pretendard-Medium";
     color: #71594E;
@@ -233,22 +244,7 @@ html, body {
     font-size: 1.3rem;
 }
 
-/* .startButton {
-    width: 13rem;
-    height: 4rem;
-    background-color: #F5EED1;
-    border-radius: 15px;
-    border: solid 3.5px #AB936B;
-    z-index: 20; 
-    position: absolute;
-    bottom: 5rem;
-    left: 55rem;
 
-    align-items: center;
-
-    transform: translate(50%, 50%);
-    transition: transform 0.3s ease;
-} */
 
 .startButton {
     width: 13rem;

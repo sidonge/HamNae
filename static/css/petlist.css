@@ -67,6 +67,7 @@ h3, h2 {
 
 .petlist_title p {
     color: #5C5B5E;
+    color: #5C5B5E;
     font-weight: 700;
     margin: 0.34rem 0.5rem 0.54rem 0.16rem;
     word-spacing: 0.16rem;
@@ -162,7 +163,7 @@ h3, h2 {
 }
 
 #blurBox {
-    filter: blur(15px);
+    filter: blur(5px);
 }
 
 .lock {

@@ -221,8 +221,12 @@ padding: 0.7rem 4.5rem;
   font-weight: 600;
     font-size: 1.4rem;
     word-spacing: 0.16rem;
+    cursor: pointer;
 }
-
+#profile  button:hover {
+    background-color: #71594E;
+    color: #ffffff;
+}
 
 
 
