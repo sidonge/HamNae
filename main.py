@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
-from services import quest, home, character, walkpage, petlist, chat, map
+from services import quest, home, character, walkpage, petlist, chat, map, mainpage
 from user import mypage, petlist
 from api import voiceRecording
 
@@ -27,7 +27,7 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(login.router, prefix="/auth")
 app.include_router(register.router, prefix="/auth")
 
-# app.include_router(mainpage.router)
+app.include_router(mainpage.router)
 app.include_router(map.router)
 app.include_router(home.router)
 app.include_router(character.router)
