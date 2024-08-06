@@ -10,7 +10,6 @@ from services import quest, home, character, walkpage, chat, map, mainpage
 from user import mypage, petlist
 from api import voiceRecording
 
-from user import mypage
 app = FastAPI()
 
 app.add_middleware(
@@ -37,7 +36,7 @@ app.include_router(quest.router)
 app.include_router(walkpage.router)
 app.include_router(petlist.router)
 app.include_router(mypage.router)
-# app.include_router(chat.router)
+app.include_router(chat.router)
 
 
 @app.get("/", response_class=HTMLResponse)

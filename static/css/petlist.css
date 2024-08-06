@@ -66,6 +66,7 @@ h3, h2 {
 }
 
 .petlist_title p {
+    color: #5C5B5E;
     font-weight: 700;
     margin: 0.34rem 0.5rem 0.54rem 0.16rem;
     word-spacing: 0.16rem;
@@ -80,11 +81,6 @@ h3, h2 {
     letter-spacing: 0.07rem;
 }
 
-.topLine {
-    color: #cbcbcb;
-    width:95%;
-}
-
 .minBox {
     width: 39rem;
     height: 14rem;
@@ -92,7 +88,7 @@ h3, h2 {
     /* opacity: 53%; */
     border-radius: 10px;
     display: flex;
-    margin: 0 1rem;
+    margin:2.5rem;
     z-index: 0;
     background-color: rgba(210, 190, 161, 0.53);
 }
@@ -165,7 +161,7 @@ h3, h2 {
     cursor: pointer;
 }
 
-#blurBox{
+#blurBox {
     filter: blur(15px);
 }
 

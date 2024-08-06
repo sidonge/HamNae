@@ -180,4 +180,5 @@ button {
 
 button:hover {
     background-color: #71594E;
+    cursor: pointer;
 }

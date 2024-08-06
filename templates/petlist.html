@@ -34,7 +34,7 @@
                         <div class="nameBox">
                             <div class="nameBoxName">{{ pet.name }}</div>
                             <p class="heartIcon">
-                                <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
+                                <img src="{{ url_for('static', path='image/heartUnion.png')}}" alt="">
                             </p>
                         </div>
                         <div class="descriptionBox">
@@ -78,7 +78,7 @@
                         <div class="nameBox">
                             <div class="nameBoxName">{{ pet.name }}</div>
                             <p class="heartIcon">
-                                <img src="{{ url_for('static', path='image/heart.png')}}" alt="">
+                                <img src="{{ url_for('static', path='image/heartUnion.png')}}" alt="">
                             </p>
                         </div>
                         <div class="descriptionBox">
@@ -86,8 +86,30 @@
                         </div>
                     </div>   
                 </div>
-        </div>
-        {% endfor %}
+            </div>
+            {% else %}
+            <div class="container">
+                <div class="minBox" id="blurBox">
+                    <div class="charBox">
+                        <img id="hamster" src="{{ url_for('static', path='image/토끼.png')}}" alt="">
+                    </div>
+                    <div class="TextBox">
+                        <div class="nameBox">
+                            <div class="nameBoxName">교수님</div>
+                            <p class="heartIcon">
+                                <img src="{{ url_for('static', path='image/heartUnion2.png')}}" alt="">
+                            </p>
+                        </div>
+                        <div class="descriptionBox">
+                            <div class="descriptionBoxText">ESFP<br>소심하지만 상냥하다.</div>                        
+                        </div>
+                    </div>   
+                </div>
+                <div class="lock">
+                    <img src="{{ url_for('static', path='image/Component 48.png')}}" alt="">
+                </div>
+            </div>
+            {% endfor %}
                 <div class="container">
                     <div class="minBox" id="blurBox">
                         <div class="charBox">
