@@ -86,7 +86,7 @@ async def get_character_page(request: Request, db: Session = Depends(get_db)):
         selected_pet_name = None
         selected_pet_description = None
         selected_pet_model_path = None
-            pet_models[pet.pet_id] = pet.model_path
+        pet_models[pet.pet_id] = pet.model_path
 
         # 각 펫의 설명 추가
         pet_descriptions[pet.pet_id] = pet.description
@@ -129,7 +129,7 @@ async def get_character_page(request: Request, db: Session = Depends(get_db)):
         "pet_descriptions": pet_descriptions,
         "selected_pet_name": selected_pet_name,
         "selected_pet_description": selected_pet_description,
-        "selected_pet_model_path": selected_pet_model_path
+        "selected_pet_model_path": selected_pet_model_path,
         "pet_images": pet_images,
         "pet_models": pet_models,
         "pet_descriptions": pet_descriptions,
