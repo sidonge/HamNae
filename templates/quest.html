@@ -18,7 +18,7 @@
         <div class="quest_title">
             <p>마이페이지 > 퀘스트 달성도</p>
             <div>
-                <h3><span></span>님의 퀘스트 달성도</h3>
+                <h3><span>{{ user_info.name }}</span>님의 퀘스트 달성도</h3>
             </div>
             <img src="{{ url_for('static', path='image/quest_line.png') }}" alt="Quest Line">
         </div>
@@ -27,43 +27,43 @@
         <div>
             <div id="quest_stamps">
                 <!-- 각 미션에 대한 스탬프 카드 -->
-                <div class="stamp_card">
+                <div class="stamp_card" id="water">
                     <img src="{{ url_for('static', path='image/water.png') }}" alt="물 마시기">
                     <h3>물 마시기</h3>
                     <img id="water_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Water Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="walk">
                     <img src="{{ url_for('static', path='image/sprout.png') }}" alt="산책하기">
                     <h3>산책하기</h3>
-                    <img id="sprout_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Sprout Cleared Stamp">
+                    <img id="walk_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Sprout Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="clean">
                     <img src="{{ url_for('static', path='image/broomstick.png') }}" alt="방청소">
                     <h3>방청소</h3>
                     <img id="clean_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Clean Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="cooking">
                     <img src="{{ url_for('static', path='image/pot.png') }}" alt="요리하기">
                     <h3>요리하기</h3>
                     <img id="cooking_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Cooking Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="pills">
                     <img src="{{ url_for('static', path='image/pills.png') }}" alt="약 먹기">
                     <h3>약 먹기</h3>
                     <img id="pills_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Pills Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="wash">
                     <img src="{{ url_for('static', path='image/bath.png') }}" alt="씻기">
                     <h3>씻기</h3>
                     <img id="wash_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Wash Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="talk">
                     <img src="{{ url_for('static', path='image/talk.png') }}" alt="대화하기" class="talk-image">
                     <h3>대화하기</h3>
                     <input type="file" id="talkUpload" style="display:none;">
                     <img id="talk_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Talk Cleared Stamp">
                 </div>
-                <div class="stamp_card">
+                <div class="stamp_card" id="bed">
                     <img src="{{ url_for('static', path='image/meditation.png') }}" alt="명상하기">
                     <h3>명상하기</h3>
                     <img id="bed_cleared_stamp" src="{{ url_for('static', path='image/cleared_stamp.png') }}" style="display: none;" alt="Bed Cleared Stamp">
@@ -72,13 +72,13 @@
             <div id="point_card">
                 <div>
                     <img src="{{ url_for('static', path='image/coin.png') }}" alt="포인트">
-                    <h2>포인트 <span id="xpDisplay">{{ user_xp }}XP</span></h2>
+                    <h2>포인트 <span id="xpDisplay">1500XP</span></h2>
                     <button type="button" id="rewardButton">수령</button>
-                    <p>수령까지 {{ remaining_count }}개의 도장이 남았어요.</p>
+                    <p>수령까지 8개의 도장이 남았어요.</p>
                 </div>
             </div>
         </div>
     </section>
-    <script src="{{ url_for('static', path='js/quest.js') }}"></script>
+    <script src="{{ url_for('static', path='js/quest.js') }}" defer></script>
 </body>
 </html>

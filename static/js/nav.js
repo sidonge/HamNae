@@ -25,8 +25,18 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = '/home';
     });
 
-    walk.addEventListener("click", function() {
-        localStorage.setItem('walkCompleted', 'true');
+    walk.addEventListener("click", async function() {
+        // 최초 클릭 시 미션 완료 요청
+        if (!localStorage.getItem('walkCompleted')) {
+            try {
+                await completeMission('walk'); // 'walk' 미션을 완료하는 요청을 서버로 전송
+                localStorage.setItem('walkCompleted', 'true'); // 미션 완료 상태 저장
+            } catch (error) {
+                console.error('Error:', error);
+                alert('미션 완료 중 오류가 발생했습니다.');
+            }
+        }
+        // 이동 페이지로 리다이렉트
         window.location.href = '/walkpage';
     });
 
