@@ -1,240 +1,67 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // nav
-    const backIcon = document.getElementById("backIcon");
-    backIcon.addEventListener("click", () => {
-        window.location.href = '/home';
-    });
-
-    // 미션 이름 : 스탬프 요소 ID 매핑
-    const stampMap = {
-        'water': 'water_cleared_stamp',
-        'clean': 'clean_cleared_stamp',
-        'cooking': 'cooking_cleared_stamp',
-        'wash': 'wash_cleared_stamp',
-        'bed': 'bed_cleared_stamp',
-        'talk': 'talk_cleared_stamp',
-        'walk': 'sprout_cleared_stamp',
-        'pills': 'pills_cleared_stamp',
-    };
-
-    // XP 및 레벨 초기화
-    let currentXP = parseInt(localStorage.getItem('currentXP')) || 0;
-    const XP_PER_QUEST = 10;
-
-    // 스탬프 이미지 업데이트 함수
-    function updateStampImage(mission) {
-        const stampId = stampMap[mission];
-        if (stampId) {
-            const stampElement = document.getElementById(stampId);
-            if (stampElement) {
-                stampElement.style.display = 'block';
-            } else {
-                console.error('Stamp element not found:', stampId);
-            }
-        } else {
-            console.error('Invalid mission:', mission);
-        }
-    }
-
-    // XP 증가 함수
-    function increaseXP(amount) {
-        currentXP += amount;
-        localStorage.setItem('currentXP', currentXP);
-    }
-
-    // talk 이미지 및 파일 업로드 설정
-    const talkImages = document.querySelectorAll('.talk-image');
-    talkImages.forEach((img) => {
-        const uploadInput = img.nextElementSibling;
-
-        img.addEventListener('click', () => {
-            if (uploadInput) {
-                uploadInput.click();
-            }
-        });
-
-        if (uploadInput) {
-            uploadInput.addEventListener('change', (event) => {
-                const file = event.target.files[0];
-                if (file) {
-                    const formData = new FormData();
-                    formData.append('file', file);
-
-                    fetch('/upload', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('미션 성공! 퀘스트 달성도를 확인해 보세요.');
-                            updateStampImage(uploadInput.id.replace('Upload', ''));
-                        } else {
-                            alert('올바르지 않은 사진이에요. 다시 시도해 주세요.');
+document.addEventListener('DOMContentLoaded', (event) => {
+    async function fetchUserQuestsStatus() {
+        try {
+            const response = await fetch('/user_quests_status');
+            if (response.ok) {
+                const quests = await response.json();
+                quests.forEach(quest => {
+                    // ID를 quest.name으로 설정하여 HTML 요소 찾기
+                    const questElement = document.getElementById(quest.id);
+                    const stamp = document.getElementById(`${quest.id}_cleared_stamp`);
+                    if (quest.completed) {
+                        if (questElement) {
+                            questElement.style.display = 'block';
                         }
-                    })
-                    .catch(error => {
-                        console.error('업로드 중 오류가 생겼어요:', error);
-                        alert('업로드 중 오류가 생겼어요. 다시 시도해 주세요.');
-                    });
-                }
-            });
-        }
-    });
-
-    // 팝업에서 기분 선택 후 sendText 버튼 클릭 시 스탬프 업데이트
-    const sendTextButton = document.getElementById('sendTextButton');
-    if (sendTextButton) {
-        sendTextButton.addEventListener('click', () => {
-            const moodSelected = true; // 실제로 기분 선택 여부를 체크해야 함
-            if (moodSelected) {
-                updateStampImage('wash');
-                increaseXP(XP_PER_QUEST);
-            }
-        });
-    }
-
-    // stop 버튼 클릭 시 스탬프 업데이트
-    const stopButton = document.getElementById('stop');
-    if (stopButton) {
-        stopButton.addEventListener('click', () => {
-            updateStampImage('pills');
-            increaseXP(XP_PER_QUEST);
-        });
-    }
-
-    // 타이머 종료 시 스탬프 업데이트
-    function timerEnded() {
-        updateStampImage('bed');
-        increaseXP(XP_PER_QUEST);
-    }
-
-    // 로컬 스토리지에서 완료된 미션 상태 체크 및 업데이트
-    for (const mission in stampMap) {
-        if (localStorage.getItem(`${mission}Completed`) === 'true') {
-            updateStampImage(mission);
-        }
-    }
-
-    // 서버로부터 완료된 미션 상태 가져오기
-    fetch('/quest_status')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.status) {
-                for (const [mission, cleared] of Object.entries(data.status)) {
-                    if (cleared === "true") {
-                        localStorage.setItem(`${mission}Completed`, 'true');
-                        updateStampImage(mission);
+                        if (stamp) {
+                            stamp.style.display = 'block';
+                        }
                     }
-                }
+                });
+            } else {
+                console.error('Failed to fetch quests status');
             }
-        })
-        .catch(error => {
-            console.error('Error fetching quest status:', error);
-        });
-
-    updateXPDisplay();
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-// 미션 이름 : 스탬프 요소 ID 매핑
-const stampMap = {
-    'water': 'water_cleared_stamp',
-    'clean': 'clean_cleared_stamp',
-    'cooking': 'cooking_cleared_stamp',
-    'wash': 'wash_cleared_stamp',
-    'bed': 'bed_cleared_stamp',
-    'talk': 'talk_cleared_stamp',
-    'walk': 'sprout_cleared_stamp',
-    'pills': 'pills_cleared_stamp',
-};
-
-// 스탬프 이미지 업데이트 함수
-function updateStampImage(mission) {
-    const stampId = stampMap[mission];
-    if (stampId) {
-        const stampElement = document.getElementById(stampId);
-        if (stampElement) {
-            stampElement.style.display = 'block';
-        } else {
-            console.error('Stamp element not found:', stampId);
+        } catch (error) {
+            console.error('Error:', error);
         }
-    } else {
-        console.error('Invalid mission:', mission);
     }
-}
 
-// talk 이미지 및 파일 업로드 설정
-const talkImages = document.querySelectorAll('.talk-image');
-talkImages.forEach((img) => {
-    const uploadInput = img.nextElementSibling;
-    
-    img.addEventListener('click', () => {
-        if (uploadInput) {
-            uploadInput.click();
-        }
-    });
+    fetchUserQuestsStatus();
 
-    if (uploadInput) {
-        uploadInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', async (event) => {
+            const fileInput = event.target;
+            const mission = fileInput.id.replace('Upload', '');
+            const file = fileInput.files[0];
+
             if (file) {
                 const formData = new FormData();
+                formData.append('mission', mission);
                 formData.append('file', file);
 
-                fetch('/upload', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('미션 성공! 퀘스트 달성도를 확인해 보세요.');
-                        updateStampImage(uploadInput.id.replace('Upload', ''));
+                try {
+                    const response = await fetch('/complete_mission', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            const stamp = document.getElementById(`${mission}_cleared_stamp`);
+                            if (stamp) {
+                                stamp.style.display = 'block';
+                            }
+                        } else {
+                            alert('Mission completion failed.');
+                        }
                     } else {
-                        alert('올바르지 않은 사진이에요. 다시 시도해 주세요.');
+                        alert('Server response was not valid.');
                     }
-                })
-                .catch(error => {
-                    console.error('업로드 중 오류가 생겼어요:', error);
-                    alert('업로드 중 오류가 생겼어요. 다시 시도해 주세요.');
-                });
-            }
-        });
-    }
-});
-
-// 로컬 스토리지에서 완료된 미션 상태 체크 및 업데이트
-for (const mission in stampMap) {
-    if (localStorage.getItem(`${mission}Completed`) === 'true') {
-        updateStampImage(mission);
-    }
-}
-
-// 서버로부터 완료된 미션 상태 가져오기
-fetch('/quest_status')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.status) {
-            for (const [mission, cleared] of Object.entries(data.status)) {
-                if (cleared === "true") {
-                    updateStampImage(mission);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error completing mission.');
                 }
             }
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching quest status:', error);
+        });
     });
 });

@@ -163,7 +163,7 @@ h3, h2 {
     letter-spacing: -0.05rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
+#water_cleared_stamp, #walk_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     display: none;
 }
 
@@ -210,7 +210,7 @@ h3, h2 {
     word-spacing: 0.04rem;
 }
 
-#water_cleared_stamp, #sprout_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
+#water_cleared_stamp, #walk_cleared_stamp, #clean_cleared_stamp, #cooking_cleared_stamp, #pills_cleared_stamp, #wash_cleared_stamp, #talk_cleared_stamp, #bed_cleared_stamp {
     position: relative;
     bottom: 14.5rem;
     right: 2rem;

@@ -51,14 +51,14 @@ def insert_default_pets(session):
 def insert_default_quests(session):
     # 기본 퀘스트 데이터 정의
     quests = [
-        "water_cleared_stamp",
-        "clean_cleared_stamp",
-        "cooking_cleared_stamp",
-        "wash_cleared_stamp",
-        "bed_cleared_stamp",
-        "pills_cleared_stamp",
-        "talk_cleared_stamp",
-        "walk_cleared_stamp",
+        "water",
+        "clean",
+        "cooking",
+        "wash",
+        "bed",
+        "pills",
+        "talk",
+        "walk",
     ]
     
     for quest_name in quests:
