@@ -3,25 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>로그인</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', path='css/login_style.css') }}"
-    />
-    <link rel="stylesheet" href="/static/css/login_style.css" />
-
-    <script
-      src="{{ url_for('static', path='js/sns_login.js') }}"
-      defer
-    ></script>
-    <!-- 구글 클라이언트 ID 설정 -->
-    <meta
-      name="google-signin-client_id"
-      content="955565213278-nrg3mnvuf2da7d4dtu1todajldjm7fj7.apps.googleusercontent.com"
-    />
-
-    <!-- 카카오 로그인 JavaScript SDK 로드 -->
+    <title>햄내_로그인</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', path='css/login_style.css') }}" />
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
     <!-- 네이버 로그인 JavaScript SDK 로드 -->
@@ -32,11 +16,10 @@
 
     <!-- jQuery 라이브러리 로드 -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    <!-- 구글 로그인 플랫폼 라이브러리 로드 -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-  </head>
-  <body>
+    <!-- <meta name="google-signin-client_id" content="1032858913846-3t5dhced44sv170k0tg92oq9spnkggs7.apps.googleusercontent.com.apps.googleusercontent.com"> -->
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+</head>
+<body>
     <div class="login-container">
       <div class="logo-container">
         <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
@@ -47,7 +30,6 @@
       </div>
       <form method="POST" action="/auth/login" style="width: 100%">
         <div class="input-group">
-          <!-- name -> userid 에서 id로 바꿈 -->
           <input
             type="text"
             id="userid"
@@ -77,7 +59,6 @@
       <hr class="loginLine" />
     </div>
     <div class="login-social">
-      <!-- 이미지 -->
       <img
         id="naverBtn"
         src="{{ url_for('static', path='image/naver.png') }}"
@@ -95,7 +76,6 @@
       />
 
       <div id="naver_id_login" style="display: none"></div>
-      <!-- 기존 구글 로그인 버튼 (숨겨진 상태) -->
       <div
         class="g-signin2"
         data-onsuccess="onSignIn"
@@ -103,7 +83,18 @@
       ></div>
 
       <script src="{{ url_for('static', path='js/sns_login.js')}}"></script>
-      <script src="/static/js/sns_login.js"></script>
     </div>
-  </body>
+
+   
+       
+        {% if error %}
+        <script>
+           // 페이지 로드 시 오류 메시지가 있으면 알림 창을 띄웁니다.
+        window.onload = function() {
+            alert("{{ error }}");
+        }
+      </script>
+        {% endif %}
+   
+</body>
 </html>

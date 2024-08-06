@@ -466,3 +466,32 @@ button {
 #cancelPurchase {
     background-color: #ccc; /* 취소 버튼 색상 */
 }
+
+/* styles.css */
+.pet-button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pet-button.default {
+    background-color: gray; /* 기본 배경색 */
+}
+
+.pet-button.buy {
+    background-color: green; /* 구매하기 버튼 배경색 */
+}
+
+.pet-button.select {
+    background-color: blue; /* 선택하기 버튼 배경색 */
+}
+
+.pet-button.selected {
+    background-color: red; /* 선택됨 버튼 배경색 */
+}
+
+.pet-button.disabled {
+    background-color: lightgray; /* 구매할 수 없는 버튼 배경색 */
+}

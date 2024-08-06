@@ -498,16 +498,15 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.style.display = 'block'; // 오버레이 표시
   });
 
-  // 감정 이미지 클릭 시
-  showerHam.forEach(img => {
-    img.addEventListener('click', function() {
-      showerHam.forEach(image => image.classList.remove('selected'));
-      this.classList.add('selected');
+// 감정 이미지 클릭 시
+showerHam.forEach(img => {
+  img.addEventListener('click', function() {
+      showerHam.forEach(image => image.classList.remove('selected')); // 기존 선택 해제
+      this.classList.add('selected'); // 현재 이미지 선택
       console.log('Image clicked:', this); 
-      selectedImage = this;
-    });
+      selectedImage = this; // 선택된 이미지 저장
   });
-
+});
   // 샤워 후 제출 버튼 클릭 시
   showerSend.addEventListener('click', function() {
     if (selectedImage) {
@@ -549,4 +548,69 @@ document.addEventListener('DOMContentLoaded', function() {
       showerPopup.classList.remove('popup-visible');
       overlay.style.display = 'none';
   });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // 닫기 버튼 이벤트 연결
+  var closeButton = document.querySelector('.closeIcon');
+  closeButton.onclick = togglePopup;
+
+  // 페이지 로딩 시 팝업 자동 열기
+  openPopup();
+
+  // stop 버튼 클릭 시 미션 완료 처리
+  var stopButton = document.getElementById('stop');
+  stopButton.addEventListener('click', function() {
+    stopText();
+    completeMission('pills');
+  });
+
+  // sendText 버튼 클릭 시 미션 완료 처리
+  var sendTextButton = document.querySelector('.sendText');
+  sendTextButton.addEventListener('click', function() {
+    completeMission('wash');
+  });
+
+  function completeMission(mission) {
+    // 서버에 미션 완료를 알림
+    fetch('/update-stamp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ mission: mission })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        alert('미션 완료!');
+        localStorage.setItem(`${mission}_cleared`, "true");
+        updateStampImage(mission);
+      } else {
+        alert('미션 완료 처리 중 오류가 발생했습니다.');
+      }
+    })
+    .catch(error => {
+      console.error('미션 완료 처리 중 오류 발생:', error);
+    });
+  }
+
+  function updateStampImage(mission) {
+    const stampMap = {
+      pills: 'pills_cleared_stamp',
+      wash: 'wash_cleared_stamp'
+    };
+
+    const stampId = stampMap[mission];
+    if (stampId) {
+      const stampElement = document.getElementById(stampId);
+      if (stampElement) {
+        stampElement.src = '/path_to_cleared_stamp_image.png';
+      } else {
+        console.error("Stamp element not found:", stampId);
+      }
+    } else {
+      console.error("Invalid mission:", mission);
+    }
+  }
 });

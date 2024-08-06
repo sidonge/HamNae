@@ -33,7 +33,7 @@
       <div class="recording">
         <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
         <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
-        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText()">
+        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText(); completeMission('pills')">
       </div>
       <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
       <div id="status-indicator">녹음 전</div>
@@ -113,7 +113,7 @@
         <div class="menu">
           <div class="mission" id="mission">집으로</div>
           <hr class="hr" />
-          <div class="walk" id="walk">산책하기</div>
+          <div class="walk" id="walk" onclick="completeMission('walk')">산책하기</div>
           <hr class="hr" />
           <div class="character" id="character">캐릭터 변경</div>
           <hr class="hr" />
@@ -261,7 +261,7 @@
         src="{{ url_for('static', path='image/talkTalk.png') }}"
       />
     </div>
-    <div class="bed" id="bedContainer">
+    <div class="bed" id="bedContainer"  onclick="completeMission('bed')">
       <img
         id="bed_cleared_stamp"
         class="bedTalk talk-image"
@@ -299,7 +299,7 @@
         <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
       </div>
       <div class="showerSend">
-        <button class="sendText" id="sendTextButton">내 기분 보내기</button>
+        <button class="sendText" id="sendTextButton" onclick="completeMission('wash')">내 기분 보내기</button>
       </div>
     </div>
 
@@ -317,5 +317,32 @@
     <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
     <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
     <!-- bed 필요 -->
+
+
+
+
+
+
+
+    <script>
+      // 미션 완료 함수
+      function completeMission(mission) {
+        fetch(`/complete_mission?mission=${mission}`, { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              document.getElementById(`${mission}_cleared_stamp`).style.display = 'block';
+            } else {
+              console.error(data.message);
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      }
+    
+      // Walk page 이동 (예시)
+      document.getElementById('walk').addEventListener('click', () => {
+        window.location.href = '/walkpage';
+      });
+    </script>
   </body>
 </html>
