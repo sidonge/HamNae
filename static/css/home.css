@@ -734,7 +734,9 @@ model-viewer#rabbitModel {
     opacity: 0.5;
 }
 
-.showerSend {
+
+
+.sendText {
     width: 5.8rem;
     height: 1.5rem;
     background-color: #71594E;
@@ -742,14 +744,10 @@ model-viewer#rabbitModel {
     margin-top: 1.6rem;
     margin-left: 19rem;
     cursor: pointer;
-}
-
-.sendText {
-    font-family: "Pretendard-SemiBold";
-    font-size: 0.75rem;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 0.25rem;
+    color: white;
+    font-family: "Pretendard-Medium";
+    font-size: 0.7rem;
+    border: none;
 }
 
 .overlay {
