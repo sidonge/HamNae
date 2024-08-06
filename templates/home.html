@@ -16,7 +16,7 @@
     <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
   </head>
   <body>
-    <!-- home 팝업화면 -->
+    home 팝업화면
     <div class="popupWrap">
       <div class="popupBody">
         <div class="closeIcon" onclick="togglePopup()"><img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}"></div>
@@ -26,18 +26,15 @@
         src="{{ url_for('static', path='models/ham.glb') }}"
         environment-image="neutral"
         ar
+        onclick="hideText()"
       ></model-viewer>
       <div class="bottomCircle"></div>
-      <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
-
-      <div class="recording">
-        <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
-        <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
-        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText()">
-      </div>
-      <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
-      <div id="status-indicator">녹음 전</div>
-
+      <div class="popupBlink">귀여운 친구를 눌러 이름을 말해주세요.</div>
+      
+      <button id="start-listening-btn">Start Listening</button>
+    <button id="stop-btn">Stop</button>
+    <div id="result">Speak something...</div>
+    <div id="animated-object"></div>
 
 
 
@@ -260,6 +257,7 @@
         accept="image/*"
         style="display: none"
       />
+      
     </div>
     <div class="talk">
       <img
@@ -282,11 +280,9 @@
           <div class="timer-colon">:</div>
           <div class="timer-part" id="second">00</div>
         </div> 
-        <div id="timerCompleteMessage" onclick="">시간이 완료되었습니다!</div>
+        <div id="timerCompleteMessage" onclick="" >시간이 완료되었습니다!</div>
 
       </div>
-      <audio id="pieceSound" src="{{ url_for('static', path='/sound/pieceSound.mp3') }}"></audio>
-
     
     </div>
     <div class="pills" id="pillsContainer">
@@ -317,6 +313,22 @@
     <audio id="pillsSound" src="{{ url_for('static', path='/sound/pillsSound.mp3') }}"></audio>
     <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
     <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
-    <!-- bed 필요 -->
+    <!— bed 필요 —>
+
+    <div class="showerPopup">
+      <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
+      <div class="showerImg">
+        <img class="showerHam" src="{{ url_for('static', path='image/happyHam.png') }}" alt="happy">
+        <img class="showerHam" src="{{ url_for('static', path='image/badHam.png') }}" alt="bad">
+        <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
+      </div>
+      <div class="showerSend">
+        <div class="sendText">내 기분 보내기</div>
+      </div>
+    </div>
+
+
+
+    </div>
   </body>
 </html>

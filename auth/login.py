@@ -40,6 +40,7 @@ async def login(request: Request, id: str = Form(...), password: str = Form(...)
             "main_pet_id" : user.main_pet_id
         }
         response = RedirectResponse(url="/main", status_code=302)
+        response = RedirectResponse(url="/main", status_code=302)
         response.set_cookie(key="session_id", value=session_id, httponly=True)
         return response
     else:

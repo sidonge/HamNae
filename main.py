@@ -9,7 +9,7 @@ from services import quest, home, character, walkpage, petlist, chat, map
 from user import mypage, petlist
 from api import voiceRecording
 
-
+from user import mypage
 app = FastAPI()
 
 app.add_middleware(

@@ -149,6 +149,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   
+  addClickHandler("cookingContainer", "cookingSound");
+  addClickHandler("cleanContainer", "cleanSound");
+  addClickHandler("pillsContainer", "pillsSound");
+  addClickHandler("washContainer", "washSound");
+  addClickHandler("waterContainer", "waterSound");
+
+
+  
 
   const talkImages = document.querySelectorAll(".talk-image");
   talkImages.forEach((img) => {
@@ -245,9 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const rabbitModel = document.getElementById("rabbitModel");
 
 
+
   // 초기 화면 설정
   let rotateX = 90;
   let rotateY = -270;
+  let zoomLevel = 5;
   let zoomLevel = 5;
 
   const minRotateY = -300;
@@ -335,7 +345,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const rabbitTalk2 = document.getElementById("rabbitTalk2");
   const blinkText = document.querySelector(".blink");
   const homeSound = document.getElementById("homeSound");
+  const homeSound = document.getElementById("homeSound");
   let isTalkVisible = false;
+
+  // 캐릭터 클릭 시 홈 배경음악 재생
+  rabbitModel.addEventListener("click", () => {
+    homeSound.play().catch(error => {
+      console.error("오디오 재생 중 에러 발생:", error);
+    });
+  });
 
   // 캐릭터 클릭 시 홈 배경음악 재생
   rabbitModel.addEventListener("click", () => {
@@ -368,6 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 채팅으로 이동
+  document.querySelector(".talk").addEventListener("click", () => {
   document.querySelector(".talk").addEventListener("click", () => {
     window.location.href = "/chat";
   });
