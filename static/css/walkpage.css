@@ -2,8 +2,27 @@ body {
     background-image: linear-gradient(#F5EED1, white);
     padding: 0 3%;
 
-    height: 110vh;
+    height: 1080px;
 }
+/* 미디어 쿼리: 가로 해상도가 1440px일 때 margin-right를 0으로 설정 */
+@media (max-width: 1440px) {
+    #map, .distance {
+       right: 0rem !important; /* 원하는 클래스에 적용 */
+    }
+}
+
+/* 미디어 쿼리: 가로 해상도가 1440px일 때 margin-right를 0으로 설정 */
+@media (max-width: 1440px) {
+    #controlBox {
+        left: 22% !important; /* 원하는 클래스에 적용 */
+    }
+}
+
+button
+{
+    cursor: pointer;
+}
+
 
 ::-webkit-scrollbar {
     display: none;
@@ -91,25 +110,22 @@ nav {
 }
 
 .titleWalk {
-    font-family: "Pretendard-Bold";
     color: #71594E;
-
-    font-size: 2.5rem;
-    letter-spacing: 0.2rem;
-
-    margin-bottom: 1%;
+    text-align: center;
+    font-family: "Pretendard-ExtraBold";
+    font-size: 1.6rem;
 }
 
 .titleLine {
-    background: #71594E;
-
-    width: 16rem;
-    height: 0.3rem;
-
+    font-family: "Pretendard-Bold";
+    background-color: #71594E;
+    width: 12rem;
+    height: 0.2rem;
     border: none;
     border-radius: 1rem;
-
-    font-family: "Pretendard-Bold";
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -331,7 +347,8 @@ input {
     box-shadow: 0.1px 1px 4px #BBBBBB;
 
     position: relative;
-    bottom: 42rem;
+    bottom: 37rem;
+    right: 13.5rem;
 
     margin-left: auto;
 }
@@ -410,33 +427,149 @@ input {
     margin: 10px;
 }
 
-.gm-fullscreen-control {
-    background: none !important;
-    box-shadow: none !important;
-    background-image: url('/static/image/icon-map.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    width: 40px !important;
-    height: 40px !important;
-}
-.gm-fullscreen-control> img {
-    display: none !important;
-}
-
 #map
 {
-    width: 70rem;
+    width: 67rem;
     height: 40rem;
 
     position: relative;
     bottom: 36.5rem;
-    right: 2.75rem;
+    right: 12.3%;
     margin-left: auto;
 }
 
 .mapBox {
     height: 7vh;
-    position: relative;
-    bottom: 5rem;
-    left: 2.2rem;
+
+    
+}
+#controlBox
+{
+    width: 67rem;
+    height: 40rem;
+    position: absolute;
+    top: 27%;
+    left: 29.6%;
+    /* background-color: rgba(255, 192, 203, 0.202); */
+}
+
+#route_box
+{
+    width: 12rem;
+    height: 6rem;
+    color: #666666;
+    position: absolute;
+    left: 1.5rem;
+    top: 2.3rem;
+    background-color: rgba(254, 255, 245, 0.75);
+    border: 1px solid white;
+    z-index: 999;
+    padding: 0.3rem 1rem 0.5rem 1rem;
+}
+
+/* #route_box button
+{
+    display: block;
+} */
+
+#setHome
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#setHome img
+{
+    width: 80%;
+}
+
+.gm-fullscreen-control {
+    position: absolute;
+    background: none !important;
+    box-shadow: none !important;
+    background-image: url('/static/image/icon-map.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: 3rem !important;
+    height: 4rem !important;
+    transform: translate(1.5rem, 0rem);
+}
+.gm-fullscreen-control> img {
+    display: none !important;
+}
+
+#startTracking img
+{
+    width: 1.1rem;
+}
+
+
+#controlBox button
+{
+    text-align: center;
+    
+    font-size: 1rem;
+    color: #666666;
+    font-family: "Pretendard-SemiBold";
+    background: none;
+    border: none;
+    padding: 0.3rem 0rem;
+    outline: none;
+    box-shadow: none;
+    margin: 0.4rem 0rem 0.1rem 1rem;
+
+}
+
+#controlBox button hr
+{
+    width: 70%;
+    margin-left: 2rem;
+    display: none;
+}
+
+button img
+{
+    transform: translateY(0.3rem );
+    margin-right: 0.3rem;
+}
+button i
+{
+     font-size: 1.4rem;
+    transform: translateY(0.2rem);
+    padding-right: 0.9rem;
+    padding-left: 0.1rem;
+}
+
+#setLocation
+{
+    position: absolute;
+    bottom: 7rem;
+
+    right: 0.3rem;
+}
+#setLocation img
+{
+    width: 3rem;
+}
+
+#overlayText {
+    font-family: "Pretendard-SemiBold";
+    position: absolute;
+    font-size: 1rem;
+    top: 5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: none; 
+    /* 기본적으로 숨김 상태 */
+}
+#noneGG
+{
+    width: 67rem;
+    height: 1.3rem;
+    background-color: Srgb(192, 182, 182);
+    position: absolute;
+    bottom: 0.3rem;
+    z-index:999;
 }

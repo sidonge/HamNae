@@ -232,11 +232,11 @@ body {
 
 
 
-/* Navigation */
+/* nav */
 nav {
     height: 5rem;
     text-align: center;
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     left: 0;
@@ -245,21 +245,25 @@ nav {
 
 .logo {
     width: 5rem;
-    position: fixed;
+
+    position: absolute;
     left: 2rem;
     top: 1.25rem;
 }
 
 .menuIcon {
-    width: 2.5rem;
-    position: fixed;
+    position: absolute;
     right: 2rem;
-    top: 2.5rem;
+    top: 1.6rem;
+
+    width: 2.5rem;
+
+    cursor: pointer;
 }
 
 .exitIcon {
+    position: absolute;
     width: 2rem;
-    position: fixed;
     right: 2rem;
     top: 2rem;
     cursor: pointer;
@@ -681,4 +685,75 @@ model-viewer#rabbitModel {
     50% { opacity: 0; }
 }
 
+.showerPopup {
+    width: 26rem;
+    height: 12rem;
+    background-color: #D2BEA1;
+    border-radius: 1rem;
+    z-index: 100000;
+    display: none;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
+}
+
+.popup-visible {
+    display: block;
+}
+
+.showerText {
+    font-family: "Pretendard-SemiBold";
+    font-size: 1.25rem;
+    color: #71594E;
+    text-align: center;
+    padding: 1rem
+}
+
+.showerImg {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.2rem;
+}
+
+.showerHam {
+    width: 6.8rem;
+    height: 4.5rem;
+    cursor: pointer;
+}
+
+.showerHam:not(.selected) {
+    opacity: 0.5;
+}
+
+.showerSend {
+    width: 5.8rem;
+    height: 1.5rem;
+    background-color: #71594E;
+    border-radius: 0.3rem;
+    margin-top: 1.6rem;
+    margin-left: 19rem;
+    cursor: pointer;
+}
+
+.sendText {
+    font-family: "Pretendard-SemiBold";
+    font-size: 0.75rem;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1009;
+  }
+
+  

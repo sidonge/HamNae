@@ -1,73 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>햄내_로그인</title>
+    
     <link rel="stylesheet" href="{{ url_for('static', path='css/login_style.css') }}" />
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+    <!-- 네이버 로그인 JavaScript SDK 로드 -->
+    <script
+      src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+      charset="utf-8"
+    ></script>
+
+    <!-- jQuery 라이브러리 로드 -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- <meta name="google-signin-client_id" content="1032858913846-3t5dhced44sv170k0tg92oq9spnkggs7.apps.googleusercontent.com.apps.googleusercontent.com"> -->
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 </head>
 <body>
     <div class="login-container">
-        <div class="logo-container">
-            <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
-            <div class="signup-link">
-                <span class="signup-text">아직 회원이 아니신가요?</span>
-                <a href="/signup">회원가입 하기</a>
-            </div>
+      <div class="logo-container">
+        <img src="{{ url_for('static', path='image/logo.png') }}" alt="로고" />
+        <div class="signup-link">
+          <span class="signup-text">아직 회원이 아니신가요?</span>
+          <a href="/auth/register">회원가입 하기</a>
         </div>
-        <form id="loginForm" style="width: 100%">
-            <div class="input-group">
-                <input type="text" id="userid" name="id" placeholder="아이디" required />
-            </div>
-            <div class="password-group">
-                <input type="password" id="password" name="password" placeholder="비밀번호" required />
-                <div class="resetPassword">비밀번호 찾기</div>
-            </div>
-            <button type="submit">로그인 하기</button>
-        </form>
+      </div>
+      <form method="POST" action="/auth/login" style="width: 100%">
+        <div class="input-group">
+          <input
+            type="text"
+            id="userid"
+            name="id"
+            placeholder="아이디"
+            required
+          />
+        </div>
+        <div class="password-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호"
+            required
+          />
+          <div class="resetPassword">비밀번호 찾기</div>
+        </div>
+        <button type="submit">로그인 하기</button>
+      </form>
     </div>
 
+    <!-- 간편로그인 -->
     <div class="loginBox">
-        <hr class="loginLine" />
-        <div class="social-label">간편 로그인</div>
-        <hr class="loginLine" />
+      <hr class="loginLine" />
+      <div class="social-label">간편 로그인</div>
+      <hr class="loginLine" />
     </div>
     <div class="login-social">
-        <img id="naverBtn" src="{{ url_for('static', path='image/naver.png') }}" alt="naver" />
-        <img id="googleBtn" src="{{ url_for('static', path='image/google.png') }}" alt="google" />
-        <img id="kakaoBtn" src="{{ url_for('static', path='image/kakao.png') }}" alt="kakao" />
-        <div id="naver_id_login" style="display: none;"></div>
-        <div class="g-signin2" data-onsuccess="onSignIn" style="display: none"></div>
+      <img
+        id="naverBtn"
+        src="{{ url_for('static', path='image/naver.png') }}"
+        alt="naver"
+      />
+      <img
+        id="googleBtn"
+        src="{{ url_for('static', path='image/google.png') }}"
+        alt="google"
+      />
+      <img
+        id="kakaoBtn"
+        src="{{ url_for('static', path='image/kakao.png') }}"
+        alt="kakao"
+      />
+
+      <div id="naver_id_login" style="display: none"></div>
+      <div
+        class="g-signin2"
+        data-onsuccess="onSignIn"
+        style="display: none"
+      ></div>
+
+      <script src="{{ url_for('static', path='js/sns_login.js')}}"></script>
     </div>
 
-    <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const userid = document.getElementById('userid').value;
-        const password = document.getElementById('password').value;
-
-        fetch('/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `id=${encodeURIComponent(userid)}&password=${encodeURIComponent(password)}`
-        })
-        .then(response => {
-            if (!response.ok) throw new Error('Login failed');
-            return response.json();  // 예상하는 응답 형식이 JSON일 때
-        })
-        .then(data => {
-            if (data.redirect) {
-                window.location.href = data.redirect;  // 로그인 성공시 리다이렉션
-            }
-        })
-        .catch(error => {
-            alert('아이디 또는 비밀번호가 잘못되었습니다.');
-        });
-    });
-    </script>
+   
+       
+        {% if error %}
+        <script>
+           // 페이지 로드 시 오류 메시지가 있으면 알림 창을 띄웁니다.
+        window.onload = function() {
+            alert("{{ error }}");
+        }
+      </script>
+        {% endif %}
+   
 </body>
 </html>

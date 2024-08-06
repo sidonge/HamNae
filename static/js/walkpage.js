@@ -42,6 +42,8 @@ function initMap() {
         mapId: '871c544b9ad947b5',
         streetViewControl: false,
         mapTypeControl: false,
+        fullscreenControlOptions: {
+            position: google.maps.ControlPosition.LEFT_BOTTOM} // 원하는 위치 설정
     });
 
     const infoWindow = new google.maps.InfoWindow();
@@ -70,6 +72,7 @@ function initMap() {
         infoWindow.open(map);
     }
 
+    
     // 편의점 마커 제거 함수
     function clearConvenienceStores() {
         convenienceMarkers.forEach(marker => marker.setMap(null));
@@ -124,7 +127,8 @@ function initMap() {
                     const marker = new google.maps.Marker({
                         position: place.geometry.location,
                         map: map,
-                        title: place.name
+                        title: place.name,
+                        icon: "/static/image/park_marker.png"
                     });
                     parkMarkers.push(marker);
                 });
@@ -274,6 +278,51 @@ function initMap() {
             map.setZoom(18);
         }
     });
+    let trackingInterval; // 전역 변수로 정의
+
+    // 실시간 경로 기록 상태 텍스트 표시 함수
+    function showOverlayText(text) {
+        const overlayText = document.getElementById('overlayText');
+        overlayText.textContent = text;
+        overlayText.style.display = 'block';
+    }
+
+    // 경로 기록 상태 텍스트 숨기기 함수
+    function hideOverlayText() {
+        const overlayText = document.getElementById('overlayText');
+        overlayText.style.display = 'none';
+    }
+
+    // 경로 기록 중 텍스트 업데이트 함수
+    function startTrackingOverlay() {
+        console.log("startTrackingOverlay 점찍자");
+        const overlayText = document.getElementById('overlayText');
+        let dots = 1;
+        let updateCount = 0; // 텍스트 업데이트 횟수
+        const maxUpdates = 9; // 점의 반복 횟수 (전체 애니메이션이 3번 반복되도록 설정)
+
+        function updateText() {
+            overlayText.textContent = '실시간 경로 기록 중' + '.'.repeat(dots);
+            dots = (dots % 3) + 1; // 1, 2, 3 점을 반복
+            updateCount++;
+
+            if (updateCount < maxUpdates) {
+                trackingInterval = setTimeout(updateText, 500); // 500ms 간격으로 텍스트 업데이트
+            } else {
+                showOverlayText('실시간 경로 기록 중...'); // 텍스트를 최종 상태로 설정
+            }
+        }
+
+        // 초기 텍스트를 설정하고 업데이트 시작
+        showOverlayText('실시간 경로 기록 중'); // 초기 텍스트 설정
+        updateText(); // 텍스트 업데이트 시작
+    }
+
+    // 경로 기록 중단 텍스트 표시 함수
+    function stopTrackingOverlay() {
+        clearTimeout(trackingInterval); // 애니메이션 중지
+        showOverlayText('경로 기록 중단됨'); // 중단 텍스트 표시
+    }
 
     // 실시간 위치 업데이트 함수
     function updatePosition(position) {
@@ -323,6 +372,8 @@ function initMap() {
             tracking = true;
             startTrackingButton.classList.add('active');
             stopTrackingButton.classList.remove('active');
+            console.log("startTracking")
+            startTrackingOverlay(); // 경로 기록 중 텍스트 시작
 
             watchId = navigator.geolocation.watchPosition(updatePosition, 
                 (error) => {
@@ -347,6 +398,7 @@ function initMap() {
                 navigator.geolocation.clearWatch(watchId);
                 watchId = null;
             }
+            stopTrackingOverlay(); // 경로 기록 중단 텍스트 표시
         }
     }
 
@@ -357,5 +409,25 @@ function initMap() {
     if (stopTrackingButton) {
         stopTrackingButton.addEventListener('click', stopTracking);
     }
+
+
+
+
+
+
+    async function updateWalkStamp() {
+        try {
+            await fetch('/api/update-stamp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mission: 'walk_cleared_stamp' })
+            });
+            console.log('Walk mission completed.');
+        } catch (error) {
+            console.error('Error updating walk stamp:', error);
+        }
+    }
+
+    updateWalkStamp();
 }
 

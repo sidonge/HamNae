@@ -13,6 +13,7 @@
     <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <link rel="icon" href="{{ url_for('static', path='image/fav.ico') }}" type="image/x-icon">
   </head>
   <body>
     <!-- home 팝업화면 -->
@@ -34,9 +35,9 @@
       <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
 
       <div class="recording">
-        <img id="nameRecord" src="{{ url_for('static', path='/image/realNameRecord.png') }}" onclick="hideText()">
-        <img id="record" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="startText()">
-        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" >
+        <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
+        <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
+        <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText(); completeMission('pills')">
       </div>
       <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
       <div id="status-indicator">녹음 전</div>
@@ -118,7 +119,7 @@
         <div class="menu">
           <div class="mission" id="mission">집으로</div>
           <hr class="hr" />
-          <div class="walk" id="walk">산책하기</div>
+          <div class="walk" id="walk" onclick="completeMission('walk')">산책하기</div>
           <hr class="hr" />
           <div class="character" id="character">캐릭터 변경</div>
           <hr class="hr" />
@@ -258,13 +259,6 @@
         class="washTalk talk-image"
         src="{{ url_for('static', path='image/washTalk.png') }}"
       />
-      <input
-        type="file"
-        id="washUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
     </div>
     <div class="talk">
       <img
@@ -273,7 +267,7 @@
         src="{{ url_for('static', path='image/talkTalk.png') }}"
       />
     </div>
-    <div class="bed" id="bedContainer">
+    <div class="bed" id="bedContainer"  onclick="completeMission('bed')">
       <img
         id="bed_cleared_stamp"
         class="bedTalk talk-image"
@@ -300,13 +294,19 @@
         class="pillsTalk talk-image"
         src="{{ url_for('static', path='image/pillsTalk.png') }}"
       />
-      <input
-        type="file"
-        id="pillsUpload"
-        class="upload-input"
-        accept="image/*"
-        style="display: none"
-      />
+    </div>
+
+    <div class="overlay" style="display: none;"></div>
+    <div class="showerPopup">
+      <div class="showerText">샤워 후 너의 기분을 알려줘!</div>
+      <div class="showerImg">
+        <img class="showerHam" src="{{ url_for('static', path='image/happyHam.png') }}" alt="happy">
+        <img class="showerHam" src="{{ url_for('static', path='image/badHam.png') }}" alt="bad">
+        <img class="showerHam" src="{{ url_for('static', path='image/sadHam.png') }}" alt="sad">
+      </div>
+      <div class="showerSend">
+        <button class="sendText" id="sendTextButton" onclick="completeMission('wash')">내 기분 보내기</button>
+      </div>
     </div>
 
     <div class="blink">동물을 눌러 보세요.</div>
@@ -323,5 +323,32 @@
     <audio id="washSound" src="{{ url_for('static', path='/sound/washSound.mp3') }}"></audio>
     <audio id="waterSound" src="{{ url_for('static', path='/sound/waterSound.mp3') }}"></audio>
     <!-- bed 필요 -->
+
+
+
+
+
+
+
+    <script>
+      // 미션 완료 함수
+      function completeMission(mission) {
+        fetch(`/complete_mission?mission=${mission}`, { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              document.getElementById(`${mission}_cleared_stamp`).style.display = 'block';
+            } else {
+              console.error(data.message);
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      }
+    
+      // Walk page 이동 (예시)
+      document.getElementById('walk').addEventListener('click', () => {
+        window.location.href = '/walkpage';
+      });
+    </script>
   </body>
 </html>

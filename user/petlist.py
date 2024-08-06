@@ -6,7 +6,7 @@ from database.db_setup import get_db
 from api.models import Pet, UserPet, User
 from config import templates, session_data
 
-router = APIRouter()
+router = APIRouter(tags=["펫리스트"])
 
 @router.get("/petlist", response_class=HTMLResponse)
 async def get_pets(request: Request, db: Session = Depends(get_db)):

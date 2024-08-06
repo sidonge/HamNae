@@ -172,20 +172,22 @@ nav {
 }
 
 .titleWalk {
-    font-family: "Pretendard-Bold";
     color: #71594E;
-    font-size: 2.5rem;
-    letter-spacing: 0.2rem;
-    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: "Pretendard-ExtraBold";
+    font-size: 1.6rem;
 }
 
 .titleLine {
-    background: #71594E;
-    width: 16rem;
-    height: 0.3rem;
+    font-family: "Pretendard-Bold";
+    background-color: #71594E;
+    width: 12rem;
+    height: 0.2rem;
     border: none;
     border-radius: 1rem;
-    font-family: "Pretendard-Bold";
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* 캐릭터 설명 박스 */
@@ -205,35 +207,35 @@ nav {
 }
 
 .character-description-box .name {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     font-family: "Pretendard-Bold";
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .character-description-box .introduce {
     font-family: "Pretendard-Regular";
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
     line-height: 135%;
 }
 
 .intimacyBox {
     display: flex;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .intimacy {
     font-family: "Pretendard-SemiBold";
-    font-size: 1.9rem;
+    font-size: 1.4rem;
 }
 
 .heartImg {
     margin-left: auto;
-    width: 45%;
-    height: 45%;
+    width: 35%;
+    height: 35%;
 }
 
 /* 캐릭터 선택 박스 */
@@ -241,42 +243,94 @@ nav {
     position: fixed;
     right: 7%;
     text-align: center;
-    width: 12%;
-    height: 55%;
+    height: 85%;
     padding: 1.5rem;
 }
 
-.coinBackground {
-    width: 16vw;
+.characterBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+
+    width: 16rem;
+    height: 25rem;
+
+    position: relative;
+    top: 8rem;
+
+    z-index: 7;
 }
 
-.coin {
-    width: 15%;
+.coinBigBackground {
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FCF7E5;
+    z-index: 10;
+
+    width: 9rem;
+    height: 4rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    left: 12.5rem;
+    bottom: 4.5rem;
+}
+
+.coinIcon {
+    width: 25%;
+    float: left;
+
+    position: relative;
+    left: 15%;
+}
+
+.coins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
 }
 
 .coinText {
     font-family: "Pretendard-Regular";
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #AB936B;
-}
+    float: right;
 
+    position: relative;
+    right: 15%;
+}
 .coinFlex {
-    display: flex;
     justify-content: center;
     align-items: center;
 
-    position: fixed;
-    width: 12%;
-    bottom: 71.5%;
-    right: 6.5%;
+    border: 3px solid #D2BEA1;
+    border-radius: 50px;
+    background-color: #FEF5D3;
+
+    padding: 0.7rem 0.8rem;
+
+    z-index: 8;
+
+    position: relative;
+    text-align: center;
+    margin: auto;
 }
 
 .characterBox {
     position: relative;
     width: 12%;
     text-align: center;
-    bottom: 85%;
-    left: 15%;
+
+    position: relative;
+    bottom: 14rem;
+    left: 11rem;
+
+    z-index: 20;
 }
 
 .character-option {
@@ -289,26 +343,26 @@ nav {
 }
 
 .hamImg {
-    width: 8rem;
-    height: 8rem;
+    width: 6rem;
+    height: 6rem;
     margin-right: 1rem;
 }
 
 .sectionName {
     font-family: "Pretendard-Medium";
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
     color: #71594E;
 }
 
 .character-option .select {
     font-family: "Pretendard-Regular";
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #070000;
     background-color: #F5EED1;
     border-radius: 10rem;
-    width: 6rem;
-    height: 2.5rem;
+    width: 5rem;
+    height: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -316,10 +370,6 @@ nav {
 
 .character-option.selected .select {
     background-color: #D2BEA1;
-}
-
-#professorOption .select {
-    background-color: #A88756;
 }
 
 #professorOption.selected .select {
@@ -392,6 +442,10 @@ nav {
     font-size: 2rem;
 }
 
+button {
+    border: 0;
+}
+
 .popup-content button {
     font-family: "Pretendard-SemiBold";
     padding: 10px 20px;
@@ -411,4 +465,33 @@ nav {
 
 #cancelPurchase {
     background-color: #ccc; /* 취소 버튼 색상 */
+}
+
+/* styles.css */
+.pet-button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pet-button.default {
+    background-color: gray; /* 기본 배경색 */
+}
+
+.pet-button.buy {
+    background-color: green; /* 구매하기 버튼 배경색 */
+}
+
+.pet-button.select {
+    background-color: blue; /* 선택하기 버튼 배경색 */
+}
+
+.pet-button.selected {
+    background-color: red; /* 선택됨 버튼 배경색 */
+}
+
+.pet-button.disabled {
+    background-color: lightgray; /* 구매할 수 없는 버튼 배경색 */
 }

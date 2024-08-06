@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>집</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}" />
+    <script src="{{ url_for('static', path='js/home.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/voiceRecording.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/nav.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+</head>
+<body>
+    <!-- home 팝업화면 -->
+    <div class="popupWrap">
+        <div class="popupBody">
+            <div class="closeIcon" onclick="togglePopup()">
+                <img src="{{ url_for('static', path='image/whiteCloseIcon.png') }}">
+            </div>
+        </div>
+        <!-- <model-viewer
+            id="rabbitModel2"
+            src="{{ url_for('static', path='models/ham.glb') }}"
+            environment-image="neutral"
+            ar
+        ></model-viewer> -->
+        <div class="bottomCircle"></div>
+        <div class="popupBlink">마이크를 눌러 귀여운 친구의 이름을 정해주세요.</div>
+        <div class="recording">
+            <img id="nameRecord" src="{{ url_for('static', path='/image/nameRecord.png') }}" onclick="hideText()">
+            <img id="record" src="{{ url_for('static', path='/image/record.png') }}" onclick="startText()">
+            <img id="stop" src="{{ url_for('static', path='/image/stop.png') }}" onclick="stopText()">
+        </div>
+        <p id="result">여러분의 목소리가 여기에 표시 돼요.</p>
+        <div id="status-indicator">녹음 전</div>
+        
+        <!-- 제출 버튼 추가 -->
+        <button id="submit-btn">제출</button>
+    </div>
+</body>
+</html>
