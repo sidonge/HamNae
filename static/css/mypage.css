@@ -1,3 +1,8 @@
+#toggle
+{
+    color: #5C5B5E !important;    
+}
+
 @media (min-width: 1441px)
 {
 *{
@@ -37,6 +42,11 @@ h3, h2
 p
 {
     font-size: 1.3rem;
+}
+
+#toggle{
+    margin-top: 0rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 #profile p
