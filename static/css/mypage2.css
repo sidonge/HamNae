@@ -198,8 +198,13 @@
         font-size: 1rem;
         word-spacing: 0.16rem;
     }
+
     
-    
+.edit:hover {
+    cursor: pointer;
+    background-color: #71594E;
+    color: #ffffff;
+}
     
     
     /* badge section*/

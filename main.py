@@ -7,8 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
 from services import quest, home, character, walkpage, petlist, chat, map, mainpage
-from user import mypage, petlist
-from api import voiceRecording
+from user import mypage
+
 app = FastAPI()
 
 app.add_middleware(
