@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from auth import login, register
-from services import quest, home, character, walkpage, petlist, chat, map
+from services import quest, home, character, walkpage, map
 from user import mypage, petlist
 from api import voiceRecording
 

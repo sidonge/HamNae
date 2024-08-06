@@ -165,7 +165,7 @@ h3, h2 {
     cursor: pointer;
 }
 
-#minBox3, #minBox4, #minBox5, #minBox6 {
+#blurBox{
     filter: blur(15px);
 }
 
