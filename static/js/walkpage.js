@@ -156,7 +156,7 @@ function initMap() {
                             position: pos,
                             map: map,
                             title: "현재 위치",
-                            icon: "/static/image/햄스터.png"
+                            
                         });
 
                         map.setCenter(pos);
@@ -196,7 +196,7 @@ function initMap() {
                             position: pos,
                             map: map,
                             title: "현재 위치",
-                            icon: '/static/image/햄스터.png'
+                           
                         });
 
                         map.setCenter(pos);
@@ -340,7 +340,7 @@ function initMap() {
                     position: newPos,
                     map: map,
                     title: "현재 위치",
-                    icon: "/static/image/햄스터.png"
+                   
                 });
             }
 
