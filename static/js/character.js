@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         } else {
                             alert(result.detail);
                         }
+                    } catch (error) {
+                        alert("요청 처리 중 오류가 발생했습니다.");
                     } finally {
                         purchasePopup.style.display = 'none';
                         confirmPurchase.removeEventListener('click', confirmHandler);

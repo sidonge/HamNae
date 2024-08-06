@@ -102,6 +102,7 @@ async def get_character_page(request: Request, db: Session = Depends(get_db)):
     })
 
 
+
 class PetPurchaseRequest(BaseModel):
     pet_id: str
 
